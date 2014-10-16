@@ -1,0 +1,178 @@
+@import "vars";
+
+/* ======= Style ======= */
+body {
+	margin: 0;
+	background: $color-background;
+	color: $color-text;
+	// overflow: hidden;
+	// font-size: .9em;
+	// line-height: 1.35;
+}
+
+body,
+input,
+textarea,
+.meta { font-family: 'Bitter', serif; }
+
+h1,
+.home-navigation {
+	font-family: 'Cabin', serif;
+	font-weight: bold;
+}
+
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* ======= Shared ======= */
+
+/* ======= Architecture ======= */
+html,
+body,
+.pages { height: 100%; }
+
+.wrapper { margin: 0 auto; }
+
+// Pages
+.pages { height: 100% * $pages; }
+.page {
+	position: relative;
+	display: table;
+	width: 100%;
+	height: 100% / $pages;
+}
+.page-content {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/* ======= Grid ======= */
+.columns {
+	letter-spacing: -.25rem;
+}
+.column {
+	display: inline-block;
+	vertical-align: top;
+	letter-spacing: normal;
+
+	&:not(:first-child) { margin-left: $size-grid-gutter; }
+
+	*:first-child { margin: 0; }
+}
+@for $i from 1 to 5 {
+	.column-#{$i} { width: ($size-grid-column * $i) + ($size-grid-gutter * ($i - 1)); }
+}
+
+/* ======= Content ======= */
+.meta {
+	font-style: italic;
+	font-weight: normal;
+	font-size: inherit;
+	text-align: right;
+	line-height: 1.1;
+	color: lighten($color-text, 50%);
+}
+
+.strip {
+	position: relative;
+	height: 2px;
+	margin: $size-grid-gutter 0;
+	background: #f3f3f3;
+}
+.navline {
+	position: absolute;
+	height: 100%;
+	background: #d2d9f1;
+	-webkit-transition: -webkit-transform .4s $easing-cubic;
+	-webkit-transition-property: width, -webkit-transform;
+	// -webkit-transform: translate3d(237px, 0, 0) scaleX(1);
+}
+
+a {
+	text-decoration: none;
+	
+	// Every link that isn't custom (no line)
+	&:not(.custom) {
+		border-bottom: 1px solid;
+		
+		// // Page bottom
+		// .page-showcase &,
+		// .page-bottom & {
+		// 	border-bottom-color: rgba(255,255,255,.5);
+			
+		// 	&:focus,
+		// 	&:hover { border-bottom-color: rgba(255,255,255,.7); }
+		// }
+	}
+	
+	// // Page showcase links (even custom)
+	// .page-showcase &,
+	// .page-bottom & {
+	// 	color: rgba(255,255,255,.8);
+		
+	// 	&:focus,
+	// 	&:hover { color: rgba(255,255,255,1); }
+	// }
+}
+// Page notes links + iconed page notes links
+// .page-notes a:not(.custom),
+// .link-caption,
+// .link-part {
+// 	color: $ozzik-purple;
+// 	border-bottom: 1px solid lighten($ozzik-purple, 35%); // Repeating for iconed-links
+	
+// 	&:focus,
+// 	&:hover {
+// 		color: lighten($ozzik-purple, 10%);
+// 		border-color: lighten($ozzik-purple, 40%);
+// 	}
+// }
+
+// $wrapper-width: 400px;
+// .wrapper {
+// 	width: 100%;
+// 	max-width: $wrapper-width;
+// 	margin: 0 auto;
+// }
+
+// .column {
+// 	display: inline-block;
+// 	vertical-align: top;
+	
+// 	&:not(:first-child) { margin-left: -4px; }
+// }
+// .column-mid { vertical-align: middle;  }
+
+// p:first-child,
+// h3:first-child { margin-top: 0; }
+// p:last-child { margin-bottom: 0; }
+
+// /* ======= Reset ======= */
+// h1,
+// h2,
+// h3,
+// h4 { font-weight: normal; }
+
+// li { list-style: none; }
+// a { text-decoration: none; }
+// img { border: none; }
+// ul { padding: 0; }
+
+/* ======= States ======= */
+// .visible { opacity: 1 !important; }
+// .hidden { display: none !important; }
+.transparent { opacity: 0; }
+// .disabled {
+// 	opacity: 0.5;
+// 	filter: alpha(opacity=50);
+// 	cursor: default !important;
+// }
+// .animation-less {
+// 	-webkit-animation: none !important;
+// 	-moz-animation: none !important;
+// 	animation: none !important;
+// }

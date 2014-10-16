@@ -1,0 +1,45 @@
+{
+	"items": [
+		{
+			"id": "doughjs",
+			"name": "Dough.js",
+			"art": {
+				"elements": [ "pin", "pin-shadow", "dough", "dough-shadow" ],
+				"animation": [
+					[ "pin" ],
+					[ "dough", "dough-in" ],
+					[ [ "pin-shadow", "dough-shadow" ] ]
+				]
+			}
+		},
+		{
+			"id": "webfyr",
+			"name": "Webfyr",
+			"art": {
+				"elements": [ "ios-app", "flame", "wave1", "wave2", "wave3", "glare" ],
+				"animation": [
+					[ "ios-app" ],
+					[ "flame", "pop-in", 50 ],
+					[ "wave3", "pop-in", 50 ],
+					[ "wave2", "pop-in", 50],
+					[ "wave1", "pop-in" ],
+					[ "glare" ]
+				]
+			}
+		},
+		{
+			"id": "bucketlist",
+			"name": "Bucket List",
+			"art": {
+				"elements": [],
+				"animation": [
+				]
+			}
+		}
+	],
+	"colors": {
+		"doughjs": "f8f3d9",
+		"webfyr": "fae1d2",
+		"bucketlist": "faf7d2"
+	}
+}

@@ -1,0 +1,30 @@
+// Colors
+$color-main: #685cb0;
+$color-main-light: #8fa0dc;
+$color-text: #323232;
+$color-background: #fcfcfc;
+
+// Spaces
+$space: .5em;
+
+// Sizes
+$pages: 2;
+$columns: 4;
+$rows: 3;
+
+$size-grid-column: 185px;
+$size-grid-row: 146px;
+$size-grid-gutter: 10px;
+$size-wrapper: $size-grid-column * $columns;
+
+// Z-indexes
+$z-navbar: 1;
+
+// Animation
+$easing-cubic: cubic-bezier(.48,-0.18,0,1.1);
+$easing-cubic-better: cubic-bezier(1, -0.18, 0, 1.1); // Smoother (exit)
+// $easing-cubic: cubic-bezier(.5, .1, 0, 1.1);
+$easing-cubic-rough: cubic-bezier(.5, 1, 0, 1.1); // Pop in
+$duration: .4s;
+$duration-quick: .2s;
+$duration-art: .2s;

@@ -1,0 +1,45 @@
+@import "vars";
+
+.showcase-art {
+    *:not(.se-sketch) {
+        position: absolute;
+        opacity: 0;
+    }
+}
+
+.se-ios-app {
+    width: 72px;
+    height: 72px;
+}
+
+@include keyframes(pop-in) {
+    0% { @include transform(scale(.8)); }
+    
+    90% {
+        opacity: 1;
+        @include transform(scale(1.04));
+    }
+    100% {
+        opacity: 1;
+        @include transform(none);
+    }
+}
+.animate-pop-in { @include animation(pop-in $duration-art ease-in-out forwards); }
+
+// @include keyframes(fade-in) {
+//     0% { @include transform(scale(.8)); }
+    
+//     90% {
+//         opacity: 1;
+//         @include transform(scale(1.04));
+//     }
+//     100% {
+//         opacity: 1;
+//         @include transform(none);
+//     }
+// }
+// .animate-pop-in { @include animation(pop-in $duration-art 0 ease-in-out forwards); }
+
+.se-sketch {
+    @include transition(opacity $duration-art $easing-cubic);
+}
