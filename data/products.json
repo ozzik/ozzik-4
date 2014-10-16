@@ -16,13 +16,11 @@
 			"id": "webfyr",
 			"name": "Webfyr",
 			"art": {
-				"elements": [ "ios-app", "flame", "wave1", "wave2", "wave3", "glare" ],
+				"elements": [ "ios-app", "flame", "wave1 d2 will-change", "wave2 d1 will-change", "wave3 will-change", "glare" ],
 				"animation": [
 					[ "ios-app" ],
 					[ "flame", "pop-in", 50 ],
-					[ "wave3", "pop-in", 50 ],
-					[ "wave2", "pop-in", 50],
-					[ "wave1", "pop-in" ],
+					[ [ "wave1", "wave2", "wave3" ], "pop-in", 50 ],
 					[ "glare" ]
 				]
 			}

@@ -107,7 +107,7 @@ var Projects = {
 							Projects.animatedItems++;
 
 							if (Projects.animatedItems !== Projects.items.length) {
-								setTimeout(Projects.animate_item, 400);
+								setTimeout(Projects.animate_item, 0);
 							}
 						}
 					}, (steps[i][2] === undefined ? 100 : steps[i][2]));
