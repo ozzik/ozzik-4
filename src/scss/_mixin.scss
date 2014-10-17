@@ -112,6 +112,11 @@
 	-webkit-animation-delay: $value;
 	-moz-animation-delay: $value;
 }
+@mixin animation-duration($value) {
+	animation-duration: $value;
+	-webkit-animation-duration: $value;
+	-moz-animation-duration: $value;
+}
 
 // Design
 @mixin pretty-shadow() {

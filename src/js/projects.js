@@ -44,7 +44,8 @@ var Projects = {
 	create_item: function(item) {
 		var element = document.createElement("li"),
 			className = "project-item pop-ready",
-			html = "";
+			html = "",
+			isNestedElement;
 
 		className += " color-" + (item.color || item.id);
 		element.className = className;
@@ -56,7 +57,17 @@ var Projects = {
 		html += '<div class="s-' + item.id + ' se-sketch"></div>';
 
 		for (var i = 0; i < item.art.elements.length; i++) {
-			html += '<div class="s-' + item.id + ' se-' + item.art.elements[i] + '"></div>';
+			isNestedElement = Array.isArray(item.art.elements[i]);
+			html += '<div class="s-' + item.id + ' se-' + (!isNestedElement ? item.art.elements[i] : item.art.elements[i][0]) + '">';
+
+			// Nested elements
+			if (isNestedElement) {
+				for (var j = 1; j < item.art.elements[i].length; j++) {
+					html += '<div class="s-' + item.id + ' se-' + item.art.elements[i][j] + '"></div>';
+				}
+			}
+
+			html += '</div>';
 		}
 
 		html += '</div>';
@@ -73,6 +84,7 @@ var Projects = {
 
 		// Pop in
 		item.removeClass("pop-ready");
+		// item.find(".se-sketch").addClass("transparent");
 		$.transitionEnd("transform", item[0], function() {
 			// Color
 			// item.addClass("colored");

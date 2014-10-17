@@ -1,0 +1,59 @@
+.s-bucketlist {
+    background: image-url("showcases/s-bucketlist.png", false, false) no-repeat;
+    background-size: 183px 74px;
+
+    // Sketch
+    &.se-sketch {
+        width: 74px;
+        height: 74px;
+    }
+
+    // Elements
+    &.se-ios-app {
+        top: 1px;
+        left: 1px;
+        height: 73px;
+        background-position: -74px 0;
+        overflow: hidden;
+    }
+
+    &.se-rope {
+        top: -14px;
+        left: 35px;
+        width: 2px;
+        height: 28px;
+        background-position: -146px 0;
+    }
+
+    &.se-handle {
+        top: 12px;
+        left: 19px;
+        width: 35px;
+        height: 18px;
+        background-position: -148px 0;
+        @include animation-duration($duration-art * 1.7);
+    }
+
+    &.se-bucket {
+        top: 24px;
+        left: 20px;
+        width: 33px;
+        height: 34px;
+        background-position: -148px -18px;
+        @include animation-duration($duration-art * 1.8);
+    }
+}
+
+@include keyframes(bucket-in) {
+    0% {
+        opacity: 1;
+        @include transform(translate3d(0,-68px,0));
+    }
+    
+    90%,
+    100% {
+        opacity: 1;
+        @include transform(none);
+    }
+}
+.animate-bucket-in { @include animation(bucket-in $duration-art * 1.5 $easing-cubic-rough forwards); }

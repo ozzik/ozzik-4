@@ -62,4 +62,4 @@
     }
 }
 
-.animate-dough-in { @include animation(dough-in $duration-art * 2 0 ease-in-out forwards); }
+.animate-dough-in { @include animation(dough-in $duration-art * 2 $easing-cubic forwards); }
