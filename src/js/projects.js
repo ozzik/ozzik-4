@@ -84,7 +84,7 @@ var Projects = {
 
 		// Pop in
 		item.removeClass("pop-ready");
-		// item.find(".se-sketch").addClass("transparent");
+		item.find(".se-sketch").addClass("transparent");
 		$.transitionEnd("transform", item[0], function() {
 			// Color
 			// item.addClass("colored");

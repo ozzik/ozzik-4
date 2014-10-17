@@ -35,11 +35,24 @@
 					[ [ "rope", "handle", "bucket" ], "bucket-in" ]
 				]
 			}
+		},
+		{
+			"id": "yo",
+			"name": "Yo",
+			"art": {
+				"elements": [ "button", "icon", "text" ],
+				"animation": [
+					[ "button" ],
+					[ "icon" ],
+					[ "text", "text-in" ]
+				]
+			}
 		}
 	],
 	"colors": {
 		"doughjs": "f8f3d9",
 		"webfyr": "fae1d2",
-		"bucketlist": "faf7d2"
+		"bucketlist": "faf7d2",
+		"yo": "e4cbee"
 	}
 }

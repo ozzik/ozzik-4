@@ -21,7 +21,7 @@
     }
     100% {
         opacity: 1;
-        @include transform(none);
+        // @include transform(translate3d(0,0,0)); // Otherwise, images are being cropped on retina :<
     }
 }
 .animate-pop-in { @include animation(pop-in $duration-art $easing-cubic forwards); }
@@ -43,6 +43,7 @@
 .se-sketch {
     @include transition(opacity 1s ease-in-out);
 }
+.showcase-art *:not(.se-sketch),
 .will-change { @include transform(translate3d(0,0,0)); }
 
 @for $i from 1 to 5 {
