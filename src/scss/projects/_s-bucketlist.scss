@@ -1,5 +1,5 @@
 .s-bucketlist {
-    background: image-url("showcases/s-bucketlist.png", false, false) no-repeat;
+    background-image: image-url("showcases/s-bucketlist.png", false, false);
     background-size: 183px 74px;
 
     // Sketch
@@ -10,10 +10,6 @@
 
     // Elements
     &.se-ios-app {
-        top: 1px;
-        left: 1px;
-        height: 73px;
-        background-position: -74px 0;
         overflow: hidden;
     }
 

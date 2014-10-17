@@ -73,6 +73,33 @@
 				]
 			},
 			"color": "browsi"
+		},
+		{
+			"id": "brdashboard",
+			"name": "Brow.si Dashboard",
+			"art": {
+				"elements": [ "paper", "title", "text d1", "line d2", "more d3", "badge" ],
+				"animation": [
+					[ "paper" ],
+					[ [ "title", "text", "line", "more" ] ],
+					[ "badge", "brdashboard-badge-in" ]
+				]
+			},
+			"color": "browsi-website"
+		},
+		{
+			"id": "bremail",
+			"name": "Brow.si Analytics Email",
+			"art": {
+				"elements": [ "paper", "title", "change", "axis d1", "graphs", "point p1 d2", "point p2 d3", "point p3 d4", "point p4 d5", "point p5 d6" ],
+				"animation": [
+					[ "paper" ],
+					[ [ "title", "axis" ] ],
+					[ [ "graphs", "point" ], "bremail-graphs-in", null, "bremail-graphs-in" ],
+					[ "change" ]
+				]
+			},
+			"color": "browsi-website"
 		}
 	],
 	"colors": {
@@ -80,6 +107,7 @@
 		"webfyr": "fae1d2",
 		"bucketlist": "faf7d2",
 		"yo": "e4cbee",
-		"browsi": "d2e6fa"
+		"browsi": "d2e6fa",
+		"browsi-website": "e6edf5"
 	}
 }

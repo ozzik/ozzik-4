@@ -1,5 +1,5 @@
 .s-webfyr {
-    background: image-url("showcases/s-webfyr.png", false, false) no-repeat;
+    background-image: image-url("showcases/s-webfyr.png", false, false);
     background-size: 238px 74px;
 
     // Sketch
@@ -9,14 +9,6 @@
     }
 
     // Elements
-    &.se-ios-app {
-        top: 1px;
-        left: 1px;
-        width: 73px; // Weird fix, otherwise edges are cut
-        height: 73px; // ^^
-        background-position: -74px 0;
-    }
-
     &.se-flame {
         top: 16px;
         left: 18px;

@@ -35,6 +35,12 @@
 	-moz-transform-origin-y: $values;
 	-ms-transform-origin-y: $values;
 }
+@mixin transform-origin-x($values) {
+	transform-origin-x: $values;
+	-webkit-transform-origin-x: $values;
+	-moz-transform-origin-x: $values;
+	-ms-transform-origin-x: $values;
+}
 @mixin perspective($value) {
 	perspective: $value;
 	-webkit-perspective: $value;

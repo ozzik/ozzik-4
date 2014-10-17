@@ -21,6 +21,10 @@
     height: 72px;
     background-position: -74px 0;
 }
+.se-paper {
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgba(0,0,0,.15), 0 2px 2px rgba(0,0,0,.1);
+}
 
 @include keyframes(pop-in) {
     0% { @include transform(scale(.8)); }
@@ -36,26 +40,12 @@
 }
 .animate-pop-in { @include animation(pop-in $duration-art $easing-cubic forwards); }
 
-// @include keyframes(fade-in) {
-//     0% { @include transform(scale(.8)); }
-    
-//     90% {
-//         opacity: 1;
-//         @include transform(scale(1.04));
-//     }
-//     100% {
-//         opacity: 1;
-//         @include transform(none);
-//     }
-// }
-// .animate-pop-in { @include animation(pop-in $duration-art 0 ease-in-out forwards); }
-
 .se-sketch {
     @include transition(opacity 1s ease-in-out);
 }
 .showcase-art *:not(.se-sketch),
 .will-change { @include transform(translate3d(0,0,0)); }
 
-@for $i from 1 to 5 {
+@for $i from 1 to 10 {
     .d#{$i} { @include animation-delay(.05s * $i !important); }
 }
