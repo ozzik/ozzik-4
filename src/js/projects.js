@@ -108,6 +108,13 @@ var Projects = {
 					}
 
 					$(e).addClass("animate-" + animationEnd);
+
+					// Customized animation name when using multiple simultaneous ones
+					if (steps[i][3]) {
+						animationEnd = steps[i][3];
+						eLen = 1;
+					}
+
 					$.animationEnd(animationEnd, eLen, function() {
 						// Cycling
 						i++;
@@ -122,7 +129,7 @@ var Projects = {
 								setTimeout(Projects.animate_item, 0);
 							}
 						}
-					}, (steps[i][2] === undefined ? 100 : steps[i][2]));
+					}, steps[i][2] || 100);
 				}
 				animate_item_step();
 			// }, 100);

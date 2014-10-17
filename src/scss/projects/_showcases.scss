@@ -1,5 +1,12 @@
 @import "vars";
 
+// .showcase-art {
+//     *:not(.se-sketch) {
+//         opacity: 1 !important;
+//     }
+//     .se-sketch { opacity: 1; }
+// }
+
 .showcase-art {
     *:not(.se-sketch) {
         position: absolute;
@@ -8,8 +15,11 @@
 }
 
 .se-ios-app {
+    top: 1px;
+    left: 1px;
     width: 72px;
     height: 72px;
+    background-position: -74px 0;
 }
 
 @include keyframes(pop-in) {
@@ -17,7 +27,7 @@
     
     90% {
         opacity: 1;
-        @include transform(scale(1.04));
+        @include transform(scale(1.05));
     }
     100% {
         opacity: 1;
@@ -47,5 +57,5 @@
 .will-change { @include transform(translate3d(0,0,0)); }
 
 @for $i from 1 to 5 {
-    .d#{$i} { -webkit-animation-delay: .05s * $i; }
+    .d#{$i} { @include animation-delay(.05s * $i !important); }
 }

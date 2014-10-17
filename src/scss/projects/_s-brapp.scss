@@ -1,0 +1,75 @@
+.s-brapp {
+    background-image: image-url("showcases/s-brapp.png", false, false);
+    background-size: 146px 74px;
+
+    // Sketch
+    &.se-sketch {
+        width: 74px;
+        height: 74px;
+    }
+
+    // Elements
+    &.se-frame {
+        top: 12px;
+        left: 12px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        background: none;
+        box-sizing: border-box;
+        border: 25px solid #fff;
+    }
+
+    &.se-circle1,
+    &.se-circle2,
+    &.se-circle3 {
+        left: 34px;
+        width: 6px;
+        height: 6px;
+        border-radius: 6px;
+        background: #fff;
+    }
+    &.se-circle1 {
+        top: 25px;
+
+        &.animate-brapp-circle-in { @include animation(brapp-circle1-in $duration-art * 2 $easing-cubic-rough forwards); }
+    }
+    &.se-circle2 {
+        top: 34px;
+
+        &.animate-brapp-circle-in { @include animation(pop-in $duration-art * 2 $easing-cubic-rough forwards); }
+    }
+    &.se-circle3 {
+        top: 43px;
+
+        &.animate-brapp-circle-in { @include animation(brapp-circle2-in $duration-art * 2 $easing-cubic-rough forwards); }
+    }
+}
+
+@include keyframes(brapp-frame-in) {
+    0% { @include transform(scale(.8)); }
+    100% {
+        opacity: 1;
+        border-width: 2px;
+    }
+}
+.animate-brapp-frame-in { @include animation(brapp-frame-in $duration-art * 3 $easing-cubic-rough forwards); }
+
+@include keyframes(brapp-circle1-in) {
+    0% { @include transform(scale(.8) translate3d(0,9px,0)); }
+        
+    90% {
+        opacity: 1;
+        @include transform(scale(1.05));
+    }
+    100% { opacity: 1; }
+}
+@include keyframes(brapp-circle2-in) {
+    0% { @include transform(scale(.8) translate3d(0,-9px,0)); }
+        
+    90% {
+        opacity: 1;
+        @include transform(scale(1.05));
+    }
+    100% { opacity: 1; }
+}

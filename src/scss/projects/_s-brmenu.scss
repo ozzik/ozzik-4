@@ -1,0 +1,49 @@
+.s-brmenu {
+    background: image-url("showcases/s-brmenu.png", false, false) no-repeat;
+    background-size: 65px 102px;
+
+    // Sketch
+    &.se-sketch {
+        width: 31px;
+        height: 102px;
+    }
+
+    // Elements
+    &.se-button1,
+    &.se-button2,
+    &.se-button3 {
+        left: 0;
+        width: 31px;
+        height: 32px;
+    }
+    &.se-button1 {
+        bottom: -2px;
+        background-position: -31px 0;
+    }
+    &.se-button2 {
+        bottom: 38px;
+        background-position: -31px -32px;
+    }
+    &.se-button3 {
+        bottom: 72px;
+        background-position: -31px -64px;
+    }
+
+    &.se-button1-icon {
+        bottom: 7px;
+        left: 14px;
+        height: 14px;
+        width: 3px;
+        background-position: -62px 0;
+    }
+}
+
+@include keyframes(brmenu-rotate) {
+    0% { opacity: 1; }
+
+    100% {
+        opacity: 1;
+        @include transform(rotateZ(-90deg) translate3d(0,0,0));
+    }
+}
+.animate-brmenu-rotate { @include animation(brmenu-rotate $duration-art $easing-cubic-rough forwards); }
