@@ -165,7 +165,7 @@ a {
 /* ======= States ======= */
 // .visible { opacity: 1 !important; }
 // .hidden { display: none !important; }
-.transparent { opacity: 0; }
+.transparent { opacity: 0 !important; }
 // .disabled {
 // 	opacity: 0.5;
 // 	filter: alpha(opacity=50);
