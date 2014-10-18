@@ -1,18 +1,6 @@
 {
 	"items": [
 		{
-			"id": "whenbus",
-			"name": "WhenBus",
-			"art": {
-				"elements": [ "bevel", [ "app-icon", "bus", "emboss" ] ],
-				"animation": [
-					[ [ "app-icon", "bevel" ] ],
-					[ "bus" ],
-					[ [ "app-icon", "emboss", "bevel" ], "whenbus-in", "whenbus-emboss-in" ]
-				]
-			}
-		},
-		{
 			"id": "doughjs",
 			"name": "Dough.js",
 			"art": {
@@ -134,6 +122,30 @@
 				"animation": [
 					[ "plate" ],
 					[ [ "s", "p", "t", "c" ], "sptc-in" ]
+				]
+			}
+		},
+		{
+			"id": "whenbus",
+			"name": "WhenBus",
+			"art": {
+				"elements": [ "bevel", [ "app-icon", "bus", "emboss" ] ],
+				"animation": [
+					[ [ "app-icon", "bevel" ] ],
+					[ "bus" ],
+					[ [ "app-icon", "emboss", "bevel" ], "whenbus-in", null, "whenbus-bevel-in" ]
+				]
+			}
+		},
+		{
+			"id": "rsvp",
+			"name": "Wedding RSVP",
+			"art": {
+				"elements": [ "page", "button", "checkmark" ],
+				"animation": [
+					[ "page" ],
+					[ "button" ],
+					[ "checkmark" ]
 				]
 			}
 		}
