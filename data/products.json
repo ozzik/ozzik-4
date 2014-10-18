@@ -8,7 +8,7 @@
 				"animation": [
 					[ [ "app-icon", "bevel" ] ],
 					[ "bus" ],
-					[ [ "app-icon", "emboss" ], "whenbus-in", "whenbus-emboss-in" ]
+					[ [ "app-icon", "emboss", "bevel" ], "whenbus-in", "whenbus-emboss-in" ]
 				]
 			}
 		},

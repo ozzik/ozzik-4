@@ -10,20 +10,22 @@
 
     // Elements
     &.se-app-icon {
-        bottom: 1px;
+        bottom: 5px;
         left: 1px;
         width: 72px;
         height: 65px;
         background-position: -74px 0;
 
-        &.animate-whenbus-in { @include animation(whenbus-up $duration-art $easing-cubic forwards); }
+        &.animate-whenbus-in { @include animation(whenbus-icon-in $duration-art $easing-cubic-rough forwards); }
     }
     &.se-bevel {
-        bottom: 1px;
+        bottom: 5px;
         left: 1px;
         width: 72px;
         height: 25px;
         background-position: -74px -65px;
+
+        &.animate-whenbus-in { @include animation(whenbus-bevel-in $duration-art $easing-cubic-rough forwards); }
     }
 
     &.se-bus,
@@ -44,11 +46,19 @@
     }
 }
 
-@include keyframes(whenbus-up) {
+@include keyframes(whenbus-icon-in) {
     0% { opacity: 1; }
     20% { @include transform(translate3d(0,1px,0)); }
     100% {
         opacity: 1;
-        @include transform(translate3d(0,-7px,0));
+        @include transform(translate3d(0,-3px,0));
+    }
+}
+@include keyframes(whenbus-bevel-in) {
+    0% { opacity: 1; }
+    20% { @include transform(translate3d(0,-1px,0)); }
+    100% {
+        opacity: 1;
+        @include transform(translate3d(0,3px,0));
     }
 }
