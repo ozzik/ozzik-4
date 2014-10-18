@@ -1,6 +1,18 @@
 {
 	"items": [
 		{
+			"id": "whenbus",
+			"name": "WhenBus",
+			"art": {
+				"elements": [ "bevel", [ "app-icon", "bus", "emboss" ] ],
+				"animation": [
+					[ [ "app-icon", "bevel" ] ],
+					[ "bus" ],
+					[ [ "app-icon", "emboss" ], "whenbus-in", "whenbus-emboss-in" ]
+				]
+			}
+		},
+		{
 			"id": "doughjs",
 			"name": "Dough.js",
 			"art": {
@@ -100,6 +112,30 @@
 				]
 			},
 			"color": "browsi-website"
+		},
+		{
+			"id": "brguide",
+			"name": "Brow.si Walkthrough",
+			"art": {
+				"elements": [ "paper p1", "paper p2 d4", "paper p3 d8", "ribbon-h", "ribbon-v", "note d1", "note-br" ],
+				"animation": [
+					[ [ "paper.p1", "paper.p2", "paper.p3" ], "brguide-paper-in" ],
+					[ [ "note-br", "note" ] ],
+					[ [ "ribbon-h", "ribbon-v" ], "brguide-ribbon-in", null, "brguide-ribbon-h-in" ]
+				]
+			},
+			"color": "browsi-v1"
+		},
+		{
+			"id": "sptc",
+			"name": "SPTC",
+			"art": {
+				"elements": [ "plate", "s", "p d2", "t d4", "c d6" ],
+				"animation": [
+					[ "plate" ],
+					[ [ "s", "p", "t", "c" ], "sptc-in" ]
+				]
+			}
 		}
 	],
 	"colors": {
@@ -108,6 +144,10 @@
 		"bucketlist": "faf7d2",
 		"yo": "e4cbee",
 		"browsi": "d2e6fa",
-		"browsi-website": "e6edf5"
+		"browsi-website": "e6edf5",
+		"browsi-v1": "cae4ed",
+		"sptc": "eaedca",
+		"whenbus": "edcad5",
+		"rsvp": "caeaed"
 	}
 }
