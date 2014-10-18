@@ -83,8 +83,15 @@
 .home-footer {
 	margin-top: $space * 8;
 	font-size: .85rem;
+}
 
-	p {
-		text-align: justify;
+.justified {
+	text-align: justify;
+	text-align-last: justify;
+
+	&::after {
+		content: "";
+		display: inline-block;
+		width: 100%;
 	}
 }
