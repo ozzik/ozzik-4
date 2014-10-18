@@ -1,0 +1,64 @@
+.s-whenbus {
+    background-image: image-url("showcases/s-whenbus.png", false, false);
+    background-size: 189px 90px;
+
+    // Sketch
+    &.se-sketch {
+        width: 74px;
+        height: 74px;
+    }
+
+    // Elements
+    &.se-app-icon {
+        bottom: 5px;
+        left: 1px;
+        width: 72px;
+        height: 65px;
+        background-position: -74px 0;
+
+        &.animate-whenbus-in { @include animation(whenbus-icon-in $duration-art $easing-cubic-rough forwards); }
+    }
+    &.se-bevel {
+        bottom: 5px;
+        left: 1px;
+        width: 72px;
+        height: 25px;
+        background-position: -74px -65px;
+
+        &.animate-whenbus-in { @include animation(whenbus-bevel-in $duration-art $easing-cubic-rough forwards); }
+    }
+
+    &.se-bus,
+    &.se-emboss {
+        top: 22px;
+        left: 15px;
+        width: 43px;
+    }
+    &.se-bus {
+        height: 25px;
+        background-position: -146px 0;
+    }
+    &.se-emboss {
+        height: 26px;
+        background-position: -146px -25px;
+
+        &.animate-whenbus-in { @include animation(fade-in $duration-art $easing-cubic-rough forwards); }
+    }
+}
+
+@include keyframes(whenbus-icon-in) {
+    0% { opacity: 1; }
+    20% { @include transform(translate3d(0,1px,0)); }
+    100% {
+        opacity: 1;
+        @include transform(translate3d(0,-3px,0));
+    }
+}
+@include keyframes(whenbus-bevel-in) {
+    0% { opacity: 1; }
+    20% { @include transform(translate3d(0,-1px,0)); }
+    100% {
+        opacity: 1;
+        @include transform(translate3d(0,3px,0));
+    }
+}

@@ -40,7 +40,12 @@
 }
 .animate-pop-in { @include animation(pop-in $duration-art $easing-cubic forwards); }
 
+@include keyframes(fade-in) {
+    100% { opacity: 1; }
+}
+
 .se-sketch {
+    opacity: .5;
     @include transition(opacity 1s ease-in-out);
 }
 .showcase-art *:not(.se-sketch),

@@ -12,7 +12,13 @@ var Projects = {
 				Projects.handle_collection(collection, data.items, data.colors);
 
 				Projects.items = data.items;
-				setTimeout(Projects.animate_item, 0); // Delayed coz of HTML injection pipline
+
+				// Delayed coz of HTML injection pipline
+				setTimeout(function() {
+					$(".projects").addClass("flock").find(".project-item").removeClass("pop-ready");
+					
+					setTimeout(Projects.animate_item, 300);
+				}, 0);
 			}
 		});
 	},
@@ -83,9 +89,8 @@ var Projects = {
 		var item = $(".project-item[data-id='" +  Projects.items[Projects.animatedItems].id + "']");
 
 		// Pop in
-		item.removeClass("pop-ready");
 		item.find(".se-sketch").addClass("transparent");
-		$.transitionEnd("transform", item[0], function() {
+		// $.transitionEnd("transform", item[0], function() {
 			// Color
 			// item.addClass("colored");
 			// $.transitionEnd("background-color", item[0], function() {
@@ -133,6 +138,6 @@ var Projects = {
 				}
 				animate_item_step();
 			// }, 100);
-		}, 100);
+		// }, 100);
 	}
 };
