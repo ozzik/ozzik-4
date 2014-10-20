@@ -57,7 +57,7 @@ var Projects = {
 		element.className = className;
 		element.setAttribute("data-id", item.id);
 
-		html += '<div class="showcase-content-wrapper"><div class="showcase-content">';
+		html += '<div class="va-wrapper"><div class="va-content">';
 
 		html += '<div class="showcase-art">';// p-' + item.id + '">';
 		html += '<div class="s-' + item.id + ' se-sketch"></div>';

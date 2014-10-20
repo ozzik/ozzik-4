@@ -16,7 +16,8 @@ textarea,
 
 .titlelike,
 h1,
-h2 {
+h2,
+.teaserline-tag {
 	font-family: 'Cabin', serif;
 	font-weight: bold;
 	font-size: .95rem;
@@ -77,6 +78,17 @@ body,
 }
 
 /* ======= Content ======= */
+.va-wrapper {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.va-content {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
 .crowded { line-height: 1.25; }
 
 .meta {
@@ -89,6 +101,35 @@ body,
 	font-style: italic;
 	font-weight: normal;
 	color: $color-text-light;
+}
+
+.teaserline {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	text-align: center;
+
+	&.top { top: 0; }
+	&.bottom { bottom: 0; }
+	
+	&::before {
+		content: "";
+		display: inline-block;
+		width: 2px;
+		height: 100%;
+	}
+}
+.teaserline-tag-wrapper {
+	position: absolute;
+	top: 0;
+	text-transform: uppercase;
+}
+.teaserline-tag {
+	padding: .4em .6em;
+	border-radius: 3px;
+	font-size: .75rem;
+	letter-spacing: .05em;
+	color: darken(#f3f3f3, 20%);
 }
 
 a {

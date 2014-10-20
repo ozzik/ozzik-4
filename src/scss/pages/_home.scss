@@ -21,11 +21,13 @@
 	// letter-spacing: .03rem;
 }
 
+.strip,
+.teaserline::before,
+.teaserline-tag { background: #f3f3f3; }
 .strip {
 	position: relative;
 	height: 2px;
-	margin: $size-grid-gutter 0;
-	background: #f3f3f3;
+	margin: $size-grid-gutter 0;	
 }
 .navline {
 	position: absolute;
@@ -80,19 +82,15 @@
 	}
 }
 
-.showcase-content-wrapper {
-	display: table;
-	width: 100%;
-	height: 100%;
-}
-.showcase-content {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-}
 .showcase-art {
 	position: relative;
 	display: inline-block;
+}
+
+/* ======= Teaserline ======= */
+.teaserline {
+	&.bottom { height: 30px; }
+	&.top { height: 145px; }
 }
 
 /* ======= Footer ======= */
