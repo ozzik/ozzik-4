@@ -2,7 +2,7 @@
 
 var Main = {
 	init: function() {
-		// Home.setup();
+		Home.setup();
 		// Projects.load("products");
 	}
 };

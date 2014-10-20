@@ -1,0 +1,24 @@
+.about-header { text-align: center; }
+
+.about-title {
+    font-size: 1.4rem;
+    margin: .7rem 0 0;
+    color: $color-text-light;
+
+    span { display: none; }
+    &::before { content: "Oz Pinhas"; }
+}
+.about-subtitle { margin: 0; }
+
+.about-job {
+    width: 24em;
+    margin: 1rem auto;
+
+    .meta { width: 5.1em; }
+}
+.previously { text-decoration: line-through; }
+
+
+.about-description {
+    // line-height: 
+}

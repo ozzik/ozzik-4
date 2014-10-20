@@ -5,9 +5,8 @@ body {
 	margin: 0;
 	background: $color-background;
 	color: $color-text;
-	// overflow: hidden;
-	// font-size: .9em;
-	// line-height: 1.35;
+	font-size: .85em;
+	line-height: 1.45;
 }
 
 body,
@@ -15,17 +14,27 @@ input,
 textarea,
 .meta { font-family: 'Bitter', serif; }
 
+.titlelike,
 h1,
-.home-navigation {
+h2 {
 	font-family: 'Cabin', serif;
 	font-weight: bold;
+	font-size: .95rem;
 }
 
 ul,
-ol {
+ol,
+dl {
 	margin: 0;
 	padding: 0;
 	list-style: none;
+}
+dd,
+dt { display: inline-block; }
+dd {
+	margin-left: .35rem;
+
+	&:not(:last-child) { margin-bottom: .35rem; }
 }
 
 /* ======= Shared ======= */
@@ -68,28 +77,18 @@ body,
 }
 
 /* ======= Content ======= */
+.crowded { line-height: 1.25; }
+
 .meta {
-	font-style: italic;
-	font-weight: normal;
 	font-size: inherit;
 	text-align: right;
 	line-height: 1.1;
-	color: lighten($color-text, 50%);
 }
-
-.strip {
-	position: relative;
-	height: 2px;
-	margin: $size-grid-gutter 0;
-	background: #f3f3f3;
-}
-.navline {
-	position: absolute;
-	height: 100%;
-	background: #d2d9f1;
-	-webkit-transition: -webkit-transform .4s $easing-cubic;
-	-webkit-transition-property: width, -webkit-transform;
-	// -webkit-transform: translate3d(237px, 0, 0) scaleX(1);
+.meta,
+.metalike {
+	font-style: italic;
+	font-weight: normal;
+	color: $color-text-light;
 }
 
 a {
@@ -98,6 +97,8 @@ a {
 	// Every link that isn't custom (no line)
 	&:not(.custom) {
 		border-bottom: 1px solid;
+		color: $color-main-light;
+		border-color: lighten($color-main-light, 20%);
 		
 		// // Page bottom
 		// .page-showcase &,

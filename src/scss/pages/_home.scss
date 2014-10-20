@@ -20,6 +20,21 @@
 	// letter-spacing: .03rem;
 }
 
+.strip {
+	position: relative;
+	height: 2px;
+	margin: $size-grid-gutter 0;
+	background: #f3f3f3;
+}
+.navline {
+	position: absolute;
+	height: 100%;
+	background: #d2d9f1;
+	-webkit-transition: -webkit-transform .4s $easing-cubic;
+	-webkit-transition-property: width, -webkit-transform;
+	// -webkit-transform: translate3d(237px, 0, 0) scaleX(1);
+}
+
 .strip-header { margin-top: .35rem; }
 
 /* ======= Project Showcases ======= */
