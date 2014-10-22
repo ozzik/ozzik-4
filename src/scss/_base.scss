@@ -60,6 +60,19 @@ body,
 	vertical-align: middle;
 }
 
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    font-size: .6rem;
+    line-height: 1.2;
+
+    p:last-child { margin-bottom: 0; }
+}
+
 /* ======= Grid ======= */
 .columns {
 	letter-spacing: -.25rem;

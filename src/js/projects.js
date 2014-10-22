@@ -18,7 +18,7 @@ var Projects = {
 					$(".projects").addClass("flock").find(".project-item").removeClass("pop-ready");
 					
 					setTimeout(Projects.animate_item, 300);
-				}, 0);
+				}, 100);
 			}
 		});
 	},
