@@ -39,6 +39,14 @@ dd {
 }
 
 /* ======= Shared ======= */
+.contact-link {
+	background: image-url("ui.png", false, false);
+
+	@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+		background: image-url("ui@2x.png", false, false);
+		background-size: 132px 88px;
+	}
+}
 
 /* ======= Architecture ======= */
 html,
@@ -153,26 +161,13 @@ a {
 		border-bottom: 1px solid;
 		color: $color-main-light;
 		border-color: lighten($color-main-light, 20%);
-		
-		// // Page bottom
-		// .page-showcase &,
-		// .page-bottom & {
-		// 	border-bottom-color: rgba(255,255,255,.5);
-			
-		// 	&:focus,
-		// 	&:hover { border-bottom-color: rgba(255,255,255,.7); }
-		// }
 	}
-	
-	// // Page showcase links (even custom)
-	// .page-showcase &,
-	// .page-bottom & {
-	// 	color: rgba(255,255,255,.8);
-		
-	// 	&:focus,
-	// 	&:hover { color: rgba(255,255,255,1); }
-	// }
 }
+
+/* ======= Transitions ======= */
+.transionable { @include transition-transform($duration $easing-cubic-rough); }
+
+
 // Page notes links + iconed page notes links
 // .page-notes a:not(.custom),
 // .link-caption,

@@ -19,6 +19,25 @@
 .previously { text-decoration: line-through; }
 
 
-.about-description {
-    // line-height: 
+/* ======= Contact Links ======= */
+$size-contact-icon: 22px;
+
+.contact-item {
+    &:not(:first-child) { margin-left: 68px; }
+
+    &:hover,
+    &:active { @include transform(translate3d(0,-5px,0)); }
+}
+.contact-link {
+    display: block;
+    width: $size-contact-icon;
+    height: $size-contact-icon;
+    overflow: hidden;
+    text-indent: -9999em;
+}
+$i: 0;
+@each $item in email, twitter, dribbble, github, linkedin {
+    .contact-link-#{$item} { background-position: $i * $size-contact-icon * -1 0; }
+    
+    $i: $i + 1;
 }
