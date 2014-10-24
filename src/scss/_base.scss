@@ -166,6 +166,7 @@ a {
 
 /* ======= Transitions ======= */
 .transitionable { @include transition-transform($duration $easing-cubic); }
+.transitionable-toned { @include transition-transform($duration * 1.5 ease-in-out); }
 
 /* ======= States ======= */
 // .visible { opacity: 1 !important; }

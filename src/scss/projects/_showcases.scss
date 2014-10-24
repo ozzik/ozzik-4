@@ -10,8 +10,7 @@
 .showcase-art {
     * { position: absolute; }
 
-    &:not(.post) *:not(.se-sketch),
-    &.post .se-sketch { opacity: 0; }
+    &:not(.post) *:not(.se-sketch) { opacity: 0; }
 }
 
 .se-ios-app {
@@ -49,7 +48,14 @@
     height: 100%;
     opacity: .5;
     
-    &.fadable { @include transition(opacity 1s ease-in-out); }
+    &.fadable { @include transition(opacity 1s $easing-cubic-better); }
+    &.revert-ready {
+        z-index: 100;
+        opacity: 1;
+
+        &:not(.reverted) { width: 0; }
+    }
+    &.colored { background-color: $color-background; }
 }
 .showcase-art *:not(.se-sketch),
 .will-change { @include transform(translate3d(0,0,0)); }
@@ -57,3 +63,5 @@
 @for $i from 1 to 10 {
     .d#{$i} { @include animation-delay(.05s * $i !important); }
 }
+
+.widthable { @include transition(width $duration $easing-cubic-better); }

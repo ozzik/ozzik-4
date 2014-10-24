@@ -1,7 +1,7 @@
 /* ===== Projects ===== */
 
 var Projects = {
-	ART_Y: 146,
+	ART_Y: 136,
 	ART_DEPTH: 1.05,
 	ART_REVERT_DURATION: 300,
 	items: {},
@@ -225,12 +225,14 @@ var Projects = {
 		$(realArt).addClass("transparent");
 		$(".pages").transform("translate3d(0,50%,0)");
 
+		Projects.eArt.find(".se-sketch").addClass("widthable revert-ready").removeClass("fadable");
+
 		// Moving new artwork to its actual new position
 		setTimeout(function() {
-			var newX = (window.innerWidth - Projects.artData.width) / 2 - Projects.artData.x,
-				newY = Projects.ART_Y - Projects.artData.y;
+			Projects.artData.newX = (window.innerWidth - Projects.artData.width) / 2 - Projects.artData.x;
+			Projects.artData.newY = Projects.ART_Y - Projects.artData.y;
 
-			Projects.eArt.transform("translate3d(" + newX + "px," + newY + "px,0) scale(" + Projects.ART_DEPTH + ")");
+			Projects.eArt.transform("translate3d(" + Projects.artData.newX + "px," + Projects.artData.newY + "px,0) scale(" + Projects.ART_DEPTH + ")");
 
 			// Start loading
 			Projects.load_project(project, item);
@@ -238,27 +240,28 @@ var Projects = {
 	},
 
 	load_project: function(project, item) {
-		// Reverting art
-		var len = project.art.animation.length;
+		var ripple = Projects.e.find(".ripple");
 
+		ripple[0].className = "ripple transitionable-toned color-" + (project.color || project.id);
 
-		return;
-		for (var i = len - 1; i >= 0; i--) {
-			(function(i) {
+		setTimeout(function() {
+			var sketch = Projects.eArt.find(".se-sketch");
+
+			sketch.addClass("reverted colored");
+			$.transitionEnd("width", sketch[0], function() {
+				Projects.eArt.find("*:not(.se-sketch)").addClass("transparent");
+				sketch.removeClass("colored");
+
+				Projects.eArt.translate(Projects.artData.newX, Projects.artData.newY);
+				// $.transitionEnd("transform", Projects.eArt[0], function() {
+				// 	ripple.transform("translate3d(0,0,0) scale(5)");
+				// });
 				setTimeout(function() {
-					var stepData = Projects.parse_animation_step(project.id, project.art.animation[i]);
+					ripple.transform("scale(5)");
+				}, 300);
+			});
 
-					Projects.eArt.find(stepData.e).addClass("transparent");
 
-					// Last handling
-					if (i === 1) {
-						setTimeout(function() {
-							Projects.eArt.removeClass("post").find(".se-sketch").removeClass("fadable");
-						}, Projects.ART_REVERT_DURATION);
-					}
-
-				}, Projects.ART_REVERT_DURATION * (len - i));
-			})(i);
-		}
+		}, 700);
 	}
 };

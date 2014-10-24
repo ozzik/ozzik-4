@@ -12,3 +12,17 @@
         // opacity: 0;
     }
 }
+.project-artwork { position: absolute; }
+
+.project-header {
+    height: $size-grid-row * 2 + $size-grid-gutter;
+    overflow: hidden;
+    text-align: center;
+}
+.ripple {
+    display: inline-block;
+    width: $size-grid-row * 2 + $size-grid-gutter;
+    height: $size-grid-row * 2 + $size-grid-gutter;
+    border-radius: 100%;
+    @include transform(scale(0));
+}
