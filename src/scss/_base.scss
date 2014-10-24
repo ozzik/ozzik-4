@@ -165,52 +165,7 @@ a {
 }
 
 /* ======= Transitions ======= */
-.transionable { @include transition-transform($duration $easing-cubic-rough); }
-
-
-// Page notes links + iconed page notes links
-// .page-notes a:not(.custom),
-// .link-caption,
-// .link-part {
-// 	color: $ozzik-purple;
-// 	border-bottom: 1px solid lighten($ozzik-purple, 35%); // Repeating for iconed-links
-	
-// 	&:focus,
-// 	&:hover {
-// 		color: lighten($ozzik-purple, 10%);
-// 		border-color: lighten($ozzik-purple, 40%);
-// 	}
-// }
-
-// $wrapper-width: 400px;
-// .wrapper {
-// 	width: 100%;
-// 	max-width: $wrapper-width;
-// 	margin: 0 auto;
-// }
-
-// .column {
-// 	display: inline-block;
-// 	vertical-align: top;
-	
-// 	&:not(:first-child) { margin-left: -4px; }
-// }
-// .column-mid { vertical-align: middle;  }
-
-// p:first-child,
-// h3:first-child { margin-top: 0; }
-// p:last-child { margin-bottom: 0; }
-
-// /* ======= Reset ======= */
-// h1,
-// h2,
-// h3,
-// h4 { font-weight: normal; }
-
-// li { list-style: none; }
-// a { text-decoration: none; }
-// img { border: none; }
-// ul { padding: 0; }
+.transionable { @include transition-transform($duration $easing-cubic); }
 
 /* ======= States ======= */
 // .visible { opacity: 1 !important; }

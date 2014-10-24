@@ -60,11 +60,12 @@
 		// &:nth-child(#{$i}) { -webkit-transition-delay: .02s * $i; }
 	}
 
-	// &:not(.colored) { background: #f7f7f7; }
+	// States
+	&:not(.active) { pointer-events: none; }
 }
 
 .project-item {
-	-webkit-transition: -webkit-transform $duration-art $easing-cubic;
+	-webkit-transition: -webkit-transform $duration-art $easing-cubic-rough;
 	-webkit-transition-property: -webkit-transform, opacity, background;
 	letter-spacing: normal;
 
@@ -79,6 +80,12 @@
 	&.pop-ready {
 		-webkit-transform: rotateY(90deg) rotateY(40deg) scale(.1);
 		opacity: 0;
+	}
+
+	&:hover,
+	&:active {
+		@include transform(scale(.95));
+		.showcase-art { @include transform(scale(1.1)); }
 	}
 }
 

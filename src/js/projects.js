@@ -16,6 +16,9 @@ var Projects = {
 				// Delayed coz of HTML injection pipline
 				setTimeout(function() {
 					$(".projects").addClass("flock").find(".project-item").removeClass("pop-ready");
+					$.transitionEnd("transform", document.querySelector(".project-item:last-child"), function() {
+						$(".projects").removeClass("flock");
+					});
 					
 					setTimeout(Projects.animate_item, 300);
 				}, 100);
@@ -57,9 +60,11 @@ var Projects = {
 		element.className = className;
 		element.setAttribute("data-id", item.id);
 
-		html += '<div class="va-wrapper"><div class="va-content">';
+		// Link + main wrapper
+		html += '<a class="project-item-link va-wrapper custom" href="" title="">';
+		html += '<div class="va-content">';
 
-		html += '<div class="showcase-art">';// p-' + item.id + '">';
+		html += '<div class="showcase-art transionable">';// p-' + item.id + '">';
 		html += '<div class="s-' + item.id + ' se-sketch"></div>';
 
 		for (var i = 0; i < item.art.elements.length; i++) {
@@ -78,7 +83,7 @@ var Projects = {
 
 		html += '</div>';
 		
-		html += '</div></div>';
+		html += '</div></a>';
 
 		element.innerHTML = html;
 
@@ -126,7 +131,7 @@ var Projects = {
 						if (i !== steps.length) {
 							animate_item_step();
 						} else {
-							item.find(".se-sketch").addClass("transparent");
+							item.addClass("active").find(".se-sketch").addClass("transparent");
 
 							Projects.animatedItems++;
 
