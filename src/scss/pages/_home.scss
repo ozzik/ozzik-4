@@ -1,5 +1,8 @@
 @import "vars";
 
+/* ======= General ======= */
+.mode-project { overflow: hidden; } // Preventing page scroll when being/starting inside project
+
 /* ======= Header ======= */
 .home-navigation {
 	margin-top: 3rem;

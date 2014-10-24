@@ -1,12 +1,11 @@
+.sa-brdashboard {
+    width: 124px;
+    height: 88px;
+}
+
 .s-brdashboard {
     background-image: image-url("showcases/s-brdashboard.png", false, false);
     background-size: 198px 88px;
-
-    // Sketch
-    &.se-sketch {
-        width: 124px;
-        height: 88px;
-    }
 
     // Elements
     &.se-paper {

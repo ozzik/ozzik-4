@@ -3,6 +3,7 @@
 var Main = {
 	init: function() {
 		Home.setup();
+        Projects.setup();
 		Projects.load("products");
 	}
 };

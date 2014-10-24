@@ -1,12 +1,11 @@
+.sa-brmenu {
+    width: 31px;
+    height: 102px;
+}
+
 .s-brmenu {
     background: image-url("showcases/s-brmenu.png", false, false) no-repeat;
     background-size: 65px 102px;
-
-    // Sketch
-    &.se-sketch {
-        width: 31px;
-        height: 102px;
-    }
 
     // Elements
     &.se-button1,

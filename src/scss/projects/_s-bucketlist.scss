@@ -1,17 +1,14 @@
+.sa-bucketlist {
+    width: 74px;
+    height: 74px;
+}
+
 .s-bucketlist {
     background-image: image-url("showcases/s-bucketlist.png", false, false);
     background-size: 183px 74px;
 
-    // Sketch
-    &.se-sketch {
-        width: 74px;
-        height: 74px;
-    }
-
     // Elements
-    &.se-ios-app {
-        overflow: hidden;
-    }
+    &.se-ios-app { overflow: hidden; }
 
     &.se-rope {
         top: -14px;

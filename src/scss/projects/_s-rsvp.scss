@@ -1,12 +1,11 @@
+.sa-rsvp {
+    width: 126px;
+    height: 116px;
+}
+
 .s-rsvp {
     background-image: image-url("showcases/s-rsvp.png", false, false);
     background-size: 251px 116px;
-
-    // Sketch
-    &.se-sketch {
-        width: 126px;
-        height: 116px;
-    }
 
     // Elements
     &.se-page {

@@ -165,7 +165,7 @@ a {
 }
 
 /* ======= Transitions ======= */
-.transionable { @include transition-transform($duration $easing-cubic); }
+.transitionable { @include transition-transform($duration $easing-cubic); }
 
 /* ======= States ======= */
 // .visible { opacity: 1 !important; }

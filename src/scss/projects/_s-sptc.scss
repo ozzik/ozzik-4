@@ -1,12 +1,11 @@
+.sa-sptc {
+    width: 111px;
+    height: 35px;
+}
+
 .s-sptc {
     background-image: image-url("showcases/s-sptc.png", false, false);
     background-size: 238px 35px;
-
-    // Sketch
-    &.se-sketch {
-        width: 111px;
-        height: 35px;
-    }
 
     // Elements
     &.se-plate {

@@ -1,12 +1,11 @@
+.sa-webfyr {
+    width: 74px;
+    height: 74px;
+}
+
 .s-webfyr {
     background-image: image-url("showcases/s-webfyr.png", false, false);
     background-size: 238px 74px;
-
-    // Sketch
-    &.se-sketch {
-        width: 74px;
-        height: 74px;
-    }
 
     // Elements
     &.se-flame {

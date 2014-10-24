@@ -1,12 +1,11 @@
+.sa-whenbus {
+    width: 74px;
+    height: 74px;
+}
+
 .s-whenbus {
     background-image: image-url("showcases/s-whenbus.png", false, false);
     background-size: 189px 90px;
-
-    // Sketch
-    &.se-sketch {
-        width: 74px;
-        height: 74px;
-    }
 
     // Elements
     &.se-app-icon {

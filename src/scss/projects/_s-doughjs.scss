@@ -1,12 +1,11 @@
+.sa-doughjs {
+    width: 79px;
+    height: 102px;
+}
+
 .s-doughjs {
     background: image-url("showcases/s-doughjs.png", false, false) no-repeat;
     background-size: 182px 102px;
-
-    // Sketch
-    &.se-sketch {
-        width: 79px;
-        height: 102px;
-    }
 
     // Elements
     &.se-pin {

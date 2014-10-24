@@ -8,10 +8,10 @@
 // }
 
 .showcase-art {
-    *:not(.se-sketch) {
-        position: absolute;
-        opacity: 0;
-    }
+    * { position: absolute; }
+
+    &:not(.post) *:not(.se-sketch),
+    &.post .se-sketch { opacity: 0; }
 }
 
 .se-ios-app {
@@ -45,8 +45,11 @@
 }
 
 .se-sketch {
+    width: 100%;
+    height: 100%;
     opacity: .5;
-    @include transition(opacity 1s ease-in-out);
+    
+    &.fadable { @include transition(opacity 1s ease-in-out); }
 }
 .showcase-art *:not(.se-sketch),
 .will-change { @include transform(translate3d(0,0,0)); }

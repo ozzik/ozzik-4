@@ -1,12 +1,11 @@
+.sa-yo {
+    width: 41px;
+    height: 22px;
+}
+
 .s-yo {
     background: image-url("showcases/s-yo.png", false, false) no-repeat;
     background-size: 94px 22px;
-
-    // Sketch
-    &.se-sketch {
-        width: 41px;
-        height: 22px;
-    }
 
     // Elements
     &.se-button {

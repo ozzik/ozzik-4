@@ -1,12 +1,11 @@
+.sa-brguide {
+    width: 84px;
+    height: 113px;
+}
+
 .s-brguide {
     background-image: image-url("showcases/s-brguide.png", false, false);
     background-size: 177px 113px;
-
-    // Sketch
-    &.se-sketch {
-        width: 84px;
-        height: 113px;
-    }
 
     // Elements
     &.se-paper {

@@ -1,0 +1,14 @@
+.project {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    // background: #fff;
+    // @include transition(opacity $duration $easing-cubic-better);
+    
+    &:not(.active) {
+        z-index: -1;
+        // opacity: 0;
+    }
+}

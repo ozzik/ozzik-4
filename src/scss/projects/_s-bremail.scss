@@ -1,12 +1,11 @@
+.sa-bremail {
+    width: 142px;
+    height: 107px;
+}
+
 .s-bremail {
     background-image: image-url("showcases/s-bremail.png", false, false);
     background-size: 262px 112px;
-
-    // Sketch
-    &.se-sketch {
-        width: 142px;
-        height: 107px;
-    }
 
     // Elements
     &.se-paper {
