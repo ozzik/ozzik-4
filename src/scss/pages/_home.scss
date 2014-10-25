@@ -116,3 +116,8 @@
 		width: 100%;
 	}
 }
+
+//
+.pages.off {
+	@include transform(translate3d(0,50%,0)); 
+}

@@ -39,7 +39,8 @@ dd {
 }
 
 /* ======= Shared ======= */
-.contact-link {
+.contact-link,
+.back-button::before {
 	background: image-url("ui.png", false, false);
 
 	@media only screen and (-webkit-min-device-pixel-ratio: 2) {
@@ -167,6 +168,7 @@ a {
 /* ======= Transitions ======= */
 .transitionable { @include transition-transform($duration $easing-cubic); }
 .transitionable-rough { @include transition-transform($duration $easing-cubic-rough); }
+.transitionable-rough-slow { @include transition-transform($duration * 1.5 $easing-cubic-rough); }
 .transitionable-toned { @include transition-transform($duration * 1.5 ease-in-out); }
 
 .widthable { @include transition(width $duration $easing-cubic-better); }

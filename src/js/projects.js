@@ -15,13 +15,16 @@ var Projects = {
 		projectAnimation: false
 	},
 	projectData: null,
+	activeProject: null,
 
 	/* Setup */
 	setup: function() {
 		Projects.e = $(".project");
-		Projects.eArt = Projects.e.find(".project-artwork");
+		Projects.eArt = $(".project-artwork");
 
 		$(".projects").on("click", Projects.handle_item_activation, { isCaptured: true });
+
+		$(".project .back-button").on("click", Projects.navigate_back);
 	},
 
 	/* Creation */
@@ -209,11 +212,12 @@ var Projects = {
 	navigate: function(project, item) {
 		// Synthesizing args
 		project = Projects.items[Projects.activeCollection][project];
-		item = item || document.querySelector(".project-item[data-id='" + projects.id + "']");
+		item = item || document.querySelector(".project-item[data-id='" + project.id + "']");
 
 		// Marking project as hasn't been loaded yet
 		Projects.did.projectData = false;
 		Projects.did.projectAnimation = false;
+		Projects.activeProject = project.id;
 
 		// Loading project data
 		Projects.animate_into_project(project, item);
@@ -240,7 +244,7 @@ var Projects = {
 		Projects.artData.height = realArt.offsetHeight;
 
 		// Prepping page + UI
-		window.scrollTo(0,0); // TODO: animation
+		_.animate_scroll(document.body);
 		$(document.body).addClass("mode-project");
 		Projects.e.addClass("active");
 
@@ -250,7 +254,7 @@ var Projects = {
 		Projects.eArt[0].style.left = Projects.artData.x + "px";
 		Projects.eArt[0].style.top = Projects.artData.y + "px";
 
-		$(".pages").transform("translate3d(0,50%,0)");
+		$(".pages").addClass("off");
 		
 		// Hiding showcase page + real artwork
 		$(realArt).addClass("transparent");
@@ -290,16 +294,14 @@ var Projects = {
 				Projects.eArt.translate(Projects.artData.newX, Projects.artData.newY);
 				setTimeout(function() {
 					ripple.transform("translate3d(0,30px,0) scale(5)");
-					Projects.e.find(".project-title, .project-meta, .project-separator, .project-content").addClass("fadable").removeClass("transparent");
+					Projects.e.find(".project-title, .project-meta, .project-separator, .project-content, .back-button").addClass("fadable").removeClass("transparent");
 					
 					setTimeout(function() {
 						Projects.e.find(".project-header").addClass("colored");
 					}, 200);
 				}, 200);
 			});
-
-
-		}, 700);
+		}, 300);
 
 		Projects.set_project_page_content(data);
 	},
@@ -325,5 +327,42 @@ var Projects = {
 		content.className = "project-content p-" + data.id + " c-" + data.color;
 
 		$([title, meta, separator, content]).addClass("transparent");
+	},
+
+	navigate_back: function() {
+		// Prepping page + UI
+		_.animate_scroll(document.body);
+
+		Projects.e.find(".project-title, .project-meta, .project-separator, .project-content, .back-button").addClass("transparent");
+
+		Projects.e.find(".project-header").removeClass("colored").find(".ripple").transform("");
+
+		Projects.eArt.transform("translate3d(" + Projects.artData.newX + "px," + Projects.artData.newY + "px,0) scale(" + Projects.ART_DEPTH + ")");
+		$.transitionEnd("transform", Projects.eArt[0], function() {
+			$(".pages").removeClass("off");
+			Projects.eArt.transform("scale(" + Projects.ART_DEPTH + ")");
+
+			$.transitionEnd("transform", Projects.eArt[0], function() {
+				// Reverting to finalized version
+				var sketch = Projects.eArt.find(".se-sketch");
+
+				sketch.addClass("c-" + Projects.activeProject + "-main");
+				Projects.eArt.find("*").removeClass("transparent");
+				sketch.removeClass("reverted");
+
+				$.transitionEnd("width", sketch[0], function() {
+					Projects.eArt.transform("");
+
+					$.transitionEnd("transform", Projects.eArt[0], function() {
+						Projects.eArt.addClass("transparent");
+						$(".project-item[data-id='" + Projects.activeProject + "'] .showcase-art").removeClass("transparent");
+
+						// Giving back control..
+						$(document.body).removeClass("mode-project");
+						Projects.e.removeClass("active");
+					});
+				});
+			});
+		});
 	}
 };

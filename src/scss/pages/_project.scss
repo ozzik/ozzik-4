@@ -51,6 +51,25 @@ $size-project-header: $size-grid-row * 2;
     opacity: .6;
 }
 
+.back-button {
+    position: absolute;
+    top: $space;
+    left: $space;
+    padding: $space;
+    cursor: pointer;
+
+    &::before {
+        content: "";
+        display: block;
+        width: $size-ui-sprite;
+        height: $size-ui-sprite;
+        background-position: 0 $size-ui-sprite * -1;
+    }
+
+    &:hover,
+    &:focus { @include transform(scale(1.1)); }
+}
+
 /* ======= Content ======= */
 .project-meta {
     width: 21em;
