@@ -1,8 +1,8 @@
 /* ===== Projects ===== */
 
 var Projects = {
-	ART_Y: 136,
-	ART_DEPTH: 1.05,
+	ART_Y: 225,
+	ART_DEPTH: 1.15,
 	ART_REVERT_DURATION: 300,
 	items: {},
 	activeCollection: null,
@@ -216,27 +216,29 @@ var Projects = {
 		Projects.e.addClass("active");
 
 		// Duplicating artwork + positioning
-		Projects.eArt[0].className = "project-artwork showcase-art transitionable post sa-" + project.id;
+		Projects.eArt[0].className = "project-artwork showcase-art transitionable-rough post sa-" + project.id;
 		Projects.eArt[0].innerHTML = Projects.generate_item_artwork(project);
 		Projects.eArt[0].style.left = Projects.artData.x + "px";
 		Projects.eArt[0].style.top = Projects.artData.y + "px";
-		Projects.eArt.transform("scale(" + Projects.ART_DEPTH + ")");
+		$(".pages").transform("translate3d(0,50%,0)");
 		// Hiding showcase page + real artwork
 		$(realArt).addClass("transparent");
-		$(".pages").transform("translate3d(0,50%,0)");
-
 		Projects.eArt.find(".se-sketch").addClass("widthable revert-ready").removeClass("fadable");
 
-		// Moving new artwork to its actual new position
-		setTimeout(function() {
-			Projects.artData.newX = (window.innerWidth - Projects.artData.width) / 2 - Projects.artData.x;
-			Projects.artData.newY = Projects.ART_Y - Projects.artData.y;
+		Projects.eArt.transform("scale(" + Projects.ART_DEPTH + ")");
 
-			Projects.eArt.transform("translate3d(" + Projects.artData.newX + "px," + Projects.artData.newY + "px,0) scale(" + Projects.ART_DEPTH + ")");
+		$.transitionEnd("transform", Projects.eArt[0], function() {
+			// Moving new artwork to its actual new position
+			setTimeout(function() {
+				Projects.artData.newX = (window.innerWidth - Projects.artData.width) / 2 - Projects.artData.x;
+				Projects.artData.newY = Projects.ART_Y - Projects.artData.y - Projects.artData.height;
 
-			// Start loading
-			Projects.load_project(project, item);
-		}, 100);
+				Projects.eArt.transform("translate3d(" + Projects.artData.newX + "px," + Projects.artData.newY + "px,0) scale(" + Projects.ART_DEPTH + ")");
+
+				// Start loading
+				Projects.load_project(project, item);
+			}, 100);
+		});
 	},
 
 	load_project: function(project, item) {
@@ -257,8 +259,8 @@ var Projects = {
 				// 	ripple.transform("translate3d(0,0,0) scale(5)");
 				// });
 				setTimeout(function() {
-					ripple.transform("scale(5)");
-				}, 300);
+					ripple.transform("translate3d(0,30px,0) scale(5)");
+				}, 200);
 			});
 
 
