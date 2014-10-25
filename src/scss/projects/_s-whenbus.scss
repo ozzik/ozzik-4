@@ -16,6 +16,7 @@
         background-position: -74px 0;
 
         &.animate-whenbus-in { @include animation(whenbus-icon-in $duration-art $easing-cubic-rough forwards); }
+        .post & { @include transform(translate3d(0,-3px,0)); }
     }
     &.se-bevel {
         bottom: 5px;
@@ -25,6 +26,7 @@
         background-position: -74px -65px;
 
         &.animate-whenbus-in { @include animation(whenbus-bevel-in $duration-art $easing-cubic-rough forwards); }
+        .post & { @include transform(translate3d(0,3px,0)); }
     }
 
     &.se-bus,

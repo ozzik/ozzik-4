@@ -17,6 +17,9 @@
         background: none;
         box-sizing: border-box;
         border: 25px solid #fff;
+
+        // Post state
+        .post & { border-width: 2px; }
     }
 
     &.se-circle1,

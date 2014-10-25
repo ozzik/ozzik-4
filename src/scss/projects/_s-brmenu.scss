@@ -34,6 +34,9 @@
         height: 14px;
         width: 3px;
         background-position: -62px 0;
+
+        // Post state
+        .post & { @include transform(rotateZ(-90deg) translate3d(0,0,0)); }
     }
 }
 

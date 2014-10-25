@@ -293,7 +293,7 @@ var Projects = {
 
 				Projects.eArt.translate(Projects.artData.newX, Projects.artData.newY);
 				setTimeout(function() {
-					ripple.transform("translate3d(0,30px,0) scale(5)");
+					ripple.transform("translate3d(0,30px,0) scale(5.2)");
 					Projects.e.find(".project-title, .project-meta, .project-separator, .project-content, .back-button").addClass("fadable").removeClass("transparent");
 					
 					setTimeout(function() {
@@ -346,9 +346,9 @@ var Projects = {
 				// Reverting to finalized version
 				var sketch = Projects.eArt.find(".se-sketch");
 
-				sketch.addClass("c-" + Projects.activeProject + "-main");
+				sketch.addClass("c-" + Projects.projectData.color + "-main");
 				Projects.eArt.find("*").removeClass("transparent");
-				sketch.removeClass("reverted");
+				sketch.removeClass("reverted").addClass("t-out t-normal");
 
 				$.transitionEnd("width", sketch[0], function() {
 					Projects.eArt.transform("");
@@ -360,6 +360,8 @@ var Projects = {
 						// Giving back control..
 						$(document.body).removeClass("mode-project");
 						Projects.e.removeClass("active");
+
+						// Projects.e[0].querySelector(".project-content").innerHTML = ""; // Cleanup
 					});
 				});
 			});
