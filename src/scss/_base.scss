@@ -169,6 +169,9 @@ a {
 .transitionable-rough { @include transition-transform($duration $easing-cubic-rough); }
 .transitionable-toned { @include transition-transform($duration * 1.5 ease-in-out); }
 
+.widthable { @include transition(width $duration $easing-cubic-better); }
+.fadable { @include transition(opacity $duration $easing-cubic-better); }
+
 /* ======= States ======= */
 // .visible { opacity: 1 !important; }
 // .hidden { display: none !important; }

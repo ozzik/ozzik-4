@@ -10,6 +10,11 @@ var Projects = {
 	e: null,
 	eArt: null,
 	artData: {},
+	did: {
+		projectData: false,
+		projectAnimation: false
+	},
+	projectData: null,
 
 	/* Setup */
 	setup: function() {
@@ -198,10 +203,34 @@ var Projects = {
 		project = target.getAttribute("data-id");
 
 		// Showing project
-		Projects.open(Projects.items[Projects.activeCollection][target.getAttribute("data-index")], target);
+		Projects.navigate(target.getAttribute("data-index"), target);
 	},
 
-	open: function(project, item) {
+	navigate: function(project, item) {
+		// Synthesizing args
+		project = Projects.items[Projects.activeCollection][project];
+		item = item || document.querySelector(".project-item[data-id='" + projects.id + "']");
+
+		// Marking project as hasn't been loaded yet
+		Projects.did.projectData = false;
+		Projects.did.projectAnimation = false;
+
+		// Loading project data
+		Projects.animate_into_project(project, item);
+		$.get({
+			url: _.data_url(Projects.activeCollection + "/" + project.id + ".json"),
+			success: function(data) {
+				data.color = project.color || project.id; // Synthesizing color data
+
+				// Marking data as fetched, continuing to project finale only if animation has ended
+				Projects.did.projectData = true;
+				Projects.projectData = data; // Saving for being used via animation end callback
+				Projects.did.projectAnimation && Projects.reveal_project_page(project, item);
+			}
+		});
+	},
+
+	animate_into_project: function(project, item) {
 		var realArt = item.querySelector(".showcase-art");
 
 		// Fetching expensive things
@@ -237,13 +266,14 @@ var Projects = {
 
 				Projects.eArt.transform("translate3d(" + Projects.artData.newX + "px," + Projects.artData.newY + "px,0) scale(" + Projects.ART_DEPTH + ")");
 
-				// Start loading
-				Projects.load_project(project, item);
+				// Marking animation as done, continuing to project finale only if data was fetched
+				Projects.did.projectAnimation = true;
+				Projects.did.projectData && Projects.reveal_project_page(project, Projects.projectData);
 			}, 100);
 		});
 	},
 
-	load_project: function(project, item) {
+	reveal_project_page: function(project, data) {
 		var ripple = Projects.e.find(".ripple"),
 			color = (project.color || project.id );
 
@@ -258,46 +288,42 @@ var Projects = {
 				sketch.removeClass("colored");
 
 				Projects.eArt.translate(Projects.artData.newX, Projects.artData.newY);
-				// $.transitionEnd("transform", Projects.eArt[0], function() {
-				// 	ripple.transform("translate3d(0,0,0) scale(5)");
-				// });
 				setTimeout(function() {
 					ripple.transform("translate3d(0,30px,0) scale(5)");
+					Projects.e.find(".project-title, .project-meta, .project-separator, .project-content").addClass("fadable").removeClass("transparent");
+					
+					setTimeout(function() {
+						Projects.e.find(".project-header").addClass("colored");
+					}, 200);
 				}, 200);
 			});
 
 
 		}, 700);
 
-
-		Projects.create_project({
-			id: project.id,
-			name: "Webfyr",
-			meta: {
-				recipe: "Webapp for desktop & mobile",
-				role: "Product, design & front-end coding",
-				scope: "Full-time at Brow.si (March ‘14)"
-			},
-			content: "fdsfdsfs",
-			color: color
-		});
+		Projects.set_project_page_content(data);
 	},
 
-	create_project: function(data) {
-		var metaHTML = "",
-			content = Projects.e[0].querySelector(".project-content");
+	set_project_page_content: function(data) {
+		var title = Projects.e[0].querySelector(".project-title"),
+			meta = Projects.e[0].querySelector(".project-meta"),
+			separator = Projects.e[0].querySelector(".project-separator"),
+			content = Projects.e[0].querySelector(".project-content"),
+			metaHTML = "";
 
 		// Meta
 		for (key in data.meta) {
 			metaHTML += '<dt class="meta">' + (key[0].toUpperCase() + key.slice(1)) + '</dt>&nbsp;' + '<dd>' + data.meta[key] + '</dd>';
 		}
 
-		Projects.e[0].querySelector(".project-title").innerHTML = data.name;
-		Projects.e[0].querySelector(".project-meta").innerHTML = metaHTML;
+		title.innerHTML = data.name;
+		meta.innerHTML = metaHTML;
 
-		Projects.e[0].querySelector(".project-separator").className = "project-separator s-" + data.id + " i-" + data.id;
+		separator.className = "project-separator s-" + data.id + " i-" + data.id;
 
 		content.innerHTML = data.content;
 		content.className = "project-content p-" + data.id + " c-" + data.color;
+
+		$([title, meta, separator, content]).addClass("transparent");
 	}
 };

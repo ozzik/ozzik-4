@@ -4,7 +4,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100%;
+    overflow: scroll;
+    height: 100%;
     // background: #fff;
     // @include transition(opacity $duration $easing-cubic-better);
     
@@ -23,7 +24,7 @@ $size-project-header: $size-grid-row * 2;
     overflow: hidden;
     text-align: center;
     
-    &::after {
+    &.colored::after {
         content: "";
         position: absolute;
         bottom: 0;

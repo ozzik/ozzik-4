@@ -48,7 +48,7 @@
     height: 100%;
     opacity: .5;
     
-    &.fadable { @include transition(opacity 1s $easing-cubic-better); }
+    @include transition-duration(1s);
     &.revert-ready {
         z-index: 100;
         opacity: 1;
@@ -63,5 +63,3 @@
 @for $i from 1 to 10 {
     .d#{$i} { @include animation-delay(.05s * $i !important); }
 }
-
-.widthable { @include transition(width $duration $easing-cubic-better); }
