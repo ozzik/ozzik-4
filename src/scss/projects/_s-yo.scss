@@ -5,7 +5,7 @@
 
 .s-yo {
     background: image-url("showcases/s-yo.png", false, false) no-repeat;
-    background-size: 94px 22px;
+    background-size: 114px 22px;
 
     // Elements
     &.se-button {
@@ -44,3 +44,5 @@
     100% { opacity: 1; }
 }
 .animate-text-in { @include animation(text-in $duration-art * 1.5 $easing-cubic-rough forwards); }
+
+.i-yo { background-position: -94px 0; }

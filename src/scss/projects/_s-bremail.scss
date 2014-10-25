@@ -5,7 +5,7 @@
 
 .s-bremail {
     background-image: image-url("showcases/s-bremail.png", false, false);
-    background-size: 262px 112px;
+    background-size: 282px 112px;
 
     // Elements
     &.se-paper {
@@ -86,3 +86,5 @@
     }
     100% { opacity: 1; }
 }
+
+.i-bremail { background-position: -262px 0; }

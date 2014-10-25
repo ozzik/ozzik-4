@@ -5,7 +5,7 @@
 
 .s-webfyr {
     background-image: image-url("showcases/s-webfyr.png", false, false);
-    background-size: 238px 74px;
+    background-size: 258px 74px;
 
     // Elements
     &.se-flame {
@@ -47,3 +47,5 @@
         background-position: -184px 0;
     }
 }
+
+.i-webfyr { background-position: -238px 0; }

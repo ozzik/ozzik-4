@@ -5,7 +5,7 @@
 
 .s-rsvp {
     background-image: image-url("showcases/s-rsvp.png", false, false);
-    background-size: 251px 116px;
+    background-size: 271px 116px;
 
     // Elements
     &.se-page {
@@ -30,3 +30,5 @@
         background-position: -161px -85px;
     }
 }
+
+.i-rsvp { background-position: -251px 0; }

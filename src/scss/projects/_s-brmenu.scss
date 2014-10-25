@@ -5,7 +5,7 @@
 
 .s-brmenu {
     background: image-url("showcases/s-brmenu.png", false, false) no-repeat;
-    background-size: 65px 102px;
+    background-size: 85px 102px;
 
     // Elements
     &.se-button1,
@@ -46,3 +46,5 @@
     }
 }
 .animate-brmenu-rotate { @include animation(brmenu-rotate $duration-art $easing-cubic-rough forwards); }
+
+.i-brmenu { background-position: -65px 0; }

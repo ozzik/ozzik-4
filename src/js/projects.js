@@ -60,7 +60,7 @@ var Projects = {
 		var style = "";
 
 		for (project in colors) {
-			style += ".color-" + project + " { background-color: #" + colors[project] + "; }";
+			style += ".c-" + project + "-main { background-color: #" + colors[project] + "; }";
 		}
 
 		document.getElementById("styleRuntime").innerText = style;
@@ -72,7 +72,7 @@ var Projects = {
 			html = "",
 			isNestedElement;
 
-		className += " color-" + (item.color || item.id);
+		className += " c-" + (item.color || item.id) + "-main";
 		element.className = className;
 		element.setAttribute("data-id", item.id);
 		element.setAttribute("data-index", index);
@@ -220,7 +220,9 @@ var Projects = {
 		Projects.eArt[0].innerHTML = Projects.generate_item_artwork(project);
 		Projects.eArt[0].style.left = Projects.artData.x + "px";
 		Projects.eArt[0].style.top = Projects.artData.y + "px";
+
 		$(".pages").transform("translate3d(0,50%,0)");
+		
 		// Hiding showcase page + real artwork
 		$(realArt).addClass("transparent");
 		Projects.eArt.find(".se-sketch").addClass("widthable revert-ready").removeClass("fadable");
@@ -242,9 +244,10 @@ var Projects = {
 	},
 
 	load_project: function(project, item) {
-		var ripple = Projects.e.find(".ripple");
+		var ripple = Projects.e.find(".ripple"),
+			color = (project.color || project.id );
 
-		ripple[0].className = "ripple transitionable-toned color-" + (project.color || project.id);
+		ripple[0].className = "ripple transitionable-toned c-" + color + "-main";
 
 		setTimeout(function() {
 			var sketch = Projects.eArt.find(".se-sketch");
@@ -265,5 +268,36 @@ var Projects = {
 
 
 		}, 700);
+
+
+		Projects.create_project({
+			id: project.id,
+			name: "Webfyr",
+			meta: {
+				recipe: "Webapp for desktop & mobile",
+				role: "Product, design & front-end coding",
+				scope: "Full-time at Brow.si (March ‘14)"
+			},
+			content: "fdsfdsfs",
+			color: color
+		});
+	},
+
+	create_project: function(data) {
+		var metaHTML = "",
+			content = Projects.e[0].querySelector(".project-content");
+
+		// Meta
+		for (key in data.meta) {
+			metaHTML += '<dt class="meta">' + (key[0].toUpperCase() + key.slice(1)) + '</dt>&nbsp;' + '<dd>' + data.meta[key] + '</dd>';
+		}
+
+		Projects.e[0].querySelector(".project-title").innerHTML = data.name;
+		Projects.e[0].querySelector(".project-meta").innerHTML = metaHTML;
+
+		Projects.e[0].querySelector(".project-separator").className = "project-separator s-" + data.id + " i-" + data.id;
+
+		content.innerHTML = data.content;
+		content.className = "project-content p-" + data.id + " c-" + data.color;
 	}
 };

@@ -5,7 +5,7 @@
 
 .s-doughjs {
     background: image-url("showcases/s-doughjs.png", false, false) no-repeat;
-    background-size: 182px 102px;
+    background-size: 202px 102px;
 
     // Elements
     &.se-pin {
@@ -62,3 +62,5 @@
 }
 
 .animate-dough-in { @include animation(dough-in $duration-art * 2 $easing-cubic forwards); }
+
+.i-doughjs { background-position: -182px 0; }

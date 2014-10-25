@@ -5,7 +5,7 @@
 
 .s-brdashboard {
     background-image: image-url("showcases/s-brdashboard.png", false, false);
-    background-size: 198px 88px;
+    background-size: 218px 88px;
 
     // Elements
     &.se-paper {
@@ -64,3 +64,5 @@
     100% { opacity: 1; }
 }
 .animate-brdashboard-badge-in { @include animation(brdashboard-badge-in $duration-art $easing-cubic-rough forwards); }
+
+.i-brdashboard { background-position: -198px 0; }
