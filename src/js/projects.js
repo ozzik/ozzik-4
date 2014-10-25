@@ -299,7 +299,7 @@ var Projects = {
 					setTimeout(function() {
 						Projects.e.find(".project-header").addClass("colored");
 					}, 200);
-				}, 200);
+				}, 150);
 			});
 		}, 300);
 
@@ -335,7 +335,7 @@ var Projects = {
 
 		Projects.e.find(".project-title, .project-meta, .project-separator, .project-content, .back-button").addClass("transparent");
 
-		Projects.e.find(".project-header").removeClass("colored").find(".ripple").transform("");
+		Projects.e.find(".project-header").removeClass("colored").find(".ripple").addClass("transitionable-rough").removeClass("transitionable-toned").transform("");
 
 		Projects.eArt.transform("translate3d(" + Projects.artData.newX + "px," + Projects.artData.newY + "px,0) scale(" + Projects.ART_DEPTH + ")");
 		$.transitionEnd("transform", Projects.eArt[0], function() {
