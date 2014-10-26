@@ -43,7 +43,7 @@ var Home = {};
             if (!e.target || e.target.nodeName !== "A") { return; } // Suppression
 
             Navline.select(e.target);
-            // Showcases.load(e.target.getAttribute("data-for"));
+            Showcases.load(e.target.getAttribute("data-for"));
         },
 
         select: function(item, isHighlight) {

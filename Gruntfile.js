@@ -9,6 +9,7 @@ module.exports = function(grunt) {
                 src: [
                     'src/js/dough.min.js',
                     'src/js/helpers.js',
+                    'src/js/showcases.js',
                     'src/js/projects.js',
                     'src/js/home.js',
                     'src/js/main.js'

@@ -12,7 +12,7 @@ var Main = {
 
         Main.hook_events();
 
-		// Showcases.load("products");
+		Showcases.load("products");
 	},
 
     hook_events: function() {

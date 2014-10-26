@@ -47,13 +47,13 @@
 .strip-header { margin-top: .35rem; }
 
 /* ======= Project Showcases ======= */
-.projects {
+.showcases {
 	height: $size-grid-row * 3 + ($size-grid-gutter * 2);
 	line-height: 0;
 	-webkit-perspective: 800px;
 }
 
-.project-item {
+.showcase-item {
 	display: inline-block;
 	width: $size-grid-column;
 	height: $size-grid-row;
