@@ -1,16 +1,14 @@
 {
-    "id": "webfyr",
-    "name": "Webfyr",
     "meta": {
         "recipe": "Webapp for desktop & mobile",
         "role": "Product, design & front-end coding",
-        "scope": "Full-time at Brow.si (March ‘14)"
+        "scope": "NDA (Mar ‘14)"
     },
     "synopsis": {
         "text": "News reader webapp with easy and in-page navigation between articles and snooze-able page saving.",
         "link": {
             "url": "https://webfyr.com",
-            "caption": "%watch it"
+            "caption": "%watchTransitive %it"
         }
     },
     "content": ""

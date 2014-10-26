@@ -1,6 +1,11 @@
 var _ = {
 	phrases: {
-		watch: [ "watch", "see", "have a look" ],
+		watch: [ "watch", "see", "observe", "view", "behold" ],
+		watchTransitive: [ "have a look at", "have a peek at", "look at", "gaze at", "stare at" ],
+		it: [ "it", "that", "the thing" ],
+		mobile: [ "mobile", "your small device", "your tiny screen", "a small device", "a small screen", "a touch device" ],
+		preposition: [ "from", "on" ],
+		dead: [ "PROJECT IS DEAD" ],
 		download: [  ],
 	},
 
@@ -109,13 +114,25 @@ var _ = {
 	},
 
 	rephrase: function(string) {
-		var token = /%[a-z]+/i.exec(string)[0],
-			phrases = _.phrases[token.slice(1)];
+		var regex = /%[a-z]+/ig,
+			tokens = [],
+			token,
+			phrases;
 
-		if (phrases) {
-			string = string.replace(token, phrases[_.random(phrases.length - 1)])
+		while ((token = regex.exec(string))) {
+			tokens.push(token[0]);
+		}
+
+		if (tokens.length) {
+			for (var i = 0; i < tokens.length; i++) {
+				phrases = _.phrases[tokens[i].slice(1)];
+				string = string.replace(tokens[i], phrases[_.random(phrases.length - 1)])
+			}
 		}
 
 		return string[0].toUpperCase() + string.slice(1);
 	}
 }
+
+// Concating phrases
+_.phrases.watchTransitive = _.phrases.watchTransitive.concat(_.phrases.watch);

@@ -1,0 +1,15 @@
+{
+    "meta": {
+        "recipe": "Website",
+        "role": "Design & front-end coding",
+        "scope": "Freelancing (Aug ‘12)"
+    },
+    "synopsis": {
+        "text": "Simple RSVP page for a friend's wedding,<br> with a flippable form and thanks card.",
+        "link": {
+            "url": "http://ozzik.co/demo/rsvp.html",
+            "caption": "%watch %it"
+        }
+    },
+    "content": ""
+}

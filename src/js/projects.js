@@ -35,6 +35,8 @@ var Projects = {
 			url: _.data_url(Showcases.activeCollection + "/" + project.id + ".json"),
 			success: function(data) {
 				data.color = project.color || project.id; // Synthesizing color data
+				data.id = project.id;
+				data.name = project.name;
 
 				// Marking data as fetched, continuing to project finale only if animation has ended
 				Projects.did.fetch = true;
@@ -143,17 +145,19 @@ var Projects = {
 	},
 
 	generate_synopsis: function(id, synopsis) {
+		if (!synopsis) { return ""; }
+
 		var html = '<div class="project-synopsis centered">';
 
 		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';
 
-		html += '<h2>In two sentences & one hipsta button</h2>';
+		html += '<h2>In one sentence & one hipsta button</h2>';
 		html += '<p>' + synopsis.text + '</p>';
 		
 		// Button
 		html += (synopsis.link) ? '<a href="' + synopsis.link.url + '" target="_blank"' : '<div';
 		html += ' class="project-button custom transformable ' + (!synopsis.link ? ' dead' : '') + '">';
-		html += (synopsis.link) ? _.rephrase(synopsis.link.caption) : '';
+		html += (synopsis.link) ? _.rephrase(synopsis.link.caption) : _.phrases.dead;
 		html += '</' + (synopsis.link ? 'a' : 'div') + '>';
 
 		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';

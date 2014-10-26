@@ -96,6 +96,11 @@ $space-synopsis: 4.5rem;
 	border: 2px solid;
 	color: $color-main;
 
+	&.dead {
+		color: #bbb !important;
+		border-style: dotted;
+	}
+
 	&:hover,
 	&:focus { @include transform(scale(1.03) rotateZ(-.5deg)); }
 	&:active { @include transform(rotateZ(-.8deg)); }

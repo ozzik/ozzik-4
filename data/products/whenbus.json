@@ -1,0 +1,15 @@
+{
+    "meta": {
+        "recipe": "Mobile webapp",
+        "role": "Product, design & front-end coding",
+        "scope": "Side project (Mar ‘13)"
+    },
+    "synopsis": {
+        "text": "Webapp for checking bus arrival time,<br> based on favoriting them buses.",
+        "link": {
+            "url": "http://bucketlist.ozzik.co",
+            "caption": "%watch %preposition %mobile (iOS)"
+        }
+    },
+    "content": ""
+}
