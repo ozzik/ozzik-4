@@ -10,11 +10,14 @@
 	text-transform: uppercase;
 }
 .home-navigation-item {
-	&:not(:first-child) { margin-left: $space * 4; }
+	// Padding coz mouseout is being triggered to UL
+	&:not(:first-child) {
+		margin-left: 0;
+		padding-left: $space * 4;
+	}
 
 	&.active,
-	&:focus,
-	&:hover {
+	&:focus {
 		.home-navigation-link { color: $color-main-light; }
 	}
 }
