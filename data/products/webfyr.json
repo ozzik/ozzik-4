@@ -6,5 +6,12 @@
         "role": "Product, design & front-end coding",
         "scope": "Full-time at Brow.si (March ‘14)"
     },
-    "content": "<h2>dsdsds</h2><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p><p>A</p>"
+    "synopsis": {
+        "text": "News reader webapp with easy and in-page navigation between articles and snooze-able page saving.",
+        "link": {
+            "url": "https://webfyr.com",
+            "caption": "%watch it"
+        }
+    },
+    "content": ""
 }
