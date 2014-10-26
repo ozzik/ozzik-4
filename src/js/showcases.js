@@ -114,12 +114,11 @@ var Showcases = {
         html += '<a class="showcase-item-link va-wrapper custom" href="" title="">';
         html += '<div class="va-content">';
 
-        html += '<div class="showcase-art transitionable sa-' + item.id + '">';// p-' + item.id + '">';
+        html += '<div class="showcase-art transformable sa-' + item.id + '">';// p-' + item.id + '">';
 
         html += Showcases.generate_item_artwork(item);
 
         html += '</div>';
-        
         html += '</div></a>';
 
         element.innerHTML = html;
@@ -154,42 +153,35 @@ var Showcases = {
             return;
         }
 
-        var item = $(".showcase-item[data-id='" +  Showcases.collections[Showcases.activeCollection][Showcases.animatedItems].id + "']");
+        var item = $(".showcase-item[data-id='" +  Showcases.collections[Showcases.activeCollection][Showcases.animatedItems].id + "']"),
+            itemID = Showcases.collections[Showcases.activeCollection][Showcases.animatedItems].id,
+            steps = Showcases.collections[Showcases.activeCollection][Showcases.animatedItems].art.animation,
+            i = 0;
 
-        // Pop in
+        // Startig sketch's fade out
         item.find(".se-sketch").addClass("transparent");
-        // $.transitionEnd("transform", item[0], function() {
-            // Color
-            // item.addClass("colored");
-            // $.transitionEnd("background-color", item[0], function() {
-                var itemID = Showcases.collections[Showcases.activeCollection][Showcases.animatedItems].id,
-                    steps = Showcases.collections[Showcases.activeCollection][Showcases.animatedItems].art.animation,
-                    i = 0;
 
-                function animate_item_step() {
-                    var stepData = Showcases.parse_animation_step(itemID, steps[i]);
+        function animate_item_step() {
+            var stepData = Showcases.parse_animation_step(itemID, steps[i]);
 
-                    $(stepData.e).addClass("animate-" + stepData.animation);
+            $(stepData.e).addClass("animate-" + stepData.animation);
+            $.animationEnd(stepData.waitFor, stepData.eLen, function te_showcase_art_step() {
+                // Continuing to next step
+                i++;
+                if (i !== steps.length) {
+                    animate_item_step();
+                } else {
+                    item.addClass("active").find(".se-sketch").addClass("transparent");
 
-                    $.animationEnd(stepData.waitFor, stepData.eLen, function te_showcase_art_step() {
-                        // Cycling
-                        i++;
-                        if (i !== steps.length) {
-                            animate_item_step();
-                        } else {
-                            item.addClass("active").find(".se-sketch").addClass("transparent");
+                    Showcases.animatedItems++;
 
-                            Showcases.animatedItems++;
-
-                            if (Showcases.animatedItems !== Showcases.collections[Showcases.activeCollection].length) {
-                                setTimeout(Showcases.animate_item, 0);
-                            }
-                        }
-                    }, steps[i][2] || 100);
+                    if (Showcases.animatedItems !== Showcases.collections[Showcases.activeCollection].length) {
+                        setTimeout(Showcases.animate_item, 0);
+                    }
                 }
-                animate_item_step();
-            // }, 100);
-        // }, 100);
+            }, steps[i][2] || 100);
+        }
+        animate_item_step();
     },
 
     parse_animation_step: function(itemID, step) {
@@ -237,6 +229,6 @@ var Showcases = {
         project = target.getAttribute("data-id");
 
         // Showing project
-        Projects.navigate(target.getAttribute("data-index"), target);
+        Projects.load(target.getAttribute("data-index"), target);
     }
 };

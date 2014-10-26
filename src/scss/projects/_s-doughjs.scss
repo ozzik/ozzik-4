@@ -60,7 +60,6 @@
         @include transform(none);
     }
 }
-
 .animate-dough-in { @include animation(dough-in $duration-art * 2 $easing-cubic forwards); }
 
 .i-doughjs { background-position: -182px 0; }

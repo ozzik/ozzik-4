@@ -6,13 +6,8 @@
     width: 100%;
     overflow: auto;
     height: 100%;
-    // background: #fff;
-    // @include transition(opacity $duration $easing-cubic-better);
     
-    &:not(.active) {
-        z-index: -1;
-        // opacity: 0;
-    }
+    &:not(.active) { z-index: -1; }
 }
 .project-artwork { position: absolute; }
 

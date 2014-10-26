@@ -1,8 +1,7 @@
 @import "compass/css3/images";
-@import "mixin";
+@import "shared/mixin";
+@import "shared/vars";
 
-
-@import "showcases";
 /* ======= Projects ======= */
 @import "s-doughjs";
 @import "s-webfyr";
