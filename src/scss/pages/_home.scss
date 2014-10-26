@@ -19,7 +19,11 @@
 		.home-navigation-link { color: $color-main-light; }
 	}
 }
-.home-navigation-link { color: lighten($color-text, 60%); }
+.home-navigation-link {
+	display: block;
+	padding-bottom: .35rem;
+	color: lighten($color-text, 60%);
+}
 
 .strip,
 .teaserline::before,
@@ -36,7 +40,7 @@
 	@include transition-with-transform(width, $duration $easing-cubic);
 }
 
-.strip-header { margin-top: .35rem; }
+.strip-header { margin-top: 0; }
 
 /* ======= Project Showcases ======= */
 .showcases {
