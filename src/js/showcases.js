@@ -74,9 +74,9 @@ var Showcases = {
 			$(".showcases").addClass("flock").find(".showcase-item").removeClass("off");
 			$.transitionEnd("transform", document.querySelector(".showcase-item:last-child"), function te_flock() {
 				$(".showcases").removeClass("flock");
+
+				setTimeout(Showcases.animate_item, 100);
 			});
-			
-			setTimeout(Showcases.animate_item, 300);
 		}, 100);
 	},
 
