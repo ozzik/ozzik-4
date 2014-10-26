@@ -6,6 +6,12 @@ var _ = {
 	data_url: function(str) {
 		return _.url("data/" + str);
 	},
+	style_url: function(str) {
+		return _.url("assets/css/" + str);
+	},
+	project_style_url: function(str) {
+		return _.style_url("projects/" + str);
+	},
 
 	/* RequestAnimationFrame-based scroll from (https://gist.github.com/james2doyle/5694700) */
 	easeInOutCubic: function(t, b, c, d) {

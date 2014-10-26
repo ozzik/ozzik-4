@@ -57,9 +57,9 @@ var Showcases = {
 	},
 
 	handle_collection: function(data) {
-		// Creating color themes + saving new data
+		// Creating styles + saving new data
 		if (!Showcases.collections[Showcases.activeCollection]) {
-			Showcases.generate_colors(data.colors);
+			Showcases.create_styles(data.colors);
 			Showcases.collections[Showcases.activeCollection] = data.items; // Saving
 		}
 		
@@ -88,7 +88,8 @@ var Showcases = {
 		document.body.querySelector(".showcases").appendChild(fragment);
 	},
 
-	generate_colors: function(colors) {
+	create_styles: function(colors) {
+		// Creating CSS color themes
 		var style = "";
 
 		for (project in colors) {
@@ -96,6 +97,14 @@ var Showcases = {
 		}
 
 		document.getElementById("styleRuntime").innerText += style;
+
+		// Injecting collection stylesheet
+		style = document.createElement("link");
+		style.rel = "stylesheet";
+		style.type = "text/css";
+		style.href = _.project_style_url(Showcases.activeCollection + ".css");
+		
+		document.head.appendChild(style);
 	},
 
 	/* === Showcase items creation === */
