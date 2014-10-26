@@ -62,6 +62,9 @@ var Showcases = {
 			Showcases.create_styles(data.colors);
 			Showcases.collections[Showcases.activeCollection] = data.items; // Saving
 		}
+
+		// Picking up a randomized enterance order for collection items
+		Showcases.determine_collection_order(data.items.length);
 		
 		// Creating showcase items
 		Showcases.create_collection(Showcases.activeCollection, data.items);
@@ -71,21 +74,10 @@ var Showcases = {
 			$(".showcases").addClass("flock").find(".showcase-item").removeClass("off");
 			$.transitionEnd("transform", document.querySelector(".showcase-item:last-child"), function te_flock() {
 				$(".showcases").removeClass("flock");
+
+				setTimeout(Showcases.animate_item, 100);
 			});
-			
-			setTimeout(Showcases.animate_item, 300);
 		}, 100);
-	},
-
-	create_collection: function(collectionName, items) {
-		var fragment = document.createDocumentFragment();
-
-		// Showcase items
-		for (var i = 0; i < items.length; i++) {
-			fragment.appendChild(Showcases.create_item(items[i], i));
-		}
-
-		document.body.querySelector(".showcases").appendChild(fragment);
 	},
 
 	create_styles: function(colors) {
@@ -109,7 +101,33 @@ var Showcases = {
 		document.head.appendChild(style);
 	},
 
+	determine_collection_order: function(count) {
+		var randomizedItem,
+			maxCount = count - 1;
+
+		Showcases.collectionOrder = [];
+
+		while (Showcases.collectionOrder.length !== count) {
+			randomizedItem = _.random(maxCount);
+
+			if (Showcases.collectionOrder.indexOf(randomizedItem) === -1) {
+				Showcases.collectionOrder.push(randomizedItem);
+			}
+		}
+	},
+
 	/* === Showcase items creation === */
+	create_collection: function(collectionName, items) {
+		var fragment = document.createDocumentFragment();
+
+		// Showcase items
+		for (var i = 0; i < items.length; i++) {
+			fragment.appendChild(Showcases.create_item(items[i], i));
+		}
+
+		document.body.querySelector(".showcases").appendChild(fragment);
+	},
+
 	create_item: function(item, index) {
 		var element = document.createElement("li"),
 			className = "showcase-item off",
@@ -164,9 +182,10 @@ var Showcases = {
 			return;
 		}
 
-		var item = $(".showcase-item[data-id='" +  Showcases.collections[Showcases.activeCollection][Showcases.animatedItems].id + "']"),
-			itemID = Showcases.collections[Showcases.activeCollection][Showcases.animatedItems].id,
-			steps = Showcases.collections[Showcases.activeCollection][Showcases.animatedItems].art.animation,
+		var collectionItem = Showcases.collections[Showcases.activeCollection][Showcases.collectionOrder[Showcases.animatedItems]],
+			item = $(".showcase-item[data-id='" +  collectionItem.id + "']"),
+			itemID = collectionItem.id,
+			steps = collectionItem.art.animation,
 			i = 0;
 
 		// Startig sketch's fade out
