@@ -4,8 +4,8 @@
 /* ======= Header ======= */
 .home-navigation {
 	margin-top: 3rem;
-	text-align: center;
 	text-transform: uppercase;
+	@extend .centered;
 }
 .home-navigation-item {
 	// Padding coz mouseout is being triggered to UL
@@ -54,6 +54,8 @@
 }
 
 /* ======= Footer ======= */
+.footer { @extend .centered; }
+
 .home-footer {
 	margin-top: $space * 8;
 	font-size: .85rem;

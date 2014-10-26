@@ -64,7 +64,7 @@ body,
 .va-content {
 	display: table-cell;
 	vertical-align: middle;
-	text-align: center;
+	@extend .centered;
 }
 
 // Pages
@@ -81,7 +81,6 @@ body,
 	left: 0;
 	width: 100%;
 	padding-bottom: 1.5rem;
-	text-align: center;
 	font-size: .6rem;
 	line-height: 1.2;
 
@@ -158,6 +157,11 @@ a {
 
 /* ======= Styles ======= */
 .crowded { line-height: 1.25; }
+
+.centered { text-align: center; }
+
+// Hack, so it would override .centered
+.page-content { text-align: left; }
 
 /* ======= Transitions ======= */
 // Properties
