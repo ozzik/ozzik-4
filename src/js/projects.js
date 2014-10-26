@@ -12,7 +12,8 @@ var Projects = {
 	artData: {},
 	did: {
 		projectData: false,
-		projectAnimation: false
+		projectAnimation: false,
+		changeCollection: false,
 	},
 	projectData: null,
 	activeProject: null,
@@ -29,25 +30,49 @@ var Projects = {
 
 	/* Creation */
 	load: function(collection) {
-		$.get({
-			url: _.data_url(collection + ".json"),
-			success: function(data) {
-				Projects.activeCollection = collection;
-				Projects.handle_collection(collection, data.items, data.colors);
+		if (Projects.activeCollection === collection) { return; }
 
-				Projects.items[Projects.activeCollection] = data.items;
+		Projects.changeCollection = false;
+		Projects.animatedItems = 0;
 
-				// Delayed coz of HTML injection pipline
-				setTimeout(function() {
-					$(".projects").addClass("flock").find(".project-item").removeClass("pop-ready");
-					$.transitionEnd("transform", document.querySelector(".project-item:last-child"), function() {
-						$(".projects").removeClass("flock");
-					});
-					
-					setTimeout(Projects.animate_item, 300);
-				}, 100);
-			}
-		});
+		function actual_load() {
+			$.get({
+				url: _.data_url(collection + ".json"),
+				success: function(data) {
+					Projects.activeCollection = collection;
+					Projects.handle_collection(collection, data.items, data.colors);
+
+					Projects.items[Projects.activeCollection] = data.items;
+
+					// Delayed coz of HTML injection pipline
+					setTimeout(function() {
+						$(".projects").addClass("flock").find(".project-item").removeClass("off");
+						$.transitionEnd("transform", document.querySelector(".project-item:last-child"), function() {
+							$(".projects").removeClass("flock");
+						});
+						
+						setTimeout(Projects.animate_item, 300);
+					}, 100);
+				}
+			});
+		}
+
+		if (Projects.activeCollection) {
+			$(".projects").addClass("flock-out").find(".project-item").addClass("off");
+			$.transitionEnd("transform", document.querySelector(".project-item:first-child"), function() {
+				var projects = $(".projects");
+				projects.removeClass("flock-out");
+
+				// Killing items
+				while (projects[0].firstChild) {
+				    projects[0].removeChild(projects[0].firstChild);
+				}
+
+				actual_load();
+			});
+		} else {
+			actual_load();
+		}
 	},
 
 	handle_collection: function(collectionName, items, colors) {
@@ -76,7 +101,7 @@ var Projects = {
 
 	create_item: function(item, index) {
 		var element = document.createElement("li"),
-			className = "project-item pop-ready",
+			className = "project-item off",
 			html = "",
 			isNestedElement;
 

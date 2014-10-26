@@ -17,6 +17,7 @@ var Home = {};
 
             Navline.eHeader.on("mouseover", Navline.handle_mouseover);
             Navline.eHeader.on("mouseout", Navline.handle_mouseout);
+            Navline.eHeader.on("click", Navline.handle_click);
             Navline.handle_mouseover({ target: Navline.eActive }, true);
         },
 
@@ -37,6 +38,13 @@ var Home = {};
         handle_mouseout: function(e) {
             if (e.relatedTarget.nodeName === "UL") { return; };
             Navline.handle_mouseover({ target: Navline.eActive }, true);
+        },
+
+        handle_click: function(e) {
+            // Suppression
+            if (!e.target || e.target.nodeName !== "A") { return; }
+
+            Projects.load(e.target.getAttribute("data-for"));
         }
     }
 
