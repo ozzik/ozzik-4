@@ -1,41 +1,41 @@
 .about-header { text-align: center; }
 
 .about-title {
-    font-size: 1.4rem;
-    margin: .7rem 0 0;
-    color: $color-text-light;
+	font-size: 1.4rem;
+	margin: .7rem 0 0;
+	color: $color-text-light;
 
-    span { display: none; }
-    &::before { content: "Oz Pinhas"; }
+	span { display: none; }
+	&::before { content: "Oz Pinhas"; }
 }
 .about-subtitle { margin: 0; }
 
 .about-job {
-    width: 24em;
-    margin: 1rem auto;
+	width: 24em;
+	margin: 1rem auto;
 
-    .meta { width: 5.1em; }
+	.meta { width: 5.1em; }
 }
 .previously { text-decoration: line-through; }
 
 
 /* ======= Contact Links ======= */
 .contact-item {
-    &:not(:first-child) { margin-left: 68px; }
+	&:not(:first-child) { margin-left: 68px; }
 
-    &:hover,
-    &:active { @include transform(translate3d(0,-5px,0)); }
+	&:hover,
+	&:active { @include transform(translate3d(0,-5px,0)); }
 }
 .contact-link {
-    display: block;
-    width: $size-ui-sprite;
-    height: $size-ui-sprite;
-    overflow: hidden;
-    text-indent: -9999em;
+	display: block;
+	width: $size-ui-sprite;
+	height: $size-ui-sprite;
+	overflow: hidden;
+	text-indent: -9999em;
 }
 $i: 0;
 @each $item in email, twitter, dribbble, github, linkedin {
-    .contact-link-#{$item} { background-position: $i * $size-ui-sprite * -1 0; }
-    
-    $i: $i + 1;
+	.contact-link-#{$item} { background-position: $i * $size-ui-sprite * -1 0; }
+	
+	$i: $i + 1;
 }

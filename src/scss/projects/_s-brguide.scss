@@ -1,73 +1,73 @@
 .sa-brguide {
-    width: 84px;
-    height: 113px;
+	width: 84px;
+	height: 113px;
 }
 
 .s-brguide {
-    background-image: image-url("showcases/s-brguide.png", false, false);
-    background-size: 197px 113px;
+	background-image: image-url("showcases/s-brguide.png", false, false);
+	background-size: 197px 113px;
 
-    // Elements
-    &.se-paper {
-        top: 2px;
-        left: 2px;
-        width: 78px;
-        height: 104px;
-        background: #fff;
+	// Elements
+	&.se-paper {
+		top: 2px;
+		left: 2px;
+		width: 78px;
+		height: 104px;
+		background: #fff;
 
-        &.p2 { top: 5px; }
-        &.p1 { top: 8px; }
-    }
+		&.p2 { top: 5px; }
+		&.p1 { top: 8px; }
+	}
 
-    &.se-ribbon-h {
-        top: 50px;
-        left: -1px;
-        width: 83px;
-        height: 9px;
-        background-position: -94px 0;
+	&.se-ribbon-h {
+		top: 50px;
+		left: -1px;
+		width: 83px;
+		height: 9px;
+		background-position: -94px 0;
 
-        &.animate-brguide-ribbon-in { @include animation(brguide-ribbon-h-in $duration-art * 2 $easing-cubic-rough forwards); }
-    }
-    &.se-ribbon-v {
-        top: 0;
-        left: 35px;
-        width: 10px;
-        height: 110px;
-        background-position: -84px 0;
+		&.animate-brguide-ribbon-in { @include animation(brguide-ribbon-h-in $duration-art * 2 $easing-cubic-rough forwards); }
+	}
+	&.se-ribbon-v {
+		top: 0;
+		left: 35px;
+		width: 10px;
+		height: 110px;
+		background-position: -84px 0;
 
-        &.animate-brguide-ribbon-in { @include animation(brguide-ribbon-v-in $duration-art * 2 $easing-cubic-rough forwards); }
-    }
-    &.se-note-br {
-        top: 44px;
-        left: 30px;
-        width: 19px;
-        height: 20px;
-        background-position: -94px -9px;
-    }
-    &.se-note {
-        top: 60px;
-        left: 20px;
-        width: 39px;
-        height: 16px;
-        background-position: -94px -29px;
-    }
+		&.animate-brguide-ribbon-in { @include animation(brguide-ribbon-v-in $duration-art * 2 $easing-cubic-rough forwards); }
+	}
+	&.se-note-br {
+		top: 44px;
+		left: 30px;
+		width: 19px;
+		height: 20px;
+		background-position: -94px -9px;
+	}
+	&.se-note {
+		top: 60px;
+		left: 20px;
+		width: 39px;
+		height: 16px;
+		background-position: -94px -29px;
+	}
 }
 
 @include keyframes(brguide-paper-in) {
-    0% {
-        @include transform(translate3d(0,-20px,0) scale(1.1));
-    }
-    100% { opacity: 1; }
+	0% {
+		@include transform(translate3d(0,-20px,0) scale(1.1));
+	}
+	100% { opacity: 1; }
 }
 .animate-brguide-paper-in { @include animation(brguide-paper-in $duration-art * 2 $easing-cubic forwards); }
 
 @include keyframes(brguide-ribbon-h-in) {
-    0% { @include transform(scaleX(0)); }
-    100% { opacity: 1; }
+	0% { @include transform(scaleX(0)); }
+	100% { opacity: 1; }
 }
 @include keyframes(brguide-ribbon-v-in) {
-    0% { @include transform(scaleY(0)); }
-    100% { opacity: 1; }
+	0% { @include transform(scaleY(0)); }
+	100% { opacity: 1; }
 }
 
 .i-brguide { background-position: -177px 0; }

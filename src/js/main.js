@@ -1,34 +1,34 @@
 /* ===== Main ===== */
 
 var Main = {
-    hooks: {
-        resize: []
-    },
+	hooks: {
+		resize: []
+	},
 
 	init: function() {
 		Home.setup();
-        Showcases.setup();
-        Projects.setup();
+		Showcases.setup();
+		Projects.setup();
 
-        Main.hook_events();
+		Main.hook_events();
 
 		Showcases.load("products");
 	},
 
-    hook_events: function() {
-        window.addEventListener("resize", Main.handle_resize);
-    },
+	hook_events: function() {
+		window.addEventListener("resize", Main.handle_resize);
+	},
 
-    /* Events */
-    hook: function(event, fn) {
-        Main.hooks[event].push(fn);
-    },
+	/* Events */
+	hook: function(event, fn) {
+		Main.hooks[event].push(fn);
+	},
 
-    handle_resize: function() {
-        for (var i = 0; i < Main.hooks.resize.length; i++) {
-            Main.hooks.resize[i]();
-        }
-    }
+	handle_resize: function() {
+		for (var i = 0; i < Main.hooks.resize.length; i++) {
+			Main.hooks.resize[i]();
+		}
+	}
 };
 
 document.addEventListener("DOMContentLoaded", Main.init);

@@ -2,11 +2,11 @@
 
 /* ======= Style ======= */
 body {
-    margin: 0;
-    background: $color-background;
-    color: $color-text;
-    font-size: .85em;
-    line-height: 1.45;
+	margin: 0;
+	background: $color-background;
+	color: $color-text;
+	font-size: .85em;
+	line-height: 1.45;
 }
 
 body,
@@ -18,35 +18,35 @@ textarea,
 h1,
 h2,
 .teaserline-tag {
-    font-family: 'Cabin', serif;
-    font-weight: bold;
-    font-size: .95rem;
+	font-family: 'Cabin', serif;
+	font-weight: bold;
+	font-size: .95rem;
 }
 
 ul,
 ol,
 dl {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 dd,
 dt { display: inline-block; }
 dd {
-    margin-left: .35rem;
+	margin-left: .35rem;
 
-    &:not(:last-child) { margin-bottom: .35rem; }
+	&:not(:last-child) { margin-bottom: .35rem; }
 }
 
 /* ======= Shared ======= */
 .contact-link,
 .back-button::before {
-    background: image-url("ui.png", false, false);
+	background: image-url("ui.png", false, false);
 
-    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-        background: image-url("ui@2x.png", false, false);
-        background-size: 132px 88px;
-    }
+	@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+		background: image-url("ui@2x.png", false, false);
+		background-size: 132px 88px;
+	}
 }
 
 /* ======= Architecture ======= */
@@ -57,103 +57,103 @@ body,
 .wrapper { margin: 0 auto; }
 
 .va-wrapper {
-    display: table;
-    width: 100%;
-    height: 100%;
+	display: table;
+	width: 100%;
+	height: 100%;
 }
 .va-content {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 
 // Pages
 .pages { height: 100% * $pages; }
 .page {
-    @extend .va-wrapper;
-    position: relative;
-    height: 100% / $pages;
+	@extend .va-wrapper;
+	position: relative;
+	height: 100% / $pages;
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding-bottom: 1.5rem;
-    text-align: center;
-    font-size: .6rem;
-    line-height: 1.2;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding-bottom: 1.5rem;
+	text-align: center;
+	font-size: .6rem;
+	line-height: 1.2;
 
-    p:last-child { margin-bottom: 0; }
+	p:last-child { margin-bottom: 0; }
 }
 
 /* ======= Grid ======= */
 .columns { letter-spacing: -.25rem; }
 .column {
-    display: inline-block;
-    vertical-align: top;
-    letter-spacing: normal;
+	display: inline-block;
+	vertical-align: top;
+	letter-spacing: normal;
 
-    &:not(:first-child) { margin-left: $size-grid-gutter; }
+	&:not(:first-child) { margin-left: $size-grid-gutter; }
 
-    *:first-child { margin: 0; }
+	*:first-child { margin: 0; }
 }
 @for $i from 1 to 5 {
-    .column-#{$i} { width: ($size-grid-column * $i) + ($size-grid-gutter * ($i - 1)); }
+	.column-#{$i} { width: ($size-grid-column * $i) + ($size-grid-gutter * ($i - 1)); }
 }
 
 /* ======= Components ======= */
 .meta {
-    font-size: inherit;
-    text-align: right;
-    line-height: 1.1;
+	font-size: inherit;
+	text-align: right;
+	line-height: 1.1;
 }
 .meta,
 .metalike {
-    font-style: italic;
-    font-weight: normal;
-    color: $color-text-light;
+	font-style: italic;
+	font-weight: normal;
+	color: $color-text-light;
 }
 
 .teaserline {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    text-align: center;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	text-align: center;
 
-    &.top { top: 0; }
-    &.bottom { bottom: 0; }
-    
-    &::before {
-        content: "";
-        display: inline-block;
-        width: 2px;
-        height: 100%;
-    }
+	&.top { top: 0; }
+	&.bottom { bottom: 0; }
+	
+	&::before {
+		content: "";
+		display: inline-block;
+		width: 2px;
+		height: 100%;
+	}
 }
 .teaserline-tag-wrapper {
-    position: absolute;
-    top: 0;
-    text-transform: uppercase;
+	position: absolute;
+	top: 0;
+	text-transform: uppercase;
 }
 .teaserline-tag {
-    padding: .4em .6em;
-    border-radius: 3px;
-    font-size: .75rem;
-    letter-spacing: .05em;
-    color: darken(#f3f3f3, 20%);
+	padding: .4em .6em;
+	border-radius: 3px;
+	font-size: .75rem;
+	letter-spacing: .05em;
+	color: darken(#f3f3f3, 20%);
 }
 
 a {
-    text-decoration: none;
-    
-    // Every link that isn't custom (no line)
-    &:not(.custom) {
-        border-bottom: 1px solid;
-        color: $color-main-light;
-        border-color: lighten($color-main-light, 20%);
-    }
+	text-decoration: none;
+	
+	// Every link that isn't custom (no line)
+	&:not(.custom) {
+		border-bottom: 1px solid;
+		color: $color-main-light;
+		border-color: lighten($color-main-light, 20%);
+	}
 }
 
 /* ======= Styles ======= */
@@ -174,12 +174,12 @@ a {
 
 // Flock-based delays
 @for $i from 1 to 13 {
-    .flock > :nth-child(#{$i}),
-    .flock-out > :nth-last-child(#{$i}) { @include transition-delay(.04s * $i); }
+	.flock > :nth-child(#{$i}),
+	.flock-out > :nth-last-child(#{$i}) { @include transition-delay(.04s * $i); }
 }
 // Fixed delays
 @for $i from 1 to 10 {
-    .d#{$i} { @include animation-delay(.05s * $i !important); }
+	.d#{$i} { @include animation-delay(.05s * $i !important); }
 }
 
 /* ======= Hacks/Transforms ======= */

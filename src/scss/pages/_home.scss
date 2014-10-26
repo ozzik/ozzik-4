@@ -3,21 +3,21 @@
 
 /* ======= Header ======= */
 .home-navigation {
-    margin-top: 3rem;
-    text-align: center;
-    text-transform: uppercase;
+	margin-top: 3rem;
+	text-align: center;
+	text-transform: uppercase;
 }
 .home-navigation-item {
-    // Padding coz mouseout is being triggered to UL
-    &:not(:first-child) {
-        margin-left: 0;
-        padding-left: $space * 4;
-    }
+	// Padding coz mouseout is being triggered to UL
+	&:not(:first-child) {
+		margin-left: 0;
+		padding-left: $space * 4;
+	}
 
-    &.active,
-    &:focus {
-        .home-navigation-link { color: $color-main-light; }
-    }
+	&.active,
+	&:focus {
+		.home-navigation-link { color: $color-main-light; }
+	}
 }
 .home-navigation-link { color: lighten($color-text, 60%); }
 
@@ -25,52 +25,52 @@
 .teaserline::before,
 .teaserline-tag { background: #f3f3f3; }
 .strip {
-    position: relative;
-    height: 2px;
-    margin: $size-grid-gutter 0;    
+	position: relative;
+	height: 2px;
+	margin: $size-grid-gutter 0;    
 }
 .navline {
-    position: absolute;
-    height: 100%;
-    background: #d2d9f1;
-    @include transition-with-transform(width, $duration $easing-cubic);
+	position: absolute;
+	height: 100%;
+	background: #d2d9f1;
+	@include transition-with-transform(width, $duration $easing-cubic);
 }
 
 .strip-header { margin-top: .35rem; }
 
 /* ======= Project Showcases ======= */
 .showcases {
-    height: $size-grid-row * 3 + ($size-grid-gutter * 2);
-    line-height: 0;
-    @include perspective(800px);
+	height: $size-grid-row * 3 + ($size-grid-gutter * 2);
+	line-height: 0;
+	@include perspective(800px);
 }
 
 // .showcase components are in components/showcase.scss
 
 /* ======= Teaserline ======= */
 .teaserline {
-    &.bottom { height: 30px; }
-    &.top { height: 145px; }
+	&.bottom { height: 30px; }
+	&.top { height: 145px; }
 }
 
 /* ======= Footer ======= */
 .home-footer {
-    margin-top: $space * 8;
-    font-size: .85rem;
+	margin-top: $space * 8;
+	font-size: .85rem;
 }
 
 .justified {
-    text-align: justify;
-    text-align-last: justify;
+	text-align: justify;
+	text-align-last: justify;
 
-    &::after {
-        content: "";
-        display: inline-block;
-        width: 100%;
-    }
+	&::after {
+		content: "";
+		display: inline-block;
+		width: 100%;
+	}
 }
 
 // Pages off animation when navigating into project
 .pages.off {
-    @include transform(translate3d(0,50%,0)); 
+	@include transform(translate3d(0,50%,0)); 
 }

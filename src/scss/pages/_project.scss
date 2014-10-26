@@ -1,81 +1,81 @@
 /* ======= Base ======= */
 .project {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: auto;
-    height: 100%;
-    
-    &:not(.active) { z-index: -1; }
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow: auto;
+	height: 100%;
+	
+	&:not(.active) { z-index: -1; }
 }
 .project-artwork { position: absolute; }
 
 /* ======= Header ======= */
 $size-project-header: $size-grid-row * 2;
 .project-header {
-    position: relative;
-    height: $size-project-header;
-    overflow: hidden;
-    text-align: center;
-    
-    &.colored::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background: rgba(0,0,0,.08);
-    }
+	position: relative;
+	height: $size-project-header;
+	overflow: hidden;
+	text-align: center;
+	
+	&.colored::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background: rgba(0,0,0,.08);
+	}
 }
 
 .ripple {
-    display: inline-block;
-    width: $size-project-header;
-    height: $size-project-header;
-    border-radius: 100%;
-    @include transform(translate3d(0,30px,0) scale(0));
+	display: inline-block;
+	width: $size-project-header;
+	height: $size-project-header;
+	border-radius: 100%;
+	@include transform(translate3d(0,30px,0) scale(0));
 }
 
 .project-title {
-    position: absolute;
-    bottom: .8em;
-    width: 100%;
-    font-size: 1.3rem;
-    opacity: .6;
+	position: absolute;
+	bottom: .8em;
+	width: 100%;
+	font-size: 1.3rem;
+	opacity: .6;
 }
 
 .back-button {
-    position: absolute;
-    top: $space;
-    left: $space;
-    padding: $space;
-    cursor: pointer;
+	position: absolute;
+	top: $space;
+	left: $space;
+	padding: $space;
+	cursor: pointer;
 
-    &::before {
-        content: "";
-        display: block;
-        width: $size-ui-sprite;
-        height: $size-ui-sprite;
-        background-position: 0 $size-ui-sprite * -1;
-    }
+	&::before {
+		content: "";
+		display: block;
+		width: $size-ui-sprite;
+		height: $size-ui-sprite;
+		background-position: 0 $size-ui-sprite * -1;
+	}
 
-    &:hover,
-    &:focus { @include transform(scale(1.1)); }
+	&:hover,
+	&:focus { @include transform(scale(1.1)); }
 }
 
 /* ======= Content ======= */
 .project-meta {
-    width: 21em;
-    margin: 2rem auto 0;
+	width: 21em;
+	margin: 2rem auto 0;
 
-    dt { width: 3em; }
-    dd { width: 17em; }
+	dt { width: 3em; }
+	dd { width: 17em; }
 }
 
 .project-separator {
-    width: 20px;
-    height: 20px;
-    margin: 6.2rem auto;
+	width: 20px;
+	height: 20px;
+	margin: 6.2rem auto;
 }

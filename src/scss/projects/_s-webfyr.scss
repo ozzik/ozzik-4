@@ -1,51 +1,51 @@
 .sa-webfyr {
-    width: 74px;
-    height: 74px;
+	width: 74px;
+	height: 74px;
 }
 
 .s-webfyr {
-    background-image: image-url("showcases/s-webfyr.png", false, false);
-    background-size: 258px 74px;
+	background-image: image-url("showcases/s-webfyr.png", false, false);
+	background-size: 258px 74px;
 
-    // Elements
-    &.se-flame {
-        top: 16px;
-        left: 18px;
-        width: 38px;
-        height: 43px;
-        background-position: -146px 0;
-        @include transform-origin(0 100% 0);
-    }
+	// Elements
+	&.se-flame {
+		top: 16px;
+		left: 18px;
+		width: 38px;
+		height: 43px;
+		background-position: -146px 0;
+		@include transform-origin(0 100% 0);
+	}
 
-    &.se-wave1 {
-        top: 35px;
-        left: 29px;
-        width: 15px;
-        height: 10px;
-        background-position: -146px -43px;
-    }
-    &.se-wave2 {
-        top: 39px;
-        left: 26px;
-        width: 14px;
-        height: 10px;
-        background-position: -161px -43px;
-    }
-    &.se-wave3 {
-        top: 44px;
-        left: 27px;
-        width: 9px;
-        height: 7px;
-        background-position: -175px -43px;
-    }
+	&.se-wave1 {
+		top: 35px;
+		left: 29px;
+		width: 15px;
+		height: 10px;
+		background-position: -146px -43px;
+	}
+	&.se-wave2 {
+		top: 39px;
+		left: 26px;
+		width: 14px;
+		height: 10px;
+		background-position: -161px -43px;
+	}
+	&.se-wave3 {
+		top: 44px;
+		left: 27px;
+		width: 9px;
+		height: 7px;
+		background-position: -175px -43px;
+	}
 
-    &.se-glare {
-        top: 7px;
-        left: 11px;
-        width: 52px;
-        height: 60px;
-        background-position: -184px 0;
-    }
+	&.se-glare {
+		top: 7px;
+		left: 11px;
+		width: 52px;
+		height: 60px;
+		background-position: -184px 0;
+	}
 }
 
 .i-webfyr { background-position: -238px 0; }

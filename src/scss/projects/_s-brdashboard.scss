@@ -1,67 +1,67 @@
 .sa-brdashboard {
-    width: 124px;
-    height: 88px;
+	width: 124px;
+	height: 88px;
 }
 
 .s-brdashboard {
-    background-image: image-url("showcases/s-brdashboard.png", false, false);
-    background-size: 218px 88px;
+	background-image: image-url("showcases/s-brdashboard.png", false, false);
+	background-size: 218px 88px;
 
-    // Elements
-    &.se-paper {
-        top: 2px;
-        left: 2px;
-        width: 118px;
-        height: 86px;
-        background: #fff;
-    }
-    
-    &.se-title {
-        top: 11px;
-        left: 11px;
-        width: 41px;
-        height: 7px;
-        background-position: -124px 0;
-    }
-    &.se-text {
-        top: 32px;
-        left: 11px;
-        width: 74px;
-        height: 22px;
-        background-position: -124px -7px;
-    }
+	// Elements
+	&.se-paper {
+		top: 2px;
+		left: 2px;
+		width: 118px;
+		height: 86px;
+		background: #fff;
+	}
+	
+	&.se-title {
+		top: 11px;
+		left: 11px;
+		width: 41px;
+		height: 7px;
+		background-position: -124px 0;
+	}
+	&.se-text {
+		top: 32px;
+		left: 11px;
+		width: 74px;
+		height: 22px;
+		background-position: -124px -7px;
+	}
 
-    &.se-line {
-        bottom: 25px;
-        left: 2px;
-        width: 118px;
-        height: 1px;
-        background: #ebebeb;
-    }
-    &.se-more {
-        bottom: 9px;
-        left: 35px;
-        width: 55px;
-        height: 9px;
-        background-position: -124px -29px;
-    }
+	&.se-line {
+		bottom: 25px;
+		left: 2px;
+		width: 118px;
+		height: 1px;
+		background: #ebebeb;
+	}
+	&.se-more {
+		bottom: 9px;
+		left: 35px;
+		width: 55px;
+		height: 9px;
+		background-position: -124px -29px;
+	}
 
-    &.se-badge {
-        top: 27px;
-        right: 2px;
-        width: 24px;
-        height: 26px;
-        background-position: -124px -38px;
-    }
+	&.se-badge {
+		top: 27px;
+		right: 2px;
+		width: 24px;
+		height: 26px;
+		background-position: -124px -38px;
+	}
 }
 
 @include keyframes(brdashboard-badge-in) {
-    0% {
-        opacity: 1;
-        width: 0;
-        @include transform(scale(0.8));
-    }
-    100% { opacity: 1; }
+	0% {
+		opacity: 1;
+		width: 0;
+		@include transform(scale(0.8));
+	}
+	100% { opacity: 1; }
 }
 .animate-brdashboard-badge-in { @include animation(brdashboard-badge-in $duration-art $easing-cubic-rough forwards); }
 

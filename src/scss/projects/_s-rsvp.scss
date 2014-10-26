@@ -1,34 +1,34 @@
 .sa-rsvp {
-    width: 126px;
-    height: 116px;
+	width: 126px;
+	height: 116px;
 }
 
 .s-rsvp {
-    background-image: image-url("showcases/s-rsvp.png", false, false);
-    background-size: 271px 116px;
+	background-image: image-url("showcases/s-rsvp.png", false, false);
+	background-size: 271px 116px;
 
-    // Elements
-    &.se-page {
-        top: 0;
-        width: 125px;
-        height: 85px;
-        background-position: -126px 0;
-    }
+	// Elements
+	&.se-page {
+		top: 0;
+		width: 125px;
+		height: 85px;
+		background-position: -126px 0;
+	}
 
-    &.se-button {
-        bottom: 1px;
-        left: 46px;
-        width: 35px;
-        height: 26px;
-        background-position: -126px -85px;
-    }
-    &.se-checkmark {
-        top: 14px;
-        right: 34px;
-        width: 5px;
-        height: 4px;
-        background-position: -161px -85px;
-    }
+	&.se-button {
+		bottom: 1px;
+		left: 46px;
+		width: 35px;
+		height: 26px;
+		background-position: -126px -85px;
+	}
+	&.se-checkmark {
+		top: 14px;
+		right: 34px;
+		width: 5px;
+		height: 4px;
+		background-position: -161px -85px;
+	}
 }
 
 .i-rsvp { background-position: -251px 0; }
