@@ -4,7 +4,7 @@ var Showcases = {
 	collections: {},
 	activeCollection: null,
 	animatedItems: 0,
-	didChange: false, // Flag for stopping artwork animations once collection was changed
+	killAnimation: false, // Flag for stopping artwork animation handling once collection was changed
 
 	/* === Setup === */
 	setup: function() {
@@ -16,6 +16,8 @@ var Showcases = {
 		if (Showcases.activeCollection === collection) { return; } // Suppression
 
 		// General reset
+		// Stopping previous collection animations while changing (are handled via callbacks which can't be controlled)
+		Showcases.killAnimation = Showcases.activeCollection && Showcases.animatedItems !== Showcases.collections[Showcases.activeCollection].length;
 		Showcases.animatedItems = 0;
 
 		if (!Showcases.activeCollection) { // First collection
@@ -26,8 +28,6 @@ var Showcases = {
 	},
 
 	unload: function(newCollection) {
-		Showcases.didChange = true;
-
 		$(".showcases").addClass("flock-out").find(".showcase-item").addClass("off");
 		$.transitionEnd("transform", document.querySelector(".showcase-item:first-child"), function te_flock_off() {
 			var showcases = $(".showcases");
@@ -157,8 +157,8 @@ var Showcases = {
 
 	animate_item: function() {
 		// Stopping animation once collection was changed
-		if (Showcases.didChange) {
-			Showcases.didChange = false;
+		if (Showcases.killAnimation) {
+			Showcases.killAnimation = false;
 			return;
 		}
 
@@ -175,6 +175,12 @@ var Showcases = {
 
 			$(stepData.e).addClass("animate-" + stepData.animation);
 			$.animationEnd(stepData.waitFor, stepData.eLen, function te_showcase_art_step() {
+				// Stopping animation once collection was changed (could also be called from here)
+				if (Showcases.killAnimation) {
+					Showcases.killAnimation = false;
+					return;
+				}
+
 				// Continuing to next step
 				i++;
 				if (i !== steps.length) {
