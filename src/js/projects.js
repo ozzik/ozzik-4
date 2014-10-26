@@ -104,8 +104,14 @@ var Projects = {
 				Projects.eArt.translate(Projects.artData.newX, Projects.artData.newY);
 				setTimeout(function se_project_content_reveal() {
 					ripple.transform("translate3d(0,30px,0) scale(5.2)");
-					Projects.e.find(".project-title, .project-meta, .project-separator, .project-content, .back-button").addClass("fadable").removeClass("transparent");
+					Projects.e.find(".project-title, .project-meta, .project-content, .back-button").addClass("fadable").removeClass("transparent");
 					
+					// Switching back button's transition for it to bubble on hover
+					var backButton = Projects.e.find(".back-button");
+					$.transitionEnd("opacity", backButton[0], function te_back_button_fade() {
+						backButton.removeClass("fadable");
+					});
+
 					setTimeout(function se_project_color() {
 						Projects.e.find(".project-header").addClass("colored");
 					}, 200);
@@ -119,7 +125,6 @@ var Projects = {
 	set_project_page_content: function(data) {
 		var title = Projects.e[0].querySelector(".project-title"),
 			meta = Projects.e[0].querySelector(".project-meta"),
-			separator = Projects.e[0].querySelector(".project-separator"),
 			content = Projects.e[0].querySelector(".project-content"),
 			metaHTML = "";
 
@@ -131,19 +136,37 @@ var Projects = {
 		title.innerHTML = data.name;
 		meta.innerHTML = metaHTML;
 
-		separator.className = "project-separator s-" + data.id + " i-" + data.id;
-
-		content.innerHTML = data.content;
+		content.innerHTML = Projects.generate_synopsis(data.id, data.synopsis) + data.content;
 		content.className = "project-content p-" + data.id + " c-" + data.color;
 
-		$([title, meta, separator, content]).addClass("transparent");
+		$([title, meta, content]).addClass("transparent");
+	},
+
+	generate_synopsis: function(id, synopsis) {
+		var html = '<div class="project-synopsis centered">';
+
+		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';
+
+		html += '<h2>In two sentences & one hipsta button</h2>';
+		html += '<p>' + synopsis.text + '</p>';
+		
+		// Button
+		html += (synopsis.link) ? '<a href="' + synopsis.link.url + '" target="_blank"' : '<div';
+		html += ' class="project-button custom transformable ' + (!synopsis.link ? ' dead' : '') + '">';
+		html += (synopsis.link) ? _.rephrase(synopsis.link.caption) : '';
+		html += '</' + (synopsis.link ? 'a' : 'div') + '>';
+
+		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';
+		html += '</div>';
+
+		return html;
 	},
 
 	unload: function() {
 		// Prepping page + UI
-		_.animate_scroll(document.body);
+		_.animate_scroll(Projects.e[0], true);
 
-		Projects.e.find(".project-title, .project-meta, .project-separator, .project-content, .back-button").addClass("transparent");
+		Projects.e.find(".project-title, .project-meta, .project-content, .back-button").addClass("transparent");
 
 		Projects.e.find(".project-header").removeClass("colored").find(".ripple").addClass("transformable-rough").removeClass("transformable-toned").transform("");
 

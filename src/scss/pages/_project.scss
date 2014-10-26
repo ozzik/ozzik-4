@@ -47,10 +47,10 @@ $size-project-header: $size-grid-row * 2;
 }
 
 .back-button {
-	position: absolute;
-	top: $space;
-	left: $space;
-	padding: $space;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 1em 2em 2em 1em;
 	cursor: pointer;
 
 	&::before {
@@ -62,7 +62,8 @@ $size-project-header: $size-grid-row * 2;
 	}
 
 	&:hover,
-	&:focus { @include transform(scale(1.1)); }
+	&:focus { @include transform(translate3d(-5px,0,0)); }
+	&:active { @include transform(translate3d(-5px,0,0) scale(.9)); }
 }
 
 /* ======= Content ======= */
@@ -74,8 +75,28 @@ $size-project-header: $size-grid-row * 2;
 	dd { width: 17em; }
 }
 
+$space-synopsis: 4.5rem;
+.project-synopsis {
+	margin: $space-synopsis auto;
+}
 .project-separator {
+	display: block;
 	width: 20px;
 	height: 20px;
-	margin: 6.2rem auto;
+	margin: 0 auto;
+
+	&:first-child { margin-bottom: $space-synopsis / 2; }
+	&:last-child { margin-top: $space-synopsis / 2; }
+}
+
+.project-button {
+	display: inline-block;
+	padding: 0.4rem 1rem;
+	border-radius: 999rem;
+	border: 2px solid;
+	color: $color-main;
+
+	&:hover,
+	&:focus { @include transform(scale(1.03) rotateZ(-.5deg)); }
+	&:active { @include transform(rotateZ(-.8deg)); }
 }

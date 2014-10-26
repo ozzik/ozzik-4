@@ -17,7 +17,8 @@ textarea,
 .titlelike,
 h1,
 h2,
-.teaserline-tag {
+.teaserline-tag,
+.project-button {
 	font-family: 'Cabin', serif;
 	font-weight: bold;
 	font-size: .95rem;
@@ -153,6 +154,14 @@ a {
 		color: $color-main-light;
 		border-color: lighten($color-main-light, 20%);
 	}
+}
+
+.bubblable {
+	@extend .transformable;
+	
+	&:hover,
+	&:focus { @include transform(translate3d(0,-5px,0)); }
+	&:active { @include transform(translate3d(0,-5px,0) scale(.9)); }
 }
 
 /* ======= Styles ======= */

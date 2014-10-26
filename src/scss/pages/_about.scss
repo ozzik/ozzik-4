@@ -22,9 +22,6 @@
 /* ======= Contact Links ======= */
 .contact-item {
 	&:not(:first-child) { margin-left: 68px; }
-
-	&:hover,
-	&:active { @include transform(translate3d(0,-5px,0)); }
 }
 .contact-link {
 	display: block;
