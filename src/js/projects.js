@@ -157,7 +157,7 @@ var Projects = {
 		// Button
 		html += (synopsis.link) ? '<a href="' + synopsis.link.url + '" target="_blank"' : '<div';
 		html += ' class="project-button custom transformable ' + (!synopsis.link ? ' dead' : '') + '">';
-		html += (synopsis.link) ? _.rephrase(synopsis.link.caption) : _.phrases.dead;
+		html += '<span class="button-caption">' + (synopsis.link ? _.rephrase(synopsis.link.caption) : _.phrases.dead) + '</span>';
 		html += '</' + (synopsis.link ? 'a' : 'div') + '>';
 
 		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';
