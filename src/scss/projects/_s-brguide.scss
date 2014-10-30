@@ -53,14 +53,6 @@
 	}
 }
 
-@include keyframes(brguide-paper-in) {
-	0% {
-		@include transform(translate3d(0,-20px,0) scale(1.1));
-	}
-	100% { opacity: 1; }
-}
-.animate-brguide-paper-in { @include animation(brguide-paper-in $duration-art * 2 $easing-cubic forwards); }
-
 @include keyframes(brguide-ribbon-h-in) {
 	0% { @include transform(scaleX(0)); }
 	100% { opacity: 1; }

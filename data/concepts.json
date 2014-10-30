@@ -1,28 +1,22 @@
 {
 	"items": [
 		{
-			"id": "doughjs",
-			"name": "Dough.js",
+			"id": "ios710",
+			"name": "iOS 7 10.10",
 			"art": {
-				"elements": [ "pin", "pin-shadow", "dough", "dough-shadow" ],
+				"elements": [ "messages-base", "messages-bubble d2", "reminders-base", "reminders-paper2 d2", "reminders-paper3 d4", "reminders-dot", "mail-base", [ "mail-wrapper", "mail-cloud1", "mail-cloud2 d2" ], "mail-frame", [ "mail-wrapper", "mail-stamp" ]  ],
 				"animation": [
-					[ "pin" ],
-					[ "dough", "dough-in" ],
-					[ [ "pin-shadow", "dough-shadow" ] ]
+					[ [ "mail-base", "mail-frame" ] ],
+					[ [ "mail-cloud1", "mail-cloud2" ], "ios710-cloud-in" ],
+					[ "mail-stamp", "ios710-stamp-in" ],
+					[ [ "reminders-base", "reminders-paper2", "reminders-paper3" ], "paper-in" ],
+					[ "reminders-dot" ],
+					[ [ "messages-base", "messages-bubble" ] ]
 				]
 			}
 		}
 	],
 	"colors": {
-		"doughjs": "f8f3d9",
-		"webfyr": "fae1d2",
-		"bucketlist": "faf7d2",
-		"yo": "e4cbee",
-		"browsi": "d2e6fa",
-		"browsi-website": "e6edf5",
-		"browsi-v1": "cae4ed",
-		"sptc": "eaedca",
-		"whenbus": "edcad5",
-		"rsvp": "caeaed"
+		"ios710": "d2b8e7"
 	}
 }
