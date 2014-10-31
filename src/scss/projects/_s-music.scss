@@ -1,0 +1,70 @@
+.sa-music {
+	width: 132px;
+	height: 71px;
+}
+
+.s-music {
+	background-image: image-url("showcases/s-music.png", false, false);
+	background-size: 301px 96px;
+
+	// Elements
+	&.se-wrapper {
+		top: 1px;
+		width: 130px;
+		height: 71px;
+		border-radius: 2px;
+		border: 1px solid #e0b97e;
+		background: #343434;
+		overflow: hidden;
+	}
+
+	&.se-track,
+	&.se-back {
+		width: 130px;
+		height: 24px;
+	}
+
+	&.se-back { background-position: -132px 0; }
+	&.i2 { top: 24px; }
+	&.i3 { top: 48px; }
+
+	&.se-track.i1 { background-position: -132px -24px; }
+	&.se-track.i2 {
+		background-position: -132px -48px;
+
+		&.animate-finale { @include animation(music-track-finale $duration .1s $easing-cubic-rough forwards); }
+	}
+	&.se-track.i3 { background-position: -132px -72px; }
+
+	&.se-glow {
+		top: 28px;
+		left: 3px;
+		width: 19px;
+		height: 19px;
+		background-position: -262px 0;
+
+		&.animate-finale { @include animation(fade-in $duration .1s $easing-cubic-rough forwards); }
+	}
+}
+
+@include keyframes(music-track-in) {
+	0% {
+		opacity: 1;
+		@include transform(translate3d(-100%,0,0));
+	}
+
+	100% { opacity: 1;@include transform(translate3d(0,0,0)); }
+}
+.animate-music-track-in { @include animation(music-track-in $duration $easing-cubic-rough forwards); }
+
+@include keyframes(music-track-finale) {
+	0% {
+		opacity: 1;
+		@include transform(translate3d(0,0,0));
+	}
+
+	100% {
+		opacity: 1;
+		@include transform(translate3d(24px,0,0));
+	}
+}

@@ -1,10 +1,35 @@
 {
 	"items": [
 		{
+			"id": "music",
+			"name": "iOS Music App",
+			"art": {
+				"elements": [ [ "wrapper", "back i1 d1", "back i2 d2", "back i3 d3", "glow", "track i1", "track i2 d1", "track i3 d2" ] ],
+				"animation": [
+					[ [ "wrapper", "back" ] ],
+					[ "track", "music-track-in" ],
+					[ [ "track.i2", "glow" ], "finale opaque", null, "fade-in" ]
+				]
+			}
+		},
+		{
+			"id": "bricon",
+			"name": "Brow.si App Icon",
+			"art": {
+				"elements": [ "base", "frame", "globe", "drawer" ],
+				"animation": [
+					[ "base" ],
+					[ "frame" ],
+					[ [ "drawer", "globe" ], "final-in", null, "bricon-globe-in" ]
+				]
+			},
+			"color": "browsi-v1"
+		},
+		{
 			"id": "ios710",
 			"name": "iOS 7 10.10",
 			"art": {
-				"elements": [ "messages-base", "messages-bubble d2", "reminders-base", "reminders-paper2 d2", "reminders-paper3 d4", "reminders-dot", "mail-base", [ "mail-wrapper", "mail-cloud1", "mail-cloud2 d2" ], "mail-frame", [ "mail-wrapper", "mail-stamp" ]  ],
+				"elements": [ "messages-base", "messages-bubble d2", "reminders-base", "reminders-paper2 d2", "reminders-paper3 d4", "reminders-dot", "mail-base", [ "mail-wrapper", "mail-cloud1", "mail-cloud2 d2" ], "mail-frame", [ "mail-wrapper", "mail-stamp" ] ],
 				"animation": [
 					[ [ "mail-base", "mail-frame" ] ],
 					[ [ "mail-cloud1", "mail-cloud2" ], "ios710-cloud-in" ],
@@ -17,6 +42,8 @@
 		}
 	],
 	"colors": {
-		"ios710": "d2b8e7"
+		"ios710": "d2b8e7",
+		"browsi-v1": "cae4ed",
+		"music": "f7d49e"
 	}
 }
