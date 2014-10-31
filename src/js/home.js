@@ -7,7 +7,7 @@ var Home = {};
 		eActiveItem: null,
 		eHighligtedItem: null,
 
-		setup: function() {
+		setup: function(collection) {
 			Navline.eHeader = $(".home-navigation");
 			Navline.e = $(".navline");
 
@@ -19,7 +19,7 @@ var Home = {};
 			Navline.eHeader.on("click", Navline.handle_click);
 
 			// Auto selecting first item // TODO: URL-aware
-			Navline.select(Navline.eHeader[0].querySelector(".home-navigation-link"));
+			Navline.handle_click({ target: Navline.eHeader[0].querySelector(".home-navigation-link[data-for='" + collection + "']") });
 		},
 
 		/* Being called also via resize */
@@ -61,7 +61,7 @@ var Home = {};
 		}
 	}
 
-	Home.setup = function() {
-		Navline.setup();
+	Home.setup = function(collection) {
+		Navline.setup(collection);
 	};
 })();

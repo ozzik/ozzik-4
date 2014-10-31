@@ -6,13 +6,11 @@ var Main = {
 	},
 
 	init: function() {
-		Home.setup();
+		Home.setup("products");
 		Showcases.setup();
 		Projects.setup();
 
 		Main.hook_events();
-
-		Showcases.load("products");
 	},
 
 	hook_events: function() {
