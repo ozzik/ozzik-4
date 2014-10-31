@@ -1,0 +1,16 @@
+.sa-itunes {
+	width: 121px;
+	height: 46px;
+}
+
+.s-itunes {
+	background-image: image-url("showcases/s-itunes.png", false, false);
+	background-size: 261px 46px;
+
+	// Elements
+	&.se-ui {
+		width: 120px;
+		height: 45px;
+		background-position: -121px 0;
+	}
+}

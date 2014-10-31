@@ -1,0 +1,24 @@
+.sa-ios8kit {
+	width: 120px;
+	height: 101px;
+}
+
+.s-ios8kit {
+	background-image: image-url("showcases/s-ios8kit.png", false, false);
+	background-size: 283px 101px;
+
+	// Elements
+	&.se-ui {
+		width: 120px;
+		height: 101px;
+		background-position: -120px 0;
+	}
+
+	&.se-badge {
+		left: 48px;
+		bottom: -10px;
+		width: 23px;
+		height: 23px;
+		background-position: -240px 0;
+	}
+}
