@@ -33,6 +33,9 @@
 		background-position: -132px -48px;
 
 		&.animate-finale { @include animation(music-track-finale $duration .1s $easing-cubic-rough forwards); }
+
+		// Post state
+		.post & { @include transform(translate3d(24px,0,0)); }
 	}
 	&.se-track.i3 { background-position: -132px -72px; }
 

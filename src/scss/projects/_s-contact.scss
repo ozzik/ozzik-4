@@ -21,6 +21,9 @@
 		width: 87px;
 		height: 79px;
 		background-position: -97px 0;
+
+		// Post state
+		.post & { @include transform(translate3d(0,24px,0)); }
 	}
 
 	&.se-mouth-back {
