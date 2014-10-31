@@ -25,6 +25,14 @@ var Projects = {
 		project = Showcases.collections[Showcases.activeCollection][project];
 		item = item || document.querySelector(".showcase-item[data-id='" + project.id + "']");
 
+		// Pushing history
+		Home.push_history({
+			view: "project",
+			meta: project.id,
+			transition: Home._NAVIGATION_PUSH,
+			url: Showcases.activeCollection + "/" + project.id,
+		});
+
 		// Marking project as hasn't been loaded yet
 		Projects.did.fetch = false;
 		Projects.did.animate = false;
