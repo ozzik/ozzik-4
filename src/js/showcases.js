@@ -58,7 +58,8 @@ var Showcases = {
 
 	handle_collection: function(data) {
 		// Creating styles + saving new data
-		if (!Showcases.collections[Showcases.activeCollection]) {
+		var isNew = !Showcases.collections[Showcases.activeCollection];
+		if (isNew) {
 			Showcases.create_styles(data.colors);
 			Showcases.collections[Showcases.activeCollection] = data.items; // Saving
 		}
@@ -69,15 +70,31 @@ var Showcases = {
 		// Creating showcase items
 		Showcases.create_collection(Showcases.activeCollection, data.items);
 
-		// Delayed coz of HTML injection pipline, starting intro animations
-		setTimeout(function se_collection_injected() {
-			$(".showcases").addClass("flock").find(".showcase-item").removeClass("off");
-			$.transitionEnd("transform", document.querySelector(".showcase-item:last-child"), function te_flock() {
-				$(".showcases").removeClass("flock");
+		// Fetching assets for appropriate callback
+		if (isNew) {
+			Showcases.loadFn = Showcases.reveal_collection;
+			Showcases.fetch_collection_assets(data.items);
+		} else {
+			setTimeout(Showcases.reveal_collection, 100);
+		}
+	},
 
-				setTimeout(Showcases.animate_item, 100);
-			});
-		}, 100);
+	fetch_collection_assets: function(items) {
+		var img;
+
+		Showcases.requiredLoadItems = items.length;
+
+		for (var i = 0; i < items.length; i++) {
+			img = new Image();
+			img.src = _.project_showcase_url(items[i].id + ".png");
+			img.onload = function(e) {
+				Showcases.requiredLoadItems--;
+
+				if (!Showcases.requiredLoadItems) {
+					Showcases.loadFn && Showcases.loadFn();
+				}
+			}
+		}
 	},
 
 	create_styles: function(colors) {
@@ -174,6 +191,20 @@ var Showcases = {
 		}
 
 		return html;
+	},
+
+	/* === Showcases intro === */
+	reveal_collection: function() {
+		$("body, .overlays").removeClass("blocked active");
+
+		setTimeout(function se_collection_ready_for_reveal() {
+			$(".showcases").addClass("flock").find(".showcase-item").removeClass("off");
+			$.transitionEnd("transform", document.querySelector(".showcase-item:last-child"), function te_flock() {
+				$(".showcases").removeClass("flock");
+
+				setTimeout(Showcases.animate_item, 100);
+			});
+		}, 100);
 	},
 
 	animate_item: function() {

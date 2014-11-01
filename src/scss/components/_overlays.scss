@@ -1,0 +1,19 @@
+.overlays,
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.overlays {
+    &:not(.active) {
+        z-index: -1;
+        opacity: 0;
+    }
+}
+
+/* Loading Overlay */
+.overlay-loading {
+    background: #fff;
+}

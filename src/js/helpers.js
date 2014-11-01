@@ -19,8 +19,14 @@ var _ = {
 	style_url: function(str) {
 		return _.url("assets/css/" + str);
 	},
+	image_url: function(str) {
+		return _.url("assets/images/" + str);
+	},
 	project_style_url: function(str) {
 		return _.style_url("projects/" + str);
+	},
+	project_showcase_url: function(str) {
+		return _.image_url("showcases/s-" + str);
 	},
 
 	/* RequestAnimationFrame-based scroll from (https://gist.github.com/james2doyle/5694700) */

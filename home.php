@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="assets/css/web.css" />
 	<style id="styleRuntime"></style>
 </head>
-<body>
+<body class="blocked">
 	<div class="pages transformable-rough-slow" data-page="home">
 		<!-- Projects -->
 		<a name="projects"></a>
@@ -81,6 +81,10 @@
 			<dl class="project-meta"></dl>
 			<div class="project-content"></div>
 		</div>
+	</div>
+	<!-- Overlay's -->
+	<div class="overlays active">
+		<div class="overlay overlay-loading">Loading</div>
 	</div>
 	<!-- Non-markup thingies -->
 	<script type="text/javascript">
