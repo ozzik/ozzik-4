@@ -6,7 +6,7 @@ var Main = {
 	},
 
 	init: function() {
-		Home.setup("products");
+		Home.setup();
 		Showcases.setup();
 		Projects.setup();
 

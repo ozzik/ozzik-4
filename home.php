@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<base url="http://10.0.0.9/ozzik4/" />
+	<base href="<?php echo $_BASE_URL; ?>" />
 	<title>Ozzik4</title>
 	<link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Cabin:400,600' rel='stylesheet' type='text/css'>
@@ -83,7 +83,13 @@
 		</div>
 	</div>
 	<!-- Non-markup thingies -->
-	<script type="text/javascript">var _BASE_URL = "http://10.0.0.9/ozzik4/";</script>
+	<script type="text/javascript">
+		var _BASE_URL = "<?php echo $_BASE_URL; ?>",
+			_landingData = {
+				page: "<?php echo $_page; ?>",
+				meta: "<?php echo $_meta; ?>",
+			};
+	</script>
 	<script type="text/javascript" src="assets/js/web.js"></script>
 </body>
 </html>

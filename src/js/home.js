@@ -43,9 +43,8 @@ var Home = {};
 		},
 
 		handle_click: function(e, isFirst) {
-			if (!e.target || e.target.nodeName !== "A") { return; } // Suppression
+			if (!e.target || e.target.nodeName !== "A" || Navline.eActiveItem === e.target) { return; } // Suppression
 
-			console.log(e.stopPropagation);
 			e.stopPropagation && e.stopPropagation();
 
 			var collectionName = e.target.getAttribute("data-for");
@@ -55,7 +54,7 @@ var Home = {};
 				view: "home",
 				meta: collectionName,
 				transition: Home._NAVIGATION_SWITCH,
-				url: collectionName
+				url: (collectionName === "products") ? _.url("") : collectionName
 			});
 
 			Navline.select(e.target);
@@ -77,20 +76,21 @@ var Home = {};
 		}
 	};
 
-	Home.setup = function(collection) {
-		Navline.setup(collection);
+	Home.setup = function() {
+		// Detecting landing page
+		Home.landingView = {
+			view: _landingData.page,
+			meta: _landingData.meta,
+			url: ""
+		};
+
+		Navline.setup(Home.landingView.meta);
 	};
 
 	// Navigation system
 	Home._NAVIGATION_PUSH = 1;
 	Home._NAVIGATION_SWITCH = 2;
 	Home.navigationTransitions = [];
-
-	Home.landingView = {
-		view: "home",
-		meta: "products",
-		url: ""
-	};
 
 	Home.push_history = function(data) {
 		console.log("=== push", data);
