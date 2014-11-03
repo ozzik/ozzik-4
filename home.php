@@ -91,7 +91,7 @@
 		var _BASE_URL = "<?php echo $_BASE_URL; ?>",
 			_landingData = {
 				page: "<?php echo $_page; ?>",
-				meta: "<?php echo $_meta; ?>",
+				meta: <?php echo $_meta; ?>,
 			};
 	</script>
 	<script type="text/javascript" src="assets/js/web.js"></script>

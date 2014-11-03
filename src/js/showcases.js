@@ -2,6 +2,7 @@
 
 var Showcases = {
 	collections: {},
+	catalog: {},
 	activeCollection: null,
 	animatedItems: 0,
 	killAnimation: false, // Flag for stopping artwork animation handling once collection was changed
@@ -12,7 +13,7 @@ var Showcases = {
 	},
 
 	/* === Loading === */
-	load: function(collection) {
+	load: function(collection, isProjectLandingPage) {
 		if (Showcases.activeCollection === collection) { return; } // Suppression
 
 		// General reset
@@ -21,7 +22,7 @@ var Showcases = {
 		Showcases.animatedItems = 0;
 
 		if (!Showcases.activeCollection) { // First collection
-			Showcases.fetch(collection);
+			Showcases.fetch(collection, isProjectLandingPage);
 		} else {
 			Showcases.unload(collection); // Load is called via animation callback
 		}
@@ -42,26 +43,42 @@ var Showcases = {
 		});
 	},
 
-	fetch: function(collection) {
+	fetch: function(collection, isProjectLandingPage) {
 		Showcases.activeCollection = collection;
 
 		// Requesting *new* collection data
 		if (Showcases.collections[Showcases.activeCollection] === undefined) {
 			$.get({
 				url: _.data_url(collection + ".json"),
-				success: Showcases.handle_collection
+				success: function cb_collection(data) {
+					Showcases.handle_collection(data, isProjectLandingPage);
+				}
 			});            
 		} else {
 			Showcases.handle_collection({ items: Showcases.collections[Showcases.activeCollection] });
 		}
 	},
 
-	handle_collection: function(data) {
+	handle_collection: function(data, isProjectLandingPage) {
 		// Creating styles + saving new data
 		var isNew = !Showcases.collections[Showcases.activeCollection];
 		if (isNew) {
 			Showcases.create_styles(data.colors);
 			Showcases.collections[Showcases.activeCollection] = data.items; // Saving
+
+			// Generating catalog
+			for (var i = 0; i < data.items.length; i++) {
+				Showcases.catalog[data.items[i].id] = i;
+			}
+		}
+
+		// Suppression when collection was loaded only for project page (direct link)
+		if (isProjectLandingPage) {
+			Showcases.collectionStyleReadyFn = function load_project_after_collection_style() {
+				Projects.load(Showcases.catalog[Home.landingView.meta.item]);
+			};
+
+			return;
 		}
 
 		// Picking up a randomized enterance order for collection items
@@ -115,6 +132,9 @@ var Showcases = {
 		style.rel = "stylesheet";
 		style.type = "text/css";
 		style.href = _.project_style_url(Showcases.activeCollection + ".css");
+		style.addEventListener("load", function onload_collection_style() {
+			Showcases.collectionStyleReadyFn && Showcases.collectionStyleReadyFn();
+		});;
 		
 		document.head.appendChild(style);
 	},

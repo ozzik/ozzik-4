@@ -11,6 +11,7 @@ var Projects = {
 		animate: false
 	},
 	activeItem: null,
+	isLandingPage: false,
 
 	/* Setup */
 	setup: function() {
@@ -21,6 +22,8 @@ var Projects = {
 	},
 
 	load: function(project, item) {
+		Projects.isLandingPage = Home.landingView.view === "project";
+
 		// Synthesizing args
 		project = Showcases.collections[Showcases.activeCollection][project];
 		item = item || document.querySelector(".showcase-item[data-id='" + project.id + "']");
@@ -55,30 +58,38 @@ var Projects = {
 	},
 
 	animate_into_project: function(project, item) {
-		var realArt = item.querySelector(".showcase-art");
+		var realArt = (!Projects.isLandingPage) ? item.querySelector(".showcase-art") : null;
+
+		// Duplicating artwork (doing that before so we could fetch its dimensions on initial load)
+		Projects.eArt[0].className = "project-artwork showcase-art transformable-rough post sa-" + project.id;
+		Projects.eArt[0].innerHTML = Showcases.generate_item_artwork(project);
 
 		// Fetching expensive things
-		Projects.artData.x = realArt.offsetLeft;
-		Projects.artData.y = realArt.offsetTop;
-		Projects.artData.width = realArt.offsetWidth;
-		Projects.artData.height = realArt.offsetHeight;
+		Projects.artData.width = realArt ? realArt.offsetWidth : Projects.eArt[0].offsetWidth;
+		Projects.artData.height = realArt ? realArt.offsetHeight : Projects.eArt[0].offsetHeight;
+		Projects.artData.x = realArt ? realArt.offsetLeft : ((window.innerWidth - Projects.artData.width) / 2);
+		Projects.artData.y = realArt ? realArt.offsetTop : ((window.innerHeight - Projects.artData.height) / 2);;
 
 		// Adjusting scroll position + blocking page interactions
 		_.animate_scroll(document.body);
 		$(document.body).addClass("blocked");
 		Projects.e.addClass("active");
-
 		$(".pages").addClass("off");
+		$(".overlays").removeClass("blocked active"); // Removing any loading screen (via initial load)
 
-		// Duplicating artwork + positioning
-		Projects.eArt[0].className = "project-artwork showcase-art transformable-rough post sa-" + project.id;
-		Projects.eArt[0].innerHTML = Showcases.generate_item_artwork(project);
+		// Positioning dummy artwork according to original (on initial load: to screen center)
 		Projects.eArt[0].style.left = Projects.artData.x + "px";
 		Projects.eArt[0].style.top = Projects.artData.y + "px";
 
 		// Hiding showcase page + real artwork
-		$(realArt).addClass("transparent");
-		Projects.eArt.find(".se-sketch").addClass("widthable revert-ready").removeClass("fadable");
+		if (!Projects.isLandingPage) {
+			$(realArt).addClass("transparent");
+		}
+		// Pushing transition change to a different pipeline so revert-ready wouldn't be transitioned
+		var sketch = Projects.eArt.find(".se-sketch").addClass("widthable revert-ready");
+		setTimeout(function se_sketch_ready_for_revert() {
+			sketch.removeClass("fadable");
+		}, 0);
 
 		Projects.eArt.transform("scale(" + Projects.ART_DEPTH + ")");
 
@@ -175,6 +186,15 @@ var Projects = {
 	},
 
 	unload: function() {
+		// Initial load behavior
+		if (Projects.isLandingPage) {
+			var collectionName = Home.landingView.meta.collection;
+
+			window.location.href = _.url((collectionName === "products") ? "" : collectionName);
+
+			return;
+		}
+
 		// Prepping page + UI
 		_.animate_scroll(Projects.e[0], true);
 

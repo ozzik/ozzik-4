@@ -7,7 +7,7 @@ var Home = {};
 		eActiveItem: null,
 		eHighligtedItem: null,
 
-		setup: function(collection) {
+		setup: function() {
 			Navline.eHeader = $(".home-navigation");
 			Navline.e = $(".navline");
 
@@ -20,9 +20,6 @@ var Home = {};
 			Navline.eHeader.find("a").on("click", function(e) {
 				e.preventDefault();
 			});
-
-			// Auto selecting first item // TODO: URL-aware
-			Navline.handle_click({ target: Navline.eHeader[0].querySelector(".home-navigation-link[data-for='" + collection + "']") }, true);
 		},
 
 		/* Being called also via resize */
@@ -84,7 +81,17 @@ var Home = {};
 			url: ""
 		};
 
-		Navline.setup(Home.landingView.meta);
+		// Setting up navigation
+		Navline.setup();
+
+		// Loading page / collection
+		if (Home.landingView.view === "home") {
+			Navline.handle_click({ target: Navline.eHeader[0].querySelector(".home-navigation-link[data-for='" + Home.landingView.meta + "']") }, true);
+		} else {
+			// Loading collection, and only then loading project itself
+			Showcases.load(Home.landingView.meta.collection, true);
+			$(".pages").addClass("off"); // Hiding pages
+		}
 	};
 
 	// Navigation system
