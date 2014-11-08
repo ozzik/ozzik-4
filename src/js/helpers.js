@@ -22,6 +22,9 @@ var _ = {
 	image_url: function(str) {
 		return _.url("assets/images/" + str);
 	},
+	collection_style_url: function(str) {
+		return _.style_url("showcases/" + str);
+	},
 	project_style_url: function(str) {
 		return _.style_url("projects/" + str);
 	},

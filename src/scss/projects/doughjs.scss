@@ -1,0 +1,17 @@
+@import "shared/vars";
+
+$project: "doughjs";
+$project-path: "projects/" + $project + "/";
+
+.doughjs-tldr {
+    width: 770px;
+    height: 867px;
+    margin-left: $size-grid-column * -1;
+    background: image-url($project-path + "tldr.png", false, false) no-repeat;
+    background-size: 770px 867px;
+}
+
+// Retina
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .doughjs-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+}

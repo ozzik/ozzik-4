@@ -160,6 +160,13 @@ var Projects = {
 		content.innerHTML = Projects.generate_synopsis(data.id, data.synopsis) + data.content;
 		content.className = "project-content p-" + data.id + " c-" + data.color;
 
+		// Loading style
+		style = document.createElement("link");
+		style.rel = "stylesheet";
+		style.type = "text/css";
+		style.href = _.project_style_url(data.id + ".css");
+		document.head.appendChild(style);
+
 		$([title, meta, content]).addClass("transparent");
 	},
 
@@ -170,7 +177,8 @@ var Projects = {
 
 		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';
 
-		html += '<h2>In one sentence & one hipsta button</h2>';
+		html += '<h2>TL;DR</h2>';
+		html += '<figure class="' + id + '-tldr"></figure>';
 		html += '<p>' + synopsis.text + '</p>';
 		
 		// Button

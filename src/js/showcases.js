@@ -131,10 +131,10 @@ var Showcases = {
 		style = document.createElement("link");
 		style.rel = "stylesheet";
 		style.type = "text/css";
-		style.href = _.project_style_url(Showcases.activeCollection + ".css");
+		style.href = _.collection_style_url(Showcases.activeCollection + ".css");
 		style.addEventListener("load", function onload_collection_style() {
 			Showcases.collectionStyleReadyFn && Showcases.collectionStyleReadyFn();
-		});;
+		});
 		
 		document.head.appendChild(style);
 	},
