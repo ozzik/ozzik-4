@@ -121,7 +121,7 @@ var Showcases = {
 		for (project in colors) {
 			style += ".c-" + project + "-main { background-color: #" + colors[project] + "; }";
 			style += ".showcase-item.c-" + project + "-main { border-color: #" + _.adjust_brightness(colors[project], -4) + "; }";
-			style += ".c-" + project + " h2,h3,h4 { color: #" + _.adjust_brightness(colors[project], -30) + "; }";
+			style += ".c-" + project + " h2,.c-" + project + " h3,.c-" + project + " h4 { color: #" + _.adjust_brightness(colors[project], -30) + "; }";
 			style += ".c-" + project + " .project-button { color: " + _.adjust_saturation(_.adjust_brightness(colors[project], -30), 300) + "; }";
 		}
 

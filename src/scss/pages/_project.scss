@@ -118,3 +118,39 @@ $space-synopsis: 4.5rem;
 		&:active { @include transform(rotateZ(-.8deg)); }
 	}
 }
+
+/* ======= Content ======= */
+.project-content {
+	h2 {
+		margin-top: 2em;
+		font-size: 1.1rem;
+	}
+	h3 { margin-top: 1.5em; }
+
+	h2,
+	h3 {
+		margin-bottom: 0;
+	
+		& + p { margin-top: .3rem; }
+	}
+
+	code {
+		font-family: Menlo;
+		background: #f0f0f0;
+		padding: .1rem .3rem;
+		border-radius: 2px;
+		font-size: .9em;
+		color: #444;
+	}
+	.code-snippet { display: block; }
+
+	$i: 5;
+	$section-width: ($size-grid-column / 2 * $i) + ($size-grid-gutter * ($i - 1));
+
+	.project-section {
+		width: $section-width;
+		margin: 2rem auto;
+	}
+	.project-column { width: ($section-width - $size-grid-gutter) / 2; }
+	.project-figure { margin: .5rem auto; }
+}

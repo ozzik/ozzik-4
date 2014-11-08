@@ -173,7 +173,7 @@ var Projects = {
 	generate_synopsis: function(id, synopsis) {
 		if (!synopsis) { return ""; }
 
-		var html = '<div class="project-synopsis centered">';
+		var html = '<div class="project-synopsis column-2 centered">';
 
 		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';
 

@@ -77,8 +77,8 @@
 			<h1 class="project-title"></h1>
 		</div>
 		<div class="project-artwork"></div>
-		<div class="project-body column-2 wrapper">
-			<dl class="project-meta"></dl>
+		<div class="project-body">
+			<dl class="project-meta column-515 wrapper"></dl>
 			<div class="project-content"></div>
 		</div>
 	</div>
