@@ -1,0 +1,17 @@
+@import "shared/vars";
+
+$project: "yo";
+$project-path: "projects/" + $project + "/";
+
+.yo-tldr {
+    width: 765px;
+    height: 511px;
+    margin-left: $size-grid-column * -1;
+    background: image-url($project-path + "tldr.png", false, false) no-repeat;
+    background-size: 765px 511px;
+}
+
+// Retina
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .yo-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+}

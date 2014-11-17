@@ -1,0 +1,17 @@
+@import "shared/vars";
+
+$project: "bremail";
+$project-path: "projects/" + $project + "/";
+
+.bremail-tldr {
+    width: 770px;
+    height: 1637px;
+    margin-left: $size-grid-column * -1;
+    background: image-url($project-path + "tldr.png", false, false) no-repeat;
+    background-size: 770px 1637px;
+}
+
+// Retina
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .bremail-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+}

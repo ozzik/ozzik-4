@@ -1,0 +1,17 @@
+@import "shared/vars";
+
+$project: "whenbus";
+$project-path: "projects/" + $project + "/";
+
+.whenbus-tldr {
+    width: 765px;
+    height: 762px;
+    margin-left: $size-grid-column * -1;
+    background: image-url($project-path + "tldr.png", false, false) no-repeat;
+    background-size: 765px 762px;
+}
+
+// Retina
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .whenbus-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+}
