@@ -1,0 +1,17 @@
+@import "shared/vars";
+
+$project: "music";
+$project-path: "projects/" + $project + "/";
+
+.music-tldr {
+    width: 770px;
+    height: 762px;
+    margin-left: $size-grid-column * -1;
+    background: image-url($project-path + "tldr.png", false, false) no-repeat;
+    background-size: 770px 762px;
+}
+
+// Retina
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .music-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+}

@@ -65,3 +65,5 @@
 	}
 }
 .animate-contact-page-in { @include animation(contact-page-in $duration * 2 $easing-cubic-rough forwards); }
+
+.i-contact { background-position: -192px 0; }

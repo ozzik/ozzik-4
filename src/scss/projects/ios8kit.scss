@@ -1,0 +1,17 @@
+@import "shared/vars";
+
+$project: "ios8kit";
+$project-path: "projects/" + $project + "/";
+
+.ios8kit-tldr {
+    width: 770px;
+    height: 583px;
+    margin-left: $size-grid-column * -1;
+    background: image-url($project-path + "tldr.png", false, false) no-repeat;
+    background-size: 770px 583px;
+}
+
+// Retina
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .ios8kit-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+}

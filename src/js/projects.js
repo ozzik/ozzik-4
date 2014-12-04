@@ -72,7 +72,7 @@ var Projects = {
 
 		// Adjusting scroll position + blocking page interactions
 		_.animate_scroll(document.body);
-		$(document.body).addClass("blocked");
+		$([ document.body, document.documentElement ]).addClass("blocked");
 		Projects.e.addClass("active");
 		$(".pages").addClass("off");
 		$(".overlays").removeClass("blocked active"); // Removing any loading screen (via initial load)
@@ -231,7 +231,7 @@ var Projects = {
 						$(".showcase-item[data-id='" + Projects.activeItem.id + "'] .showcase-art").removeClass("transparent");
 
 						// Giving back control..
-						$(document.body).removeClass("blocked");
+						$([ document.body, document.documentElement ]).removeClass("blocked");
 						Projects.e.removeClass("active");
 					});
 				});
