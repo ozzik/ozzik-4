@@ -1,11 +1,11 @@
 {
     "meta": {
-        "recipe": "iOS App",
-        "role": "Design",
-        "scope": "Full-time at Brow.si (Dec '13)"
+        "recipe": "Contact form",
+        "role": "Design & front-end coding",
+        "scope": "Personal portfolio (May '12)"
     },
     "synopsis": {
-        "text": "Mobile browser app with integrated RSS-based <br>news reader and page bookmaring."
+        "text": "Contact form one can fill and shove down a mailbox hole, provided with a corresponding personal send receipts."
     },
     "content": ""
 }

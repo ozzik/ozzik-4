@@ -6,7 +6,8 @@ $project-path: "projects/" + $project + "/";
 .bricon-tldr {
     width: 82px;
     height: 82px;
-    margin-left: $size-grid-column * -1;
+    margin-left: auto;
+    margin-right: auto;
     background: image-url($project-path + "tldr.png", false, false) no-repeat;
     background-size: 82px 82px;
 }

@@ -5,7 +5,11 @@
         "scope": "Full-time at Brow.si (Aug '13)"
     },
     "synopsis": {
-        "text": "Add-on for mobile websites which manifests itself </br>into a touch-friendly engagement layer."
+        "text": "Add-on for mobile websites which manifests itself </br>into a touch-friendly engagement layer.",
+        "link": {
+            "url": "http://brow.si",
+            "caption": "%watchTransitive %it"
+        }
     },
     "content": ""
 }

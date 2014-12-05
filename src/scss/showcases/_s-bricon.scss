@@ -5,7 +5,7 @@
 
 .s-bricon {
 	background-image: image-url("showcases/s-bricon.png", false, false);
-	background-size: 345px 76px;
+	background-size: 365px;
 
 	// Elements
 	&.se-base {
@@ -66,3 +66,5 @@
 
 	100% { opacity: 1; }
 }
+
+.i-bricon { background-position: -345px 0; }

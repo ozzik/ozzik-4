@@ -5,7 +5,11 @@
         "scope": "Full-time at Brow.si (Sep '13)"
     },
     "synopsis": {
-        "text": "Publishers dashboard website for managing and customizing their Brow.si add-on."
+        "text": "Publishers dashboard website for managing and customizing their Brow.si add-on.",
+        "link": {
+            "url": "http://brow.si",
+            "caption": "%watchTransitive %it"
+        }
     },
     "content": ""
 }

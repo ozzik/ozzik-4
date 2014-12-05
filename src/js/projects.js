@@ -18,7 +18,16 @@ var Projects = {
 		Projects.e = $(".project");
 		Projects.eArt = $(".project-artwork");
 
-		$(".project .back-button").on("click", Projects.unload);
+		$(".project .back-button").on("click", function() {
+			// Initial load behavior
+			if (Projects.isLandingPage) {
+				var collectionName = Home.landingView.meta.collection;
+
+				window.location.href = _.url((collectionName === "products") ? "" : collectionName);
+			} else {
+				history.back();
+			}
+		});
 	},
 
 	load: function(project, item) {
@@ -158,7 +167,7 @@ var Projects = {
 		meta.innerHTML = metaHTML;
 
 		content.innerHTML = Projects.generate_synopsis(data.id, data.synopsis) + data.content;
-		content.className = "project-content p-" + data.id + " c-" + data.color;
+		content.className = "project-content will-change p-" + data.id + " c-" + data.color;
 
 		// Loading style
 		style = document.createElement("link");
@@ -182,11 +191,12 @@ var Projects = {
 		html += '<p>' + synopsis.text + '</p>';
 		
 		// Button
-		html += (synopsis.link) ? '<a href="' + synopsis.link.url + '" target="_blank"' : '<div';
-		html += ' class="project-button custom transformable ' + (!synopsis.link ? ' dead' : '') + '">';
-		html += '<span class="button-caption">' + (synopsis.link ? _.rephrase(synopsis.link.caption) : _.phrases.dead) + '</span>';
-		html += '</' + (synopsis.link ? 'a' : 'div') + '>';
-
+		if (synopsis.link || synopsis.isDead) {
+			html += (synopsis.link) ? '<a href="' + synopsis.link.url + '" target="_blank"' : '<div';
+			html += ' class="project-button custom transformable ' + (synopsis.isDead ? ' dead' : '') + '">';
+			html += '<span class="button-caption">' + (synopsis.link ? _.rephrase(synopsis.link.caption) : _.phrases.dead) + '</span>';
+			html += '</' + (synopsis.link ? 'a' : 'div') + '>';
+		}
 		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';
 		html += '</div>';
 
@@ -194,15 +204,6 @@ var Projects = {
 	},
 
 	unload: function() {
-		// Initial load behavior
-		if (Projects.isLandingPage) {
-			var collectionName = Home.landingView.meta.collection;
-
-			window.location.href = _.url((collectionName === "products") ? "" : collectionName);
-
-			return;
-		}
-
 		// Prepping page + UI
 		_.animate_scroll(Projects.e[0], true);
 

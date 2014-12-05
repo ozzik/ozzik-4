@@ -1,11 +1,12 @@
 {
     "meta": {
-        "recipe": "iOS App",
+        "recipe": "iOS app",
         "role": "Design",
         "scope": "Full-time at Brow.si (Dec '13)"
     },
     "synopsis": {
-        "text": "Mobile browser app with integrated RSS-based <br>news reader and page bookmaring."
+        "text": "Mobile browser app with integrated RSS-based <br>news reader and page bookmaring.",
+        "isDead": true
     },
     "content": ""
 }

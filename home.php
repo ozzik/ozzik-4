@@ -73,13 +73,13 @@
 	<div class="project">
 		<div class="project-header">
 			<div class="ripple"></div>
-			<div class="back-button transformable transparent"></div>
-			<h1 class="project-title"></h1>
+			<div class="back-button transformable transparent will-change"></div>
+			<h1 class="project-title will-change"></h1>
 		</div>
 		<div class="project-artwork"></div>
 		<div class="project-body">
-			<dl class="project-meta column-515 wrapper"></dl>
-			<div class="project-content"></div>
+			<dl class="project-meta column-515 wrapper will-change"></dl>
+			<div class="project-content will-change"></div>
 		</div>
 	</div>
 	<!-- Overlay's -->

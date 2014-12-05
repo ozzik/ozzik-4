@@ -5,7 +5,11 @@
         "scope": "Full-time at Brow.si (Feb '14)"
     },
     "synopsis": {
-        "text": "Weekly email for publishers with anlaytics </br>data about Brow.si and mobile usage."
+        "text": "Weekly email for publishers with anlaytics </br>data about Brow.si and mobile usage.",
+        "link": {
+            "url": "http://brow.si",
+            "caption": "%watchTransitive %it"
+        }
     },
     "content": ""
 }

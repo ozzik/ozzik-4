@@ -5,7 +5,7 @@
 
 .s-ios710 {
 	background-image: image-url("showcases/s-ios710.png", false, false);
-	background-size: 638px 64px;
+	background-size: 658px;
 
 	// Elements
 	// Mail
@@ -118,4 +118,4 @@
 }
 .animate-ios710-stamp-in { @include animation(ios710-stamp-in $duration-quick $easing-cubic-rough forwards); }
 
-.i-ios710 { background-position: -198px 0; }
+.i-ios710 { background-position: -638px 0; }
