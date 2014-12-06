@@ -167,6 +167,12 @@ a {
 		border-bottom: 1px solid;
 		color: $color-main-light;
 		border-color: lighten($color-main-light, 20%);
+
+		&:focus,
+		&:hover {
+			color: lighten($color-main-light, 5%);
+			border-color: lighten($color-main-light, 25%);
+		}
 	}
 }
 

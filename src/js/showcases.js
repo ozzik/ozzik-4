@@ -178,7 +178,7 @@ var Showcases = {
 		element.setAttribute("data-index", index);
 
 		// Link + main wrapper
-		html += '<a class="showcase-item-link va-wrapper custom" href="" title="">';
+		html += '<a class="showcase-item-link va-wrapper custom" href="" title="' + item.name + '">';
 		html += '<div class="va-content">';
 
 		html += '<div class="showcase-art transformable sa-' + item.id + '">';// p-' + item.id + '">';

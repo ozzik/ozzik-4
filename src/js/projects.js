@@ -166,6 +166,8 @@ var Projects = {
 		title.innerHTML = data.name;
 		meta.innerHTML = metaHTML;
 
+		data.content = data.content || "";
+		
 		content.innerHTML = Projects.generate_synopsis(data.id, data.synopsis) + data.content;
 		content.className = "project-content will-change p-" + data.id + " c-" + data.color;
 
@@ -192,7 +194,7 @@ var Projects = {
 		
 		// Button
 		if (synopsis.link || synopsis.isDead) {
-			html += (synopsis.link) ? '<a href="' + synopsis.link.url + '" target="_blank"' : '<div';
+			html += (synopsis.link) ? '<a href="' + synopsis.link.url + '" target="_blank" title="' + _.rephrase(synopsis.link.caption) + '"' : '<div';
 			html += ' class="project-button custom transformable ' + (synopsis.isDead ? ' dead' : '') + '">';
 			html += '<span class="button-caption">' + (synopsis.link ? _.rephrase(synopsis.link.caption) : _.phrases.dead) + '</span>';
 			html += '</' + (synopsis.link ? 'a' : 'div') + '>';

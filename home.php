@@ -25,9 +25,9 @@
 				<div class="wrapper column-4">
 					<div class="home-header">
 						<ul class="home-navigation titlelike columns wrapper">
-							<li class="home-navigation-item column"><a href="/" class="home-navigation-link custom" data-for="products">Products</a></li>
-							<li class="home-navigation-item column"><a href="concepts" class="home-navigation-link custom" data-for="concepts">Concepts</a></li>
-							<li class="home-navigation-item column"><a href="freebies" class="home-navigation-link custom" data-for="freebies">Freebies</a></li>
+							<li class="home-navigation-item column"><a href="/" class="home-navigation-link custom" data-for="products" title="Products I've designed and/or developed">Products</a></li>
+							<li class="home-navigation-item column"><a href="concepts" class="home-navigation-link custom" data-for="concepts" title="Ideas I've had for some problems">Concepts</a></li>
+							<li class="home-navigation-item column"><a href="freebies" class="home-navigation-link custom" data-for="freebies" title="Free design resources I've made">Freebies</a></li>
 						</ul>
 					</div>
 					<div class="home-work">
@@ -75,7 +75,7 @@
 			<div class="footer">
 				<div class="wrapper column-2">
 					<p>Lots of unwatched Grey’s Anatomy hours were spent designing and building these projects & site, please don’t be an ass and mess with copyrights, thanks.</p>
-					<p>Using beautiful <a href="">Cabin</a> and <a href="">Bitter</a> typefaces.</p>
+					<p>Using beautiful <a href="http://www.google.com/fonts/specimen/Cabin" target="_blank" title="Cabin on Google Fonts">Cabin</a> and <a href="http://www.google.com/fonts/specimen/Bitter" target="_blank" title="Bitter on Google Fonts">Bitter</a> typefaces.</p>
 				</div>
 			</div>
 		</div>
