@@ -142,10 +142,11 @@ body,
 .teaserline-tag-wrapper {
 	position: absolute;
 	top: 0;
+	width: 100%;
 	text-transform: uppercase;
 }
 .teaserline-tag {
-	padding: .4em .6em;
+	padding: .4em .6em .35em;
 	border-radius: 3px;
 	font-size: .75rem;
 	letter-spacing: .05em;

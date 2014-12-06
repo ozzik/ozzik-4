@@ -83,6 +83,7 @@ var Home = {};
 
 		// Setting up navigation
 		Navline.setup();
+		setup_teaser();
 
 		// Loading page / collection
 		if (Home.landingView.view === "home") {
@@ -118,6 +119,35 @@ var Home = {};
 				Navline.handle_click({ target: Navline.eHeader[0].querySelector(".home-navigation-link[data-for='" + e.meta + "']") }, true);
 			}
 		}
+	}
+
+	// Teaserline
+	var _teaserLine = $(".teaserline-home.top"),
+		_teaserTag = $(".teaserline-tag-about"),
+		_ttHeight = _teaserTag[0].offsetHeight,
+		_ttMinY = parseInt(_teaserTag[0].offsetHeight / -2, 10),
+		_ttMaxY = parseInt((_teaserLine[0].offsetHeight - _ttHeight) / 2, 10) - _ttMinY,
+		_wasPlaced;
+
+	setup_teaser = function() {
+		// Initial peeking position
+		_teaserTag.translate(0, _ttMinY);
+
+		Main.hook("scroll", function hook_scroll_teaser() {
+			if (_wasPlaced) { return; }
+
+			var step = window.scrollY / (Main.viewport.pageScrollHeight - Main.viewport.windowHeight);
+
+			// Marking tag as placed so it won't move anymore
+			if (step === 1) {
+				_wasPlaced = true;
+				setTimeout(function se_teaser_ring() {
+					$(".about-image-ring").addClass("ping");
+				}, 50);
+			}
+
+			_teaserTag.translate(0, _ttMaxY * step + _ttMinY);
+		});
 	}
 })();
 

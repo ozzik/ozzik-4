@@ -18,6 +18,27 @@
 }
 .previously { text-decoration: line-through; }
 
+// Ring
+.about-image {
+	position: relative;
+	width: 109px;
+	height: 109px;
+}
+.about-image-ring {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	border: 2px solid $color-main;
+	box-sizing: border-box;
+	z-index: -1;
+	@include transition-with-transform(opacity, $duration-slow $easing-cubic);
+
+	&.ping {
+		@include transform(scale(1.35));
+		opacity: 0;
+	}
+}
 
 /* ======= Contact Links ======= */
 .contact-item {

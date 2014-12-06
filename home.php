@@ -39,10 +39,15 @@
 		<!-- About -->
 		<a name="about"></a>
 		<div class="page" data-for="home">
-			<div class="teaserline teaserline-home top"><div class="va-wrapper teaserline-tag-wrapper"><div class="va-content"><span class="teaserline-tag">this is me</span></div></div></div>
+			<div class="teaserline teaserline-home top">
+				<div class="teaserline-tag-wrapper teaserline-tag-about"><span class="teaserline-tag column">this is me</span></div>
+			</div>
 			<div class="page-content va-content">
 				<div class="about-header">
-					<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" />
+					<div class="about-image column">
+						<div class="about-image-ring"></div>
+						<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" />
+					</div>
 					<h2 class="titlelike about-title"><span>About Me</span></h2>
 					<p class="metalike about-subtitle">Product Designer & FE Developer</p>
 				</div>
