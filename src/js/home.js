@@ -125,7 +125,7 @@ var Home = {};
 	var _teaserLine = $(".teaserline-home.top"),
 		_teaserTag = $(".teaserline-tag-about"),
 		_ttHeight = _teaserTag[0].offsetHeight,
-		_ttMinY = parseInt(_teaserTag[0].offsetHeight / -2, 10),
+		_ttMinY = parseInt(_teaserTag[0].offsetHeight / -2, 10) - 3,
 		_ttMaxY = parseInt((_teaserLine[0].offsetHeight - _ttHeight) / 2, 10) - _ttMinY,
 		_wasPlaced;
 

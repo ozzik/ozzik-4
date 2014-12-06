@@ -207,6 +207,8 @@ var Projects = {
 		// Prepping page + UI
 		_.animate_scroll(Projects.e[0], true);
 
+		Projects.e.addClass("blocked");
+
 		Projects.e.find(".project-title, .project-meta, .project-content, .back-button").addClass("transparent");
 
 		Projects.e.find(".project-header").removeClass("colored").find(".ripple").addClass("transformable-rough").removeClass("transformable-toned").transform("");
@@ -232,7 +234,7 @@ var Projects = {
 						$(".showcase-item[data-id='" + Projects.activeItem.id + "'] .showcase-art").removeClass("transparent");
 
 						// Giving back control..
-						$([ document.body, document.documentElement ]).removeClass("blocked");
+						$([ document.body, document.documentElement, Projects.e[0] ]).removeClass("blocked");
 						Projects.e.removeClass("active");
 					});
 				});

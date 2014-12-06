@@ -1,5 +1,5 @@
 /* ======= General ======= */
-.blocked { overflow-y: hidden; } // Preventing page scroll when being/starting inside project
+.blocked { overflow-y: hidden !important; } // Preventing page scroll when being/starting inside project
 
 /* ======= Header ======= */
 .home-navigation {

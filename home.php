@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="blocked">
 <head>
 	<meta charset="UTF-8" />
 	<base href="<?php echo $_BASE_URL; ?>" />
@@ -89,7 +89,11 @@
 	</div>
 	<!-- Overlay's -->
 	<div class="overlays active">
-		<div class="overlay overlay-loading">Loading</div>
+		<div class="overlay overlay-loading va-wrapper">
+			<div class="va-content">
+				<p>Sit tight...</p>
+			</div>
+		</div>
 	</div>
 	<!-- Non-markup thingies -->
 	<script type="text/javascript">

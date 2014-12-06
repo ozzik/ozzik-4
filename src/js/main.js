@@ -17,7 +17,6 @@ var Main = {
 		Projects.setup();
 
 		Main.hook_events();
-		Main.fetch_viewport_metrics();
 	},
 
 	hook_events: function() {
