@@ -25,7 +25,7 @@
 				<div class="wrapper column-4">
 					<div class="home-header">
 						<ul class="home-navigation titlelike columns wrapper">
-							<li class="home-navigation-item column"><a href="/" class="home-navigation-link custom" data-for="products" title="Products I've designed and/or developed">Products</a></li>
+							<li class="home-navigation-item column"><a href="<?php echo $_BASE_URL; ?>" class="home-navigation-link custom" data-for="products" title="Products I've designed and/or developed">Products</a></li>
 							<li class="home-navigation-item column"><a href="concepts" class="home-navigation-link custom" data-for="concepts" title="Ideas I've had for some problems">Concepts</a></li>
 							<li class="home-navigation-item column"><a href="freebies" class="home-navigation-link custom" data-for="freebies" title="Free design resources I've made">Freebies</a></li>
 						</ul>
