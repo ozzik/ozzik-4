@@ -131,7 +131,7 @@ var Home = {};
 
 	setup_teaser = function() {
 		// Initial peeking position
-		_teaserTag.translate(0, _ttMinY);
+		_teaserTag.translate(0, _ttMinY).find(".teaserline-tag").addClass("attention");
 
 		Main.hook("scroll", function hook_scroll_teaser() {
 			if (_wasPlaced) { return; }
@@ -142,6 +142,7 @@ var Home = {};
 			if (step === 1) {
 				_wasPlaced = true;
 				setTimeout(function se_teaser_ring() {
+					_teaserTag.find(".teaserline-tag").removeClass("attention");
 					$(".about-image-ring").addClass("ping");
 				}, 50);
 			}

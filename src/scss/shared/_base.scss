@@ -151,6 +151,12 @@ body,
 	font-size: .75rem;
 	letter-spacing: .05em;
 	color: darken(#f3f3f3, 20%);
+	@include transition(all $duration $easing-cubic-rough);
+
+	&.attention {
+		background: #d2d9f1;
+		color: darken(#d2d9f1, 20%);
+	}
 }
 
 a {
