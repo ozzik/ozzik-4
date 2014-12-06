@@ -8,7 +8,7 @@
         "text": "Common yet bit different JavaScript library, with dedicated documentation and glory website.",
         "link": {
             "url": "https://ozzik.github.io/dough.js",
-            "caption": "%watch on GitHub"
+            "caption": "%watchTransitive %it"
         }
     }
 }

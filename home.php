@@ -3,10 +3,16 @@
 <head>
 	<meta charset="UTF-8" />
 	<base href="<?php echo $_BASE_URL; ?>" />
-	<title>Ozzik4</title>
-	<link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Cabin:400,600' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="assets/css/web.css" />
+	<title>Oz Pinhas</title>
+	<meta name="description" content="Oz Pinhas - Product designer and front-end developer." />
+	<meta name="keywords" content="Oz Pinhas, Product Design, Mobile Design, Web Design, UI Design, UX, Front-end Development, ozzik, עוז פנחס, עוזיק" />
+	<meta property="og:title" content="Oz Pinhas" />
+	<meta property="og:description" content="Product designer and front-end developer." />
+	<meta property="og:image" content="http://ozzik.co/assets/images/og.png" />
+	<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Bitter:400,700,400italic" />
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cabin:400,600" />
+	<link rel="stylesheet" type="text/css" href="assets/css/web.css" />
 	<style id="styleRuntime"></style>
 </head>
 <body class="blocked">
