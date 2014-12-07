@@ -8,7 +8,8 @@ var Main = {
 	viewport: {
 		windowWidth: 0,
 		windowHeight: 0,
-		pageScrollHeight: 0
+		pageScrollHeight: 0,
+		scrollbarWidth: 0
 	},
 
 	init: function() {
@@ -47,6 +48,12 @@ var Main = {
 		Main.viewport.windowWidth = window.innerWidth;
 		Main.viewport.windowHeight = window.innerHeight;
 		Main.viewport.pageScrollHeight = document.documentElement.scrollHeight;
+
+		Main.fetch_scrollbar_metrics();
+	},
+	
+	fetch_scrollbar_metrics: function() {
+		Main.viewport.scrollbarWidth = window.innerWidth - document.documentElement.offsetWidth;
 	}
 };
 

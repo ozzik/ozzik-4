@@ -70,6 +70,9 @@ var Projects = {
 		var realArt = (!Projects.isLandingPage) ? item.querySelector(".showcase-art") : null,
 			parentForFF;
 
+		// Adjusting back project scrolling
+		Projects.e.removeClass("blocked");
+
 		// Duplicating artwork (doing that before so we could fetch its dimensions on initial load)
 		Projects.eArt[0].className = "project-artwork showcase-art transformable-rough post sa-" + project.id;
 		Projects.eArt[0].innerHTML = Showcases.generate_item_artwork(project);
@@ -78,11 +81,11 @@ var Projects = {
 		Projects.artData.width = realArt ? realArt.offsetWidth : Projects.eArt[0].offsetWidth;
 		Projects.artData.height = realArt ? realArt.offsetHeight : Projects.eArt[0].offsetHeight;
 		if (realArt && $.engine !== "moz") {
-			Projects.artData.x = realArt.offsetLeft
+			Projects.artData.x = realArt.offsetLeft + (Main.viewport.scrollbarWidth / 2);
 			Projects.artData.y = realArt.offsetTop;
 		} else if (realArt) { // Firefox
 			parentForFF = realArt.parentNode.parentNode.parentNode;
-			Projects.artData.x = realArt.offsetLeft + parentForFF.offsetLeft + parentForFF.parentNode.offsetLeft;
+			Projects.artData.x = realArt.offsetLeft + parentForFF.offsetLeft + parentForFF.parentNode.offsetLeft + (Main.viewport.scrollbarWidth / 2);
 			Projects.artData.y = realArt.offsetTop + parentForFF.offsetTop + parentForFF.parentNode.offsetTop;
 		} else { // Landing
 			Projects.artData.x = (window.innerWidth - Projects.artData.width) / 2;
@@ -92,6 +95,7 @@ var Projects = {
 		// Adjusting scroll position + blocking page interactions
 		_.animate_scroll(document.body);
 		$([ document.body, document.documentElement ]).addClass("blocked");
+		Main.fetch_scrollbar_metrics();
 		Projects.e.addClass("active");
 		$(".pages").addClass("off");
 		$(".overlays").removeClass("blocked active"); // Removing any loading screen (via initial load)
@@ -220,6 +224,7 @@ var Projects = {
 		_.animate_scroll(Projects.e[0], true);
 
 		Projects.e.addClass("blocked");
+		Main.fetch_scrollbar_metrics();
 
 		Projects.e.find(".project-title, .project-meta, .project-content, .back-button").addClass("transparent");
 
@@ -246,7 +251,8 @@ var Projects = {
 						$(".showcase-item[data-id='" + Projects.activeItem.id + "'] .showcase-art").removeClass("transparent");
 
 						// Giving back control..
-						$([ document.body, document.documentElement, Projects.e[0] ]).removeClass("blocked");
+						$([ document.body, document.documentElement ]).removeClass("blocked");
+						Main.fetch_scrollbar_metrics();
 						Projects.e.removeClass("active");
 					});
 				});

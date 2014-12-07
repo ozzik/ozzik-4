@@ -23,8 +23,9 @@ var Home = {};
 		},
 
 		/* Being called also via resize */
+		// Fetches starting X of navline for relative positioning (translate3d)
 		update_offset: function() {
-			Navline.offsetX = Navline.eHeader[0].offsetLeft;
+			Navline.offsetX = Navline.eHeader[0].offsetLeft - Main.viewport.scrollbarWidth;
 		},
 
 		handle_mouseover: function(e) {
@@ -69,7 +70,7 @@ var Home = {};
 
 			// Adjusting line to new item, minimized (pre-selection) or full-width
 			Navline.e[0].style.width = offsetWidth + "px";
-			Navline.e.transform("translate3d(" + (item.offsetLeft - Navline.offsetX) + "px,0,0) " + (isHighlight ? "scaleX(.05)" : ""));
+			Navline.e.transform("translate3d(" + (item.offsetLeft + (Main.viewport.scrollbarWidth / 2) - Navline.offsetX) + "px,0,0) " + (isHighlight ? "scaleX(.05)" : ""));
 		}
 	};
 
