@@ -51,7 +51,7 @@ dd {
 .project-button.dead::before {
 	background: image-url("ui.png", false, false);
 
-	@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	@include retina {
 		background: image-url("ui@2x.png", false, false);
 		background-size: 132px 88px;
 	}

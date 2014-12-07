@@ -12,7 +12,7 @@
 	<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Bitter:400,700,400italic" />
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cabin:400,600" />
-	<link rel="stylesheet" type="text/css" href="assets/css/web.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/web.css" /><?php if ($_CUSTOM_STYLE): ?><link rel="stylesheet" type="text/css" href="assets/css/fixes/<?php echo $_CUSTOM_STYLE; ?>.css" /><?php endif; ?>
 	<style id="styleRuntime"></style>
 </head>
 <body class="blocked">

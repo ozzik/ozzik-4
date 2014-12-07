@@ -39,6 +39,10 @@
     // User agent handling
     handle_ua($ua);
 
+    $_CUSTOM_STYLE = "";
+    $_CUSTOM_STYLE = (strpos($ua, "version/8.0 safari") !== false || strpos($ua, "version/7.0 safari") !== false) ? "safari" : "";
+    $_CUSTOM_STYLE = (strpos($ua, "firefox") !== false) ? "firefox" : "";
+
     // Acutal page
     if ($_page !== null) {
         include_once("home.php");

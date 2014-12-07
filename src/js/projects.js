@@ -67,7 +67,8 @@ var Projects = {
 	},
 
 	animate_into_project: function(project, item) {
-		var realArt = (!Projects.isLandingPage) ? item.querySelector(".showcase-art") : null;
+		var realArt = (!Projects.isLandingPage) ? item.querySelector(".showcase-art") : null,
+			parentForFF;
 
 		// Duplicating artwork (doing that before so we could fetch its dimensions on initial load)
 		Projects.eArt[0].className = "project-artwork showcase-art transformable-rough post sa-" + project.id;
@@ -76,8 +77,17 @@ var Projects = {
 		// Fetching expensive things
 		Projects.artData.width = realArt ? realArt.offsetWidth : Projects.eArt[0].offsetWidth;
 		Projects.artData.height = realArt ? realArt.offsetHeight : Projects.eArt[0].offsetHeight;
-		Projects.artData.x = realArt ? realArt.offsetLeft : ((window.innerWidth - Projects.artData.width) / 2);
-		Projects.artData.y = realArt ? realArt.offsetTop : ((window.innerHeight - Projects.artData.height) / 2);;
+		if (realArt && $.engine !== "moz") {
+			Projects.artData.x = realArt.offsetLeft
+			Projects.artData.y = realArt.offsetTop;
+		} else if (realArt) { // Firefox
+			parentForFF = realArt.parentNode.parentNode.parentNode;
+			Projects.artData.x = realArt.offsetLeft + parentForFF.offsetLeft + parentForFF.parentNode.offsetLeft;
+			Projects.artData.y = realArt.offsetTop + parentForFF.offsetTop + parentForFF.parentNode.offsetTop;
+		} else { // Landing
+			Projects.artData.x = (window.innerWidth - Projects.artData.width) / 2;
+			Projects.artData.y = (window.innerHeight - Projects.artData.height) / 2;
+		}
 
 		// Adjusting scroll position + blocking page interactions
 		_.animate_scroll(document.body);

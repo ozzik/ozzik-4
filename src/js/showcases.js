@@ -125,7 +125,7 @@ var Showcases = {
 			style += ".c-" + project + " .project-button { color: " + _.adjust_saturation(_.adjust_brightness(colors[project], -30), 300) + "; }";
 		}
 
-		document.getElementById("styleRuntime").innerText += style;
+		document.getElementById("styleRuntime").textContent += style;
 
 		// Injecting collection stylesheet
 		style = document.createElement("link");

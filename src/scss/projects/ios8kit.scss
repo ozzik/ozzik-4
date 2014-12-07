@@ -1,4 +1,5 @@
 @import "shared/vars";
+@import "shared/mixin";
 
 $project: "ios8kit";
 $project-path: "projects/" + $project + "/";
@@ -12,6 +13,6 @@ $project-path: "projects/" + $project + "/";
 }
 
 // Retina
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+@include retina {
     .ios8kit-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }
