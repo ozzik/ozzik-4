@@ -78,7 +78,7 @@ var Showcases = {
 		// Suppression when collection was loaded only for project page (direct link)
 		if (isProjectLandingPage) {
 			Showcases.collectionStyleReadyFn = function load_project_after_collection_style() {
-				Projects.load(Showcases.catalog[Home.landingView.meta.item]);
+				Projects.load(Showcases.catalog[Main.landingView.meta.item]);
 			};
 
 			return;

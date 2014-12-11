@@ -33,10 +33,10 @@ var Navline = {};
         var collectionName = item.getAttribute("data-for");
 
         // Pushing history
-        !isFirst && Home.push_history({
+        !isFirst && Main.push_history({
             view: "home",
             meta: collectionName,
-            transition: Home._NAVIGATION_SWITCH,
+            transition: Main.NAVIGATION_SWITCH,
             url: (collectionName === "products") ? _.url("") : collectionName
         });
 
@@ -103,8 +103,6 @@ var Navline = {};
     }
 
     function handle_loading_tick() {
-        console.log("tick");
-
         if (Showcases.isCollectionReady) {
             clearInterval(_loadingTicker);
             _e.transform(_activeItem.transform);

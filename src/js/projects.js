@@ -21,7 +21,7 @@ var Projects = {
 		$(".project .back-button").on("click", function() {
 			// Initial load behavior
 			if (Projects.isLandingPage) {
-				var collectionName = Home.landingView.meta.collection;
+				var collectionName = Main.landingView.meta.collection;
 
 				window.location.href = _.url((collectionName === "products") ? "" : collectionName);
 			} else {
@@ -30,18 +30,18 @@ var Projects = {
 		});
 	},
 
-	load: function(project, item) {
-		Projects.isLandingPage = Home.landingView.view === "project";
+	load: function(project, item, isDontHistory) {
+		Projects.isLandingPage = Main.landingView.view === "project";
 
 		// Synthesizing args
 		project = Showcases.collections[Showcases.activeCollection][project];
 		item = item || document.querySelector(".showcase-item[data-id='" + project.id + "']");
 
 		// Pushing history
-		Home.push_history({
+		!isDontHistory && Main.push_history({
 			view: "project",
 			meta: project.id,
-			transition: Home._NAVIGATION_PUSH,
+			transition: Main.NAVIGATION_PUSH,
 			url: Showcases.activeCollection + "/" + project.id,
 		});
 

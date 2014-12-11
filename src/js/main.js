@@ -1,6 +1,13 @@
 /* ===== Main ===== */
 
 var Main = {
+	// Navigation system
+	NAVIGATION_PUSH: 1,
+	NAVIGATION_SWITCH: 2,
+	navigationTransitions: [],
+	poppedNavigationTransition: [],
+	currentState: {},
+
 	hooks: {
 		resize: [],
 		scroll: []
@@ -13,6 +20,13 @@ var Main = {
 	},
 
 	init: function() {
+		// Detecting landing page
+		Main.landingView = {
+			view: _landingData.page,
+			meta: _landingData.meta,
+			url: ""
+		};
+
 		Home.setup();
 		Showcases.setup();
 		Projects.setup();
@@ -54,7 +68,42 @@ var Main = {
 	
 	fetch_scrollbar_metrics: function() {
 		Main.viewport.scrollbarWidth = window.innerWidth - document.documentElement.offsetWidth;
+	},
+
+	/* History */
+	push_history: function(data) {
+		console.log("=== push", data);
+		history.pushState({ data: data }, null, data.url);
+
+		Main.currentState = data;
+	},
+
+	handle_history_pop: function(e) {
+		console.log("=== pop", e);
+		// Back to home
+		if (e.view === "home") {
+			if (Main.currentState.transition === Main.NAVIGATION_PUSH) {
+				Projects.unload();
+			} else {
+				Navline.select(e.meta, true);
+			}
+		} else if (e.view === "project") {
+			Projects.load(Showcases.catalog[e.meta], null, true);
+		}
+
+		Main.currentState = e; // Saving current state info (as if triggered via push_history)
 	}
 };
+
+// History API
+setTimeout(function() {
+	window.addEventListener("popstate", function(e) {
+		if (e.state !== null) {
+			Main.handle_history_pop(e.state.data);
+		} else { // Back to main
+			Main.handle_history_pop(Main.landingView);
+		}
+	}, false);
+}, 500);
 
 document.addEventListener("DOMContentLoaded", Main.init);
