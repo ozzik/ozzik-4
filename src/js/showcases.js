@@ -6,6 +6,7 @@ var Showcases = {
 	activeCollection: null,
 	animatedItems: 0,
 	killAnimation: false, // Flag for stopping artwork animation handling once collection was changed
+	isCollectionReady: false,
 
 	/* === Setup === */
 	setup: function() {
@@ -48,12 +49,14 @@ var Showcases = {
 
 		// Requesting *new* collection data
 		if (Showcases.collections[Showcases.activeCollection] === undefined) {
+			Showcases.isCollectionReady = false;
 			$.get({
 				url: _.data_url(collection + ".json"),
 				success: function cb_collection(data) {
 					Showcases.handle_collection(data, isProjectLandingPage);
 				}
-			});            
+			});
+			Navline.start_loading_animation();
 		} else {
 			Showcases.handle_collection({ items: Showcases.collections[Showcases.activeCollection] });
 		}
@@ -215,6 +218,7 @@ var Showcases = {
 
 	/* === Showcases intro === */
 	reveal_collection: function() {
+		Showcases.isCollectionReady = true;
 		$("html, body, .overlays").removeClass("blocked active");
 		Main.fetch_viewport_metrics();
 

@@ -12,6 +12,7 @@ module.exports = function(grunt) {
                     'src/js/showcases.js',
                     'src/js/projects.js',
                     'src/js/home.js',
+                    'src/js/navline.js',
                     'src/js/main.js'
                 ],
                 dest: 'assets/js/web.js',
