@@ -225,5 +225,8 @@ a {
 .will-change { @include transform(translate3d(0,0,0)); }
 
 /* ======= States ======= */
-.transparent { opacity: 0 !important; }
+.transparent {
+	opacity: 0 !important;
+	pointer-events: none;
+}
 .opaque { opacity: 1 !important; }
