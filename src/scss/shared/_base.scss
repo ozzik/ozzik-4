@@ -104,7 +104,7 @@ body,
 
 	&:not(:first-child) { margin-left: $size-grid-gutter; }
 
-	*:first-child { margin: 0; }
+	*:first-child { margin-top: 0; }
 }
 @for $i from 1 to 5 {
 	.column-#{$i} { width: ($size-grid-column * $i) + ($size-grid-gutter * ($i - 1)); }

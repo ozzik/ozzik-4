@@ -94,11 +94,9 @@
 		</div>
 	</div>
 	<!-- Overlay's -->
-	<div class="overlays active">
-		<div class="overlay overlay-loading va-wrapper">
-			<div class="va-content">
-				<p>Sit tight...</p>
-			</div>
+	<div class="overlay overlay-loading va-wrapper active">
+		<div class="va-content">
+			<p>Sit tight...</p>
 		</div>
 	</div>
 	<!-- Non-markup thingies -->

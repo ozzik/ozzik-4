@@ -219,7 +219,7 @@ var Showcases = {
 	/* === Showcases intro === */
 	reveal_collection: function() {
 		Showcases.isCollectionReady = true;
-		$("html, body, .overlays").removeClass("blocked active");
+		$("html, body, .overlay-loading").removeClass("blocked active");
 		Main.fetch_viewport_metrics();
 
 		setTimeout(function se_collection_ready_for_reveal() {

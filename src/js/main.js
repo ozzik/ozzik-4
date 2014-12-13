@@ -32,14 +32,18 @@ var Main = {
 		Projects.setup();
 
 		Main.hook_events();
+
+		// Resize message
+		Main.setup_screen_width_requirements();
 	},
 
+
+	/* Events */
 	hook_events: function() {
 		window.addEventListener("resize", Main.handle_resize);
 		window.addEventListener("scroll", Main.handle_scroll);
 	},
 
-	/* Events */
 	hook: function(event, fn) {
 		Main.hooks[event].push(fn);
 	},
@@ -92,6 +96,54 @@ var Main = {
 		}
 
 		Main.currentState = e; // Saving current state info (as if triggered via push_history)
+	},
+
+	/* Messages */
+	setup_screen_width_requirements: function() {
+		// Setup
+		Main.minScreenWidth = document.querySelector(".home-work").offsetWidth;
+		Main.isScreenWidthMsg = false;
+
+		Main.create_screen_width_message();
+		
+		Main.hook("resize", Main.toggle_screen_width_message);
+		Main.toggle_screen_width_message();
+	},
+
+	create_screen_width_message: function() {
+		var div = document.createElement("div"),
+			html = "",
+			isMac = (navigator.platform === "MacIntel");
+
+		div.className = "overlay va-wrapper overlay-screen-width";
+
+		html += '<div class="va-content"><div class="screen-width-wrapper column">';
+		html += '<div class="screen-width-art column ' + (isMac ? "mac" : "win") + '"></div>';
+		html += '<h2>This website isn\'t responsive (!)</h2>';
+		html += '<p>Instead of making this website responsive I’ve chosen to work on another side project or just watch another hour of Grey’s Anatomy.</p>';
+
+		if (screen.width >= Main.minScreenWidth) {
+			html += '<p>Now, buddy, a little birdy told me your </br>screen could fit this website perfectly.</br> Please push the ' + (isMac ? "green" : "maximize") + ' button, thank you.</p>';
+			html += '<div class="screen-width-instructions column ' + (isMac ? "mac" : "win") + '"></div>';
+		} else {
+			html += '<p>Please use a screen of at least 768px wide.</p>';
+		}
+
+		html += '</div></div>';
+
+		div.innerHTML = html;
+
+		document.body.appendChild(div);
+	},
+
+	toggle_screen_width_message: function() {
+		if (window.innerWidth < Main.minScreenWidth && !Main.isScreenWidthMsg) {
+			Main.isScreenWidthMsg = true;
+			$(".overlay-screen-width").addClass("active");
+		} else if (window.innerWidth >= Main.minScreenWidth && Main.isScreenWidthMsg) {
+			Main.isScreenWidthMsg = false;
+			$(".overlay-screen-width").removeClass("active");
+		}
 	}
 };
 

@@ -1,12 +1,11 @@
-.overlays,
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
-.overlays {
+    background: $color-background;
+
     &:not(.active) {
         z-index: -1;
         opacity: 0;
@@ -16,4 +15,41 @@
 /* Loading Overlay */
 .overlay-loading {
     background: #fff;
+}
+
+/* === Screen width message === */
+.screen-width-wrapper {
+    width: 100%;
+    max-width: 22em;
+}
+
+.screen-width-art {
+    width: 131px;
+    height: 117px;
+    margin-bottom: 1em;
+    background-size: 131px;
+
+    &.mac { background-image: image-url("width-error-mac.png", false, false); }
+    &.win { background-image: image-url("width-error-win.png", false, false); }
+}
+
+.screen-width-instructions {
+    width: 94px;
+    margin-top: 1em;
+    background-size: 94px;
+
+    &.mac {
+        height: 45px;
+        background-image: image-url("width-error-instructions-mac.png", false, false);
+    }
+    &.win {
+        height: 56px;
+        background-image: image-url("width-error-instructions-mac.png", false, false);
+    }
+}
+@include retina {
+    .screen-width-instructions.mac { background-image: image-url("width-error-instructions-mac@2x.png", false, false); }
+    .screen-width-instructions.win { background-image: image-url("width-error-instructions-win@2x.png", false, false); }
+    .screen-width-art.mac { background-image: image-url("width-error-mac@2x.png", false, false); }
+    .screen-width-art.win { background-image: image-url("width-error-win@2x.png", false, false); }
 }

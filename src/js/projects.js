@@ -98,7 +98,7 @@ var Projects = {
 		Main.fetch_scrollbar_metrics();
 		Projects.e.addClass("active");
 		$(".pages").addClass("off");
-		$(".overlays").removeClass("blocked active"); // Removing any loading screen (via initial load)
+		$(".overlay-loading").removeClass("blocked active"); // Removing any loading screen (via initial load)
 
 		// Positioning dummy artwork according to original (on initial load: to screen center)
 		Projects.eArt[0].style.left = Projects.artData.x + "px";
