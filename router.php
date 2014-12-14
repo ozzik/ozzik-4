@@ -2,7 +2,7 @@
     include_once("backstage/config.php");
 
     $isDev = (isset($_GET['dev'])) ? true : false;
-    $isMe = (isset($_GET['me'])) ? true : false;
+    $isMe = (isset($isMe)) ? $isMe : (isset($_GET['me']) ? true : false);
     
     $page = (isset($_GET['page'])) ? $_GET['page'] : false;
     $meta = (isset($_GET['meta'])) ? $_GET['meta'] : false;

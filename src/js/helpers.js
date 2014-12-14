@@ -6,7 +6,7 @@ var _ = {
 		mobile: [ "mobile", "your small device", "your tiny screen", "a small device", "a small screen", "a touch device" ],
 		preposition: [ "from", "on" ],
 		dead: [ "PROJECT IS DEAD" ],
-		download: [  ],
+		download: [ "download", "get", "have", "posses", "own" ],
 	},
 
 	url: function(str) {

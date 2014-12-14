@@ -1,11 +1,10 @@
 {
-    "meta": {
-        "recipe": "iOS App",
-        "role": "Design",
-        "scope": "Full-time at Brow.si (Dec '13)"
-    },
     "synopsis": {
-        "text": "Mobile browser app with integrated RSS-based <br>news reader and page bookmaring."
+        "text": "Some touch-ups to iTunes such as Now Playing pane and others which are irrelevant now that iTunes 11 is here.",
+        "link": {
+            "url": "http://ozzik.co/freebies/itunes.psd.zip",
+            "caption": "%download %it"
+        }
     },
     "content": ""
 }

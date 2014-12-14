@@ -5,7 +5,11 @@
         "scope": "Personal portfolio (May '12)"
     },
     "synopsis": {
-        "text": "Contact form one can fill and shove down a mailbox hole, provided with a corresponding personal send receipts."
+        "text": "Contact form one can fill and shove down a mailbox hole, provided with a corresponding personal send receipts.",
+        "link": {
+            "url": "http://lab.ozzik.co/contact-form.html",
+            "caption": "%watchTransitive %it"
+        }
     },
     "content": ""
 }

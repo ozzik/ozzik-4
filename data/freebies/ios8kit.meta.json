@@ -1,11 +1,10 @@
 {
-    "meta": {
-        "recipe": "iOS App",
-        "role": "Design",
-        "scope": "Full-time at Brow.si (Dec '13)"
-    },
     "synopsis": {
-        "text": "Mobile browser app with integrated RSS-based <br>news reader and page bookmaring."
+        "text": "A rather comprehensive PSD of iOS 8 UI elements, such as system screens, navigation controls and many others.",
+        "link": {
+            "url": "http://ozzik.co/freebies/ios8-ui/ios8-ui-kit-by-oz-pinhas.zip",
+            "caption": "%download %it"
+        }
     },
     "content": ""
 }
