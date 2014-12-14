@@ -39,6 +39,8 @@ var Home = {};
 				setTimeout(function se_teaser_ring() {
 					_teaserTag.find(".teaserline-tag").removeClass("attention");
 					$(".about-image-ring").addClass("ping");
+
+					_.send_analytics("about", "reveal", "");
 				}, 50);
 			}
 

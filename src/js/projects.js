@@ -20,13 +20,9 @@ var Projects = {
 
 		$(".project .back-button").on("click", function() {
 			// Initial load behavior
-			if (Projects.isLandingPage) {
-				var collectionName = Main.landingView.meta.collection;
+			_.send_analytics(Showcases.activeCollection, "unload_item", Projects.activeItem.id);
 
-				window.location.href = _.url((collectionName === "products") ? "" : collectionName);
-			} else {
-				history.back();
-			}
+			window.location.href = _.url((Showcases.activeCollection === "products") ? "" : Showcases.activeCollection);
 		});
 	},
 
@@ -64,6 +60,8 @@ var Projects = {
 				Projects.did.animate && Projects.reveal_project_page(project, item);
 			}
 		});
+
+		_.send_analytics(Showcases.activeCollection, "load_item", project.id);
 	},
 
 	animate_into_project: function(project, item) {
@@ -192,6 +190,11 @@ var Projects = {
 		style.href = _.project_style_url(data.id + ".css");
 		document.head.appendChild(style);
 
+		// Analytics
+		$(content).find("a").on("click", function(e) {
+			_.send_analytics("Project - " + Projects.activeItem.id, "link", this.href);
+		});
+
 		$([title, meta, content]).addClass("transparent");
 	},
 
@@ -220,6 +223,8 @@ var Projects = {
 	},
 
 	unload: function() {
+		_.send_analytics(Showcases.activeCollection, "unload_item", Projects.activeItem.id);
+
 		// Prepping page + UI
 		_.animate_scroll(Projects.e[0], true);
 

@@ -140,6 +140,15 @@ var _ = {
 		}
 
 		return string[0].toUpperCase() + string.slice(1);
+	},
+
+	/* === Analytics === */
+	send_analytics: function(category, action, label) {
+		if (Main.dontAnalytics) { return; }
+
+		// console.log("==", category, action, label);
+		
+		_gaq.push(['_trackEvent', category, action, label]);
 	}
 }
 

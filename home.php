@@ -44,7 +44,7 @@
 		</div>
 		<!-- About -->
 		<a name="about"></a>
-		<div class="page" data-for="home">
+		<div class="page" data-for="about">
 			<div class="teaserline teaserline-home top">
 				<div class="teaserline-tag-wrapper teaserline-tag-about"><span class="teaserline-tag column">this is me</span></div>
 			</div>
@@ -105,8 +105,10 @@
 			_landingData = {
 				page: "<?php echo $_page; ?>",
 				meta: <?php echo $_meta; ?>,
-			};
+			},
+			_isMe = <?php echo ($isMe) ? "true" : "false"; ?>;
 	</script>
 	<script type="text/javascript" src="assets/js/web.js"></script>
+	<?php if (!$isMe) { include("backstage/_analytics.php"); } ?>
 </body>
 </html>

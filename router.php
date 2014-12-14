@@ -1,7 +1,8 @@
 <?php
-    include_once("backstage.php");
+    include_once("backstage/config.php");
 
-    $isDev = (isset($_GET['dev'])) ? true : false;;
+    $isDev = (isset($_GET['dev'])) ? true : false;
+    $isMe = (isset($_GET['me'])) ? true : false;
     
     $page = (isset($_GET['page'])) ? $_GET['page'] : false;
     $meta = (isset($_GET['meta'])) ? $_GET['meta'] : false;
@@ -29,7 +30,7 @@
         if ($isDev) {
             $_meta2 = $meta2;
             $_meta = $meta;
-            include_once("project-test.php");
+            include_once("backstage/project-test.php");
             exit;
         }
     } else if ($page === "data") { // Data .json
@@ -70,7 +71,7 @@
             if ($_page === "home") {
                 $page = file_get_contents("home.php");
             } else if ($_page === "project") {
-                $page = file_get_contents("project-for-bots.php");
+                $page = file_get_contents("backstage/project-for-bots.php");
             }
 
             $page = str_replace("<?php echo \$_BASE_URL; ?>", $_BASE_URL, $page); // Fixing PHP printing

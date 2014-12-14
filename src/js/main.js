@@ -7,7 +7,7 @@ var Main = {
 	navigationTransitions: [],
 	poppedNavigationTransition: [],
 	currentState: {},
-
+	dontAnalytics: false,
 	hooks: {
 		resize: [],
 		scroll: []
@@ -33,10 +33,11 @@ var Main = {
 
 		Main.hook_events();
 
+		Main.setup_analytics();
+
 		// Resize message
 		Main.setup_screen_width_requirements();
 	},
-
 
 	/* Events */
 	hook_events: function() {
@@ -144,6 +145,18 @@ var Main = {
 			Main.isScreenWidthMsg = false;
 			$(".overlay-screen-width").removeClass("active");
 		}
+	},
+
+	setup_analytics: function() {
+		var links = document.querySelectorAll(".page[data-for='about'] a");
+		
+		for (var i = 0; i < links.length; i++) {
+			links[i].addEventListener("click", function() {
+				_.send_analytics("about", "link", this.getAttribute("href"));
+			});
+		}
+
+		Main.dontAnalytics = _isMe;
 	}
 };
 

@@ -42,6 +42,8 @@ var Navline = {};
 
         highlight_item(item);
         Showcases.load(collectionName);
+
+        !isFirst && _.send_analytics(collectionName, "load", "");
     };
 
     Navline.start_loading_animation = function() {
