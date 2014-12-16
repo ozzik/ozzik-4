@@ -5,7 +5,7 @@
     $isMe = (isset($isMe)) ? $isMe : (isset($_GET['me']) ? true : false);
     
     $page = (isset($_GET['page'])) ? $_GET['page'] : false;
-    $meta = (isset($_GET['meta'])) ? $_GET['meta'] : false;
+    $meta = (isset($_GET['meta'])) ? str_replace(".html", "", $_GET['meta']) : false;
     $meta2 = (isset($_GET['meta2'])) ? $_GET['meta2'] : false;
     $_page = null;
     $_meta = null;

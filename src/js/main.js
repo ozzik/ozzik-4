@@ -4,6 +4,7 @@ var Main = {
 	// Navigation system
 	NAVIGATION_PUSH: 1,
 	NAVIGATION_SWITCH: 2,
+	BASE_TITLE: "Oz Pinhas",
 	navigationTransitions: [],
 	poppedNavigationTransition: [],
 	currentState: {},
@@ -79,6 +80,8 @@ var Main = {
 	push_history: function(data) {
 		console.log("=== push", data);
 		history.pushState({ data: data }, null, data.url);
+
+		Main.set_page_title(data.title);
 
 		Main.currentState = data;
 	},
@@ -157,6 +160,12 @@ var Main = {
 		}
 
 		Main.dontAnalytics = _isMe;
+	},
+
+	set_page_title: function(title) {
+		document.title = Main.BASE_TITLE + (title ? " - " + title : "");
+		console.log("updated title, pageview")
+		window['_gaq'] && _gaq.push(['_trackPageview']);
 	}
 };
 

@@ -30,15 +30,18 @@ var Navline = {};
 
     Navline.select = function(item, isFirst) {
         item = (typeof item === "string") ? _eHeader[0].querySelector(".home-navigation-link[data-for='" + item + "']") : item;
-        var collectionName = item.getAttribute("data-for");
+        var collectionName = item.getAttribute("data-for"),
+            collectionNameForTitle = (collectionName !== "products") ? collectionName[0].toUpperCase() + collectionName.slice(1) : null;
 
         // Pushing history
         !isFirst && Main.push_history({
             view: "home",
             meta: collectionName,
             transition: Main.NAVIGATION_SWITCH,
-            url: (collectionName === "products") ? _.url("") : collectionName
+            url: (collectionName === "products") ? _.url("") : collectionName,
+            title: collectionNameForTitle
         });
+        Main.set_page_title(collectionNameForTitle); // Setting title anyway
 
         highlight_item(item);
         Showcases.load(collectionName);

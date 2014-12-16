@@ -34,12 +34,16 @@ var Projects = {
 		item = item || document.querySelector(".showcase-item[data-id='" + project.id + "']");
 
 		// Pushing history
+		console.log(isDontHistory);
+		console.trace();
 		!isDontHistory && Main.push_history({
 			view: "project",
 			meta: project.id,
 			transition: Main.NAVIGATION_PUSH,
 			url: Showcases.activeCollection + "/" + project.id,
+			title: project.name
 		});
+		Main.set_page_title(project.name);
 
 		// Marking project as hasn't been loaded yet
 		Projects.did.fetch = false;
