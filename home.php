@@ -52,7 +52,7 @@
 				<div class="about-header">
 					<div class="about-image column">
 						<div class="about-image-ring"></div>
-						<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" />
+						<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" title="(I'm no pilot)" />
 					</div>
 					<h2 class="titlelike about-title"><span>About Me</span></h2>
 					<p class="metalike about-subtitle">Product Designer & FE Developer</p>
@@ -108,7 +108,7 @@
 			},
 			_isMe = <?php echo ($isMe) ? "true" : "false"; ?>;
 	</script>
-	<script type="text/javascript" src="assets/js/web.js"></script>
+	<script type="text/javascript" src="assets/js/web.min.js"></script>
 	<?php if (!$isMe) { include("backstage/_analytics.php"); } ?>
 </body>
 </html>
