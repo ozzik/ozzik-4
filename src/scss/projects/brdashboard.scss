@@ -7,7 +7,7 @@ $project-path: "projects/" + $project + "/";
 .brdashboard-tldr {
     width: 770px;
     height: 640px;
-    margin-left: $size-grid-column * -1;
+    margin-left: $size-grid-column * -1 - $size-grid-gutter;
     background: image-url($project-path + "tldr.png", false, false) no-repeat;
     background-size: 770px 640px;
 }

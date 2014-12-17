@@ -164,7 +164,6 @@ var Main = {
 
 	set_page_title: function(title) {
 		document.title = Main.BASE_TITLE + (title ? " - " + title : "");
-		console.log("updated title, pageview")
 		window['_gaq'] && _gaq.push(['_trackPageview']);
 	}
 };

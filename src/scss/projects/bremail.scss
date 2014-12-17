@@ -7,7 +7,7 @@ $project-path: "projects/" + $project + "/";
 .bremail-tldr {
     width: 770px;
     height: 1637px;
-    margin-left: $size-grid-column * -1;
+    margin-left: $size-grid-column * -1 - $size-grid-gutter;
     background: image-url($project-path + "tldr.png", false, false) no-repeat;
     background-size: 770px 1637px;
 }

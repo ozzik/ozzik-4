@@ -7,7 +7,7 @@ $project-path: "projects/" + $project + "/";
 .doughjs-tldr {
     width: 770px;
     height: 867px;
-    margin-left: $size-grid-column * -1;
+    margin-left: $size-grid-column * -1 - $size-grid-gutter;
     background: image-url($project-path + "tldr.png", false, false) no-repeat;
     background-size: 770px 867px;
 }
@@ -15,20 +15,20 @@ $project-path: "projects/" + $project + "/";
 .doughjs-chapters {
     width: 770px;
     height: 432px;
-    background: image-url($project-path + "chapters.jpg", false, false) no-repeat;
+    background-image: image-url($project-path + "chapters@2x.jpg", false, false);
     background-size: 770px 432px;
 }
 
 .doughjs-sidemenu {
     width: 228px;
     height: 209px;
-    background: image-url($project-path + "sidemenu.gif", false, false) no-repeat;
+    background: image-url($project-path + "sidemenu@2x.gif", false, false) no-repeat;
     background-size: 228px 209px;
 }
 
 // Retina
 @include retina {
     .doughjs-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
-    .doughjs-chapters { background-image: image-url($project-path + "chapters@2x.jpg", false, false); }
-    .doughjs-sidemenu { background-image: image-url($project-path + "sidemenu@2x.gif", false, false); }
+    // .doughjs-chapters { background-image: image-url($project-path + "chapters@2x.jpg", false, false); }
+    // .doughjs-sidemenu { background-image: image-url($project-path + "sidemenu@2x.gif", false, false); }
 }
