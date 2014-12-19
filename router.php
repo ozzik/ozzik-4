@@ -41,8 +41,8 @@
     handle_ua($ua);
 
     $_CUSTOM_STYLE = "";
-    $_CUSTOM_STYLE = (strpos($ua, "version/8.0 safari") !== false || strpos($ua, "version/7.0 safari") !== false) ? "safari" : "";
-    $_CUSTOM_STYLE = (strpos($ua, "firefox") !== false) ? "firefox" : "";
+    $_CUSTOM_STYLE = (strpos($ua, "safari") !== false && (strpos($ua, "version/8.") !== false || strpos($ua, "version/7.") !== false)) ? "safari" : "";
+    $_CUSTOM_STYLE = (strpos($ua, "firefox") !== false) ? "firefox" : $_CUSTOM_STYLE;
 
     // Acutal page
     if ($_page !== null) {
