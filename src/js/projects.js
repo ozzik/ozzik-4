@@ -207,9 +207,6 @@ var Projects = {
 
 		var html = '<div class="project-synopsis column-2 centered">';
 
-		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';
-
-		html += '<h2>TL;DR</h2>';
 		html += '<figure class="' + id + '-tldr"></figure>';
 		html += '<p>' + synopsis.text + '</p>';
 		

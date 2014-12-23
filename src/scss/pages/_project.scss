@@ -83,10 +83,7 @@ $space-synopsis: 4.5rem;
 	display: block;
 	width: 20px;
 	height: 20px;
-	margin: 0 auto;
-
-	&:first-child { margin-bottom: $space-synopsis / 2; }
-	&:last-child { margin-top: $space-synopsis / 2; }
+	margin: $space-synopsis * 1.5 auto;
 }
 
 .project-button {
