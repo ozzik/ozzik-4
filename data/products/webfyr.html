@@ -1,0 +1,60 @@
+<section class="project-section">
+    <h2>Preface</h2>
+    <p>Webfyr is a concept product - a rather mature one, yet a concept. We didn't set any goal or spec features or experiences, we just wanted to envision a better experience for consuming RSS-based content.</p>
+    <p>There were problems we knew we wanted to tackle from the beginning, like handling the reality of excerpt-only RSS feeds, but there were also many of them we discovered as we started working on specific parts of the product.</p>
+    <p>Oh, and onboarding wasn't part of the concept.</p>
+</section>
+<figure class="project-figure webfyr-sketch with-caption"><figcaption class="project-figcaption">Early concept sketches</figcaption></figure>
+<figure class="project-figure webfyr-tabs with-caption"><figcaption class="project-figcaption">Initial kick off mockups</figcaption></figure>
+<section>
+    <section class="project-section">
+        <h2>Reading Experience</h2>
+        <h3>Inline Browsing</h3>
+        <p>One big caveat of RSS-based web products is users bounce off to other website to read content. Hence we went on and created a "mini browser" pane to show articles and websites within. Using such pane made it easier to improve the consumption experience by enabling users to quickly scan and mark the items they like and read them one by one inside the reading pane.</p>
+    </section>
+    <!-- <figure class="project-figure"><iframe src="//player.vimeo.com/video/115600888?title=0&amp;byline=0&amp;portrait=0&amp;color=fae1d2" width="644" height="362" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></figure> -->
+    <div class="project-figure project-video with-caption"><iframe width="644" height="362" src="//www.youtube.com/embed/fLA68MT-n7Y?rel=0&amp;showinfo=0&amp;html5=1&amp;vq=hd720" frameborder="0" allowfullscreen></iframe><figcaption class="project-figcaption">Marking multiple items for reading</figcaption></div>
+    <section class="project-section">
+        <h3>Up Next</h3>
+        <p>The reading pane behaves very much like Reeder and Safari. When users reach the end an article, it suggests the next relevant item for reading - whether that's the next item they marked for reading, one they saved from long ago or just the next item on the feed.</p>
+    </section>
+    <div class="project-figure project-video with-caption"><iframe width="644" height="362" src="//www.youtube.com/embed/DZvOKdG0SWk?rel=0&amp;showinfo=0&amp;html5=1&amp;vq=hd720" frameborder="0" allowfullscreen></iframe><figcaption class="project-figcaption">Contextul suggestion of items for reading next</figcaption></div>
+    <!-- <div class="project-video"><iframe src="//player.vimeo.com/video/115601366?title=0&amp;byline=0&amp;portrait=0&amp;color=fae1d2" width="644" height="362" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div> -->
+</section>
+<section>
+    <section class="project-section">
+        <h2>Shit Content Reality</h2>
+        <p>Products like Feedly provide a well crafted reading experience, yet often times they are failing in handling the reality of the RSS-based publication world - many websites are deliberately providing excerpt-only versions of their articles via RSS, some even go further by providing only links and others just spare providing images.</p>
+        <h3>Image Placeholders</h3>
+        <p>Users could subscribe to any website (RSS feed) they wanted, even ones without any feature images. We initially tried not showing any image when there wasn't any but that's created a bad reading experience where items would have different text start positions according to image presence. So we went on to always showing an image with a placeholder fallback which was worse because it felt like something was missing and more specifically - distinguishing and recalling image-less articles was rather hard since they all looked the same.</p>
+        <p>Here came the website-aware placeholder, an artwork tinted to match the website most prominent color - based on the website favicon - and varied into multiple brightness variants to spice up some diversity. And that semi-unique artwork is associated to an article throughout its entire lifespan in the product.</p>
+    </section>
+    <figure class="project-figure with-caption webfyr-placeholder"><figcaption class="project-figcaption">Image placeholder for The Next Web and TechCrunch</figcaption></figure>
+    <section class="project-section">
+        <h3>Memory view mode</h3>
+        <p>Excerpt- and links-only websites were tackled by adding a View Mode toggle which remembers the user selection - once a user selects to view an article in its original full website view, that's the way that website's articles will be viewed.</p>
+    </section>
+</section>
+<section>
+    <section class="project-section">
+        <h2>Tidbits</h2>
+        <p>New items are pushed into the feed with a "New Posts" floating button which clicking on it inserts the fresh items and scrolls the page to the top so the user would notice them. Since sometimes the new content isn't relevant for the user or perhaps triggered by accident - a reversible "Get back down?" button for getting back to where the user was is always shown.</p>
+    </section>
+    <div class="project-figure project-video with-caption"><iframe width="644" height="362" src="//www.youtube.com/embed/2CJo6UewCtQ?rel=0&amp;showinfo=0&amp;html5=1&amp;vq=hd720" frameborder="0" allowfullscreen></iframe><figcaption class="project-figcaption">Anytime users jump to a new position in their timeline, they can get back to the previous one</figcaption></div>
+    <section class="project-section">
+        <p>Also, new content is always pushed into a "Just Now" section while the existing is pushed to "Earlier Today" so it's easy to tell what's new.</p>
+        <p>Empty states always engage users with new or existing content - whether by adding new content to their feed, or reviewing "saved for later" or archived articles.</p>
+    </section>
+    <figure class="project-figure with-caption webfyr-empty"><figcaption class="project-figcaption">Empty screens for the Reading List and Timeline</figcaption></figure>
+    <section class="project-section">
+        <p>Modals are transitional in a way that helps understand the flow - the intermediate modal states are animated and the main modal button is transitioned according to user feedback.</p>
+    </section>
+    <figure class="project-figure with-caption webfyr-modals"><figcaption class="project-figcaption">Different modal states</figcaption></figure>
+</section>
+<section>
+    <section class="project-section">
+        <h2>From the Drawer</h2>
+        <p>Lots of ideas were sketched but were not shipped, one of them is a smart item saving mechanism for reading later. The shipped version of Webfyr supports only saving items for future dates but it was planned to also support daily reading scenarios, like moving betwenen devices (save to mobile/desktop), going offline (save local copy) and generally curating items into dedicated lists. Along with a contextual "save tip", a matching filter tip was also cooked.</p>
+    </section>
+    <figure class="project-figure with-caption webfyr-filter"><figcaption class="project-figcaption">Shipped filter tip for browsing saved items vs. unshipped version</figcaption></figure>
+</section>

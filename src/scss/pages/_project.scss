@@ -149,5 +149,28 @@ $space-synopsis: 4.5rem;
 		margin: 2rem auto;
 	}
 	.project-column { width: ($section-width - $size-grid-gutter) / 2; }
-	.project-figure { margin: .5rem auto; }
+}
+.project-figure {
+	margin: .5rem auto;
+	
+	&.with-caption {
+		position: relative;
+		margin-bottom: 4.5em;
+	}
+}
+.project-figcaption {
+	position: absolute;
+	bottom: -2.4em;
+	width: 100%;
+	font-size: .9em;
+	text-align: center;
+	font-style: italic;
+	opacity: .5;
+
+	.project-video & { bottom: -1.9em; }
+}
+
+.project-video {
+	width: 644px;
+	margin: 0 auto;
 }
