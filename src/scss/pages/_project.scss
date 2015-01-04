@@ -117,6 +117,9 @@ $space-synopsis: 4.5rem;
 }
 
 /* ======= Content ======= */
+$i: 5;
+$section-width: ($size-grid-column / 2 * $i) + ($size-grid-gutter * ($i - 1));
+
 .project-content {
 	h2 {
 		margin-top: 2em;
@@ -140,9 +143,6 @@ $space-synopsis: 4.5rem;
 		color: #444;
 	}
 	.code-snippet { display: block; }
-
-	$i: 5;
-	$section-width: ($size-grid-column / 2 * $i) + ($size-grid-gutter * ($i - 1));
 
 	.project-section {
 		width: $section-width;
@@ -173,4 +173,43 @@ $space-synopsis: 4.5rem;
 .project-video {
 	width: 644px;
 	margin: 0 auto;
+
+	iframe {
+		display: block;
+		margin: 0 auto;
+	}
 }
+.column-video { width: 300px; }
+.figure-ios {
+	width: 320px;
+	background-size: 320px;
+}
+
+/* ======= Reusable Cues ======= */
+.project-cue {
+	position: relative;
+
+	&:not(:first-child) { margin-top: $space; }
+
+	&::before {
+		content: "";
+		position: absolute;
+		display: inline-block;
+		left: -2rem;
+		// content: counter(li);
+		// counter-increment: li;
+		// padding: .2em .6em;
+		width: 22px;
+		height: 22px;
+		margin-top: -0.05rem;
+		border-radius: 100%;
+		background-color: #eee;
+	}
+}
+$i: 0;
+@each $item in problem, goal, result, success {
+	.project-cue-#{$item}::before { background-position: $i * $size-ui-sprite * -1 -66px; }
+	
+	$i: $i + 1;
+}
+.project-cue-nested { padding: .7rem 2rem 0; }

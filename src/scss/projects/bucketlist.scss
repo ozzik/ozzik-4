@@ -12,6 +12,45 @@ $project-path: "projects/" + $project + "/";
     background-size: 765px 762px;
 }
 
+.bucketlist-sketch {
+    width: 640px;
+    height: 640px;
+    background-image: image-url($project-path + "sketch@2x.jpg", false, false);
+    background-size: 640px;
+}
+
+.bucketlist-icon-autodetect,
+.bucketlist-icon-manual { height: 270px; }
+.bucketlist-icon-autodetect { background-image: image-url($project-path + "auto-detect-icon@2x.gif", false, false); }
+.bucketlist-icon-manual { background-image: image-url($project-path + "manual-icon-selection@2x.gif", false, false); }
+
+.bucketlist-age-footer,
+.bucketlist-tumbleweed,
+.bucketlist-echo,
+.bucketlist-placeholders { height: 380px; }
+.bucketlist-age-footer { background-image: image-url($project-path + "age-footer@2x.gif", false, false); }
+.bucketlist-tumbleweed { background-image: image-url($project-path + "tumbleweed@2x.gif", false, false); }
+.bucketlist-echo { background-image: image-url($project-path + "echo@2x.gif", false, false); }
+.bucketlist-placeholders { background-image: image-url($project-path + "placeholders@2x.gif", false, false); }
+
+.figure-1-3 { width: 208px; }
+.bucketlist-intro1,
+.bucketlist-intro2,
+.bucketlist-intro3 {
+    height: 369px;
+    background-size: 208px;
+}
+.bucketlist-intro1 { background-image: image-url($project-path + "intro1@2x.gif", false, false); }
+.bucketlist-intro2 { background-image: image-url($project-path + "intro2@2x.gif", false, false); }
+.bucketlist-intro3 { background-image: image-url($project-path + "intro3@2x.gif", false, false); }
+
+.bucketlist-sketch {
+    width: 640px;
+    height: 640px;
+    background-image: image-url($project-path + "sketch@2x.jpg", false, false);
+    background-size: 640px;
+}
+
 // Retina
 @include retina {
     .bucketlist-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
