@@ -149,6 +149,7 @@ $section-width: ($size-grid-column / 2 * $i) + ($size-grid-gutter * ($i - 1));
 		margin: 2rem auto;
 	}
 	.project-column { width: ($section-width - $size-grid-gutter) / 2; }
+	.column-imaged { margin-top: .5em; }
 }
 .project-figure {
 	margin: .5rem auto;
@@ -172,14 +173,18 @@ $section-width: ($size-grid-column / 2 * $i) + ($size-grid-gutter * ($i - 1));
 
 .project-video {
 	width: 644px;
-	margin: 0 auto;
 
 	iframe {
 		display: block;
 		margin: 0 auto;
 	}
 }
+.project-video,
+.project-video-inline { margin: 0 auto; }
 .column-video { width: 300px; }
+.project-video-inline,
+.project-video-inline video { max-width: 244px; }
+
 .figure-ios {
 	width: 320px;
 	background-size: 320px;
@@ -193,19 +198,37 @@ $section-width: ($size-grid-column / 2 * $i) + ($size-grid-gutter * ($i - 1));
 
 	&::before {
 		content: "";
-		position: absolute;
-		display: inline-block;
-		left: -2rem;
 		// content: counter(li);
 		// counter-increment: li;
 		// padding: .2em .6em;
 		width: 22px;
 		height: 22px;
-		margin-top: -0.05rem;
 		border-radius: 100%;
 		background-color: #eee;
 	}
 }
+.project-cue-standalone::before {
+	display: block;
+	margin: 2.5rem auto;
+}
+.project-cue-bullet::before {
+	position: absolute;
+	display: inline-block;
+	left: -2rem;
+	margin-top: -0.05rem;
+}
+
+.project-conclusion {
+	padding: 1em;
+	border-radius: .3em;
+	border: 1px solid lighten($color-main-light, 12%);
+	background: lighten($color-main-light, 22%);
+	color: desaturate($color-main, 10%);
+	box-sizing: border-box;
+
+	p { margin: 0; }
+}
+
 $i: 0;
 @each $item in problem, goal, result, success {
 	.project-cue-#{$item}::before { background-position: $i * $size-ui-sprite * -1 -66px; }

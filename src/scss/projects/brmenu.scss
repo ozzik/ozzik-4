@@ -12,6 +12,49 @@ $project-path: "projects/" + $project + "/";
     background-size: 770px 762px;
 }
 
+.brmenu-v1-to-v2 {
+    width: 500px;
+    height: 114px;
+    background: image-url($project-path + "v1-vs-v2.png", false, false) no-repeat;
+    background-size: 500px;
+}
+.brmenu-conclusions {
+    width: 450px;
+    height: 320px;
+    background: image-url($project-path + "v1-conclusions.png", false, false) no-repeat;
+    background-size: 450px;
+}
+.brmenu-v2-design {
+    // width: 245px;
+    height: 257px;
+    background: image-url($project-path + "v2-design.gif", false, false) no-repeat;
+    background-size: 100%;
+}
+.brmenu-v2-layout {
+    width: 244px;
+    height: 363px;
+    background: image-url($project-path + "v2-layout.png", false, false) no-repeat;
+    background-size: 244px;
+}
+.brmenu-v2-branding {
+    width: 218px;
+    height: 52px;
+    background: image-url($project-path + "v2-branding.png", false, false) no-repeat;
+    background-size: 218px;
+}
+.brmenu-v2-switches {
+    width: 466px;
+    height: 82px;
+    background: image-url($project-path + "v2-switches.gif", false, false) no-repeat;
+    background-size: 466px;
+}
+.brmenu-v2-hierarchy {
+    width: 466px;
+    height: 216px;
+    background: image-url($project-path + "v2-hierarchy.gif", false, false) no-repeat;
+    background-size: 466px;
+}
+
 // Retina
 @include retina {
     .brmenu-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }

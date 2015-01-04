@@ -124,7 +124,8 @@ var Showcases = {
 		for (project in colors) {
 			style += ".c-" + project + "-main { background-color: #" + colors[project] + "; }";
 			style += ".showcase-item.c-" + project + "-main { border-color: #" + _.adjust_brightness(colors[project], -4) + "; }";
-			style += ".c-" + project + " h2,.c-" + project + " h3,.c-" + project + " h4 { color: #" + _.adjust_brightness(colors[project], -30) + "; }";
+			style += ".c-" + project + " h2,.c-" + project + " h3,.c-" + project + " h4,.c-" + project + " em { color: #" + _.adjust_brightness(colors[project], -30) + "; }";
+			style += ".c-" + project + " .project-conclusion { border-color: " + _.adjust_saturation(_.adjust_brightness(colors[project], -3), 300) + "; background-color: " + _.adjust_saturation(_.adjust_brightness(colors[project], 3), 300) + "; color: " + _.adjust_saturation(_.adjust_brightness(colors[project], -50), 100) + "; }";
 			style += ".c-" + project + " .project-cue::before { background-color: #" + _.adjust_brightness(colors[project], -4) + "; }";
 			style += ".c-" + project + " .project-button { color: " + _.adjust_saturation(_.adjust_brightness(colors[project], -30), 300) + "; }";
 		}
