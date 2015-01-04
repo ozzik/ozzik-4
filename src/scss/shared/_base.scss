@@ -184,6 +184,7 @@ a {
 
 .bubblable {
 	@extend .transformable;
+	will-change: -webkit-transform;
 	
 	&:hover,
 	&:focus { @include transform(translate3d(0,-5px,0)); }
