@@ -7,7 +7,7 @@
     "synopsis": {
         "text": "Webapp for checking bus arrival time,<br> based on favoriting them buses.",
         "link": {
-            "url": "http://bucketlist.ozzik.co",
+            "url": "http://whenbus.ozzik.co",
             "caption": "%watch %preposition %mobile (iOS)"
         }
     },
