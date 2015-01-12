@@ -12,6 +12,20 @@ $project-path: "projects/" + $project + "/";
     background-size: 770px 1637px;
 }
 
+.bremail-sketch {
+    width: 640px;
+    height: 640px;
+    background-image: image-url($project-path + "sketch@2x.jpg", false, false);
+    background-size: 640px;
+}
+
+.bremail-hover {
+    width: 644px;
+    height: 79px;
+    background-image: image-url($project-path + "hover@2x.gif", false, false);
+    background-size: 644px;
+}
+
 // Retina
 @include retina {
     .bremail-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
