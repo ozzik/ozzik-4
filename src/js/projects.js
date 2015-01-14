@@ -149,7 +149,7 @@ var Projects = {
 
 				Projects.eArt.translate(Projects.artData.newX, Projects.artData.newY);
 				setTimeout(function se_project_content_reveal() {
-					ripple.transform("translate3d(0,30px,0) scale(5.2)");
+					ripple.transform("translate3d(0,30px,0) scale(" + (window.innerWidth/1440 * 5.2) + ")");
 					Projects.e.find(".project-title, .project-meta, .project-content" + (Projects.isLandingPage ? ", .back-button" : "")).addClass("fadable").removeClass("transparent");
 					
 					// Switching back button's transition for it to bubble on hover
