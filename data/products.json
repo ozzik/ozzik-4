@@ -59,6 +59,7 @@
 					[ [ "button2", "button3" ], "pop-in" ]
 				]
 			},
+			"url": "browsi-menu",
 			"color": "browsi"
 		},
 		{
@@ -72,6 +73,7 @@
 					[ [ "circle1", "circle2", "circle3" ], "brapp-circle-in", null, "brapp-circle1-in" ]
 				]
 			},
+			"url": "browsi-app",
 			"color": "browsi"
 		},
 		{
@@ -85,6 +87,7 @@
 					[ "badge", "brdashboard-badge-in" ]
 				]
 			},
+			"url": "browsi-dashboard",
 			"color": "browsi-website"
 		},
 		{
@@ -99,6 +102,7 @@
 					[ "change" ]
 				]
 			},
+			"url": "browsi-email",
 			"color": "browsi-website"
 		},
 		{

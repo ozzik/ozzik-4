@@ -40,7 +40,7 @@ var Projects = {
 			view: "project",
 			meta: project.id,
 			transition: Main.NAVIGATION_PUSH,
-			url: Showcases.activeCollection + "/" + project.id,
+			url: Showcases.activeCollection + "/" + (project.url ? project.url : project.id),
 			title: project.name
 		});
 		Main.set_page_title(project.name);

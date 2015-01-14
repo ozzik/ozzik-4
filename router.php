@@ -1,6 +1,14 @@
 <?php
     include_once("backstage/config.php");
 
+    // Project names mapping
+    $PROJECT_MAPPING = array(
+        "browsi-menu" => "brmenu",
+        "browsi-app" => "brapp",
+        "browsi-dashboard" => "brdashboard",
+        "browsi-email" => "bremail"
+    );
+
     $isDev = (isset($_GET['dev'])) ? true : false;
     $isMe = (isset($isMe)) ? $isMe : (isset($_GET['me']) ? true : false);
     
@@ -24,6 +32,10 @@
         $_meta = ($meta) ? $meta : "products";
         $_meta = "'$_meta'";
     } else if ($page === "project") { // Product Page
+        if (array_key_exists($meta, $PROJECT_MAPPING)) {
+            $meta = $PROJECT_MAPPING[$meta];
+        }
+
         $_page = "project";
         $_meta = "{'collection': '$meta2', 'item': '$meta'}";
 
