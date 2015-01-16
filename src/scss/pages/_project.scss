@@ -66,32 +66,59 @@ $size-project-header: $size-grid-row * 2;
 	&:active { @include transform(translate3d(-5px,0,0) scale(.9)); }
 }
 
-/* ======= Content ======= */
+/* ======= Preface ======= */
+.project-preface { margin: 0 auto; }
+
+.project-summary {
+	width: $size-grid-column * 3 + $size-grid-gutter * 3;
+	margin: 2rem auto;
+}
 .project-meta {
-	width: 21em;
-	margin: 2rem auto 0;
+	height: 3.5em;
+	margin: 0 auto;
+	-webkit-columns: 2;
+	-moz-columns: 2;
+	columns: 2;
 
 	dt { width: 3em; }
-	dd { width: 17em; }
+	dd {
+		width: 17em;
+
+		&:nth-child(4) { margin-bottom: 0 }
+	}
 }
 
-$space-synopsis: 4.5rem;
-.project-synopsis {
+$space-synopsis: 2rem;
+.project-story {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-content: stretch;
+	align-items: flex-start;
 	margin: $space-synopsis auto;
 }
-.project-separator {
-	display: block;
-	width: 20px;
-	height: 20px;
-	margin: $space-synopsis * 1.5 auto;
+.project-synopsis {
+	margin: 0;
+	flex: 0 1 auto;
+	padding-right: 1em;
+	box-sizing: border-box;
+}
+.project-synopsis,
+.project-button {
+	order: 0;
+    align-self: center;
 }
 
 .project-button {
-	display: inline-block;
+	flex: 1 0 auto;
 	padding: .25rem 1rem .4rem;
 	border-radius: 3px;
 	border: 2px solid;
 	color: $color-main;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	letter-spacing: 0.05em;
 
 	&.dead {
 		color: #bbb !important;
@@ -115,6 +142,14 @@ $space-synopsis: 4.5rem;
 		&:active { @include transform(rotateZ(-.8deg)); }
 	}
 }
+
+.project-separator {
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin: $space-synopsis * 3 auto;
+}
+.project-preface-image { margin: 0 auto; }
 
 /* ======= Content ======= */
 $i: 5;
@@ -236,3 +271,26 @@ $i: 0;
 	$i: $i + 1;
 }
 .project-cue-nested { padding: .7rem 2rem 0; }
+
+/* ======= Team ======= */
+$size-team-member: 17px;
+.project-team-member {
+	width: $size-team-member;
+	height: $size-team-member;
+	margin-top: .15em;
+	overflow: hidden;
+	text-indent: -999em;
+	background: image-url("team@2x.png", false, false) no-repeat;
+	background-size: 85px;
+	border-radius: 100%;
+
+	&:not(:first-child) { margin-left: .3em; }
+}
+$i: 0;
+@each $member in gal, kobi, gil, tomer, michael {
+	.member-#{$member} { background-position: $i * $size-team-member * -1 0; }
+	
+	$i: $i + 1;
+}
+
+.project-team-member-link { display: block; }

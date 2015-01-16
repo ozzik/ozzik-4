@@ -53,3 +53,60 @@
     .screen-width-art.mac { background-image: image-url("width-error-mac@2x.png", false, false); }
     .screen-width-art.win { background-image: image-url("width-error-win@2x.png", false, false); }
 }
+
+/* === Tips === */
+.tip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: .8em;
+
+    &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        background: #d5d5d5;
+        border-radius: 4px;
+    }
+
+    $size-tip-offset: 8px;
+
+    &.top::before,
+    &.bottom::before {
+        left: 10px;
+        width: 2px;
+    }
+    &.top {
+        padding-bottom: $size-tip-offset;
+        
+        &::before {
+            bottom: 0;
+            height: 8px;
+        }
+    }
+    &.bottom {
+        padding-top: $size-tip-offset;
+
+        &::before {
+            top: 0;
+            height: 6px;
+        }
+    }
+
+    &.right::before,
+    &.left::before {
+        top: .55em;
+        width: 8px;
+        height: 2px;
+    }
+    &.right {
+        padding-left: $size-tip-offset + 4;
+        
+        &::before { left: 0; }
+    }
+    &.left {
+        padding-right: $size-tip-offset + 4;
+        
+        &::before { right: 0; }
+    }
+}

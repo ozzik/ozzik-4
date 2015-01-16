@@ -31,6 +31,7 @@ var Main = {
 		Home.setup();
 		Showcases.setup();
 		Projects.setup();
+		Overlays.setup();
 
 		Main.hook_events();
 

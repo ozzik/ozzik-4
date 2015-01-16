@@ -142,6 +142,18 @@ var _ = {
 		return string[0].toUpperCase() + string.slice(1);
 	},
 
+	track_element_parent: function(child, parent) {
+		var target = child,
+		    delegateLevel = 0;
+
+		while (target !== parent && delegateLevel < 3) {
+		    target = target.parentNode;
+		    delegateLevel++;
+		}
+
+		return target;
+	},
+
 	/* === Analytics === */
 	send_analytics: function(category, action, label) {
 		if (Main.dontAnalytics) { return; }
@@ -149,6 +161,29 @@ var _ = {
 		// console.log("==", category, action, label);
 		
 		_gaq.push(['_trackEvent', category, action, label]);
+	},
+
+	PEOPLE: {
+		gal: {
+			name: "Gal Brill",
+			url: "https://il.linkedin.com/in/galbrill"
+		},
+		kobi: {
+			name: "Kobi Meirson",
+			url: "https://il.linkedin.com/in/kobimeirson"
+		},
+		gil: {
+			name: "Gil Shteinhart",
+			url: ""
+		},
+		tomer: {
+			name: "Tomer Hershkowitz",
+			url: "https://il.linkedin.com/pub/tomer-hershkowitz/22/709/b50"
+		},
+		michael: {
+			name: "Michael Hait",
+			url: ""
+		}
 	}
 }
 

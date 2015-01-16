@@ -11,6 +11,7 @@
 
     $isDev = (isset($_GET['dev'])) ? true : false;
     $isMe = (isset($isMe)) ? $isMe : (isset($_GET['me']) ? true : false);
+    $isLocal = (isset($isLocal)) ? $isLocal : false;
     
     $page = (isset($_GET['page'])) ? $_GET['page'] : false;
     $meta = (isset($_GET['meta'])) ? str_replace(".html", "", $_GET['meta']) : false;

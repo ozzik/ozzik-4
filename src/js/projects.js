@@ -150,7 +150,7 @@ var Projects = {
 				Projects.eArt.translate(Projects.artData.newX, Projects.artData.newY);
 				setTimeout(function se_project_content_reveal() {
 					ripple.transform("translate3d(0,30px,0) scale(" + (window.innerWidth/1440 * 5.2) + ")");
-					Projects.e.find(".project-title, .project-meta, .project-content" + (Projects.isLandingPage ? ", .back-button" : "")).addClass("fadable").removeClass("transparent");
+					Projects.e.find(".project-title, .project-preface, .project-content" + (Projects.isLandingPage ? ", .back-button" : "")).addClass("fadable").removeClass("transparent");
 					
 					// Switching back button's transition for it to bubble on hover
 					var backButton = Projects.e.find(".back-button");
@@ -170,21 +170,18 @@ var Projects = {
 
 	set_project_page_content: function(data) {
 		var title = Projects.e[0].querySelector(".project-title"),
-			meta = Projects.e[0].querySelector(".project-meta"),
+			preface = Projects.e[0].querySelector(".project-preface"),
 			content = Projects.e[0].querySelector(".project-content"),
 			metaHTML = "";
 
-		// Meta
-		for (key in data.meta) {
-			metaHTML += '<dt class="meta">' + (key[0].toUpperCase() + key.slice(1)) + '</dt>&nbsp;' + '<dd>' + data.meta[key] + '</dd>';
-		}
-
 		title.innerHTML = data.name;
-		meta.innerHTML = metaHTML;
+
+		preface.className = "project-preface wrapper will-change c-" + data.color;
+		preface.innerHTML = Projects.generate_preface(data.id, data.meta, data.synopsis, data.content ? true : false);
 
 		data.content = data.content || "";
 		
-		content.innerHTML = Projects.generate_synopsis(data.id, data.synopsis) + data.content;
+		content.innerHTML = data.content;
 		content.className = "project-content will-change p-" + data.id + " c-" + data.color;
 
 		// Loading style
@@ -199,16 +196,35 @@ var Projects = {
 			_.send_analytics("Project - " + Projects.activeItem.id, "link", this.href);
 		});
 
-		$([title, meta, content]).addClass("transparent");
+		// Team tip
+		data.meta.team && Projects.setup_team_tip(preface);
+
+		$([title, preface, content]).addClass("transparent");
 	},
 
-	generate_synopsis: function(id, synopsis) {
+	generate_preface: function(id, meta, synopsis, hasContent) {
 		if (!synopsis) { return ""; }
 
-		var html = '<div class="project-synopsis column-2 centered">';
+		var html = '<div class="project-summary">';
 
-		html += '<figure class="' + id + '-tldr"></figure>';
-		html += '<p>' + synopsis.text + '</p>';
+		meta.team = meta.team || null;
+
+		html += '<dl class="project-meta">'
+		for (var key in meta) {
+			html += '<dt class="meta project-meta-' + key[0] + '">' + (key[0].toUpperCase() + key.slice(1)) + '</dt>&nbsp;<dd>';
+
+			if (key !== "team") {
+				html += meta[key];
+			} else {
+				html += Projects.generate_team(meta.team);
+			}
+
+			html += '</dd>';
+		}
+		html += '</dl>';
+
+		html += '<div class="project-story">';
+		html += '<p class="project-synopsis">' + synopsis.text + '</p>';
 		
 		// Button
 		if (synopsis.link || synopsis.isDead) {
@@ -217,10 +233,65 @@ var Projects = {
 			html += '<span class="button-caption">' + (synopsis.link ? _.rephrase(synopsis.link.caption) : _.phrases.dead) + '</span>';
 			html += '</' + (synopsis.link ? 'a' : 'div') + '>';
 		}
+		html += '</div></div>';
+
+		html += '<figure class="project-preface-image ' + id + '-tldr"></figure>';
+
 		html += '<div class="project-separator s-' + id + ' i-' + id + '"></div>';
-		html += '</div>';
 
 		return html;
+	},
+
+	generate_team: function(team) {
+		var html = "";
+
+		if (team) {
+			html += '<ul class="project-team columns">';
+
+			for (var member in team) {
+				html += '<li class="project-team-member column member-' + member + '" data-tip="<em>' + _.PEOPLE[member].name + "</em>: " + team[member] + '">';
+				if (_.PEOPLE[member].url) {
+					html += '<a class="project-team-member-link custom" href="' + _.PEOPLE[member].url + '" title="' + _.PEOPLE[member].name + '" target="_blank">' + _.PEOPLE[member].name + '</a>';
+				} else {
+					html += _.PEOPLE[member].url;
+				}
+				html += '</li>';
+			}
+
+			html += '</ul>';
+		} else {
+			html += '(All by myself...)';
+		}
+
+		return html;
+	},
+
+	setup_team_tip: function(preface) {
+		var team = $(preface.querySelector(".project-team"));
+
+		team.on("mouseover", function(e) {
+			var target = e.target,
+				travelLevel = 0;
+
+			while (target.nodeName !== "LI" && travelLevel < 1) {
+				target = target.parentNode;
+				travelLevel++;
+			}
+
+			if (target.nodeName === "LI") {
+				Overlays.show_tip({
+					subject: target,
+					layout: "bottom",
+					layoutSecondary: "right",
+					horizontalOffset: -18,
+					verticalOffset: 4,
+					text: target.getAttribute("data-tip")
+				});
+			}
+		});
+		team.on("mouseout", function(e) {
+			Overlays.hide_tip();
+		});
 	},
 
 	unload: function() {
@@ -232,7 +303,7 @@ var Projects = {
 		Projects.e.addClass("blocked");
 		Main.fetch_scrollbar_metrics();
 
-		Projects.e.find(".project-title, .project-meta, .project-content, .back-button").addClass("transparent");
+		Projects.e.find(".project-title, .project-preface, .project-content, .back-button").addClass("transparent");
 
 		Projects.e.find(".project-header").removeClass("colored").find(".ripple").addClass("transformable-rough").removeClass("transformable-toned").transform("");
 

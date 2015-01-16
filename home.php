@@ -52,7 +52,7 @@
 				<div class="about-header">
 					<div class="about-image column">
 						<div class="about-image-ring"></div>
-						<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" title="(I'm no pilot)" />
+						<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" />
 					</div>
 					<h2 class="titlelike about-title"><span>About Me</span></h2>
 					<p class="metalike about-subtitle">Product Designer & FE Developer</p>
@@ -89,7 +89,7 @@
 		</div>
 		<div class="project-artwork"></div>
 		<div class="project-body">
-			<dl class="project-meta column-515 wrapper will-change"></dl>
+			<div class="project-preface wrapper will-change"></div>
 			<div class="project-content will-change"></div>
 		</div>
 	</div>
@@ -99,6 +99,7 @@
 			<p>Sit tight...</p>
 		</div>
 	</div>
+	<div class="tip"></div>
 	<!-- Non-markup thingies -->
 	<script type="text/javascript">
 		var _BASE_URL = "<?php echo $_BASE_URL; ?>",
@@ -108,7 +109,7 @@
 			},
 			_isMe = <?php echo ($isMe) ? "true" : "false"; ?>;
 	</script>
-	<script type="text/javascript" src="assets/js/web.min.js"></script>
+	<script type="text/javascript" src="assets/js/web<?php if (!$isLocal): ?>.min<?php endif; ?>.js"></script>
 	<?php if (!$isMe) { include("backstage/_analytics.php"); } ?>
 </body>
 </html>

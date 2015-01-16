@@ -14,6 +14,8 @@ var Home = {};
 			Showcases.load(Main.landingView.meta.collection, true);
 			$(".pages").addClass("off"); // Hiding pages
 		}
+
+		_setup_about_tips();
 	};
 
 	// Teaserline
@@ -45,6 +47,20 @@ var Home = {};
 			}
 
 			_teaserTag.translate(0, _ttMaxY * step + _ttMinY);
+		});
+	}
+
+	// About tips
+	function _setup_about_tips() {
+		Overlays.hook_tip(".about-job dd.previously", {
+			layout: "top",
+			layoutSecondary: "right",
+			horizontalOffset: -25,
+			text: "Acquired by Revizer"
+		});
+		Overlays.hook_tip(".about-image img", {
+			layout: "right",
+			text: "(I'm no pilot)"
 		});
 	}
 })();
