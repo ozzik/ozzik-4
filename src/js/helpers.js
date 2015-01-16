@@ -6,7 +6,8 @@ var _ = {
 		mobile: [ "mobile", "your small device", "your tiny screen", "a small device", "a small screen", "a touch device" ],
 		preposition: [ "from", "on" ],
 		dead: [ "PROJECT IS DEAD" ],
-		download: [ "download", "get", "have", "posses", "own" ],
+		download: [ "download", "get", "have", "posses" ],
+		noteam: [ "♫ All by myself...", "Me, myself and I", "One man show", "🌾🍃🍂...", "...🍃..." ],
 	},
 
 	url: function(str) {
@@ -113,6 +114,10 @@ var _ = {
 	    color.r = Math.round(color.r * percent + gray * (1 - percent));
 	    color.g = Math.round(color.g * percent + gray * (1 - percent));
 	    color.b = Math.round(color.b * percent + gray * (1 - percent));
+
+	    color.r = Math.abs(color.r);
+	    color.g = Math.abs(color.g);
+	    color.b = Math.abs(color.b);
 
 	    return _.rgb_to_hex(color);
 	},

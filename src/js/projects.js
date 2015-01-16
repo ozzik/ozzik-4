@@ -34,8 +34,6 @@ var Projects = {
 		item = item || document.querySelector(".showcase-item[data-id='" + project.id + "']");
 
 		// Pushing history
-		console.log(isDontHistory);
-		console.trace();
 		!isDontHistory && Main.push_history({
 			view: "project",
 			meta: project.id,
@@ -197,7 +195,7 @@ var Projects = {
 		});
 
 		// Team tip
-		data.meta.team && Projects.setup_team_tip(preface);
+		data.meta && data.meta.team && Projects.setup_team_tip(preface);
 
 		$([title, preface, content]).addClass("transparent");
 	},
@@ -207,9 +205,11 @@ var Projects = {
 
 		var html = '<div class="project-summary">';
 
-		meta.team = meta.team || null;
+		if (meta) {
+			meta.team = meta.team || null;
+		}
 
-		html += '<dl class="project-meta">'
+		html += '<dl class="project-meta' + (!meta ? ' hidden': '') + '">'
 		for (var key in meta) {
 			html += '<dt class="meta project-meta-' + key[0] + '">' + (key[0].toUpperCase() + key.slice(1)) + '</dt>&nbsp;<dd>';
 
@@ -260,7 +260,7 @@ var Projects = {
 
 			html += '</ul>';
 		} else {
-			html += '(All by myself...)';
+			html += _.rephrase("(%noteam)");
 		}
 
 		return html;

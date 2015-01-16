@@ -227,6 +227,7 @@ a {
 .will-change { @include transform(translate3d(0,0,0)); }
 
 /* ======= States ======= */
+.hidden { display: none; }
 .transparent {
 	opacity: 0 !important;
 	pointer-events: none;

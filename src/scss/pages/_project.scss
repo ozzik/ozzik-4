@@ -122,7 +122,7 @@ $space-synopsis: 2rem;
 .project-button {
 	flex: 1 0 auto;
 	-webkit-flex: 1 0 auto;
-	padding: .25rem 1rem .4rem;
+	padding: .4rem 1rem;
 	border-radius: 3px;
 	border: 2px solid;
 	color: $color-main;
@@ -133,7 +133,6 @@ $space-synopsis: 2rem;
 	&.dead {
 		color: #bbb !important;
 		border-style: dotted;
-		padding-top: .3rem;
 
 		&::before {
 			content: "";

@@ -79,7 +79,7 @@ var Main = {
 
 	/* History */
 	push_history: function(data) {
-		console.log("=== push", data);
+		// console.log("=== push", data);
 		history.pushState({ data: data }, null, data.url);
 
 		Main.set_page_title(data.title);
@@ -88,7 +88,7 @@ var Main = {
 	},
 
 	handle_history_pop: function(e) {
-		console.log("=== pop", e);
+		// console.log("=== pop", e);
 		// Back to home
 		if (e.view === "home") {
 			if (Main.currentState.transition === Main.NAVIGATION_PUSH) {
