@@ -54,6 +54,25 @@
     .screen-width-art.win { background-image: image-url("width-error-win@2x.png", false, false); }
 }
 
+/* === Server errors === */
+.server-error-image-404 {
+    width: 115px;
+    height: 157px;
+    margin-right: 1em;
+    background-image: image-url("404@2x.png", false, false);
+    background-size: 115px;
+}
+.server-error-image-403 {
+    width: 84px;
+    height: 88px;
+    background-image: image-url("403@2x.png", false, false);
+    background-size: 84px;
+}
+.server-error-message {
+    max-width: 28em;
+    text-align: left;
+}
+
 /* === Tips === */
 .tip {
     position: absolute;
