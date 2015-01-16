@@ -2,10 +2,13 @@
     "meta": {
         "recipe": "Website",
         "role": "Design & front-end coding",
-        "scope": "Side project (Feb '14)"
+        "scope": "Joint sidekick (Feb '14)",
+        "team": {
+            "kobi": "Back-end & Magic"
+        }
     },
     "synopsis": {
-        "text": "Completely stupid but hopefully charming website </br>for a tea club we had back at Brow.si.",
+        "text": "Completely stupid but hopefully charming website for a weird but hopefully healthy tea club we had back at Brow.si.",
         "link": {
             "url": "http://sp.tc",
             "caption": "%watchTransitive %it"

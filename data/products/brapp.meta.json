@@ -2,10 +2,17 @@
     "meta": {
         "recipe": "iOS app",
         "role": "Design",
-        "scope": "Full-time at Brow.si (Dec '13)"
+        "scope": "Full-time at Brow.si (Dec '13)",
+        "team": {
+            "gal": "Chief & Product",
+            "kobi": "Back-end & Magic",
+            "gil": "Product",
+            "tomer": "iOS",
+            "michael": "Back-end, iOS"
+        }
     },
     "synopsis": {
-        "text": "Mobile browser app with integrated RSS-based <br>news reader and page bookmaring.",
+        "text": "Mobile browser app with integrated RSS-based news reader and page bookmaring.",
         "isDead": true
     },
     "content": ""

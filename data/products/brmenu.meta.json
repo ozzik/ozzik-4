@@ -2,10 +2,16 @@
     "meta": {
         "recipe": "Mobile web add-on",
         "role": "Design & front-end coding",
-        "scope": "Full-time at Brow.si (Aug '13)"
+        "scope": "Full-time at Brow.si (Aug '13)",
+        "team": {
+            "gal": "Chief & Product",
+            "kobi": "Back-end & Magic",
+            "gil": "Product",
+            "michael": "Back-end"
+        }
     },
     "synopsis": {
-        "text": "Add-on for mobile websites which manifests itself </br>into a touch-friendly engagement layer.",
+        "text": "Add-on for mobile websites which manifests itself into a touch-friendly layer of sharing tools and more.",
         "link": {
             "url": "http://brow.si",
             "caption": "%watchTransitive %it"

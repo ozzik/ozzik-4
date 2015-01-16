@@ -2,10 +2,17 @@
     "meta": {
         "recipe": "Web-based app walkthrough",
         "role": "Design & front-end coding",
-        "scope": "Full-time at Brow.si (May '13)"
+        "scope": "Full-time at Brow.si (May '13)",
+        "team": {
+            "gal": "Chief & Product",
+            "kobi": "Back-end & Magic",
+            "gil": "Product",
+            "tomer": "iOS & Android",
+            "michael": "Back-end, iOS & Android"
+        }
     },
     "synopsis": {
-        "text": "First-time, card-based and interactive </br>walkthrough for Brow.si (v1) app",
+        "text": "First-time, cards-based interactive walkthrough for Brow.si (v1) iOS & Android apps.",
         "isDead": true
     },
     "content": ""

@@ -5,7 +5,7 @@
         "scope": "Side project (Jun ‘14)"
     },
     "synopsis": {
-        "text": "Common yet bit different JavaScript library, with dedicated documentation and glory website.",
+        "text": "A common yet a bit different JavaScript library, with a dedicated documentation and glory website.",
         "link": {
             "url": "https://ozzik.github.io/dough.js",
             "caption": "%watchTransitive %it"

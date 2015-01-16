@@ -2,10 +2,16 @@
     "meta": {
         "recipe": "Website",
         "role": "Design & front-end coding",
-        "scope": "Full-time at Brow.si (Sep '13)"
+        "scope": "Full-time at Brow.si (Sep '13)",
+        "team": {
+            "gal": "Chief & Product",
+            "kobi": "Back-end & Magic",
+            "gil": "Product",
+            "michael": "Back-end"
+        }
     },
     "synopsis": {
-        "text": "Publishers dashboard website for managing and customizing their Brow.si add-on.",
+        "text": "Publishers dashboard website for managing, tracking and customizing their Brow.si menu add-on.",
         "link": {
             "url": "http://brow.si",
             "caption": "%watchTransitive %it"

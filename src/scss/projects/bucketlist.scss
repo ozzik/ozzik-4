@@ -7,7 +7,6 @@ $project-path: "projects/" + $project + "/";
 .bucketlist-tldr {
     width: 765px;
     height: 762px;
-    margin-left: $size-grid-column * -1 - $size-grid-gutter;
     background: image-url($project-path + "tldr.png", false, false) no-repeat;
     background-size: 765px 762px;
 }

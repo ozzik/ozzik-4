@@ -6,7 +6,8 @@
         "browsi-menu" => "brmenu",
         "browsi-app" => "brapp",
         "browsi-dashboard" => "brdashboard",
-        "browsi-email" => "bremail"
+        "browsi-email" => "bremail",
+        "browsi-v1-icon" => "bricon"
     );
 
     $isDev = (isset($_GET['dev'])) ? true : false;

@@ -5,7 +5,7 @@
         "scope": "Side project (Oct '12)"
     },
     "synopsis": {
-        "text": "Some wishful thinking about the UI and<br> features of the default iOS music app.",
+        "text": "Some wishful thinking about the interface and features of the default iOS music app.",
         "link": {
             "url": "http://ozzik.co/projects/concepts/music-app.php",
             "caption": "%watchTransitive %it"
