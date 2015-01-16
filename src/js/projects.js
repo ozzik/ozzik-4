@@ -285,6 +285,7 @@ var Projects = {
 					layoutSecondary: "right",
 					horizontalOffset: -18,
 					verticalOffset: 4,
+					relativeContainer: Projects.e[0],
 					text: target.getAttribute("data-tip")
 				});
 			}

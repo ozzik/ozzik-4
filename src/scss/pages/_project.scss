@@ -91,27 +91,37 @@ $size-project-header: $size-grid-row * 2;
 $space-synopsis: 2rem;
 .project-story {
 	display: flex;
+	display: -webkit-flex;
 	flex-direction: row;
+	-webkit-flex-direction: row;
 	flex-wrap: nowrap;
+	-webkit-flex-wrap: nowrap;
 	justify-content: flex-start;
+	-webkit-justify-content: flex-start;
 	align-content: stretch;
+	-webkit-align-content: stretch;
 	align-items: flex-start;
+	-webkit-align-items: flex-start;
 	margin: $space-synopsis auto;
 }
 .project-synopsis {
 	margin: 0;
 	flex: 0 1 auto;
+	-webkit-flex: 0 1 auto;
 	padding-right: 1em;
 	box-sizing: border-box;
 }
 .project-synopsis,
 .project-button {
 	order: 0;
+	-webkit-order: 0;
     align-self: center;
+    -webkit-align-self: center;
 }
 
 .project-button {
 	flex: 1 0 auto;
+	-webkit-flex: 1 0 auto;
 	padding: .25rem 1rem .4rem;
 	border-radius: 3px;
 	border: 2px solid;

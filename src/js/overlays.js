@@ -27,6 +27,7 @@ var Overlays = {
             y += subjectParent.offsetTop;
             subjectParent = subjectParent.offsetParent;
         }
+        y -= (options.relativeContainer) ? options.relativeContainer.scrollTop : 0;
 
         width = options.subject.offsetWidth;
         height = options.subject.offsetHeight;
@@ -74,7 +75,7 @@ var Overlays = {
             Overlays.show_tip(options);
         });
         subject.on("mouseout", function(e) {
-            var target = _.track_element_parent(e.toElement, subject[0]);
+            var target = _.track_element_parent((e.relatedTarget), subject[0]);
 
             if (target === subject[0]) { return; }
 
