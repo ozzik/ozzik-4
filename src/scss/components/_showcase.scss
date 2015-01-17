@@ -18,7 +18,9 @@
 	@include transition-with-transform(opacity, $duration-art $easing-cubic-rough);
 
 	// Specifications
-	&:not(:nth-child(4n)) { margin-right: $size-grid-gutter; }
+	.column-2 &:not(:nth-child(2n)),
+	.column-3 &:not(:nth-child(3n)),
+	.column-4 &:not(:nth-child(4n)) { margin-right: $size-grid-gutter; }
 	&:not(:nth-child(-n+4)) { margin-top: $size-grid-gutter; }
 
 	// States

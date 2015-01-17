@@ -93,8 +93,6 @@ body,
 	padding-bottom: 1.5rem;
 	font-size: .6rem;
 	line-height: 1.2;
-
-	p:last-child { margin-bottom: 0; }
 }
 
 /* ======= Grid ======= */
@@ -127,10 +125,14 @@ body,
 }
 
 .teaserline {
-	position: absolute;
+	position: relative;
 	width: 100%;
-	bottom: 0;
 	text-align: center;
+
+	&.link {
+		position: absolute;
+		bottom: 0;
+	}
 
 	&.top { top: 0; }
 	&.bottom { bottom: 0; }
@@ -144,7 +146,6 @@ body,
 }
 .teaserline-tag-wrapper {
 	position: absolute;
-	top: 0;
 	width: 100%;
 	text-transform: uppercase;
 }
@@ -161,8 +162,11 @@ body,
 		color: darken(#d2d9f1, 20%);
 	}
 }
+.teaserline-tag-about { top: 0; }
+.teaserline-tag-project { bottom: 1em; }
 
-a {
+a,
+.linklike {
 	text-decoration: none;
 	
 	// Every link that isn't custom (no line)
@@ -191,6 +195,11 @@ a {
 	&:hover,
 	&:focus { @include transform(translate3d(0,-5px,0)); }
 	&:active { @include transform(translate3d(0,-5px,0) scale(.9)); }
+}
+
+p {
+	&:first-child { margin-top: 0; }
+	&:last-child { margin-bottom: 0; }
 }
 
 /* ======= Styles ======= */

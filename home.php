@@ -20,7 +20,7 @@
 		<!-- Projects -->
 		<a name="projects"></a>
 		<div class="page" data-for="home">
-			<div class="teaserline teaserline-home bottom"></div>
+			<div class="teaserline teaserline-home bottom link"></div>
 			<div class="page-content va-content">
 				<div class="wrapper column-4">
 					<div class="home-header">
@@ -45,7 +45,7 @@
 		<!-- About -->
 		<a name="about"></a>
 		<div class="page" data-for="about">
-			<div class="teaserline teaserline-home top">
+			<div class="teaserline teaserline-home top link">
 				<div class="teaserline-tag-wrapper teaserline-tag-about"><span class="teaserline-tag column">this is me</span></div>
 			</div>
 			<div class="page-content va-content">

@@ -7,7 +7,7 @@ var _ = {
 		preposition: [ "from", "on" ],
 		dead: [ "PROJECT IS DEAD" ],
 		download: [ "download", "get", "have", "posses" ],
-		noteam: [ "♫ All by myself...", "Me, myself and I", "One man show", "🌾🍃🍂...", "...🍃..." ],
+		noteam: [ "♫ All by myself...", "Me, myself and I", "One man show", "🌾🍃🍂...", "...🍃..." ]
 	},
 
 	url: function(str) {

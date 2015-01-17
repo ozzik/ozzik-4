@@ -171,9 +171,9 @@ var Showcases = {
 		document.body.querySelector(".showcases").appendChild(fragment);
 	},
 
-	create_item: function(item, index) {
+	create_item: function(item, index, isPost) {
 		var element = document.createElement("li"),
-			className = "showcase-item off",
+			className = "showcase-item " + (!isPost ? "off" : "active"),
 			html = "",
 			isNestedElement;
 
@@ -186,9 +186,9 @@ var Showcases = {
 		html += '<a class="showcase-item-link va-wrapper custom" href="' + _BASE_URL + Showcases.activeCollection + "/" + (item.url ? item.url : item.id) + '" title="' + item.name + '">';
 		html += '<div class="va-content">';
 
-		html += '<div class="showcase-art transformable sa-' + item.id + '">';// p-' + item.id + '">';
+		html += '<div class="showcase-art transformable sa-' + item.id + (isPost ? " post" : "") + '">';// p-' + item.id + '">';
 
-		html += Showcases.generate_item_artwork(item);
+		html += Showcases.generate_item_artwork(item, isPost);
 
 		html += '</div>';
 		html += '</div></a>';
@@ -198,8 +198,8 @@ var Showcases = {
 		return element;
 	},
 
-	generate_item_artwork: function(item) {
-		var html = '<div class="s-' + item.id + ' se-sketch fadable"></div>';
+	generate_item_artwork: function(item, isPost) {
+		var html = '<div class="s-' + item.id + ' se-sketch fadable' + (isPost ? ' transparent' : '') + '"></div>';
 
 		for (var i = 0; i < item.art.elements.length; i++) {
 			isNestedElement = Array.isArray(item.art.elements[i]);

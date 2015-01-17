@@ -26,7 +26,7 @@
 		height: 9px;
 		background-position: -94px 0;
 
-		&.animate-brguide-ribbon-in { @include animation(brguide-ribbon-h-in $duration-art * 2 $easing-cubic-rough forwards); }
+		&.animate-brguide-ribbon-in { @include animation(pop-in $duration-art * 2 $easing-cubic-rough forwards); }
 	}
 	&.se-ribbon-v {
 		top: 0;
@@ -35,7 +35,7 @@
 		height: 110px;
 		background-position: -84px 0;
 
-		&.animate-brguide-ribbon-in { @include animation(brguide-ribbon-v-in $duration-art * 2 $easing-cubic-rough forwards); }
+		&.animate-brguide-ribbon-in { @include animation(pop-in $duration-art * 2 $easing-cubic-rough forwards); }
 	}
 	&.se-note-br {
 		top: 44px;
@@ -53,13 +53,13 @@
 	}
 }
 
-@include keyframes(brguide-ribbon-h-in) {
-	0% { @include transform(scaleX(0)); }
-	100% { opacity: 1; }
-}
-@include keyframes(brguide-ribbon-v-in) {
-	0% { @include transform(scaleY(0)); }
-	100% { opacity: 1; }
-}
+// @include keyframes(brguide-ribbon-h-in) {
+// 	0% { @include transform(scaleX(0)); }
+// 	100% { opacity: 1; }
+// }
+// @include keyframes(brguide-ribbon-v-in) {
+// 	0% { @include transform(scaleY(0)); }
+// 	100% { opacity: 1; }
+// }
 
 .i-brguide { background-position: -177px 0; }

@@ -163,10 +163,10 @@ var Projects = {
 			});
 		}, 300);
 
-		Projects.set_project_page_content(data);
+		Projects.set_project_page_content(data, project);
 	},
 
-	set_project_page_content: function(data) {
+	set_project_page_content: function(data, project) {
 		var title = Projects.e[0].querySelector(".project-title"),
 			preface = Projects.e[0].querySelector(".project-preface"),
 			content = Projects.e[0].querySelector(".project-content"),
@@ -179,7 +179,7 @@ var Projects = {
 
 		data.content = data.content || "";
 		
-		content.innerHTML = data.content;
+		content.innerHTML = data.content + Projects.generate_footer(project);
 		content.className = "project-content will-change p-" + data.id + " c-" + data.color;
 
 		// Loading style
@@ -293,6 +293,38 @@ var Projects = {
 		team.on("mouseout", function(e) {
 			Overlays.hide_tip();
 		});
+	},
+
+	generate_footer: function(data) {
+		var html = '',
+			similarProject,
+			fragment = document.createElement("ul");
+
+		// Share
+		html += '<div class="teaserline teaserline-home top"><div class="teaserline-tag-wrapper teaserline-tag-project"><span class="teaserline-tag">';
+		html += 'Things you can do with this page</span></div></div>';
+		html += '<div class="project-footer-section project-footer-actions column-2 centered">';
+		html += '<p>Share it with other people like we used to do back</br> then when there were no "f" and bird buttons.</p>';
+		html += '<p><span class="column column-mid">Or maybe just</span> <a href="mailto:hey@ozzik.co?subject=SHOUT OUT&body=Hey Oz, this is me giving you a shout out. Best, Someone" class="project-action-email-link custom title-colored"><span class="contact-link contact-link-email column column-mid"></span><span class="column column-mid project-action-email-link-text linklike">give me a shout out</span></a></p>';
+		html += '</div>';
+
+		// Similar projects - dirrrrty
+		if (data.similar) {
+			html += '<div class="teaserline teaserline-home top"><div class="teaserline-tag-wrapper teaserline-tag-project"><span class="teaserline-tag">';
+			html += (data.similar.by ? data.similar.by : 'Somehow similar things I\'ve done') + '</span></div></div>';
+			html += '<ul class="project-footer-section project-footer-similar columns column-' + data.similar.items.length + '">';
+
+			for (var i = 0; i < data.similar.items.length; i++) {
+				similarProject = Showcases.create_item(Showcases.collections[Showcases.activeCollection][Showcases.catalog[data.similar.items[i]]], 0, true);
+
+				fragment.appendChild(similarProject);
+			}
+			html += fragment.innerHTML;
+
+			html += '</ul>';
+		}
+
+		return html;
 	},
 
 	unload: function() {

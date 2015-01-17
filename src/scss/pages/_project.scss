@@ -52,6 +52,7 @@ $size-project-header: $size-grid-row * 2;
 	left: 0;
 	padding: 1em 2em 2em 1em;
 	cursor: pointer;
+	z-index: 1;
 
 	&::before {
 		content: "";
@@ -302,4 +303,16 @@ $i: 0;
 	$i: $i + 1;
 }
 
-.project-team-member-link { display: block; }
+/* ======= Footer ======= */
+.project-footer-actions {
+	// Specificifty override
+	.contact-link-email { display: inline-block; }
+}
+.project-footer-section {
+	margin: 1em auto 1.2em;
+
+	&:last-child { margin-bottom: 6rem; }
+}
+
+.project-action-email-link { margin-left: .2em; }
+.project-action-email-link-text { margin-left: .4em !important; } // Specificityyyyy
