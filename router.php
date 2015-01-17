@@ -80,6 +80,7 @@
         global $_page, $_meta, $meta, $meta2;
 
         $_meta_actual = str_replace("'", "", $_meta);
+        $isMobile = is_mobile($ua);
 
         if (strpos($ua, "googlebot") !== false || strpos($ua, "facebookexternalhit") !== false) {
             if ($_page === "home") {
@@ -135,6 +136,23 @@
             
             echo $page;
             exit;
+        } elseif ($isMobile) {
+            $page = file_get_contents("backstage/mobile.php");
+
+            $page = str_replace("<?php echo \$_BASE_URL; ?>", $_BASE_URL, $page); // Fixing PHP printing
+
+            echo $page;
+
+            exit;
         }
+    }
+
+    function is_mobile($ua) {
+        $isMobile = false;
+
+        $isMobile |= (strpos($ua, "iphone") !== false);
+        $isMobile |= (strpos($ua, "android") !== false);
+
+        return $isMobile;
     }
 ?>

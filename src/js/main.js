@@ -145,9 +145,11 @@ var Main = {
 		if (window.innerWidth < Main.minScreenWidth && !Main.isScreenWidthMsg) {
 			Main.isScreenWidthMsg = true;
 			$(".overlay-screen-width").addClass("active");
+			$("html, body").addClass("blocked");
 		} else if (window.innerWidth >= Main.minScreenWidth && Main.isScreenWidthMsg) {
 			Main.isScreenWidthMsg = false;
 			$(".overlay-screen-width").removeClass("active");
+			$("html, body").removeClass("blocked");
 		}
 	},
 
