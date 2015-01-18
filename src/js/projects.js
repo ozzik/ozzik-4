@@ -368,5 +368,7 @@ var Projects = {
 				});
 			});
 		});
+
+		Main.set_page_title(Showcases.activeCollection !== "products" ? Showcases.activeCollection[0].toUpperCase() + Showcases.activeCollection.slice(1) : "");
 	}
 };
