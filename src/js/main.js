@@ -168,6 +168,7 @@ var Main = {
 	set_page_title: function(title) {
 		document.title = Main.BASE_TITLE + (title ? " - " + title : "");
 		window['_gaq'] && _gaq.push(['_trackPageview']);
+		window['_gs'] && _gs("track", document.location.pathname, document.title);
 	}
 };
 

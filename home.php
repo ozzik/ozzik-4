@@ -110,6 +110,6 @@
 			_isMe = <?php echo ($isMe) ? "true" : "false"; ?>;
 	</script>
 	<script type="text/javascript" src="assets/js/web<?php if (!$isLocal): ?>.min<?php endif; ?>.js"></script>
-	<?php if (!$isMe) { include("backstage/_analytics.php"); } ?>
+	<?php include("backstage/_analytics.php"); ?>
 </body>
 </html>
