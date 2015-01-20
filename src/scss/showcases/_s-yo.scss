@@ -46,3 +46,5 @@
 .animate-text-in { @include animation(text-in $duration-art * 1.5 $easing-cubic-rough forwards); }
 
 .i-yo { background-position: -94px 0; }
+
+.s-yo-candy { background-image: image-url("showcases/s-yo-candy@2x.png", false, false); }

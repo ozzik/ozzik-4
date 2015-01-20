@@ -16,6 +16,7 @@ var Home = {};
 		}
 
 		_setup_about_tips();
+		_setup_showcases_menu();
 	};
 
 	// Teaserline
@@ -61,6 +62,21 @@ var Home = {};
 		Overlays.hook_tip(".about-image img", {
 			layout: "right",
 			text: "(I'm no pilot)"
+		});
+	}
+
+	function _setup_showcases_menu() {
+		$(".strip-menu-button").on("click", function() {
+			var menu = document.querySelector(".showcases-menu");
+
+			$([ this, menu ]).toggleClass("active");
+		});
+
+		$(".showcases-menu .filter-item").on("click", function() {
+			$(".showcases-menu .filter-item.active").removeClass("active");
+			$(this).addClass("active");
+
+			Showcases.filter_collection("scope", this.getAttribute("data-value"));
 		});
 	}
 })();

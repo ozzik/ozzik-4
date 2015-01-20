@@ -2,6 +2,7 @@
 
 var Showcases = {
 	collections: {},
+	collectionsOptions: {},
 	catalog: {},
 	activeCollection: null,
 	animatedItems: 0,
@@ -68,11 +69,21 @@ var Showcases = {
 		if (isNew) {
 			Showcases.create_styles(data.colors);
 			Showcases.collections[Showcases.activeCollection] = data.items; // Saving
+			Showcases.collectionsOptions[Showcases.activeCollection] = data.options; // Saving
 
 			// Generating catalog
 			for (var i = 0; i < data.items.length; i++) {
 				Showcases.catalog[data.items[i].id] = i;
 			}
+		}
+
+		// Updating filter controls
+		if (Showcases.collectionsOptions[Showcases.activeCollection].isFilterable) {
+			$(".strip-menu-button").removeClass("disabled");
+		} else {
+			$(".strip-menu-button").addClass("disabled").removeClass("active");
+			$(".showcases-menu, .showcases-menu .filter-item.active").removeClass("active");
+			$(".showcases-menu .filter-item:first-child").addClass("active");
 		}
 
 		// Suppression when collection was loaded only for project page (direct link)
@@ -184,9 +195,11 @@ var Showcases = {
 
 		// Link + main wrapper
 		html += '<a class="showcase-item-link va-wrapper custom" href="' + _BASE_URL + Showcases.activeCollection + "/" + (item.url ? item.url : item.id) + '" title="' + item.name + '">';
+		// html += '<div class="showcase-candy s-' + item.id + '-candy transformable flockable"></div>'; // When candies are back in fashion
 		html += '<div class="va-content">';
 
 		html += '<div class="showcase-art transformable sa-' + item.id + (isPost ? " post" : "") + '">';// p-' + item.id + '">';
+		// html += '<div class="showcase-art transformable flockable sa-' + item.id + (isPost ? " post" : "") + '">';// p-' + item.id + '">'; // When candies are back in fashion
 
 		html += Showcases.generate_item_artwork(item, isPost);
 
@@ -325,5 +338,21 @@ var Showcases = {
 
 		// Showing project
 		Projects.load(target.getAttribute("data-index"), target);
+	},
+
+	filter_collection: function(field, value) {
+		var collection = Showcases.collections[Showcases.activeCollection];
+
+		if (field && value) {
+			for (var i = 0; i < collection.length; i++) {
+				if (collection[i][field] === value) {
+					$(".showcase-item[data-id='" + collection[i].id + "']").removeClass("filtered").addClass("active");
+				} else {
+					$(".showcase-item[data-id='" + collection[i].id + "']").addClass("filtered").removeClass("active");
+				}
+			}
+		} else {
+			$(".showcase-item").removeClass("filtered").addClass("active");
+		}
 	}
 };

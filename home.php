@@ -31,7 +31,20 @@
 						</ul>
 					</div>
 					<div class="home-work">
-						<div class="strip strip-header"><div class="navline"></div></div>
+						<div class="strip strip-header">
+							<div class="navline"></div>
+							<div class="strip-menu-button" title="Make some trouble..."><div class="strip-menu-button-content transformable"></div></div>
+						</div>
+						<div class="showcases-menu">
+							<div class="columns">
+								<span class="column column-mid meta">Show:</span>
+								<ul class="column column-mid">
+									<li class="column column-mid filter-item titlelike active" title="Show every single thing" data-value="">E-V-E-R-Y-T-H-I-N-G</li>
+									<li class="column column-mid filter-item titlelike" title="Show only projects from back when I worked at Brow.si" data-value="browsi">Brow.si Projects</li>
+									<li class="column column-mid filter-item titlelike" title="Show only side-projects" data-value="side">Side Projects</li>
+								</ul>
+							</div>
+						</div>
 						<ol class="showcases columns"></ol>
 						<div class="strip"></div>
 					</div>

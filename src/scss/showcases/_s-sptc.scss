@@ -51,3 +51,5 @@
 .animate-sptc-in { @include animation(sptc-in $duration-art * 2 $easing-cubic-rough forwards); }
 
 .i-sptc { background-position: -238px 0; }
+
+.s-sptc-candy { background-image: image-url("showcases/s-sptc-candy@2x.png", false, false); }

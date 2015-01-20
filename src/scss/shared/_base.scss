@@ -50,7 +50,8 @@ dd {
 .contact-link,
 .back-button::before,
 .project-button.dead::before,
-.project-cue::before {
+.project-cue::before,
+.strip-menu-button-content::before {
 	background-image: image-url("ui.png", false, false);
 
 	@include retina {
@@ -226,7 +227,9 @@ p {
 // Flock-based delays
 @for $i from 1 to 13 {
 	.flock > :nth-child(#{$i}),
-	.flock-out > :nth-last-child(#{$i}) { @include transition-delay(.04s * $i); }
+	.flock > :nth-child(#{$i}) .flockable,
+	.flock-out > :nth-last-child(#{$i}),
+	.flock-out > :nth-last-child(#{$i}) .flockable { @include transition-delay(.04s * $i); }
 }
 // Fixed delays
 @for $i from 1 to 10 {

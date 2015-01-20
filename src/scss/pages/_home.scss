@@ -49,6 +49,77 @@
 	@include perspective(800px);
 }
 
+$strip-menu-button-width: 8px;
+$strip-menu-button-height: 5px;
+
+.strip-menu-button {
+	position: absolute;
+	top: -18px;
+	width: 30px;
+	height: 30px;
+	right: 0;
+	cursor: pointer;
+	
+	&.active .strip-menu-button-content::before { @include transform(rotateZ(180deg)); }
+	&.disabled {
+		pointer-events: none;
+
+		.strip-menu-button-content {
+			@include transform(scaleX(0));
+
+			&::before { @include transform(scale(0)); }
+		}
+	}
+}
+.strip-menu-button-content {
+	position: absolute;
+	bottom: 9px;
+	right: 8px;
+	width: $strip-menu-button-width + (3px * 2);
+	height: $strip-menu-button-height;
+	background: $color-background;
+
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 3px;
+		width: $strip-menu-button-width;
+		height: $strip-menu-button-height;
+		background-position: $size-ui-sprite * -1 $size-ui-sprite * -1;
+		@include transition-transform($duration $easing-cubic-rough);
+	}
+}
+
+.showcases-menu {
+	height: 0;
+	font-size: .9em;
+	overflow: hidden;
+	text-align: right;
+	@include transition(height $duration $easing-cubic-rough);
+
+	&.active { height: 2.4em; }
+}
+
+.filter-item {
+	padding: .2em .9em;
+	border-radius: 99rem;
+	text-transform: uppercase;
+	font-size: .85em;
+	color: lighten($color-text, 60%);
+	cursor: pointer;
+
+	&:not(:first-child) { margin-left: 0; }
+
+	&:focus,
+	&:hover { color: $color-main-light; }
+	&.active {
+		background: lighten($color-main-light, 20%);
+		color: $color-main-light;
+	}
+}
+
 // .showcase components are in components/showcase.scss
 
 /* ======= Teaserline ======= */

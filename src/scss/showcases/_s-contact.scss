@@ -67,3 +67,5 @@
 .animate-contact-page-in { @include animation(contact-page-in $duration * 2 $easing-cubic-rough forwards); }
 
 .i-contact { background-position: -192px 0; }
+
+.s-contact-candy { background-image: image-url("showcases/s-contact-candy@2x.png", false, false); }

@@ -63,3 +63,5 @@
 .animate-dough-in { @include animation(dough-in $duration-art * 2 $easing-cubic forwards); }
 
 .i-doughjs { background-position: -182px 0; }
+
+.s-doughjs-candy { background-image: image-url("showcases/s-doughjs-candy@2x.png", false, false); }

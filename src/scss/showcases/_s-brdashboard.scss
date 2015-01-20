@@ -66,3 +66,5 @@
 .animate-brdashboard-badge-in { @include animation(brdashboard-badge-in $duration-art $easing-cubic-rough forwards); }
 
 .i-brdashboard { background-position: -198px 0; }
+
+.s-brdashboard-candy { background-image: image-url("showcases/s-brdashboard-candy@2x.png", false, false); }

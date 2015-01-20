@@ -119,3 +119,5 @@
 .animate-ios710-stamp-in { @include animation(ios710-stamp-in $duration-quick $easing-cubic-rough forwards); }
 
 .i-ios710 { background-position: -638px 0; }
+
+.s-ios710-candy { background-image: image-url("showcases/s-ios710-candy@2x.png", false, false); }
