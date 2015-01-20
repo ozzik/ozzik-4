@@ -76,13 +76,13 @@
 					<dt class="meta previously">Previously</dt>
 					<dd class="previously">Product Designer & FE Dev at <a href="https://brow.si" title="Brow.si" target="_blank">Brow.si</a></dd>
 				</dl>
-				<p class="about-description justified column-2 wrapper">Hey there! I’m a self-taught designer, specializing in digital products, mostly web and mobile interfaces, bluntly designed to put shitload of smiles on people faces. I also have trouble stopping at the mockups phase and usually also front-end develop some of these products. Guility of 24/7 side-projecting solutions for daily things.</p>
+				<p class="about-description justified column-2 wrapper">Hey there! I’m a self-taught designer, specializing in digital products, mostly web and mobile interfaces, which are bluntly designed to put shitload of smiles on people's faces. I have trouble stopping at the mockups phase and usually also front-end develop some of these products. Guilty of 24/7 side-projecting solutions for daily things.</p>
 				<ul class="about-contact-items columns column-2 wrapper">
-					<li class="contact-item column bubblable"><a href="https://twitter.com/_ozzik" class="contact-link custom contact-link-twitter" title="@_ozzik on Twitter" target="_blank">Twitter</a></li>
-					<li class="contact-item column bubblable"><a href="https://dribbble.com/ozzik" class="contact-link custom contact-link-dribbble" title="Oz Pinhas on Dribbble" target="_blank">Dribbble</a></li>
-					<li class="contact-item column bubblable"><a href="mailto:hey@ozzik.co" class="contact-link custom contact-link-email" title="Send me a message">Email</a></li>
-					<li class="contact-item column bubblable"><a href="https://github.com/ozzik" class="contact-link custom contact-link-github" title="Oz Pinhas on GitHub" target="_blank">GitHub</a></li>
-					<li class="contact-item column bubblable"><a href="https://www.linkedin.com/in/ozpinhas" class="contact-link custom contact-link-linkedin" title="Oz Pinhas on LinkedIn" target="_blank">LinkedIn</a></li>
+					<li class="contact-item column bubblable"><a href="https://twitter.com/_ozzik" class="contact-link custom contact-link-twitter" title="Read my nonsense on Twitter" target="_blank">Twitter</a></li>
+					<li class="contact-item column bubblable"><a href="https://dribbble.com/ozzik" class="contact-link custom contact-link-dribbble" title="Experience 400x300 déjà vu's of this website at Dribbble" target="_blank">Dribbble</a></li>
+					<li class="contact-item column bubblable"><a href="mailto:hey@ozzik.co" class="contact-link custom contact-link-email" title="Email me">Email</a></li>
+					<li class="contact-item column bubblable"><a href="https://github.com/ozzik" class="contact-link custom contact-link-github" title="See my green blocks count at GitHub" target="_blank">GitHub</a></li>
+					<li class="contact-item column bubblable"><a href="https://www.linkedin.com/in/ozpinhas" class="contact-link custom contact-link-linkedin" title="View my LinkedIn profile and remind me to visit there again" target="_blank">LinkedIn</a></li>
 				</ul>
 			</div>
 			<div class="footer">
