@@ -67,3 +67,7 @@
 .i-whenbus { background-position: -189px 0; }
 
 .s-whenbus-candy { background-image: image-url("showcases/s-whenbus-candy@2x.png", false, false); }
+
+@include retina {
+    .s-whenbus { background-image: image-url("showcases/s-whenbus@2x.png", false, false); }
+}

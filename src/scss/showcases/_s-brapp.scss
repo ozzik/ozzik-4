@@ -79,3 +79,7 @@
 .i-brapp { background-position: -146px 0; }
 
 .s-brapp-candy { background-image: image-url("showcases/s-brapp-candy@2x.png", false, false); }
+
+@include retina {
+    .s-brapp { background-image: image-url("showcases/s-brapp@2x.png", false, false); }
+}

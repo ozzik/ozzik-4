@@ -48,3 +48,7 @@
 .i-yo { background-position: -94px 0; }
 
 .s-yo-candy { background-image: image-url("showcases/s-yo-candy@2x.png", false, false); }
+
+@include retina {
+    .s-yo { background-image: image-url("showcases/s-yo@2x.png", false, false); }
+}
