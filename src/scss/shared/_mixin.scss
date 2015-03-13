@@ -21,38 +21,32 @@
 	transform: $values;
 	-webkit-transform: $values;
 	-moz-transform: $values;
-	-ms-transform: $values;
 }
 @mixin transform-origin($values) {
 	transform-origin: $values;
 	-webkit-transform-origin: $values;
 	-moz-transform-origin: $values;
-	-ms-transform-origin: $values;
 }
 @mixin transform-origin-y($values) {
 	transform-origin-y: $values;
 	-webkit-transform-origin-y: $values;
 	-moz-transform-origin-y: $values;
-	-ms-transform-origin-y: $values;
 }
 @mixin transform-origin-x($values) {
 	transform-origin-x: $values;
 	-webkit-transform-origin-x: $values;
 	-moz-transform-origin-x: $values;
-	-ms-transform-origin-x: $values;
 }
 @mixin perspective($value) {
 	perspective: $value;
 	-webkit-perspective: $value;
 	-moz-perspective: $value;
-	-ms-perspective: $value;
 }
 
 @mixin transition($values...) {
 	transition: $values;
 	-webkit-transition: $values;
 	-moz-transition: $values;
-	-ms-transition: $values;
 }
 @mixin transition-timing-function($value) {
 	transition-timing-function: $value;
@@ -78,22 +72,18 @@
 	transition: transform $values;
 	-webkit-transition: -webkit-transform $values;
 	-moz-transition: -moz-transform $values;
-	-ms-transition: -ms-transform $values;
 }
 @mixin transition-with-transform($property, $meta) {
 	transition: all $meta;
 	-webkit-transition: all $meta;
 	-moz-transition: all $meta;
-	-ms-transition: all $meta;
 	transition-property: transform,$property;
 	-webkit-transition-property: -webkit-transform,$property;
 	-moz-transition-property: -moz-transform,$property;
-	-ms-transition-property: -ms-transform,$property;
 	// More expensive...
 	// transition: transform $values, $property $meta;
 	// -webkit-transition: -webkit-transform $meta, $property $meta;
 	// -moz-transition: -moz-transform $meta, $property $meta;
-	// -ms-transition: -ms-transform $meta, $property $meta;
 }
 
 @mixin box-sizing($value) {
@@ -112,9 +102,6 @@
 	@-moz-keyframes #{$name} {
 		@content;
 	}
-	@-ms-keyframes #{$name} {
-		@content;
-	}
 	@keyframes #{$name} {
 		@content;
 	}
@@ -123,8 +110,6 @@
 @mixin animation($values) {
 	-webkit-animation: $values;
 	-moz-animation: $values;
-	-o-animation: $values;
-	-ms-animation: $values;
 	animation: $values;
 }
 @mixin animation-delay($value) {
