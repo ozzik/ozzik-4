@@ -290,7 +290,7 @@ $size-team-member: 17px;
 	margin-top: .15em;
 	overflow: hidden;
 	text-indent: -999em;
-	background: image-url("team@2x.png", false, false) no-repeat;
+	background: image-url("team.jpg", false, false) no-repeat;
 	background-size: 85px;
 	border-radius: 100%;
 
@@ -303,6 +303,10 @@ $i: 0;
 	$i: $i + 1;
 }
 .project-team-member-link { display: block; }
+
+@include retina {
+    .project-team-member { background-image: image-url("team@2x.jpg", false, false); }
+}
 
 /* ======= Footer ======= */
 .project-footer-actions {

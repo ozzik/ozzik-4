@@ -26,3 +26,7 @@
 .i-ios8kit { background-position: -263px 0; }
 
 .s-ios8kit-candy { background-image: image-url("showcases/s-ios8kit-candy@2x.png", false, false); }
+
+@include retina {
+    .s-ios8kit { background-image: image-url("showcases/s-ios8kit@2x.png", false, false); }
+}
