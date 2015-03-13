@@ -53,3 +53,7 @@
 .i-brmenu { background-position: -65px 0; }
 
 .s-brmenu-candy { background-image: image-url("showcases/s-brmenu-candy@2x.png", false, false); }
+
+@include retina {
+    .s-brmenu { background-image: image-url("showcases/s-brmenu@2x.png", false, false); }
+}

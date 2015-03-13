@@ -53,3 +53,7 @@
 .i-sptc { background-position: -238px 0; }
 
 .s-sptc-candy { background-image: image-url("showcases/s-sptc-candy@2x.png", false, false); }
+
+@include retina {
+    .s-sptc { background-image: image-url("showcases/s-sptc@2x.png", false, false); }
+}

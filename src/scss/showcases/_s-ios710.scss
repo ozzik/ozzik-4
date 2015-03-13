@@ -121,3 +121,7 @@
 .i-ios710 { background-position: -638px 0; }
 
 .s-ios710-candy { background-image: image-url("showcases/s-ios710-candy@2x.png", false, false); }
+
+@include retina {
+    .s-ios710 { background-image: image-url("showcases/s-ios710@2x.png", false, false); }
+}
