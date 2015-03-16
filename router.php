@@ -11,9 +11,9 @@
     );
 
     $isDev = (isset($_GET['dev'])) ? true : false;
-    $isMe = (isset($isMe)) ? $isMe : (isset($_GET['me']) ? true : false);
+    $isMe = (isset($isMe)) ? $isMe : isset($_COOKIE[$_ME_COOKIE]);
     $isLocal = (isset($isLocal)) ? $isLocal : false;
-    
+
     $page = (isset($_GET['page'])) ? $_GET['page'] : false;
     $meta = (isset($_GET['meta'])) ? str_replace(".html", "", $_GET['meta']) : false;
     $meta2 = (isset($_GET['meta2'])) ? $_GET['meta2'] : false;
