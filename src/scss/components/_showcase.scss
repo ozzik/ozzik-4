@@ -16,7 +16,7 @@
 	border: 1px solid;
 	overflow: hidden;
 	@include border-box();
-	@include transition-with-transform(opacity, $duration-art $easing-cubic-rough);
+	@include transition-with-transform(opacity, $duration-quick $easing-cubic-rough);
 
 	// Specifications
 	.column-2 &:not(:nth-child(2n)),
