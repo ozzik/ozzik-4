@@ -1,0 +1,18 @@
+{
+    "id": "brmenu",
+    "name": "Brow.si Menu",
+    "art": {
+        "elements": [ "button1", "button1-icon", "button2", "button3 d1" ],
+        "animation": [
+            [ [ "button1", "button1-icon" ], "pop-in", 200 ],
+            [ "button1-icon", "brmenu-rotate" ],
+            [ [ "button2", "button3" ], "pop-in" ]
+        ]
+    },
+    "url": "browsi-menu",
+    "color": "browsi",
+    "similar": {
+        "items": [ "brapp", "brdashboard", "bremail" ]
+    },
+    "scope": "browsi"
+}

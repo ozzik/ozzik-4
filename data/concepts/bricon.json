@@ -1,0 +1,14 @@
+{
+    "id": "bricon",
+    "name": "Brow.si App Icon",
+    "art": {
+        "elements": [ "base", "frame", "globe", "drawer" ],
+        "animation": [
+            [ "base" ],
+            [ "frame" ],
+            [ [ "drawer", "globe" ], "final-in", null, "bricon-globe-in" ]
+        ]
+    },
+    "url": "browsi-v1-icon",
+    "color": "browsi-v1"
+}

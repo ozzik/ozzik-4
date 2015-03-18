@@ -1,0 +1,16 @@
+{
+    "id": "rsvp",
+    "name": "Wedding RSVP",
+    "art": {
+        "elements": [ "page", "button", "checkmark" ],
+        "animation": [
+            [ "page" ],
+            [ "button" ],
+            [ "checkmark" ]
+        ]
+    },
+    "similar": {
+        "items": [ "sptc" ]
+    },
+    "scope": "freelance"
+}

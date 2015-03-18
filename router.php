@@ -29,7 +29,7 @@
     }
 
     // Home page
-    if (!$page || $meta === "concepts" || $meta === "freebies") {
+    if (!$page || ($page !== "data" && ($meta === "concepts" || $meta === "freebies"))) {
         $_page = "home";
         $_meta = ($meta) ? $meta : "products";
         $_meta = "'$_meta'";
@@ -48,7 +48,11 @@
             exit;
         }
     } else if ($page === "data") { // Data .json
-        generate_project_json($meta2, $meta);
+        if ($meta2) {
+            generate_project_json($meta2, $meta);
+        } else {
+            generate_collection_json($meta);
+        }
     }
 
     // User agent handling
@@ -63,13 +67,40 @@
         include_once("home.php");
     }
 
-    function generate_project_json($collection, $project) {
-        $projectMeta = file_get_contents("data/$collection/$project.meta.json");
-        $json = json_decode($projectMeta);
+    function generate_collection_json($collection) {
+        $json = json_decode(file_get_contents("data/$collection.json"));
+        $catalog = array();
 
-        // Inserting content HTML
+        $i = 0;
+        foreach ($json -> items as $item) {
+            $project = file_get_contents("data/$collection/$item.json");
+            $project = json_decode($project);
+            $json -> items[$i] = $project;
+
+            $catalog[$item] = $i;
+
+            $i++;
+        }
+
+        $json -> catalog = $catalog;
+
+        header('Content-Type: application/json');
+        echo json_encode($json);
+    }
+
+    function generate_project_json($collection, $project) {
+        $collectionInfo = json_decode(file_get_contents("data/$collection.json"));
+
+        $projectInfo = json_decode(file_get_contents("data/$collection/$project.json"));
+        $projectFull = json_decode(file_get_contents("data/$collection/$project.full.json"));
+
+        $json = (object)array_merge((array)$projectInfo, (array)$projectFull);
+
+        // Synthesized keys
         $projectContent = @file_get_contents("data/$collection/$project.html");
         $json -> content = $projectContent;
+        $projectColor = isset($projectInfo -> color) ? $projectInfo -> color : $project;
+        $json -> color = $collectionInfo -> colors -> $projectColor;
 
         header('Content-Type: application/json');
         echo json_encode($json);
@@ -120,8 +151,8 @@
                     $i++;
                 }
 
-                $projectMeta = file_get_contents("data/$meta2/$meta.meta.json");
-                $json = json_decode($projectMeta);
+                $projectFull = file_get_contents("data/$meta2/$meta.meta.json");
+                $json = json_decode($projectFull);
                 $projectContent = @file_get_contents("data/$meta2/$meta.html");
 
                 $page = str_replace("{{NAME}}", $itemData -> name, $page);

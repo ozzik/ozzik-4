@@ -1,0 +1,11 @@
+{
+    "id": "ios8kit",
+    "name": "iOS 8 UI Kit",
+    "art": {
+        "elements": [ "ui", "badge" ],
+        "animation": [
+            [ "ui" ],
+            [ "badge" ]
+        ]
+    }
+}

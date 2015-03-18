@@ -1,0 +1,17 @@
+{
+    "id": "doughjs",
+    "name": "Dough.js",
+    "art": {
+        "elements": [ "pin", "pin-shadow", "dough", "dough-shadow" ],
+        "animation": [
+            [ "pin" ],
+            [ "dough", "dough-in" ],
+            [ [ "pin-shadow", "dough-shadow" ] ]
+        ]
+    },
+    "similar": {
+        "by": "Things that are using Dough.js",
+        "items": [ "bucketlist", "whenbus" ]
+    },
+    "scope": "side"
+}

@@ -1,0 +1,19 @@
+{
+    "id": "bremail",
+    "name": "Brow.si Usage Summary Email",
+    "art": {
+        "elements": [ "paper", "title", "change", "axis d1", "graphs", "point p1 d2", "point p2 d3", "point p3 d4", "point p4 d5", "point p5 d6" ],
+        "animation": [
+            [ "paper" ],
+            [ [ "title", "axis" ] ],
+            [ [ "graphs", "point" ], "bremail-graphs-in", null, "bremail-graphs-in" ],
+            [ "change" ]
+        ]
+    },
+    "url": "browsi-email",
+    "color": "browsi-website",
+    "similar": {
+        "items": [ "brmenu", "brapp", "brdashboard" ]
+    },
+    "scope": "browsi"
+}

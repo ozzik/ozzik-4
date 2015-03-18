@@ -1,0 +1,15 @@
+{
+    "id": "sptc",
+    "name": "SPTC",
+    "art": {
+        "elements": [ "plate", "s", "p d2", "t d4", "c d6" ],
+        "animation": [
+            [ "plate" ],
+            [ [ "s", "p", "t", "c" ], "sptc-in" ]
+        ]
+    },
+    "similar": {
+        "items": [ "doughjs", "rsvp" ]
+    },
+    "scope": "side"
+}

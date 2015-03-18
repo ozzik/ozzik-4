@@ -1,58 +1,9 @@
 {
 	"items": [
-		{
-			"id": "ios710",
-			"name": "iOS 7 10.10",
-			"art": {
-				"elements": [ "messages-base", "messages-bubble d2", "reminders-base", "reminders-paper2 d2", "reminders-paper3 d4", "reminders-dot", "mail-base", [ "mail-wrapper", "mail-cloud1", "mail-cloud2 d2" ], "mail-frame", [ "mail-wrapper", "mail-stamp" ] ],
-				"animation": [
-					[ [ "mail-base", "mail-frame" ] ],
-					[ [ "mail-cloud1", "mail-cloud2" ], "ios710-cloud-in" ],
-					[ "mail-stamp", "ios710-stamp-in" ],
-					[ [ "reminders-base", "reminders-paper2", "reminders-paper3" ], "paper-in" ],
-					[ "reminders-dot" ],
-					[ [ "messages-base", "messages-bubble" ] ]
-				]
-			}
-		},
-		{
-			"id": "bricon",
-			"name": "Brow.si App Icon",
-			"art": {
-				"elements": [ "base", "frame", "globe", "drawer" ],
-				"animation": [
-					[ "base" ],
-					[ "frame" ],
-					[ [ "drawer", "globe" ], "final-in", null, "bricon-globe-in" ]
-				]
-			},
-			"url": "browsi-v1-icon",
-			"color": "browsi-v1"
-		},
-		{
-			"id": "music",
-			"name": "iOS Music App",
-			"art": {
-				"elements": [ [ "wrapper", "back i1 d1", "back i2 d2", "back i3 d3", "glow", "track i1", "track i2 d1", "track i3 d2" ] ],
-				"animation": [
-					[ [ "wrapper", "back" ] ],
-					[ "track", "music-track-in" ],
-					[ [ "track.i2", "glow" ], "finale opaque", null, "fade-in" ]
-				]
-			}
-		},
-		{
-			"id": "contact",
-			"name": "Contact Form",
-			"art": {
-				"elements": [ "mouth-back", [ "wrapper", "page" ], "mouth-front", "button" ],
-				"animation": [
-					[ [ "button", "wrapper" ] ],
-					[ [ "mouth-back", "mouth-front" ] ],
-					[ "page", "contact-page-in" ]
-				]
-			}
-		}
+		"ios710",
+		"bricon",
+		"music",
+		"contact"
 	],
 	"colors": {
 		"ios710": "d2b8e7",

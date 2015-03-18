@@ -1,0 +1,16 @@
+{
+    "id": "yo",
+    "name": "Yo",
+    "art": {
+        "elements": [ "button", "icon", "text" ],
+        "animation": [
+            [ "button" ],
+            [ "icon" ],
+            [ "text", "text-in" ]
+        ]
+    },
+    "similar": {
+        "items": [ "brmenu" ]
+    },
+    "scope": "freelance"
+}

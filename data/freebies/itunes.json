@@ -1,0 +1,10 @@
+{
+    "id": "itunes",
+    "name": "iTunes Refined",
+    "art": {
+        "elements": [ "ui" ],
+        "animation": [
+            [ "ui" ]
+        ]
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "id": "contact",
+    "name": "Contact Form",
+    "art": {
+        "elements": [ "mouth-back", [ "wrapper", "page" ], "mouth-front", "button" ],
+        "animation": [
+            [ [ "button", "wrapper" ] ],
+            [ [ "mouth-back", "mouth-front" ] ],
+            [ "page", "contact-page-in" ]
+        ]
+    }
+}
