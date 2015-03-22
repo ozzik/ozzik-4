@@ -8,6 +8,7 @@
             [ [ "rope", "handle", "bucket" ], "bucket-in" ]
         ]
     },
+    "color": "faf7d2",
     "similar": {
         "items": [ "webfyr", "whenbus" ]
     },

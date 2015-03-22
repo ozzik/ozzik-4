@@ -9,8 +9,9 @@
             [ "checkmark" ]
         ]
     },
+    "color": "caeaed",
     "similar": {
-        "items": [ "sptc" ]
+        "items": [ "concepts/contact", "sptc" ]
     },
     "scope": "freelance"
 }

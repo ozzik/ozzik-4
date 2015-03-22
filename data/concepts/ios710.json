@@ -11,5 +11,6 @@
             [ "reminders-dot" ],
             [ [ "messages-base", "messages-bubble" ] ]
         ]
-    }
+    },
+    "color": "d2b8e7"
 }

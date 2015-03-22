@@ -13,18 +13,6 @@
 		"whenbus",
 		"rsvp"
 	],
-	"colors": {
-		"doughjs": "f8f3d9",
-		"webfyr": "fae1d2",
-		"bucketlist": "faf7d2",
-		"yo": "e4cbee",
-		"browsi": "d2e6fa",
-		"browsi-website": "e6edf5",
-		"browsi-v1": "cae4ed",
-		"sptc": "eaedca",
-		"whenbus": "edcad5",
-		"rsvp": "caeaed"
-	},
 	"options": {
 		"isFilterable": true
 	}

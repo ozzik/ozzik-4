@@ -8,5 +8,6 @@
             [ "track", "music-track-in" ],
             [ [ "track.i2", "glow" ], "finale opaque", null, "fade-in" ]
         ]
-    }
+    },
+    "color": "f7d49e"
 }

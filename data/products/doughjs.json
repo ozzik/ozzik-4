@@ -9,6 +9,7 @@
             [ [ "pin-shadow", "dough-shadow" ] ]
         ]
     },
+    "color": "f8f3d9",
     "similar": {
         "by": "Things that are using Dough.js",
         "items": [ "bucketlist", "whenbus" ]

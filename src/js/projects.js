@@ -26,44 +26,48 @@ var Projects = {
 		});
 	},
 
-	load: function(project, item, isDontHistory) {
+	load: function(projectID, item, isDontHistory) {
 		Projects.isLandingPage = Main.landingView.view === "project";
 
-		// Synthesizing args
-		project = Showcases.collections[Showcases.activeCollection][project];
-		item = item || document.querySelector(".showcase-item[data-id='" + project.id + "']");
+		if (!Projects.isLandingPage) {
+			project = Showcases.collections[Showcases.activeCollection][Showcases.catalog[projectID]];
+			item = item || document.querySelector(".showcase-item[data-id='" + project.id + "']");
 
-		// Pushing history
-		!isDontHistory && Main.push_history({
-			view: "project",
-			meta: project.id,
-			transition: Main.NAVIGATION_PUSH,
-			url: Showcases.activeCollection + "/" + (project.url ? project.url : project.id),
-			title: project.name
-		});
-		Main.set_page_title(project.name);
+			Main.push_history({
+				view: "project",
+				meta: project.id,
+				transition: Main.NAVIGATION_PUSH,
+				url: Showcases.activeCollection + "/" + (project.url ? project.url : project.id),
+				title: project.name
+			});
+		}
 
 		// Marking project as hasn't been loaded yet
 		Projects.did.fetch = false;
 		Projects.did.animate = false;
 
-		// Loading project data
-		Projects.animate_into_project(project, item);
+		!Projects.isLandingPage && Projects.animate_into_project(project, item);
 		$.get({
-			url: _.data_url(Showcases.activeCollection + "/" + project.id + ".json"),
+			url: _.data_url(Showcases.activeCollection + "/" + projectID + ".json"),
 			success: function(data) {
-				data.color = project.color || project.id; // Synthesizing color data
-				data.id = project.id;
-				data.name = project.name;
+				if (Projects.isLandingPage) {
+					Main.set_page_title(data.name);
+
+					Showcases.collectionStyleReadyFn = function() {
+						Projects.animate_into_project(data);
+					};
+					Showcases.create_projects_theme([{ id: projectID, color: data.color }]);
+					Showcases.load_collection_style(Showcases.activeCollection);
+				}
 
 				// Marking data as fetched, continuing to project finale only if animation has ended
 				Projects.did.fetch = true;
 				Projects.activeItem = data; // Saving for being used via animation end callback
-				Projects.did.animate && Projects.reveal_project_page(project, item);
+				Projects.did.animate && Projects.reveal_project_page(projectID, item);
 			}
 		});
 
-		_.send_analytics(Showcases.activeCollection, "load_item", project.id);
+		_.send_analytics(Showcases.activeCollection, "load_item", projectID);
 	},
 
 	animate_into_project: function(project, item) {
@@ -126,16 +130,15 @@ var Projects = {
 
 				// Marking animation as done, continuing to project finale only if data was fetched
 				Projects.did.animate = true;
-				Projects.did.fetch && Projects.reveal_project_page(project, Projects.activeItem);
+				Projects.did.fetch && Projects.reveal_project_page(Projects.activeItem);
 			}, 100);
 		});
 	},
 
-	reveal_project_page: function(project, data) {
-		var ripple = Projects.e.find(".ripple"),
-			color = (project.color || project.id );
+	reveal_project_page: function(project) {
+		var ripple = Projects.e.find(".ripple");
 
-		ripple[0].className = "ripple transformable-toned c-" + color + "-main";
+		ripple[0].className = "ripple transformable-toned c-" + project.id + "-main";
 
 		setTimeout(function se_project_reveal() {
 			var sketch = Projects.eArt.find(".se-sketch");
@@ -163,30 +166,30 @@ var Projects = {
 			});
 		}, 300);
 
-		Projects.set_project_page_content(data, project);
+		Projects.set_project_page_content(project);
 	},
 
-	set_project_page_content: function(data, project) {
+	set_project_page_content: function(project) {
 		var title = Projects.e[0].querySelector(".project-title"),
 			preface = Projects.e[0].querySelector(".project-preface"),
 			content = Projects.e[0].querySelector(".project-content"),
 			metaHTML = "";
 
-		title.innerHTML = data.name;
+		title.innerHTML = project.name;
 
-		preface.className = "project-preface wrapper will-change c-" + data.color;
-		preface.innerHTML = Projects.generate_preface(data.id, data.meta, data.synopsis, data.content ? true : false);
+		preface.className = "project-preface wrapper will-change c-" + project.id;
+		preface.innerHTML = Projects.generate_preface(project.id, project.meta, project.synopsis, project.content ? true : false);
 
-		data.content = data.content || "";
+		project.content = project.content || "";
 		
-		content.innerHTML = data.content + Projects.generate_footer(project);
-		content.className = "project-content will-change p-" + data.id + " c-" + data.color;
+		content.innerHTML = project.content + Projects.generate_footer(project);
+		content.className = "project-content will-change p-" + project.id + " c-" + project.id;
 
 		// Loading style
 		style = document.createElement("link");
 		style.rel = "stylesheet";
 		style.type = "text/css";
-		style.href = _.project_style_url(data.id + ".css");
+		style.href = _.project_style_url(project.id + ".css");
 		document.head.appendChild(style);
 
 		// Analytics
@@ -195,7 +198,7 @@ var Projects = {
 		});
 
 		// Team tip
-		data.meta && data.meta.team && Projects.setup_team_tip(preface);
+		project.meta && project.meta.team && Projects.setup_team_tip(preface);
 
 		$([title, preface, content]).addClass("transparent");
 	},
@@ -298,7 +301,9 @@ var Projects = {
 	generate_footer: function(data) {
 		var html = '',
 			similarProject,
-			fragment = document.createElement("ul");
+			fragment = document.createElement("ul"),
+			newThemes = [],
+			newCollections = [];
 
 		// Share
 		html += '<div class="teaserline teaserline-home top"><div class="teaserline-tag-wrapper teaserline-tag-project"><span class="teaserline-tag">';
@@ -315,13 +320,24 @@ var Projects = {
 			html += '<ul class="project-footer-section project-footer-similar columns column-' + data.similar.items.length + '">';
 
 			for (var i = 0; i < data.similar.items.length; i++) {
-				similarProject = Showcases.create_item(Showcases.collections[Showcases.activeCollection][Showcases.catalog[data.similar.items[i]]], 0, true);
+				similarProject = data.similar.items[i];
+				fragment.appendChild(Showcases.create_item(similarProject, 0, true));
 
-				fragment.appendChild(similarProject);
+				newThemes.push({ id: similarProject.id, color: similarProject.color });
+				if (similarProject.collection !== Showcases.activeCollection) {
+					newCollections.push(similarProject.collection);
+				}
 			}
 			html += fragment.innerHTML;
 
 			html += '</ul>';
+		}
+
+		// Creating + loading additional CSS
+		newThemes.length && Showcases.create_projects_theme(newThemes);
+		for (var collection in newCollections) {
+			Showcases.collectionStyleReadyFn = null;
+			Showcases.load_collection_style(newCollections[collection]);
 		}
 
 		return html;
@@ -349,7 +365,7 @@ var Projects = {
 				// Reverting to finalized version
 				var sketch = Projects.eArt.find(".se-sketch");
 
-				sketch.addClass("c-" + Projects.activeItem.color + "-main");
+				sketch.addClass("c-" + Projects.activeItem.id + "-main");
 				Projects.eArt.find("*").removeClass("transparent");
 				sketch.removeClass("reverted").addClass("t-out t-normal");
 

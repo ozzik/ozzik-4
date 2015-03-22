@@ -8,5 +8,9 @@
             [ [ "mouth-back", "mouth-front" ] ],
             [ "page", "contact-page-in" ]
         ]
+    },
+    "color": "bde6da",
+    "similar": {
+        "items": [ "products/rsvp" ]
     }
 }

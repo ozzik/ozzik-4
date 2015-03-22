@@ -67,7 +67,8 @@ var Showcases = {
 		// Creating styles + saving new data
 		var isNew = !Showcases.collections[Showcases.activeCollection];
 		if (isNew) {
-			Showcases.create_styles(data.colors);
+			Showcases.create_projects_theme(data.items);
+			Showcases.load_collection_style(Showcases.activeCollection);
 			Showcases.collections[Showcases.activeCollection] = data.items; // Saving
 			Showcases.collectionsOptions[Showcases.activeCollection] = data.options; // Saving
 
@@ -84,15 +85,6 @@ var Showcases = {
 			$(".strip-menu-button").addClass("disabled").removeClass("active");
 			$(".showcases-menu, .showcases-menu .filter-item.active").removeClass("active");
 			$(".showcases-menu .filter-item:first-child").addClass("active");
-		}
-
-		// Suppression when collection was loaded only for project page (direct link)
-		if (isProjectLandingPage) {
-			Showcases.collectionStyleReadyFn = function load_project_after_collection_style() {
-				Projects.load(Showcases.catalog[Main.landingView.meta.item], null, true);
-			};
-
-			return;
 		}
 
 		// Picking up a randomized enterance order for collection items
@@ -128,26 +120,32 @@ var Showcases = {
 		}
 	},
 
-	create_styles: function(colors) {
+	create_projects_theme: function(items) {
 		// Creating CSS color themes
-		var style = "";
+		var style = "",
+			project,
+			color;
 
-		for (project in colors) {
-			style += ".c-" + project + "-main { background-color: #" + colors[project] + "; }";
-			style += ".showcase-item.c-" + project + "-main { border-color: #" + _.adjust_brightness(colors[project], -4) + "; }";
-			style += ".c-" + project + " h2,.c-" + project + " h3,.c-" + project + " h4,.c-" + project + " em { color: #" + _.adjust_brightness(colors[project], -30) + "; }";
-			style += ".c-" + project + " .project-conclusion { border-color: " + _.adjust_saturation(_.adjust_brightness(colors[project], -3), 300) + "; background-color: " + _.adjust_saturation(_.adjust_brightness(colors[project], 3), 300) + "; color: " + _.adjust_saturation(_.adjust_brightness(colors[project], -50), 100) + "; }";
-			style += ".c-" + project + " .project-cue::before { background-color: #" + _.adjust_brightness(colors[project], -4) + "; }";
-			style += ".c-" + project + " .project-button { color: " + _.adjust_saturation(_.adjust_brightness(colors[project], -30), 300) + "; }";
+		for (item in items) {
+			project = items[item].id;
+			color = items[item].color;
+
+			style += ".c-" + project + "-main { background-color: #" + color + "; }";
+			style += ".showcase-item.c-" + project + "-main { border-color: #" + _.adjust_brightness(color, -4) + "; }";
+			style += ".c-" + project + " h2,.c-" + project + " h3,.c-" + project + " h4,.c-" + project + " em { color: #" + _.adjust_brightness(color, -30) + "; }";
+			style += ".c-" + project + " .project-conclusion { border-color: " + _.adjust_saturation(_.adjust_brightness(color, -3), 300) + "; background-color: " + _.adjust_saturation(_.adjust_brightness(color, 3), 300) + "; color: " + _.adjust_saturation(_.adjust_brightness(color, -50), 100) + "; }";
+			style += ".c-" + project + " .project-cue::before { background-color: #" + _.adjust_brightness(color, -4) + "; }";
+			style += ".c-" + project + " .project-button { color: " + _.adjust_saturation(_.adjust_brightness(color, -30), 300) + "; }";
 		}
 
 		document.getElementById("styleRuntime").textContent += style;
+	},
 
-		// Injecting collection stylesheet
+	load_collection_style: function(collection) {
 		style = document.createElement("link");
 		style.rel = "stylesheet";
 		style.type = "text/css";
-		style.href = _.collection_style_url(Showcases.activeCollection + ".css");
+		style.href = _.collection_style_url(collection + ".css");
 		style.addEventListener("load", function onload_collection_style() {
 			Showcases.collectionStyleReadyFn && Showcases.collectionStyleReadyFn();
 		});
@@ -186,15 +184,16 @@ var Showcases = {
 		var element = document.createElement("li"),
 			className = "showcase-item " + (!isPost ? "off" : "active"),
 			html = "",
-			isNestedElement;
+			isNestedElement,
+			collection = item.collection || Showcases.activeCollection;
 
-		className += " c-" + (item.color || item.id) + "-main";
+		className += " c-" + item.id + "-main";
 		element.className = className;
 		element.setAttribute("data-id", item.id);
 		element.setAttribute("data-index", index);
 
 		// Link + main wrapper
-		html += '<a class="showcase-item-link va-wrapper custom" href="' + _BASE_URL + Showcases.activeCollection + "/" + (item.url ? item.url : item.id) + '" title="' + item.name + '">';
+		html += '<a class="showcase-item-link va-wrapper custom" href="' + _BASE_URL + collection + "/" + (item.url ? item.url : item.id) + '" title="' + item.name + '">';
 		// html += '<div class="showcase-candy s-' + item.id + '-candy transformable flockable"></div>'; // When candies are back in fashion
 		html += '<div class="va-content">';
 
@@ -326,18 +325,16 @@ var Showcases = {
 		// Suppression, item isn't ready yet
 		if (e.target.nodeName === "OL") { return; }
 
-		var target = e.target,
-			project;
+		var target = e.target;
 		e.preventDefault();
 
 		// Detecting item
 		while (target.nodeName !== "LI") {
 			target = target.parentNode;
 		}
-		project = target.getAttribute("data-id");
 
 		// Showing project
-		Projects.load(target.getAttribute("data-index"), target);
+		Projects.load(target.getAttribute("data-id"), target);
 	},
 
 	filter_collection: function(field, value) {

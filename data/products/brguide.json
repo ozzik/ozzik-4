@@ -9,7 +9,7 @@
             [ [ "ribbon-h", "ribbon-v" ], "pop-in" ]
         ]
     },
-    "color": "browsi-v1",
+    "color": "cae4ed",
     "similar": {
         "items": [ "brmenu", "brdashboard", "bremail" ]
     },
