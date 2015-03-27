@@ -5,11 +5,5 @@
 		"music",
 		"contact"
 	],
-	"colors": {
-		"ios710": "d2b8e7",
-		"browsi-v1": "cae4ed",
-		"music": "f7d49e",
-		"contact": "bde6da"
-	},
 	"options": {}
 }

@@ -6,14 +6,7 @@ var Home = {};
 		Navline.setup();
 		setup_teaser();
 
-		// Loading page / collection
-		if (Main.landingView.view === "home") {
-			Navline.select(Main.landingView.meta, true);
-		} else {
-			// Loading collection, and only then loading project itself
-			Showcases.load(Main.landingView.meta.collection, true);
-			$(".pages").addClass("off"); // Hiding pages
-		}
+		Navline.select(Main.landingView.meta, true);
 
 		_setup_about_tips();
 		_setup_showcases_menu();

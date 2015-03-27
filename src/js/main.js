@@ -28,14 +28,21 @@ var Main = {
 			url: ""
 		};
 
-		Home.setup();
-		Showcases.setup();
-		Projects.setup();
 		Overlays.setup();
+		Projects.setup();
 
 		Main.hook_events();
-
 		Main.setup_analytics();
+		
+		// Loading page / collection
+		if (Main.landingView.view === "home") {
+			Home.setup();
+			Showcases.setup();
+		} else {
+			$(".pages").addClass("hidden"); // Hiding pages
+			Showcases.activeCollection = Main.landingView.meta.collection;
+			Projects.load(Main.landingView.meta.item, null, true);
+		}
 
 		// Resize message
 		Main.setup_screen_width_requirements();
@@ -97,7 +104,7 @@ var Main = {
 				Navline.select(e.meta, true);
 			}
 		} else if (e.view === "project") {
-			Projects.load(Showcases.catalog[e.meta], null, true);
+			Projects.load(e.meta, null, true);
 		}
 
 		Main.currentState = e; // Saving current state info (as if triggered via push_history)

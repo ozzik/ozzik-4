@@ -67,14 +67,17 @@
         include_once("home.php");
     }
 
+    function get_raw_project($collection, $project) {
+        return json_decode(file_get_contents("data/$collection/$project.json"));
+    }
+
     function generate_collection_json($collection) {
         $json = json_decode(file_get_contents("data/$collection.json"));
         $catalog = array();
 
         $i = 0;
         foreach ($json -> items as $item) {
-            $project = file_get_contents("data/$collection/$item.json");
-            $project = json_decode($project);
+            $project = get_raw_project($collection, $item);
             $json -> items[$i] = $project;
 
             $catalog[$item] = $i;
@@ -91,7 +94,7 @@
     function generate_project_json($collection, $project) {
         $collectionInfo = json_decode(file_get_contents("data/$collection.json"));
 
-        $projectInfo = json_decode(file_get_contents("data/$collection/$project.json"));
+        $projectInfo = get_raw_project($collection, $project);
         $projectFull = json_decode(file_get_contents("data/$collection/$project.full.json"));
 
         $json = (object)array_merge((array)$projectInfo, (array)$projectFull);
@@ -99,8 +102,24 @@
         // Synthesized keys
         $projectContent = @file_get_contents("data/$collection/$project.html");
         $json -> content = $projectContent;
-        $projectColor = isset($projectInfo -> color) ? $projectInfo -> color : $project;
-        $json -> color = $collectionInfo -> colors -> $projectColor;
+
+        // Similar projects
+        if (isset($json -> similar)) {
+            $similar = array();
+
+            foreach ($json -> similar -> items as $projectName) {
+                $projectPath = explode("/", $projectName);
+                $projectCollection = (count($projectPath) === 1) ? $collection : $projectPath[0];
+                $project = (count($projectPath) === 1) ? $projectName : $projectPath[1];
+
+                $project = get_raw_project($projectCollection, $project);
+                $project -> collection = $projectCollection;
+                
+                array_push($similar, $project);
+            }
+
+            $json -> similar -> items = $similar;
+        }
 
         header('Content-Type: application/json');
         echo json_encode($json);
