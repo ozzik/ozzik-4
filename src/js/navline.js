@@ -18,7 +18,7 @@ var Navline = {};
         _e = $(".navline");
 
         update_offset();
-        Main.hook("resize", update_offset);
+        app.hook("resize", update_offset);
 
         _eHeader.on("mouseover", handle_mouseover);
         _eHeader.on("mouseout", handle_mouseout);
@@ -34,14 +34,13 @@ var Navline = {};
             collectionNameForTitle = (collectionName !== "products") ? collectionName[0].toUpperCase() + collectionName.slice(1) : null;
 
         // Pushing history
-        !isFirst && Main.push_history({
-            view: "home",
-            meta: collectionName,
-            transition: Main.NAVIGATION_SWITCH,
+        !isFirst && app.navigationController.push({
+            view: collectionName,
             url: (collectionName === "products") ? _.url("") : collectionName,
-            title: collectionNameForTitle
+            title: collectionNameForTitle,
+            handler: Navline
         });
-        Main.set_page_title(collectionNameForTitle); // Setting title anyway
+        app.navigationController.setPageTitle(collectionNameForTitle); // Setting title anyway
 
         highlight_item(item);
         Showcases.load(collectionName);
@@ -56,11 +55,17 @@ var Navline = {};
         _loadingTicker = setInterval(handle_loading_tick, 400);
     };
 
+    Navline.popHandler = function(data) {
+        Navline.select(data, true);
+    };
+
+    Navline.pushHandler = Navline.popHandler;
+
     // ==== Private ====
     /* Being called also via resize */
     // Fetches starting X of navline for relative positioning (translate3d)
     function update_offset() {
-        offsetX = _eHeader[0].offsetLeft - Main.viewport.scrollbarWidth;
+        offsetX = _eHeader[0].offsetLeft - app.viewport.scrollbarWidth;
     }
 
     function handle_mouseover(e) {
@@ -100,11 +105,11 @@ var Navline = {};
 
         // Adjusting line to new item, minimized (pre-selection) or full-width
         _e[0].style.width = offsetWidth + "px";
-        _e.transform("translate3d(" + (item.offsetLeft + (Main.viewport.scrollbarWidth / 2) - offsetX) + "px,0,0) " + (isHighlight ? "scaleX(.05)" : ""));
+        _e.transform("translate3d(" + (item.offsetLeft + (app.viewport.scrollbarWidth / 2) - offsetX) + "px,0,0) " + (isHighlight ? "scaleX(.05)" : ""));
 
         // Saving data for loading animation
         _activeItem.width = offsetWidth;
-        _activeItem.transform = "translate3d(" + (item.offsetLeft + (Main.viewport.scrollbarWidth / 2) - offsetX) + "px,0,0)";
+        _activeItem.transform = "translate3d(" + (item.offsetLeft + (app.viewport.scrollbarWidth / 2) - offsetX) + "px,0,0)";
     }
 
     function handle_loading_tick() {

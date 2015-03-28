@@ -26,19 +26,29 @@ var Projects = {
 		});
 	},
 
+	popHandler: function() {
+		Projects.unload();
+	},
+
+	pushHandler: function() {
+		var item = item = item || document.querySelector(".showcase-item[data-id='" + Projects.activeItem.id + "']");;
+		Projects.load(Projects.activeItem.id, item, true);
+	},
+
 	load: function(projectID, item, isDontHistory) {
-		Projects.isLandingPage = Main.landingView.view === "project";
+		Projects.isLandingPage = app.landingView.view === "project";
 
 		if (!Projects.isLandingPage) {
 			project = Showcases.collections[Showcases.activeCollection][Showcases.catalog[projectID]];
 			item = item || document.querySelector(".showcase-item[data-id='" + project.id + "']");
 
-			Main.push_history({
+			!isDontHistory && app.navigationController.push({
 				view: "project",
 				meta: project.id,
-				transition: Main.NAVIGATION_PUSH,
+				transition: app.NAVIGATION_PUSH,
 				url: Showcases.activeCollection + "/" + (project.url ? project.url : project.id),
-				title: project.name
+				title: project.name,
+				handler: Projects
 			});
 		}
 
@@ -51,7 +61,7 @@ var Projects = {
 			url: _.data_url(Showcases.activeCollection + "/" + projectID + ".json"),
 			success: function(data) {
 				if (Projects.isLandingPage) {
-					Main.set_page_title(data.name);
+					app.navigationController.setPageTitle(data.name);
 
 					Showcases.collectionStyleReadyFn = function() {
 						Projects.animate_into_project(data);
@@ -85,11 +95,11 @@ var Projects = {
 		Projects.artData.width = realArt ? realArt.offsetWidth : Projects.eArt[0].offsetWidth;
 		Projects.artData.height = realArt ? realArt.offsetHeight : Projects.eArt[0].offsetHeight;
 		if (realArt && $.engine !== "moz") {
-			Projects.artData.x = realArt.offsetLeft + (Main.viewport.scrollbarWidth / 2);
+			Projects.artData.x = realArt.offsetLeft + (app.viewport.scrollbarWidth / 2);
 			Projects.artData.y = realArt.offsetTop;
 		} else if (realArt) { // Firefox
 			parentForFF = realArt.parentNode.parentNode.parentNode;
-			Projects.artData.x = realArt.offsetLeft + parentForFF.offsetLeft + parentForFF.parentNode.offsetLeft + (Main.viewport.scrollbarWidth / 2);
+			Projects.artData.x = realArt.offsetLeft + parentForFF.offsetLeft + parentForFF.parentNode.offsetLeft + (app.viewport.scrollbarWidth / 2);
 			Projects.artData.y = realArt.offsetTop + parentForFF.offsetTop + parentForFF.parentNode.offsetTop;
 		} else { // Landing
 			Projects.artData.x = (window.innerWidth - Projects.artData.width) / 2;
@@ -99,7 +109,7 @@ var Projects = {
 		// Adjusting scroll position + blocking page interactions
 		_.animate_scroll(document.body);
 		$([ document.body, document.documentElement ]).addClass("blocked");
-		Main.fetch_scrollbar_metrics();
+		app.fetch_scrollbar_metrics();
 		Projects.e.addClass("active");
 		$(".pages").addClass("off");
 		$(".overlay-loading").removeClass("blocked active"); // Removing any loading screen (via initial load)
@@ -350,7 +360,7 @@ var Projects = {
 		_.animate_scroll(Projects.e[0], true);
 
 		Projects.e.addClass("blocked");
-		Main.fetch_scrollbar_metrics();
+		app.fetch_scrollbar_metrics();
 
 		Projects.e.find(".project-title, .project-preface, .project-content, .back-button").addClass("transparent");
 
@@ -378,13 +388,13 @@ var Projects = {
 
 						// Giving back control..
 						$([ document.body, document.documentElement ]).removeClass("blocked");
-						Main.fetch_scrollbar_metrics();
+						app.fetch_scrollbar_metrics();
 						Projects.e.removeClass("active");
 					});
 				});
 			});
 		});
 
-		Main.set_page_title(Showcases.activeCollection !== "products" ? Showcases.activeCollection[0].toUpperCase() + Showcases.activeCollection.slice(1) : "");
+		app.navigationController.setPageTitle(Showcases.activeCollection !== "products" ? Showcases.activeCollection[0].toUpperCase() + Showcases.activeCollection.slice(1) : "");
 	}
 };

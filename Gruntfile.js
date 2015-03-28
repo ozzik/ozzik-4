@@ -7,14 +7,15 @@ module.exports = function(grunt) {
         concat: {   
             website: {
                 src: [
-                    'src/js/dough.min.js',
-                    'src/js/helpers.js',
+                    'src/js/vendors/dough.min.js',
+                    'src/js/utility/helpers.js',
                     'src/js/showcases.js',
                     'src/js/projects.js',
                     'src/js/home.js',
                     'src/js/navline.js',
                     'src/js/overlays.js',
-                    'src/js/main.js'
+                    'src/js/controllers/navigationController.js',
+                    'src/js/app.js'
                 ],
                 dest: 'assets/js/web.js',
             }
@@ -27,7 +28,7 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['src/js/*.js'],
+                files: ['src/js/*.js', 'src/js/*/*.js'],
                 tasks: ['concat', 'uglify'],
                 options: {
                     spawn: false,

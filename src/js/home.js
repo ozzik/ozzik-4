@@ -6,7 +6,7 @@ var Home = {};
 		Navline.setup();
 		setup_teaser();
 
-		Navline.select(Main.landingView.meta, true);
+		Navline.select(app.landingView.meta, true);
 
 		_setup_about_tips();
 		_setup_showcases_menu();
@@ -24,10 +24,10 @@ var Home = {};
 		// Initial peeking position
 		_teaserTag.translate(0, _ttMinY).find(".teaserline-tag").addClass("attention");
 
-		Main.hook("scroll", function hook_scroll_teaser() {
+		app.hook("scroll", function hook_scroll_teaser() {
 			if (_wasPlaced) { return; }
 
-			var step = window.scrollY / (Main.viewport.pageScrollHeight - Main.viewport.windowHeight);
+			var step = window.scrollY / (app.viewport.pageScrollHeight - app.viewport.windowHeight);
 
 			// Marking tag as placed so it won't move anymore
 			if (step === 1) {

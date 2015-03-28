@@ -234,7 +234,7 @@ var Showcases = {
 	reveal_collection: function() {
 		Showcases.isCollectionReady = true;
 		$("html, body, .overlay-loading").removeClass("blocked active");
-		Main.fetch_viewport_metrics();
+		app.fetch_viewport_metrics();
 
 		setTimeout(function se_collection_ready_for_reveal() {
 			$(".showcases").addClass("flock").find(".showcase-item").removeClass("off");

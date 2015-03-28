@@ -161,7 +161,7 @@ var _ = {
 
 	/* === Analytics === */
 	send_analytics: function(category, action, label) {
-		if (Main.dontAnalytics) { return; }
+		if (app.dontAnalytics) { return; }
 
 		// console.log("==", category, action, label);
 		
