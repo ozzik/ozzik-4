@@ -233,8 +233,8 @@ var Showcases = {
 	/* === Showcases intro === */
 	reveal_collection: function() {
 		Showcases.isCollectionReady = true;
-		$("html, body, .overlay-loading").removeClass("blocked active");
-		app.fetch_viewport_metrics();
+		app.viewportController.toggleOverlay("loading", false);
+		app.viewportController.fetchMetrics();
 
 		setTimeout(function se_collection_ready_for_reveal() {
 			$(".showcases").addClass("flock").find(".showcase-item").removeClass("off");

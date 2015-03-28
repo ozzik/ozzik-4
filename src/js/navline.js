@@ -18,7 +18,7 @@ var Navline = {};
         _e = $(".navline");
 
         update_offset();
-        app.hook("resize", update_offset);
+        app.viewportController.hook("resize", update_offset);
 
         _eHeader.on("mouseover", handle_mouseover);
         _eHeader.on("mouseout", handle_mouseout);
@@ -55,17 +55,17 @@ var Navline = {};
         _loadingTicker = setInterval(handle_loading_tick, 400);
     };
 
-    Navline.popHandler = function(data) {
+    Navline.handlePop = function(data) {
         Navline.select(data, true);
     };
 
-    Navline.pushHandler = Navline.popHandler;
+    Navline.handlePush = Navline.handlePop;
 
     // ==== Private ====
     /* Being called also via resize */
     // Fetches starting X of navline for relative positioning (translate3d)
     function update_offset() {
-        offsetX = _eHeader[0].offsetLeft - app.viewport.scrollbarWidth;
+        offsetX = _eHeader[0].offsetLeft - app.viewportController.scrollbarWidth;
     }
 
     function handle_mouseover(e) {
@@ -105,11 +105,11 @@ var Navline = {};
 
         // Adjusting line to new item, minimized (pre-selection) or full-width
         _e[0].style.width = offsetWidth + "px";
-        _e.transform("translate3d(" + (item.offsetLeft + (app.viewport.scrollbarWidth / 2) - offsetX) + "px,0,0) " + (isHighlight ? "scaleX(.05)" : ""));
+        _e.transform("translate3d(" + (item.offsetLeft + (app.viewportController.scrollbarWidth / 2) - offsetX) + "px,0,0) " + (isHighlight ? "scaleX(.05)" : ""));
 
         // Saving data for loading animation
         _activeItem.width = offsetWidth;
-        _activeItem.transform = "translate3d(" + (item.offsetLeft + (app.viewport.scrollbarWidth / 2) - offsetX) + "px,0,0)";
+        _activeItem.transform = "translate3d(" + (item.offsetLeft + (app.viewportController.scrollbarWidth / 2) - offsetX) + "px,0,0)";
     }
 
     function handle_loading_tick() {

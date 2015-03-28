@@ -26,11 +26,11 @@ var Projects = {
 		});
 	},
 
-	popHandler: function() {
+	handlePop: function() {
 		Projects.unload();
 	},
 
-	pushHandler: function() {
+	handlePush: function() {
 		var item = item = item || document.querySelector(".showcase-item[data-id='" + Projects.activeItem.id + "']");;
 		Projects.load(Projects.activeItem.id, item, true);
 	},
@@ -95,24 +95,24 @@ var Projects = {
 		Projects.artData.width = realArt ? realArt.offsetWidth : Projects.eArt[0].offsetWidth;
 		Projects.artData.height = realArt ? realArt.offsetHeight : Projects.eArt[0].offsetHeight;
 		if (realArt && $.engine !== "moz") {
-			Projects.artData.x = realArt.offsetLeft + (app.viewport.scrollbarWidth / 2);
+			Projects.artData.x = realArt.offsetLeft + (app.viewportController.scrollbarWidth / 2);
 			Projects.artData.y = realArt.offsetTop;
 		} else if (realArt) { // Firefox
 			parentForFF = realArt.parentNode.parentNode.parentNode;
-			Projects.artData.x = realArt.offsetLeft + parentForFF.offsetLeft + parentForFF.parentNode.offsetLeft + (app.viewport.scrollbarWidth / 2);
+			Projects.artData.x = realArt.offsetLeft + parentForFF.offsetLeft + parentForFF.parentNode.offsetLeft + (app.viewportController.scrollbarWidth / 2);
 			Projects.artData.y = realArt.offsetTop + parentForFF.offsetTop + parentForFF.parentNode.offsetTop;
 		} else { // Landing
-			Projects.artData.x = (window.innerWidth - Projects.artData.width) / 2;
-			Projects.artData.y = (window.innerHeight - Projects.artData.height) / 2;
+			Projects.artData.x = (app.viewportController.getWidth() - Projects.artData.width) / 2;
+			Projects.artData.y = (app.viewportController.getHeight() - Projects.artData.height) / 2;
 		}
 
 		// Adjusting scroll position + blocking page interactions
 		_.animate_scroll(document.body);
 		$([ document.body, document.documentElement ]).addClass("blocked");
-		app.fetch_scrollbar_metrics();
+		app.viewportController.fetchScrollbarMetrics();
 		Projects.e.addClass("active");
 		$(".pages").addClass("off");
-		$(".overlay-loading").removeClass("blocked active"); // Removing any loading screen (via initial load)
+		app.viewportController.toggleOverlay("loading", false); // Removing any loading screen (when project is landing page)
 
 		// Positioning dummy artwork according to original (on initial load: to screen center)
 		Projects.eArt[0].style.left = Projects.artData.x + "px";
@@ -133,7 +133,7 @@ var Projects = {
 		$.transitionEnd("transform", Projects.eArt[0], function te_project_levitate() {
 			// Moving new artwork to its actual new position
 			setTimeout(function se_project_position_in() {
-				Projects.artData.newX = (window.innerWidth - Projects.artData.width) / 2 - Projects.artData.x;
+				Projects.artData.newX = (app.viewportController.getWidth() - Projects.artData.width) / 2 - Projects.artData.x;
 				Projects.artData.newY = Projects.ART_Y - Projects.artData.y - Projects.artData.height;
 
 				Projects.eArt.transform("translate3d(" + Projects.artData.newX + "px," + Projects.artData.newY + "px,0) scale(" + Projects.ART_DEPTH + ")");
@@ -160,7 +160,7 @@ var Projects = {
 
 				Projects.eArt.translate(Projects.artData.newX, Projects.artData.newY);
 				setTimeout(function se_project_content_reveal() {
-					ripple.transform("translate3d(0,30px,0) scale(" + (window.innerWidth/1440 * 5.2) + ")");
+					ripple.transform("translate3d(0,30px,0) scale(" + (app.viewportController.getWidth()/1440 * 5.2) + ")");
 					Projects.e.find(".project-title, .project-preface, .project-content" + (Projects.isLandingPage ? ", .back-button" : "")).addClass("fadable").removeClass("transparent");
 					
 					// Switching back button's transition for it to bubble on hover
@@ -360,7 +360,7 @@ var Projects = {
 		_.animate_scroll(Projects.e[0], true);
 
 		Projects.e.addClass("blocked");
-		app.fetch_scrollbar_metrics();
+		app.viewportController.fetchScrollbarMetrics();
 
 		Projects.e.find(".project-title, .project-preface, .project-content, .back-button").addClass("transparent");
 
@@ -388,7 +388,7 @@ var Projects = {
 
 						// Giving back control..
 						$([ document.body, document.documentElement ]).removeClass("blocked");
-						app.fetch_scrollbar_metrics();
+						app.viewportController.fetchScrollbarMetrics();
 						Projects.e.removeClass("active");
 					});
 				});

@@ -10,8 +10,6 @@ var O4 = O4 || {};
         _rootView = options.rootView;
         _saveState(options.rootView);
 
-        window._states = _states;
-
         this.push = function(data) {
             data.sid = _saveState(data.view, data.handler);
             delete data.handler;
@@ -56,9 +54,9 @@ var O4 = O4 || {};
             var activeStateData = _getState(_activeState);
 
             if (state.sid > activeStateData.sid) {
-                _getState(state.view).handler.pushHandler(state.view);
+                _getState(state.view).handler.handlePush(state.view);
             } else {
-                activeStateData.handler.popHandler(state.view);
+                activeStateData.handler.handlePop(state.view);
             }
 
             _activeState = state.view;

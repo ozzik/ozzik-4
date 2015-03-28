@@ -1,0 +1,16 @@
+<div class="overlay va-wrapper overlay-screen-width">
+    <div class="va-content">
+        <div class="screen-width-wrapper column">
+            <div class="screen-width-art column {{platform}}"></div>
+            <h2>This website isn't responsive (!)</h2>
+            <p>Instead of making this website responsive I’ve chosen to work on another side project or just watch another hour of Grey’s Anatomy.</p>
+            {{#isSupported}}
+                <p>Now, buddy, a little birdy told me your </br>screen could fit this website perfectly.</br> Please push the ' + (isMac ? "green" : "maximize") + ' button, thank you.</p>
+                <div class="screen-width-instructions column {{platform}}"></div>
+            {{/isSupported}}
+            {{^isSupported}}
+                <p>Please use a screen of at least 768px wide.</p>
+            {{/isSupported}}
+        </div>
+    </div>
+</div>

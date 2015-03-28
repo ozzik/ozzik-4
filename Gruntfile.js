@@ -8,13 +8,18 @@ module.exports = function(grunt) {
             website: {
                 src: [
                     'src/js/vendors/dough.min.js',
+                    'src/js/vendors/hogan.min.js',
                     'src/js/utility/helpers.js',
                     'src/js/showcases.js',
                     'src/js/projects.js',
                     'src/js/home.js',
                     'src/js/navline.js',
                     'src/js/overlays.js',
+                    'src/js/controllers/templateController.js',
                     'src/js/controllers/navigationController.js',
+                    'src/js/controllers/viewportController.js',
+                    'src/js/controllers/noticeViewController.js',
+                    'src/js/views/screenWidthNoticeView.js',
                     'src/js/app.js'
                 ],
                 dest: 'assets/js/web.js',
