@@ -1,15 +1,15 @@
 {
-    "meta": {
-        "recipe": "Mobile webapp",
-        "role": "Design & front-end coding",
-        "scope": "Side project (Mar ‘13)"
-    },
-    "synopsis": {
-        "text": "Simple webapp for quickly checking bus arrival time, based on favoriting them buses.",
-        "link": {
-            "url": "http://whenbus.ozzik.co",
-            "caption": "%watch %preposition %mobile (iOS)"
-        }
-    },
-    "content": ""
+	"meta": {
+		"recipe": "Mobile webapp",
+		"role": "Design & front-end coding",
+		"scope": "Side project (Mar ‘13)"
+	},
+	"synopsis": {
+		"text": "Simple webapp for quickly checking bus arrival time, based on favoriting them buses.",
+		"link": {
+			"url": "http://whenbus.ozzik.co",
+			"caption": "%watch %preposition %mobile (iOS)"
+		}
+	},
+	"content": ""
 }

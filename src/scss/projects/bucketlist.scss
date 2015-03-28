@@ -5,17 +5,17 @@ $project: "bucketlist";
 $project-path: "projects/" + $project + "/";
 
 .bucketlist-tldr {
-    width: 765px;
-    height: 762px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 765px 762px;
+	width: 765px;
+	height: 762px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 765px 762px;
 }
 
 .bucketlist-sketch {
-    width: 640px;
-    height: 640px;
-    background-image: image-url($project-path + "sketch@2x.jpg", false, false);
-    background-size: 640px;
+	width: 640px;
+	height: 640px;
+	background-image: image-url($project-path + "sketch@2x.jpg", false, false);
+	background-size: 640px;
 }
 
 .bucketlist-icon-autodetect,
@@ -36,21 +36,21 @@ $project-path: "projects/" + $project + "/";
 .bucketlist-intro1,
 .bucketlist-intro2,
 .bucketlist-intro3 {
-    height: 369px;
-    background-size: 208px;
+	height: 369px;
+	background-size: 208px;
 }
 .bucketlist-intro1 { background-image: image-url($project-path + "intro1@2x.gif", false, false); }
 .bucketlist-intro2 { background-image: image-url($project-path + "intro2@2x.gif", false, false); }
 .bucketlist-intro3 { background-image: image-url($project-path + "intro3@2x.gif", false, false); }
 
 .bucketlist-sketch {
-    width: 640px;
-    height: 640px;
-    background-image: image-url($project-path + "sketch@2x.jpg", false, false);
-    background-size: 640px;
+	width: 640px;
+	height: 640px;
+	background-image: image-url($project-path + "sketch@2x.jpg", false, false);
+	background-size: 640px;
 }
 
 // Retina
 @include retina {
-    .bucketlist-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.bucketlist-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

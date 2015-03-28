@@ -1,16 +1,16 @@
 {
-    "id": "bucketlist",
-    "name": "Bucket List",
-    "art": {
-        "elements": [ [ "ios-app", "rope", "handle", "bucket" ] ],
-        "animation": [
-            [ "ios-app" ],
-            [ [ "rope", "handle", "bucket" ], "bucket-in" ]
-        ]
-    },
-    "color": "faf7d2",
-    "similar": {
-        "items": [ "webfyr", "whenbus" ]
-    },
-    "scope": "side"
+	"id": "bucketlist",
+	"name": "Bucket List",
+	"art": {
+		"elements": [ [ "ios-app", "rope", "handle", "bucket" ] ],
+		"animation": [
+			[ "ios-app" ],
+			[ [ "rope", "handle", "bucket" ], "bucket-in" ]
+		]
+	},
+	"color": "faf7d2",
+	"similar": {
+		"items": [ "webfyr", "whenbus" ]
+	},
+	"scope": "side"
 }

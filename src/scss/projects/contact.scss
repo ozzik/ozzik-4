@@ -5,13 +5,13 @@ $project: "contact";
 $project-path: "projects/" + $project + "/";
 
 .contact-tldr {
-    width: 770px;
-    height: 620px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 770px;
+	width: 770px;
+	height: 620px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 770px;
 }
 
 // Retina
 @include retina {
-    .contact-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.contact-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

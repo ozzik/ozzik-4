@@ -5,54 +5,54 @@ $project: "webfyr";
 $project-path: "projects/" + $project + "/";
 
 .webfyr-tldr {
-    width: 765px;
-    height: 576px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 765px 576px;
+	width: 765px;
+	height: 576px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 765px 576px;
 }
 
 .webfyr-sketch {
-    width: 502px;
-    height: 575px;
-    background-image: image-url($project-path + "early-sketch@2x.jpg", false, false);
-    background-size: 502px;
+	width: 502px;
+	height: 575px;
+	background-image: image-url($project-path + "early-sketch@2x.jpg", false, false);
+	background-size: 502px;
 }
 .webfyr-tabs {
-    width: 644px;
-    height: 164px;
-    background-image: image-url($project-path + "tabs@2x.png", false, false);
-    background-size: 644px;
+	width: 644px;
+	height: 164px;
+	background-image: image-url($project-path + "tabs@2x.png", false, false);
+	background-size: 644px;
 }
 .webfyr-placeholder {
-    width: 644px;
-    height: 465px;
-    background-image: image-url($project-path + "placeholder@2x.png", false, false);
-    background-size: 644px;
+	width: 644px;
+	height: 465px;
+	background-image: image-url($project-path + "placeholder@2x.png", false, false);
+	background-size: 644px;
 }
 .webfyr-empty {
-    width: 644px;
-    height: 220px;
-    background-image: image-url($project-path + "empty@2x.png", false, false);
-    background-size: 644px;
+	width: 644px;
+	height: 220px;
+	background-image: image-url($project-path + "empty@2x.png", false, false);
+	background-size: 644px;
 }
 
 .webfyr-modals {
-    width: 100%;
-    height: 196px;
-    background-image: image-url($project-path + "modal-states@2x.png", false, false);
-    background-size: 1349px;
-    background-position: center;
-    background-repeat: no-repeat;
+	width: 100%;
+	height: 196px;
+	background-image: image-url($project-path + "modal-states@2x.png", false, false);
+	background-size: 1349px;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .webfyr-filter {
-    width: 722px;
-    height: 227px;
-    background-image: image-url($project-path + "filter-tip@2x.png", false, false);
-    background-size: 722px;
+	width: 722px;
+	height: 227px;
+	background-image: image-url($project-path + "filter-tip@2x.png", false, false);
+	background-size: 722px;
 }
 
 // Retina
 @include retina {
-    .webfyr-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.webfyr-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

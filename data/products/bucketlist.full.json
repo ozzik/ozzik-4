@@ -1,15 +1,15 @@
 {
-    "meta": {
-        "recipe": "Mobile webapp",
-        "role": "Product, design & front-end coding",
-        "scope": "Side project (Apr ‘14)"
-    },
-    "synopsis": {
-        "text": "Weird todo webapp which encourages people to get stuff done by being annoying and fun, hopefully.",
-        "link": {
-            "url": "http://bucketlist.ozzik.co",
-            "caption": "%watch %preposition %mobile"
-        }
-    },
-    "content": ""
+	"meta": {
+		"recipe": "Mobile webapp",
+		"role": "Product, design & front-end coding",
+		"scope": "Side project (Apr ‘14)"
+	},
+	"synopsis": {
+		"text": "Weird todo webapp which encourages people to get stuff done by being annoying and fun, hopefully.",
+		"link": {
+			"url": "http://bucketlist.ozzik.co",
+			"caption": "%watch %preposition %mobile"
+		}
+	},
+	"content": ""
 }

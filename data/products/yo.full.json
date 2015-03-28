@@ -1,15 +1,15 @@
 {
-    "meta": {
-        "recipe": "\"Follow\" button & website",
-        "role": "Design & front-end coding",
-        "scope": "Freelancing for Yo (Jul ‘14)"
-    },
-    "synopsis": {
-        "text": "Follow-like button for subscribing to Yo channels, and a dedicated page for creating such custom buttons.",
-        "link": {
-            "url": "http://button.justyo.co",
-            "caption": "%watchTransitive %it"
-        }
-    },
-    "content": ""
+	"meta": {
+		"recipe": "\"Follow\" button & website",
+		"role": "Design & front-end coding",
+		"scope": "Freelancing for Yo (Jul ‘14)"
+	},
+	"synopsis": {
+		"text": "Follow-like button for subscribing to Yo channels, and a dedicated page for creating such custom buttons.",
+		"link": {
+			"url": "http://button.justyo.co",
+			"caption": "%watchTransitive %it"
+		}
+	},
+	"content": ""
 }

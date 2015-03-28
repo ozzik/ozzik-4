@@ -1,18 +1,18 @@
 {
-    "id": "webfyr",
-    "name": "Webfyr",
-    "art": {
-        "elements": [ "ios-app", "flame", "wave1 d2 will-change", "wave2 d1 will-change", "wave3 will-change", "glare" ],
-        "animation": [
-            [ "ios-app" ],
-            [ "flame", "pop-in", 50 ],
-            [ [ "wave1", "wave2", "wave3" ], "pop-in", 50 ],
-            [ "glare" ]
-        ]
-    },
-    "color": "fae1d2",
-    "similar": {
-        "items": [ "bucketlist", "brapp", "whenbus" ]
-    },
-    "scope": "joint"
+	"id": "webfyr",
+	"name": "Webfyr",
+	"art": {
+		"elements": [ "ios-app", "flame", "wave1 d2 will-change", "wave2 d1 will-change", "wave3 will-change", "glare" ],
+		"animation": [
+			[ "ios-app" ],
+			[ "flame", "pop-in", 50 ],
+			[ [ "wave1", "wave2", "wave3" ], "pop-in", 50 ],
+			[ "glare" ]
+		]
+	},
+	"color": "fae1d2",
+	"similar": {
+		"items": [ "bucketlist", "brapp", "whenbus" ]
+	},
+	"scope": "joint"
 }

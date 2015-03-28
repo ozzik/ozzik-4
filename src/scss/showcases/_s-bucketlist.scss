@@ -56,5 +56,5 @@
 .s-bucketlist-candy { background-image: image-url("showcases/s-bucketlist-candy@2x.png", false, false); }
 
 @include retina {
-    .s-bucketlist { background-image: image-url("showcases/s-bucketlist@2x.png", false, false); }
+	.s-bucketlist { background-image: image-url("showcases/s-bucketlist@2x.png", false, false); }
 }

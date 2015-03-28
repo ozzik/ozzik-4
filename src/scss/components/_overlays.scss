@@ -1,131 +1,131 @@
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: $color-background;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: $color-background;
 
-    &:not(.active) {
-        z-index: -1;
-        opacity: 0;
-    }
+	&:not(.active) {
+		z-index: -1;
+		opacity: 0;
+	}
 }
 
 /* Loading Overlay */
 .overlay-loading {
-    background: #fff;
+	background: #fff;
 }
 
 /* === Screen width message === */
 .screen-width-wrapper {
-    width: 100%;
-    max-width: 22em;
+	width: 100%;
+	max-width: 22em;
 }
 
 .screen-width-art {
-    width: 131px;
-    height: 117px;
-    margin-bottom: 1em;
-    background-size: 131px;
+	width: 131px;
+	height: 117px;
+	margin-bottom: 1em;
+	background-size: 131px;
 
-    &.mac { background-image: image-url("width-error-mac.png", false, false); }
-    &.win { background-image: image-url("width-error-win.png", false, false); }
+	&.mac { background-image: image-url("width-error-mac.png", false, false); }
+	&.win { background-image: image-url("width-error-win.png", false, false); }
 }
 
 .screen-width-instructions {
-    width: 94px;
-    margin-top: 1em;
-    background-size: 94px;
+	width: 94px;
+	margin-top: 1em;
+	background-size: 94px;
 
-    &.mac {
-        height: 45px;
-        background-image: image-url("width-error-instructions-mac.png", false, false);
-    }
-    &.win {
-        height: 56px;
-        background-image: image-url("width-error-instructions-mac.png", false, false);
-    }
+	&.mac {
+		height: 45px;
+		background-image: image-url("width-error-instructions-mac.png", false, false);
+	}
+	&.win {
+		height: 56px;
+		background-image: image-url("width-error-instructions-mac.png", false, false);
+	}
 }
 @include retina {
-    .screen-width-instructions.mac { background-image: image-url("width-error-instructions-mac@2x.png", false, false); }
-    .screen-width-instructions.win { background-image: image-url("width-error-instructions-win@2x.png", false, false); }
-    .screen-width-art.mac { background-image: image-url("width-error-mac@2x.png", false, false); }
-    .screen-width-art.win { background-image: image-url("width-error-win@2x.png", false, false); }
+	.screen-width-instructions.mac { background-image: image-url("width-error-instructions-mac@2x.png", false, false); }
+	.screen-width-instructions.win { background-image: image-url("width-error-instructions-win@2x.png", false, false); }
+	.screen-width-art.mac { background-image: image-url("width-error-mac@2x.png", false, false); }
+	.screen-width-art.win { background-image: image-url("width-error-win@2x.png", false, false); }
 }
 
 /* === Server errors === */
 .server-error-image-404 {
-    width: 115px;
-    height: 157px;
-    margin-right: 1em;
-    background-image: image-url("404@2x.png", false, false);
-    background-size: 115px;
+	width: 115px;
+	height: 157px;
+	margin-right: 1em;
+	background-image: image-url("404@2x.png", false, false);
+	background-size: 115px;
 }
 .server-error-image-403 {
-    width: 84px;
-    height: 88px;
-    background-image: image-url("403@2x.png", false, false);
-    background-size: 84px;
+	width: 84px;
+	height: 88px;
+	background-image: image-url("403@2x.png", false, false);
+	background-size: 84px;
 }
 .server-error-message {
-    max-width: 28em;
-    text-align: left;
+	max-width: 28em;
+	text-align: left;
 }
 
 /* === Tips === */
 .tip {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: .8em;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: .8em;
 
-    &::before {
-        content: "";
-        position: absolute;
-        display: inline-block;
-        background: #d5d5d5;
-        border-radius: 4px;
-    }
+	&::before {
+		content: "";
+		position: absolute;
+		display: inline-block;
+		background: #d5d5d5;
+		border-radius: 4px;
+	}
 
-    $size-tip-offset: 8px;
+	$size-tip-offset: 8px;
 
-    &.top::before,
-    &.bottom::before {
-        left: 10px;
-        width: 2px;
-    }
-    &.top {
-        padding-bottom: $size-tip-offset;
-        
-        &::before {
-            bottom: 0;
-            height: 8px;
-        }
-    }
-    &.bottom {
-        padding-top: $size-tip-offset;
+	&.top::before,
+	&.bottom::before {
+		left: 10px;
+		width: 2px;
+	}
+	&.top {
+		padding-bottom: $size-tip-offset;
+		
+		&::before {
+			bottom: 0;
+			height: 8px;
+		}
+	}
+	&.bottom {
+		padding-top: $size-tip-offset;
 
-        &::before {
-            top: 0;
-            height: 6px;
-        }
-    }
+		&::before {
+			top: 0;
+			height: 6px;
+		}
+	}
 
-    &.right::before,
-    &.left::before {
-        top: .55em;
-        width: 8px;
-        height: 2px;
-    }
-    &.right {
-        padding-left: $size-tip-offset + 4;
-        
-        &::before { left: 0; }
-    }
-    &.left {
-        padding-right: $size-tip-offset + 4;
-        
-        &::before { right: 0; }
-    }
+	&.right::before,
+	&.left::before {
+		top: .55em;
+		width: 8px;
+		height: 2px;
+	}
+	&.right {
+		padding-left: $size-tip-offset + 4;
+		
+		&::before { left: 0; }
+	}
+	&.left {
+		padding-right: $size-tip-offset + 4;
+		
+		&::before { right: 0; }
+	}
 }

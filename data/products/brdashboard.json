@@ -1,18 +1,18 @@
 {
-    "id": "brdashboard",
-    "name": "Brow.si Dashboard",
-    "art": {
-        "elements": [ "paper", "title", "text d1", "line d2", "more d3", "badge" ],
-        "animation": [
-            [ "paper" ],
-            [ [ "title", "text", "line", "more" ] ],
-            [ "badge", "brdashboard-badge-in" ]
-        ]
-    },
-    "url": "browsi-dashboard",
-    "color": "e6edf5",
-    "similar": {
-        "items": [ "brmenu", "brapp", "bremail" ]
-    },
-    "scope": "browsi"
+	"id": "brdashboard",
+	"name": "Brow.si Dashboard",
+	"art": {
+		"elements": [ "paper", "title", "text d1", "line d2", "more d3", "badge" ],
+		"animation": [
+			[ "paper" ],
+			[ [ "title", "text", "line", "more" ] ],
+			[ "badge", "brdashboard-badge-in" ]
+		]
+	},
+	"url": "browsi-dashboard",
+	"color": "e6edf5",
+	"similar": {
+		"items": [ "brmenu", "brapp", "bremail" ]
+	},
+	"scope": "browsi"
 }

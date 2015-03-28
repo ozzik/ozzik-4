@@ -1,17 +1,17 @@
 {
-    "id": "whenbus",
-    "name": "WhenBus",
-    "art": {
-        "elements": [ "bevel", [ "app-icon", "bus", "emboss" ] ],
-        "animation": [
-            [ [ "app-icon", "bevel" ] ],
-            [ "bus" ],
-            [ [ "app-icon", "emboss", "bevel" ], "whenbus-in", null, "whenbus-bevel-in" ]
-        ]
-    },
-    "color": "edcad5",
-    "similar": {
-        "items": [ "bucketlist", "webfyr" ]
-    },
-    "scope": "side"
+	"id": "whenbus",
+	"name": "WhenBus",
+	"art": {
+		"elements": [ "bevel", [ "app-icon", "bus", "emboss" ] ],
+		"animation": [
+			[ [ "app-icon", "bevel" ] ],
+			[ "bus" ],
+			[ [ "app-icon", "emboss", "bevel" ], "whenbus-in", null, "whenbus-bevel-in" ]
+		]
+	},
+	"color": "edcad5",
+	"similar": {
+		"items": [ "bucketlist", "webfyr" ]
+	},
+	"scope": "side"
 }

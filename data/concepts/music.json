@@ -1,13 +1,13 @@
 {
-    "id": "music",
-    "name": "iOS Music App",
-    "art": {
-        "elements": [ [ "wrapper", "back i1 d1", "back i2 d2", "back i3 d3", "glow", "track i1", "track i2 d1", "track i3 d2" ] ],
-        "animation": [
-            [ [ "wrapper", "back" ] ],
-            [ "track", "music-track-in" ],
-            [ [ "track.i2", "glow" ], "finale opaque", null, "fade-in" ]
-        ]
-    },
-    "color": "f7d49e"
+	"id": "music",
+	"name": "iOS Music App",
+	"art": {
+		"elements": [ [ "wrapper", "back i1 d1", "back i2 d2", "back i3 d3", "glow", "track i1", "track i2 d1", "track i3 d2" ] ],
+		"animation": [
+			[ [ "wrapper", "back" ] ],
+			[ "track", "music-track-in" ],
+			[ [ "track.i2", "glow" ], "finale opaque", null, "fade-in" ]
+		]
+	},
+	"color": "f7d49e"
 }

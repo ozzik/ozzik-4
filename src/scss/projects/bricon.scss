@@ -5,15 +5,15 @@ $project: "bricon";
 $project-path: "projects/" + $project + "/";
 
 .bricon-tldr {
-    width: 82px;
-    height: 82px;
-    margin-left: auto;
-    margin-right: auto;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 82px 82px;
+	width: 82px;
+	height: 82px;
+	margin-left: auto;
+	margin-right: auto;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 82px 82px;
 }
 
 // Retina
 @include retina {
-    .bricon-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.bricon-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

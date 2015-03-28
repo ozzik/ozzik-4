@@ -5,13 +5,13 @@ $project: "yo";
 $project-path: "projects/" + $project + "/";
 
 .yo-tldr {
-    width: 765px;
-    height: 511px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 765px 511px;
+	width: 765px;
+	height: 511px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 765px 511px;
 }
 
 // Retina
 @include retina {
-    .yo-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.yo-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

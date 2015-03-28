@@ -62,69 +62,69 @@ var _ = {
 	},
 
 	hex_to_rgb: function(color, isObject) {
-	    var hexVals = color.match(/\w{2}/g),
-	        rgbKeys = ["r", "g", "b"],
-	        rgb = (isObject) ? {} : "";
+		var hexVals = color.match(/\w{2}/g),
+			rgbKeys = ["r", "g", "b"],
+			rgb = (isObject) ? {} : "";
 
-	    for (var i = 0; i < hexVals.length; i++) {
-	        if (isObject) {
-	            rgb[rgbKeys[i]] = parseInt(hexVals[i], 16);
-	        } else {
-	            rgb += parseInt(hexVals[i], 16) + ",";
-	        }
-	    }
-	    if (!isObject) {
-	        rgb = rgb.substring(0, rgb.length - 1);
-	    }
+		for (var i = 0; i < hexVals.length; i++) {
+			if (isObject) {
+				rgb[rgbKeys[i]] = parseInt(hexVals[i], 16);
+			} else {
+				rgb += parseInt(hexVals[i], 16) + ",";
+			}
+		}
+		if (!isObject) {
+			rgb = rgb.substring(0, rgb.length - 1);
+		}
 
-	    return rgb;
+		return rgb;
 	},
 
 	rgb_to_hex: function(color) {
-	    if (color.replace) { // String
-	        color = color.replace(/(rgba\(|\))/g,""); // Stripping everything not number/comma;
-	        color = color.split(",");
-	    } else if (!Array.isArray(color)) {
-	        color = [ color.r, color.g, color.b ];
-	    }
+		if (color.replace) { // String
+			color = color.replace(/(rgba\(|\))/g,""); // Stripping everything not number/comma;
+			color = color.split(",");
+		} else if (!Array.isArray(color)) {
+			color = [ color.r, color.g, color.b ];
+		}
 
-	    var r = parseInt(color[0], 10).toString(16),
-	        g = parseInt(color[1], 10).toString(16),
-	        b = parseInt(color[2], 10).toString(16);
+		var r = parseInt(color[0], 10).toString(16),
+			g = parseInt(color[1], 10).toString(16),
+			b = parseInt(color[2], 10).toString(16);
 
-	    return "#" + (r < 10 ? "0" : "") + r + (g < 10 ? "0" : "") + g + (b < 10 ? "0" : "") + b;
+		return "#" + (r < 10 ? "0" : "") + r + (g < 10 ? "0" : "") + g + (b < 10 ? "0" : "") + b;
 	},
 
 	adjust_brightness: function(color, percent) {
-	    color = color.replace("#", "");
-	    var num = parseInt(color, 16),
-	        amt = Math.round(2.55 * percent),
-	        r = (num >> 16) + amt,
-	        b = (num >> 8 & 0x00FF) + amt,
-	        g = (num & 0x0000FF) + amt;
+		color = color.replace("#", "");
+		var num = parseInt(color, 16),
+			amt = Math.round(2.55 * percent),
+			r = (num >> 16) + amt,
+			b = (num >> 8 & 0x00FF) + amt,
+			g = (num & 0x0000FF) + amt;
 
-	    return (0x1000000 + (r < 255 ? r < 1 ? 0 : r : 255) * 0x10000 + (b < 255 ? b < 1 ? 0 : b : 255) * 0x100 + (g < 255 ? g < 1 ? 0 : g : 255)).toString(16).slice(1);
+		return (0x1000000 + (r < 255 ? r < 1 ? 0 : r : 255) * 0x10000 + (b < 255 ? b < 1 ? 0 : b : 255) * 0x100 + (g < 255 ? g < 1 ? 0 : g : 255)).toString(16).slice(1);
 	},
 
 	adjust_saturation: function(color, percent) {
-	    percent = percent / 100;
-	    color = _.hex_to_rgb(color, true);
-	    var gray = color.r * 0.3086 + color.g * 0.6094 + color.b * 0.0820;
+		percent = percent / 100;
+		color = _.hex_to_rgb(color, true);
+		var gray = color.r * 0.3086 + color.g * 0.6094 + color.b * 0.0820;
 
-	    color.r = Math.round(color.r * percent + gray * (1 - percent));
-	    color.g = Math.round(color.g * percent + gray * (1 - percent));
-	    color.b = Math.round(color.b * percent + gray * (1 - percent));
+		color.r = Math.round(color.r * percent + gray * (1 - percent));
+		color.g = Math.round(color.g * percent + gray * (1 - percent));
+		color.b = Math.round(color.b * percent + gray * (1 - percent));
 
-	    color.r = Math.abs(color.r);
-	    color.g = Math.abs(color.g);
-	    color.b = Math.abs(color.b);
+		color.r = Math.abs(color.r);
+		color.g = Math.abs(color.g);
+		color.b = Math.abs(color.b);
 
-	    return _.rgb_to_hex(color);
+		return _.rgb_to_hex(color);
 	},
 
 	random: function(max, min) {
-	    min = min || 0;
-	    return Math.floor(Math.random() * (max - min + 1)) + min;
+		min = min || 0;
+		return Math.floor(Math.random() * (max - min + 1)) + min;
 	},
 
 	rephrase: function(string) {
@@ -149,11 +149,11 @@ var _ = {
 
 	track_element_parent: function(child, parent) {
 		var target = child,
-		    delegateLevel = 0;
+			delegateLevel = 0;
 
 		while (target !== parent && delegateLevel < 3) {
-		    target = target.parentNode;
-		    delegateLevel++;
+			target = target.parentNode;
+			delegateLevel++;
 		}
 
 		return target;

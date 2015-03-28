@@ -1,15 +1,15 @@
 {
-    "meta": {
-        "recipe": "Website",
-        "role": "Design & front-end coding",
-        "scope": "Freelancing (Aug ‘12)"
-    },
-    "synopsis": {
-        "text": "Simple RSVP page for a friend's wedding, with a flipping reservation form and \"Thank You\" card.",
-        "link": {
-            "url": "http://ozzik.co/projects/products/wedding-rsvp/",
-            "caption": "%watch %it"
-        }
-    },
-    "content": ""
+	"meta": {
+		"recipe": "Website",
+		"role": "Design & front-end coding",
+		"scope": "Freelancing (Aug ‘12)"
+	},
+	"synopsis": {
+		"text": "Simple RSVP page for a friend's wedding, with a flipping reservation form and \"Thank You\" card.",
+		"link": {
+			"url": "http://ozzik.co/projects/products/wedding-rsvp/",
+			"caption": "%watch %it"
+		}
+	},
+	"content": ""
 }

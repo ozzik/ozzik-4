@@ -5,13 +5,13 @@ $project: "rsvp";
 $project-path: "projects/" + $project + "/";
 
 .rsvp-tldr {
-    width: 770px;
-    height: 647px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 770px 647px;
+	width: 770px;
+	height: 647px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 770px 647px;
 }
 
 // Retina
 @include retina {
-    .rsvp-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.rsvp-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

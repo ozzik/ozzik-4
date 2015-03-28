@@ -1,18 +1,18 @@
 {
-    "id": "brapp",
-    "name": "Brow.si App",
-    "art": {
-        "elements": [ "ios-app", "frame", "circle1 d1", "circle2", "circle3 d1" ],
-        "animation": [
-            [ "ios-app" ],
-            [ "frame", "brapp-frame-in" ],
-            [ [ "circle1", "circle2", "circle3" ], "brapp-circle-in", null, "brapp-circle1-in" ]
-        ]
-    },
-    "url": "browsi-app",
-    "color": "d2e6fa",
-    "similar": {
-        "items": [ "brmenu", "brdashboard", "bremail" ]
-    },
-    "scope": "browsi"
+	"id": "brapp",
+	"name": "Brow.si App",
+	"art": {
+		"elements": [ "ios-app", "frame", "circle1 d1", "circle2", "circle3 d1" ],
+		"animation": [
+			[ "ios-app" ],
+			[ "frame", "brapp-frame-in" ],
+			[ [ "circle1", "circle2", "circle3" ], "brapp-circle-in", null, "brapp-circle1-in" ]
+		]
+	},
+	"url": "browsi-app",
+	"color": "d2e6fa",
+	"similar": {
+		"items": [ "brmenu", "brdashboard", "bremail" ]
+	},
+	"scope": "browsi"
 }

@@ -55,5 +55,5 @@
 .s-sptc-candy { background-image: image-url("showcases/s-sptc-candy@2x.png", false, false); }
 
 @include retina {
-    .s-sptc { background-image: image-url("showcases/s-sptc@2x.png", false, false); }
+	.s-sptc { background-image: image-url("showcases/s-sptc@2x.png", false, false); }
 }

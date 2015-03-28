@@ -5,51 +5,51 @@ $project: "brapp";
 $project-path: "projects/" + $project + "/";
 
 .brapp-tldr {
-    width: 770px;
-    height: 762px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 770px 762px;
+	width: 770px;
+	height: 762px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 770px 762px;
 }
 
 $art-height: 410px;
 .brapp-guide {
-    // width: 100%;
-    // height: $art-height;
-    // background-size: 1422px;
-    width: 705px;
-    height: 830px;
-    background: image-url($project-path + "guide2@2x.jpg", false, false) no-repeat;
-    background-size: 705px;
-    background-position: center;
+	// width: 100%;
+	// height: $art-height;
+	// background-size: 1422px;
+	width: 705px;
+	height: 830px;
+	background: image-url($project-path + "guide2@2x.jpg", false, false) no-repeat;
+	background-size: 705px;
+	background-position: center;
 }
 .brapp-tips {
-    width: 705px;
-    height: $art-height;
-    background: image-url($project-path + "tips@2x.png", false, false) no-repeat;
-    background-size: 705px;
-    background-position: center;
+	width: 705px;
+	height: $art-height;
+	background: image-url($project-path + "tips@2x.png", false, false) no-repeat;
+	background-size: 705px;
+	background-position: center;
 }
 .brapp-magazine {
-    width: 469px;
-    height: $art-height;
-    background: image-url($project-path + "magazine@2x.png", false, false) no-repeat;
-    background-size: 469px;
+	width: 469px;
+	height: $art-height;
+	background: image-url($project-path + "magazine@2x.png", false, false) no-repeat;
+	background-size: 469px;
 }
 .brapp-readinglist {
-    width: 469px;
-    height: $art-height;
-    background: image-url($project-path + "readinglist@2x.png", false, false) no-repeat;
-    background-size: 469px;
+	width: 469px;
+	height: $art-height;
+	background: image-url($project-path + "readinglist@2x.png", false, false) no-repeat;
+	background-size: 469px;
 }
 .brapp-errors {
-    width: 705px;
-    height: $art-height;
-    background: image-url($project-path + "errors@2x.png", false, false) no-repeat;
-    background-size: 705px;
-    background-position: center;
+	width: 705px;
+	height: $art-height;
+	background: image-url($project-path + "errors@2x.png", false, false) no-repeat;
+	background-size: 705px;
+	background-position: center;
 }
 
 // Retina
 @include retina {
-    .brapp-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.brapp-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

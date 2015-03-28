@@ -1,11 +1,11 @@
 {
-    "id": "itunes",
-    "name": "iTunes Refined",
-    "art": {
-        "elements": [ "ui" ],
-        "animation": [
-            [ "ui" ]
-        ]
-    },
-    "color": "f9e2e2"
+	"id": "itunes",
+	"name": "iTunes Refined",
+	"art": {
+		"elements": [ "ui" ],
+		"animation": [
+			[ "ui" ]
+		]
+	},
+	"color": "f9e2e2"
 }
