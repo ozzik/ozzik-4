@@ -43,7 +43,7 @@ var O4 = O4 || {};
 
 		this.toggleOverlay = function(overlay, isShow) {
 			$(".overlay-" + overlay).toggleClass("active", isShow);
-			this.setScrollability(isShow ? false : true);
+			this.setScrollability(isShow);
 		};
 
 		// Events handling system
