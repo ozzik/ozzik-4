@@ -2,9 +2,7 @@
 // Provides an interface for generating views based on templates
 //
 
-(function(O4) {
-	function TemplateController() {
-		_templates = [];
+var O4 = O4 || {};
 
 O4.TemplateController = function() {
 	_templates = [];
