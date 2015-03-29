@@ -4,6 +4,8 @@ var app = {
 	navigationController: null,
 	viewportController: null,
 	noticeViewController: null,
+	homeViewController: null,
+
 	dontAnalytics: false,
 
 	init: function() {
@@ -24,12 +26,11 @@ var app = {
 		Overlays.setup();
 		Projects.setup();
 
-		app.setup_analytics();
+		app.dontAnalytics = _isMe;
 		
 		// Loading page / collection
 		if (app.landingView.view === "home") {
-			Home.setup();
-			Showcases.setup();
+			app.homeViewController = new O4.HomeViewController();
 		} else {
 			$(".pages").addClass("hidden"); // Hiding pages
 			Showcases.activeCollection = app.landingView.meta.collection;
@@ -38,18 +39,6 @@ var app = {
 
 		// Resize message
 		app.noticeViewController = new O4.NoticeViewController();
-	},
-
-	setup_analytics: function() {
-		var links = document.querySelectorAll(".page[data-for='about'] a");
-		
-		for (var i = 0; i < links.length; i++) {
-			links[i].addEventListener("click", function() {
-				_.send_analytics("about", "link", this.getAttribute("href"));
-			});
-		}
-
-		app.dontAnalytics = _isMe;
 	}
 };
 

@@ -15,11 +15,8 @@ module.exports = function(grunt) {
 					'src/js/home.js',
 					'src/js/navline.js',
 					'src/js/overlays.js',
-					'src/js/controllers/templateController.js',
-					'src/js/controllers/navigationController.js',
-					'src/js/controllers/viewportController.js',
-					'src/js/controllers/noticeViewController.js',
-					'src/js/views/screenWidthNoticeView.js',
+					'src/js/controllers/*.js',
+					'src/js/views/*.js',
 					'src/js/app.js'
 				],
 				dest: 'assets/js/web.js',

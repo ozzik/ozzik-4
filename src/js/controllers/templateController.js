@@ -1,32 +1,34 @@
-var O4 = O4 || {};
+//
+// Provides an interface for generating views based on templates
+//
 
 (function(O4) {
 	function TemplateController() {
 		_templates = [];
 
-		// Setup
-		(function() {
-			var _templatesRaw = document.querySelectorAll("script[type='text/template']");
+O4.TemplateController = function() {
+	_templates = [];
 
-			for (var i = 0; i < _templatesRaw.length; i++) {
-				_templates[_templatesRaw[i].id.replace("tpl-", "")] = Hogan.compile(_templatesRaw[i].textContent.replace(/\t|\n/g, ""));
-				document.body.removeChild(_templatesRaw[i]);
-			}
-		})();
-		
-		this.render = function(template, data, isContent) {
-			var html = _templates[template].render(data);
-				renderee = html;
+	// Setup
+	(function() {
+		var _templatesRaw = document.querySelectorAll("script[type='text/template']");
 
-			if (!isContent) {
-				renderee = document.createElement("div");
-				renderee.innerHTML = html;
-				renderee = renderee.childNodes[0];
-			}
+		for (var i = 0; i < _templatesRaw.length; i++) {
+			_templates[_templatesRaw[i].id.replace("tpl-", "")] = Hogan.compile(_templatesRaw[i].textContent.replace(/\t|\n/g, ""));
+			document.body.removeChild(_templatesRaw[i]);
+		}
+	})();
+	
+	this.render = function(template, data, isContent) {
+		var html = _templates[template].render(data);
+			renderee = html;
 
-			return renderee;
-		};
-	}
+		if (!isContent) {
+			renderee = document.createElement("div");
+			renderee.innerHTML = html;
+			renderee = renderee.childNodes[0];
+		}
 
-	O4.TemplateController = TemplateController;
-})(O4);
+		return renderee;
+	};
+};

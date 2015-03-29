@@ -12,11 +12,26 @@ var Showcases = {
 	/* === Setup === */
 	setup: function() {
 		$(".showcases").on("click", Showcases.handle_item_click, { isCaptured: true });
+
+		$(".strip-menu-button").on("click", function() {
+		    var menu = document.querySelector(".showcases-menu");
+
+		    $([ this, menu ]).toggleClass("active");
+		});
+
+		$(".showcases-menu .filter-item").on("click", function() {
+		    $(".showcases-menu .filter-item.active").removeClass("active");
+		    $(this).addClass("active");
+
+		    Showcases.filter_collection("scope", this.getAttribute("data-value"));
+		});
 	},
 
 	/* === Loading === */
 	load: function(collection, isProjectLandingPage) {
 		if (Showcases.activeCollection === collection) { return; } // Suppression
+
+		_.send_analytics(collection, "load", "");
 
 		// General reset
 		// Stopping previous collection animations while changing (are handled via callbacks which can't be controlled)
@@ -57,7 +72,7 @@ var Showcases = {
 					Showcases.handle_collection(data, isProjectLandingPage);
 				}
 			});
-			Navline.start_loading_animation();
+			document.dispatchEvent(new Event("_collectionReload"));
 		} else {
 			Showcases.handle_collection({ items: Showcases.collections[Showcases.activeCollection] });
 		}
