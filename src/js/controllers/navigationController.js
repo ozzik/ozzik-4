@@ -14,8 +14,8 @@ O4.NavigationController = function(options) {
 	_saveState(options.rootView);
 
 	this.push = function(data) {
-		data.sid = _saveState(data.view, data.handler);
-		delete data.handler;
+		data.sid = _saveState(data.view, data.handlee);
+		delete data.handlee;
 
 		console.log("=== push:", data.view, data.sid);
 
@@ -30,11 +30,11 @@ O4.NavigationController = function(options) {
 		window['_gs'] && _gs("track", document.location.pathname, document.title);
 	};
 
-	function _saveState(name, handler) {
+	function _saveState(name, handlee) {
 		if (!_getState(name)) {
 			_states[name] = {
 				sid: _stateID++,
-				handler: handler
+				handlee: handlee
 			};
 		}
 
@@ -57,9 +57,9 @@ O4.NavigationController = function(options) {
 		var activeStateData = _getState(_activeState);
 
 		if (state.sid > activeStateData.sid) {
-			_getState(state.view).handler.handlePush(state.view, true);
+			_getState(state.view).handlee.handlePush(state.view, true);
 		} else {
-			activeStateData.handler.handlePop(state.view, true);
+			activeStateData.handlee.handlePop(state.view, true);
 		}
 
 		_activeState = state.view;

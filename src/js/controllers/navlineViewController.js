@@ -36,7 +36,7 @@ O4.NavlineViewController = function(options) {
 		_highlightItem(item);
 
 		var stateData = _navigationHandle(item.getAttribute("data-for"));
-		stateData.handler = this;
+		stateData.handlee = this;
 
 		!isViaHistory && app.navigationController.push(stateData);
 	};

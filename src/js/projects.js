@@ -48,7 +48,7 @@ var Projects = {
 				transition: app.NAVIGATION_PUSH,
 				url: Showcases.activeCollection + "/" + (project.url ? project.url : project.id),
 				title: project.name,
-				handler: Projects
+				handlee: Projects
 			});
 		}
 
