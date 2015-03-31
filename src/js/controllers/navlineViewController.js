@@ -93,7 +93,7 @@ O4.NavlineViewController = function(options) {
 	}
 
 	// Loading methods
-	function _startLoadingAnimation() {
+	function _handleCollectionReload() {
 		_loadingTickerBeat = 0;
 
 		_handleLoadingTick();
@@ -101,17 +101,18 @@ O4.NavlineViewController = function(options) {
 	};
 
 	function _handleLoadingTick() {
-		if (Showcases.isCollectionReady) {
-			clearInterval(_loadingTicker);
-			_e.transform(_activeItem.transform);
-			return;
-		}
-
 		_e.transform(_activeItem.transform + (_loadingTickerBeat ? " scaleX(.8)" : ""));
 
 		_loadingTickerBeat = (_loadingTickerBeat) ? 0 : 1;
 	}
 
-	document.addEventListener("_collectionReload", _startLoadingAnimation);
+	function _handleCollectionReady() {
+		clearInterval(_loadingTicker);
+		_e.transform(_activeItem.transform);
+	}
+
+	_.subscribeForNotification("collectionReload", _handleCollectionReload);
+	_.subscribeForNotification("collectionReady", _handleCollectionReady);
+	
 	this.select(options.rootItem, true);
 };

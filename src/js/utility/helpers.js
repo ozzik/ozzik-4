@@ -20,17 +20,27 @@ var _ = {
 	style_url: function(str) {
 		return _.url("assets/css/" + str);
 	},
-	image_url: function(str) {
-		return _.url("assets/images/" + str);
+	imageUrl: function(str) {
+		return _.url("assets/images/" + (window.devicePixelRatio === 2 ? str.replace(".png", "@2x.png") : str));
 	},
-	collection_style_url: function(str) {
+	collectionStyleUrl: function(str) {
 		return _.style_url("showcases/" + str);
 	},
 	project_style_url: function(str) {
 		return _.style_url("projects/" + str);
 	},
-	project_showcase_url: function(str) {
-		return _.image_url("showcases/s-" + str);
+	projectShowcaseUrl: function(str) {
+		return _.imageUrl("showcases/s-" + str);
+	},
+
+	loadStyle: function(url, loadHandler) {
+		style = document.createElement("link");
+		style.rel = "stylesheet";
+		style.type = "text/css";
+		style.href = url;
+		loadHandler && style.addEventListener("load", loadHandler);
+		
+		document.head.appendChild(style);
 	},
 
 	/* RequestAnimationFrame-based scroll from (https://gist.github.com/james2doyle/5694700) */
@@ -157,6 +167,14 @@ var _ = {
 		}
 
 		return target;
+	},
+
+	subscribeForNotification: function(notification, handler) {
+		document.addEventListener("_" + notification, handler);
+	},
+
+	sendNotification: function(notification) {
+		document.dispatchEvent(new Event("_" + notification));
 	},
 
 	/* === Analytics === */

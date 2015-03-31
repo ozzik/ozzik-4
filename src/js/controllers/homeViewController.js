@@ -8,6 +8,7 @@ O4.HomeViewController = function() {
     // Teaserline
     var _self = this;
     var _teaser = new O4.HomeTeaserViewController(),
+        _showcaseCollection = new O4.ShowcaseCollectionViewController(),
         _navline = new O4.NavlineViewController({
             rootItem: app.landingView.meta,
             navigationHandle: _handleNavigation
@@ -17,7 +18,7 @@ O4.HomeViewController = function() {
         var collectionName = view,
             collectionNameForTitle = (collectionName !== "products") ? collectionName[0].toUpperCase() + collectionName.slice(1) : null;
 
-        Showcases.load(collectionName);
+        _showcaseCollection.load(collectionName);
 
         return {
             view: collectionName,
@@ -26,7 +27,7 @@ O4.HomeViewController = function() {
         };
     }
 
-    Showcases.setup();
+    // TODO: setup showcase collection (filter controls)
 
     // About section setup
     // Tips

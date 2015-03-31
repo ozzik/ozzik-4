@@ -16,6 +16,7 @@ module.exports = function(grunt) {
 					'src/js/navline.js',
 					'src/js/overlays.js',
 					'src/js/controllers/*.js',
+					'src/js/models/*.js',
 					'src/js/views/*.js',
 					'src/js/app.js'
 				],

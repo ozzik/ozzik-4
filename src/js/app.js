@@ -5,7 +5,7 @@ var app = {
 	viewportController: null,
 	noticeViewController: null,
 	homeViewController: null,
-
+	killAnimation: false, // Flag for stopping a callback-triggered animation
 	dontAnalytics: false,
 
 	init: function() {
