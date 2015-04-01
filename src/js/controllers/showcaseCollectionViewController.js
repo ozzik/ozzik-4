@@ -11,6 +11,8 @@ O4.ShowcaseCollectionViewController = function() {
 		_loadedCollection = [],
 		_pendingAssets;
 
+	_setupFilterControl();
+
 	// ==== Exposed methods ====
 	this.load = function(collection) {
 		_.send_analytics(collection, "load", "");
@@ -38,7 +40,7 @@ O4.ShowcaseCollectionViewController = function() {
 
 	function _handleData(collection) {
 		_collection = collection;
-		// handle filtering options
+		_toggleFilterControlAvailability();
 
 		_.sendNotification("collectionReady");
 		_collectionView.load(_collection);
@@ -47,7 +49,7 @@ O4.ShowcaseCollectionViewController = function() {
 			_loadedCollection.push(collection.name);
 
 			_.loadStyle(_.collectionStyleUrl(collection.name + ".css"), function cb_collectionStyleLoaded() {
-				console.log("style loaded");
+				// Showcases.collectionStyleReadyFn && Showcases.collectionStyleReadyFn(); // TODO: Projects callback
 			});
 			O4.ProjectViewController.prototype.createThemes(collection.items); // TODO: shouldn't access .items
 
@@ -72,6 +74,49 @@ O4.ShowcaseCollectionViewController = function() {
 					_collectionView.reveal();
 				}
 			}
+		}
+	}
+
+	function _setupFilterControl() {
+		$(".strip-menu-button").on("click", function() {
+		    var menu = document.querySelector(".showcases-menu");
+
+		    $([ this, menu ]).toggleClass("active");
+		});
+
+		$(".showcases-menu .filter-item").on("click", function() {
+		    $(".showcases-menu .filter-item.active").removeClass("active");
+		    $(this).addClass("active");
+
+		    _filter("scope", this.getAttribute("data-value"));
+		});
+	}
+
+	function _toggleFilterControlAvailability() {
+		if (_collection.isFilterable) {
+			$(".strip-menu-button").removeClass("disabled");
+		} else {
+			$(".strip-menu-button").addClass("disabled").removeClass("active");
+			$(".showcases-menu, .showcases-menu .filter-item.active").removeClass("active");
+			$(".showcases-menu .filter-item:first-child").addClass("active");
+		}
+	}
+
+	function _filter(field, value) {
+		var __filterHandler;
+
+		if (field && value) {
+			__filterHandler = function(i, field, value) {
+				return _collection.getShowcaseAtIndex(i)[field] === value;
+			};
+		} else {
+			__filterHandler = function(i, field, value) {
+				return true;
+			};
+		}
+
+		for (var i = 0; i < _collection.length; i++) {
+			_collectionView.toggleShowcaseFilterState(i, __filterHandler(i, field, value));
 		}
 	}
 };

@@ -46,6 +46,10 @@ var O4 = O4 || {};
 		animateStep();
 	};
 
+	ShowcaseView.prototype.toggleFilterState = function(isUnfiltered) {
+		this._e.toggleClass("filtered", !isUnfiltered).toggleClass("active", isUnfiltered);
+	};
+
 	// ==== Private ====
 	function _createView(data, index, isPost) {
 		var view = app.templateController.render("showcase", {

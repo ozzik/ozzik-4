@@ -11,6 +11,8 @@ O4.ShowcaseCollectionView = function(viewSelector) {
 		_order = null,
 		_animatedItems = 0;
 
+	_e.on("click", _handleItemClick, { isCaptured: true });
+
 	// ==== Exposed methods ====
 	this.reset = function() {
 		app.killAnimation = _collection && _animatedItems !== _collection.length;
@@ -54,6 +56,10 @@ O4.ShowcaseCollectionView = function(viewSelector) {
 
 			doneHandler();
 		});
+	};
+
+	this.toggleShowcaseFilterState = function(index, isUnfiltered) {
+		_showcases[index].toggleFilterState(isUnfiltered);
 	};
 
 	// ==== Private ====
@@ -100,5 +106,22 @@ O4.ShowcaseCollectionView = function(viewSelector) {
 				setTimeout(_animateShowcases, 0);
 			}
 		});
+	}
+
+	// TODO: refactor :<
+	function _handleItemClick(e) {
+		// Suppression, item isn't ready yet
+		if (e.target.nodeName === "OL") { return; }
+
+		var target = e.target;
+		e.preventDefault();
+
+		// Detecting item
+		while (target.nodeName !== "LI") {
+			target = target.parentNode;
+		}
+
+		// Showing project
+		Projects.load(target.getAttribute("data-id"), target);
 	}
 };
