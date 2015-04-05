@@ -102,7 +102,6 @@
 		// Synthesized keys
 		$projectContent = @file_get_contents("data/$collection/$project.html");
 		$json -> content = $projectContent;
-		$json -> content = "";
 
 		// Similar projects
 		if (isset($json -> similar)) {

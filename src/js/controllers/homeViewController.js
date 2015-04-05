@@ -14,7 +14,7 @@ O4.HomeViewController = function() {
             navigationHandle: _handleNavigation
         });
 
-    function _handleNavigation(view, isUserAction) {
+    function _handleNavigation(view) {
         var collectionName = view,
             collectionNameForTitle = (collectionName !== "products") ? collectionName[0].toUpperCase() + collectionName.slice(1) : null;
 

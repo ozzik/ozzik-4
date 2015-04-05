@@ -5,6 +5,7 @@ var app = {
 	viewportController: null,
 	noticeViewController: null,
 	homeViewController: null,
+	projectViewController: null,
 	killAnimation: false, // Flag for stopping a callback-triggered animation
 	dontAnalytics: false,
 
@@ -24,7 +25,7 @@ var app = {
 		app.viewportController = new O4.ViewportController();
 
 		Overlays.setup();
-		Projects.setup();
+		// Projects.setup(); TODO: do
 
 		app.dontAnalytics = _isMe;
 		

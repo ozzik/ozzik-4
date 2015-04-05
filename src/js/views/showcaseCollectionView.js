@@ -27,12 +27,12 @@ O4.ShowcaseCollectionView = function(viewSelector) {
 		_create();
 	};
 
-	this.reveal = function() {
+	this.present = function() {
 		app.viewportController.toggleOverlay("loading", false); // TODO: Send event for success
 		app.viewportController.fetchMetrics();
 
 		// TODO: refactor access to .showcase-item (-> _showcases)
-		setTimeout(function se_collectionReadyForReveal() {
+		setTimeout(function se_collectionReadyForPresentation() {
 			_e.addClass("flock").find(".showcase-item").removeClass("off");
 			$.transitionEnd("transform", document.querySelector(".showcase-item:last-child"), function te_flock() {
 				_e.removeClass("flock");
@@ -42,7 +42,7 @@ O4.ShowcaseCollectionView = function(viewSelector) {
 		}, 100);
 	};
 
-	this.hide = function(doneHandler) {
+	this.dismiss = function(doneHandler) {
 		// TODO: refactor access to .showcase-item (-> _showcases)
 		_e.addClass("flock-out").find(".showcase-item").addClass("off");
 		$.transitionEnd("transform", document.querySelector(".showcase-item:first-child"), function te_flockOff() {
@@ -122,6 +122,9 @@ O4.ShowcaseCollectionView = function(viewSelector) {
 		}
 
 		// Showing project
-		Projects.load(target.getAttribute("data-id"), target);
+		if (!app.projectViewController) {
+			app.projectViewController = new O4.ProjectViewController();
+		}
+		app.projectViewController.present(_collection.getShowcase(target.getAttribute("data-id")));
 	}
 };

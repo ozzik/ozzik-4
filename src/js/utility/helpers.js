@@ -14,7 +14,7 @@ var _ = {
 		return _BASE_URL + str;
 	},
 
-	data_url: function(str) {
+	dataUrl: function(str) {
 		return _.url("data/" + str);
 	},
 	style_url: function(str) {

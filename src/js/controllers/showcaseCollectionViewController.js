@@ -26,8 +26,12 @@ O4.ShowcaseCollectionViewController = function() {
 		if (!_collection) {
 			__fetchData();
 		} else {
-			_collectionView.hide(__fetchData);
+			_collectionView.dismiss(__fetchData);
 		}
+	};
+
+	this.getName = function() {
+		return _collection.name;
 	};
 
 	// ==== Private ====
@@ -55,7 +59,7 @@ O4.ShowcaseCollectionViewController = function() {
 
 			_fetchAssets();
 		} else {
-			setTimeout(_collectionView.reveal, 100);
+			setTimeout(_collectionView.present, 100);
 		}
 	}
 
@@ -71,7 +75,7 @@ O4.ShowcaseCollectionViewController = function() {
 				_pendingAssets--;
 
 				if (!_pendingAssets) {
-					_collectionView.reveal();
+					_collectionView.present();
 				}
 			}
 		}
@@ -120,3 +124,8 @@ O4.ShowcaseCollectionViewController = function() {
 		}
 	}
 };
+
+// ==== Static methods ====
+O4.ShowcaseCollectionViewController.getShowcaseArtwork = function(showcaseID) {
+	return document.querySelector(".showcase-item[data-id='" + showcaseID + "'] .showcase-art");
+}
