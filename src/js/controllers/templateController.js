@@ -18,13 +18,25 @@ O4.TemplateController = function() {
 	})();
 	
 	this.render = function(template, data, isContent) {
-		var html = _templates[template].render(data);
-			renderee = html;
+		var html = _templates[template].render(data),
+			renderee = html,
+			fragment;
 
 		if (!isContent) {
 			renderee = document.createElement("div");
 			renderee.innerHTML = html;
-			renderee = renderee.childNodes[0];
+			
+			if (renderee.childNodes.length === 1) {
+				renderee = renderee.childNodes[0];
+			} else {
+				fragment = document.createDocumentFragment();
+
+				while(renderee.childNodes.length) {
+					fragment.appendChild(renderee.childNodes[0]);
+				}
+
+				renderee = fragment;
+			}
 		}
 
 		return renderee;

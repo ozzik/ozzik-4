@@ -17,17 +17,17 @@ var _ = {
 	dataUrl: function(str) {
 		return _.url("data/" + str);
 	},
-	style_url: function(str) {
+	styleUrl: function(str) {
 		return _.url("assets/css/" + str);
 	},
 	imageUrl: function(str) {
 		return _.url("assets/images/" + (window.devicePixelRatio === 2 ? str.replace(".png", "@2x.png") : str));
 	},
 	collectionStyleUrl: function(str) {
-		return _.style_url("showcases/" + str);
+		return _.styleUrl("showcases/" + str);
 	},
-	project_style_url: function(str) {
-		return _.style_url("projects/" + str);
+	projectStyleUrl: function(str) {
+		return _.styleUrl("projects/" + str);
 	},
 	projectShowcaseUrl: function(str) {
 		return _.imageUrl("showcases/s-" + str);
@@ -169,6 +169,12 @@ var _ = {
 		return target;
 	},
 
+	removeAllChildren: function(element) {
+		while (element.firstChild) {
+		    element.removeChild(element.firstChild);
+		}
+	},
+
 	subscribeForNotification: function(notification, handler) {
 		document.addEventListener("_" + notification, handler);
 	},
@@ -179,9 +185,9 @@ var _ = {
 
 	/* === Analytics === */
 	send_analytics: function(category, action, label) {
-		if (app.dontAnalytics) { return; }
-
 		// console.log("==", category, action, label);
+
+		if (app.dontAnalytics) { return; }
 		
 		_gaq.push(['_trackEvent', category, action, label]);
 	},

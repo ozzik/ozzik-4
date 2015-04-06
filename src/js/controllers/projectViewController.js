@@ -70,7 +70,8 @@ O4.ProjectViewController = function(options) {
 
 			// TODO: refactor
 			O4.ProjectViewController.prototype.createThemes([ project ]);
-			_.loadStyle(_.collectionStyleUrl(project.collection + ".css"), function cb_collectionStyleLoaded() {
+
+			O4.ShowcaseCollectionViewController.loadStyle(project.collection, function cb_collectionStyleLoaded() {
 				_projectView.present(_project, _handleArtworkAnimated);
 			});
 		}

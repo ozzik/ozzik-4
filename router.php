@@ -108,6 +108,11 @@
 		$projectContent = @file_get_contents("data/$collection/$project.html");
 		$json -> collection = $collection;
 		$json -> content = $projectContent;
+		if (!isset($json -> meta)) {
+			$json -> meta = array();
+		} else {
+			$json -> meta -> team = (isset($json -> meta -> team)) ? $json -> meta -> team : "";
+		}
 
 		// Similar projects
 		if (isset($json -> similar)) {

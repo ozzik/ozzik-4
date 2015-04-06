@@ -52,7 +52,7 @@ O4.ShowcaseCollectionViewController = function() {
 		if (_loadedCollection.indexOf(collection.name) === -1) {
 			_loadedCollection.push(collection.name);
 
-			_.loadStyle(_.collectionStyleUrl(collection.name + ".css")); // TODO: refactor, used too many times
+			O4.ShowcaseCollectionViewController.loadStyle(collection.name);
 			O4.ProjectViewController.prototype.createThemes(collection.items); // TODO: shouldn't access .items
 
 			_fetchAssets();
@@ -126,4 +126,8 @@ O4.ShowcaseCollectionViewController = function() {
 // ==== Static methods ====
 O4.ShowcaseCollectionViewController.getShowcaseArtwork = function(showcaseID) {
 	return document.querySelector(".showcase-item[data-id='" + showcaseID + "'] .showcase-art");
-}
+};
+
+O4.ShowcaseCollectionViewController.loadStyle = function(collectionName, loadedHandler) {
+	_.loadStyle(_.collectionStyleUrl(collectionName + ".css"), loadedHandler);
+};

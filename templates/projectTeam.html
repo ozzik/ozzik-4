@@ -1,0 +1,5 @@
+<ul class="project-team columns">
+{{#members}}
+<li class="project-team-member column member-{{id}}" data-tip="<em>{{name}}</em>: {{role}}">{{#url}}<a class="project-team-member-link custom" href="{{url}}" title="{{name}}" target="_blank">{{name}}</a>{{/url}}{{^url}}{{name}}{{/url}}</li>
+{{/members}}
+</ul>
