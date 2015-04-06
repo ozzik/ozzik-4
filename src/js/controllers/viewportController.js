@@ -40,13 +40,13 @@ O4.ViewportController = function(options) {
 		return window.innerHeight;
 	};
 
-	this.setScrollability = function(isShow) {
-		$("html, body").toggleClass("blocked", isShow);
+	this.setScrollability = function(isScrollable) {
+		$("html, body").toggleClass("blocked", isScrollable ? false : true);
 	};
 
 	this.toggleOverlay = function(overlay, isShow) {
 		$(".overlay-" + overlay).toggleClass("active", isShow);
-		this.setScrollability(isShow);
+		this.setScrollability(isShow ? false : true);
 	};
 
 	// Events handling system

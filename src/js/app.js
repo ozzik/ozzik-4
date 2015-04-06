@@ -25,7 +25,6 @@ var app = {
 		app.viewportController = new O4.ViewportController();
 
 		Overlays.setup();
-		// Projects.setup(); TODO: do
 
 		app.dontAnalytics = _isMe;
 		
@@ -33,9 +32,11 @@ var app = {
 		if (app.landingView.view === "home") {
 			app.homeViewController = new O4.HomeViewController();
 		} else {
-			$(".pages").addClass("hidden"); // Hiding pages
-			Showcases.activeCollection = app.landingView.meta.collection;
-			Projects.load(app.landingView.meta.item, null, true);
+			app.projectViewController = new O4.ProjectViewController({ isLandingPage: true });
+			app.projectViewController.present({
+				collection: app.landingView.meta.collection,
+				id: app.landingView.meta.item
+			}, true);
 		}
 
 		// Resize message

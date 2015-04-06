@@ -16,8 +16,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		_didAnimate = false;
 
 	// ==== Exposed methods ====
-	this.init = function(project, isLandingPage) {
-		_project = project;
+	this.init = function(isLandingPage) {
 		_isLandingPage = isLandingPage;
 	};
 
@@ -28,6 +27,8 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 	this.present = function(project, animatedHandler) {
 		var realArt = (!_isLandingPage) ? O4.ShowcaseCollectionViewController.getShowcaseArtwork(project.id) : null,
 			parentForFF;
+
+		_project = project;
 
 		// Adjusting back project scrolling
 		_e.removeClass("blocked");
@@ -53,11 +54,11 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 
 		// Adjusting scroll position + blocking page interactions
 		_.animate_scroll(document.body);
-		$([ document.body, document.documentElement ]).addClass("blocked");
+		app.viewportController.setScrollability(false);
 		app.viewportController.fetchScrollbarMetrics();
 		_e.addClass("active");
 		$(".pages").addClass("off");
-		app.viewportController.toggleOverlay("loading", false); // Removing any loading screen (when project is landing page)
+		_isLandingPage && app.viewportController.toggleOverlay("loading", false); // Removing any loading screen (when project is landing page)
 
 		// Positioning dummy artwork according to original (on initial load: to screen center)
 		_eArt[0].style.left = _artData.x + "px";
@@ -93,9 +94,11 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 	this.presentContent = function(project) {
 		if (!_didAnimate) { return; }
 
+		_project = project;
+
 		var ripple = _e.find(".ripple");
 
-		ripple[0].className = "ripple transformable-toned c-" + project.id + "-main";
+		ripple[0].className = "ripple transformable-toned c-" + _project.id + "-main";
 
 		setTimeout(function se_project_reveal() {
 			var sketch = _eArt.find(".se-sketch");
@@ -123,7 +126,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 			});
 		}, 300);
 
-		_setProjectPageContent(project);
+		_setProjectPageContent();
 	};
 
 	this.dismiss = function() {
@@ -154,10 +157,10 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 
 					$.transitionEnd("transform", _eArt[0], function te_project_delevitate() {
 						_eArt.addClass("transparent");
-						$(".showcase-item[data-id='" + _project.id + "'] .showcase-art").removeClass("transparent");
+						$(O4.ShowcaseCollectionViewController.getShowcaseArtwork(_project.id)).removeClass("transparent");
 
 						// Giving back control..
-						$([ document.body, document.documentElement ]).removeClass("blocked");
+						app.viewportController.setScrollability(true);
 						app.viewportController.fetchScrollbarMetrics();
 						_e.removeClass("active");
 					});
@@ -167,40 +170,42 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 	};
 
 	// ==== Private ====
-	function _setProjectPageContent(project) {
+	// TODO: refactor
+	function _setProjectPageContent() {
 		var title = _e[0].querySelector(".project-title"),
 			preface = _e[0].querySelector(".project-preface"),
 			content = _e[0].querySelector(".project-content"),
 			metaHTML = "";
 
-		title.innerHTML = project.name;
+		title.innerHTML = _project.name;
 
-		preface.className = "project-preface wrapper will-change c-" + project.id;
-		preface.innerHTML = _generatePreface(project.id, project.meta, project.synopsis, project.content ? true : false);
+		preface.className = "project-preface wrapper will-change c-" + _project.id;
+		preface.innerHTML = _generatePreface(_project.id, _project.meta, _project.synopsis, _project.content ? true : false);
 
-		project.content = project.content || "";
+		_project.content = _project.content || "";
 		
-		content.innerHTML = project.content + _generateFooter(project);
-		content.className = "project-content will-change p-" + project.id + " c-" + project.id;
+		content.innerHTML = _project.content + _generateFooter();
+		content.className = "project-content will-change p-" + _project.id + " c-" + _project.id;
 
 		// Loading style
 		style = document.createElement("link");
 		style.rel = "stylesheet";
 		style.type = "text/css";
-		style.href = _.project_style_url(project.id + ".css");
+		style.href = _.project_style_url(_project.id + ".css");
 		document.head.appendChild(style);
 
 		// Analytics
 		$(content).find("a").on("click", function(e) {
-			_.send_analytics("Project - " + project.id, "link", this.href);
+			_.send_analytics("Project - " + _project.id, "link", this.href);
 		});
 
 		// Team tip
-		project.meta && project.meta.team && _setupTeamTip(preface);
+		_project.meta && _project.meta.team && _setupTeamTip(preface);
 
 		$([title, preface, content]).addClass("transparent");
 	}
 	
+	// TODO: refactor. templates
 	function _generatePreface(id, meta, synopsis, hasContent) {
 		if (!synopsis) { return ""; }
 
@@ -243,6 +248,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		return html;
 	}
 
+	// TODO: refactor. templates
 	function _generateTeam(team) {
 		var html = "";
 
@@ -296,7 +302,8 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		});
 	}
 
-	function _generateFooter(data) {
+	// TODO: refactor. templates
+	function _generateFooter() {
 		var html = '',
 			similarProject,
 			fragment = document.createElement("ul"),
@@ -312,32 +319,29 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		html += '</div>';
 
 		// Similar projects - dirrrrty
-		if (data.similar) {
-			// TODO: do
-			// html += '<div class="teaserline teaserline-home top"><div class="teaserline-tag-wrapper teaserline-tag-project"><span class="teaserline-tag">';
-			// html += (data.similar.by ? data.similar.by : 'Somehow similar things I\'ve done') + '</span></div></div>';
-			// html += '<ul class="project-footer-section project-footer-similar columns column-' + data.similar.items.length + '">';
+		if (_project.similar) {
+			html += '<div class="teaserline teaserline-home top"><div class="teaserline-tag-wrapper teaserline-tag-project"><span class="teaserline-tag">';
+			html += (_project.similar.by ? _project.similar.by : 'Somehow similar things I\'ve done') + '</span></div></div>';
+			html += '<ul class="project-footer-section project-footer-similar columns column-' + _project.similar.items.length + '">';
 
-			// for (var i = 0; i < data.similar.items.length; i++) {
-			// 	similarProject = data.similar.items[i];
-			// 	fragment.appendChild(Showcases.create_item(similarProject, 0, true));
+			for (var i = 0; i < _project.similar.items.length; i++) {
+				similarProject = _project.similar.items[i];
+				fragment.appendChild(O4.ShowcaseView.createView(similarProject, i, true));
 
-			// 	newThemes.push({ id: similarProject.id, color: similarProject.color });
-			// 	if (similarProject.collection !== Showcases.activeCollection) {
-			// 		newCollections.push(similarProject.collection);
-			// 	}
-			// }
-			// html += fragment.innerHTML;
+				newThemes.push({ id: similarProject.id, color: similarProject.color });
+				if (similarProject.collection !== _project.collection) {
+					newCollections.push(similarProject.collection);
+				}
+			}
+			html += fragment.innerHTML;
 
-			// html += '</ul>';
+			html += '</ul>';
 		}
 
-		// TODO: do
 		// Creating + loading additional CSS
-		newThemes.length && Showcases.create_projects_theme(newThemes);
+		newThemes.length && O4.ProjectViewController.prototype.createThemes(newThemes);
 		for (var collection in newCollections) {
-			Showcases.collectionStyleReadyFn = null;
-			Showcases.load_collection_style(newCollections[collection]);
+			_.loadStyle(_.collectionStyleUrl(newCollections[collection] + ".css")); // TODO: refactor. used too many times
 		}
 
 		return html;

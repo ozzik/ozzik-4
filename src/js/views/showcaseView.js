@@ -119,5 +119,9 @@ var O4 = O4 || {};
 		return html;
 	};
 
+	ShowcaseView.createView = function(data, index, isPost) {
+		return _createView(data, index, isPost);
+	};
+
 	O4.ShowcaseView = ShowcaseView;
 })();

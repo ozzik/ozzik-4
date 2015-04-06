@@ -68,7 +68,12 @@
 	}
 
 	function get_raw_project($collection, $project) {
-		return json_decode(file_get_contents("data/$collection/$project.json"));
+		global $_BASE_URL;
+
+		$project = json_decode(file_get_contents("data/$collection/$project.json"));
+		$project -> url = $_BASE_URL . $collection . "/" . (isset($project -> url) ? $project -> url : $project -> id);
+
+		return $project;
 	}
 
 	function generate_collection_json($collection) {
@@ -101,6 +106,7 @@
 
 		// Synthesized keys
 		$projectContent = @file_get_contents("data/$collection/$project.html");
+		$json -> collection = $collection;
 		$json -> content = $projectContent;
 
 		// Similar projects

@@ -52,9 +52,7 @@ O4.ShowcaseCollectionViewController = function() {
 		if (_loadedCollection.indexOf(collection.name) === -1) {
 			_loadedCollection.push(collection.name);
 
-			_.loadStyle(_.collectionStyleUrl(collection.name + ".css"), function cb_collectionStyleLoaded() {
-				// Showcases.collectionStyleReadyFn && Showcases.collectionStyleReadyFn(); // TODO: Projects callback
-			});
+			_.loadStyle(_.collectionStyleUrl(collection.name + ".css")); // TODO: refactor, used too many times
 			O4.ProjectViewController.prototype.createThemes(collection.items); // TODO: shouldn't access .items
 
 			_fetchAssets();

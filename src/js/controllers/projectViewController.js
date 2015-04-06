@@ -4,18 +4,18 @@
 
 var O4 = O4 || {};
 
-O4.ProjectViewController = function() {
+O4.ProjectViewController = function(options) {
 	var _project = null,
 		_projectView = new O4.ProjectView(".project", ".project-artwork"),
 		_didFetch = false,
-		_isLandingPage = false,
+		_isLandingPage = options && options.isLandingPage,
 		_self = this;
+
+	_isLandingPage && _initAsLandingPage();
 
 	// ==== Exposed methods ====
 	this.present = function(showcase, isViaHistory) {
-		_isLandingPage = showcase.name === undefined;
-
-		// isViaHistory = true; // TODO: dev. remove later
+		// TODO: refactor isViaHistory for landing page
 		!isViaHistory && app.navigationController.push({
 			view: "project",
 			meta: showcase.id,
@@ -26,21 +26,27 @@ O4.ProjectViewController = function() {
 
 		_didFetch = false;
 		_projectView.init(_isLandingPage);
-		!_isLandingPage && _projectView.present(showcase, _handleArtworkAnimated);
+
+		if (!_isLandingPage) {
+			_projectView.present(showcase, _handleArtworkAnimated);
+		} else {
+			$(".pages").addClass("hidden");
+		}
 
 		_project = showcase;
 		_fetchData(showcase);
-		// _.send_analytics(Showcases.activeCollection, "load_item", projectID); // TODO: do
+
+		_.send_analytics(_project.collection, "load_item", _project.id);
 	};
 
 	this.dismiss = function() {
-		// _.send_analytics(Showcases.activeCollection, "unload_item", Projects.activeItem.id); // TODO: do
+		_.send_analytics(_project.collection, "unload_item", _project.id);
 
 		// Prepping page + UI
 		_projectView.dismiss();
 
-		// TODO: do
-		// app.navigationController.setPageTitle(Showcases.activeCollection !== "products" ? Showcases.activeCollection[0].toUpperCase() + Showcases.activeCollection.slice(1) : "");
+		// TODO: refactor
+		app.navigationController.setPageTitle(_project.collection !== "products" ? _project.collection[0].toUpperCase() + _project.collection.slice(1) : "");
 	};
 
 	this.handlePop = this.dismiss;
@@ -60,25 +66,32 @@ O4.ProjectViewController = function() {
 
 	function _handleData(project) {
 		if (!_project.name) { // Initial data was partial (=project landing page)
-			app.navigationController.setPageTitle(data.name);
+			app.navigationController.setPageTitle(project.name);
 
-			// TODO: shitttt
-			Showcases.collectionStyleReadyFn = function() {
-				Projects.animate_into_project(data);
-			};
-			Showcases.create_projects_theme([{ id: projectID, color: data.color }]);
-			Showcases.load_collection_style(Showcases.activeCollection);
+			// TODO: refactor
+			O4.ProjectViewController.prototype.createThemes([ project ]);
+			_.loadStyle(_.collectionStyleUrl(project.collection + ".css"), function cb_collectionStyleLoaded() {
+				_projectView.present(_project, _handleArtworkAnimated);
+			});
 		}
 
 		// Marking data as fetched, continuing to project finale only if animation has ended
 		_didFetch = true;
 		_project = project; // Saving for being used via animation end callback
 
-		_projectView.presentContent();
+		_projectView.presentContent(_project);
 	}
 
 	function _handleArtworkAnimated() {
 		_didFetch && _projectView.presentContent(_project);
+	}
+
+	function _initAsLandingPage() {
+		$(".project .back-button").on("click", function() {
+			_.send_analytics(_project.collection, "unload_item", _project.id);
+
+			window.location.href = _.url((_project.collection === "products") ? "" : _project.collection);
+		});
 	}
 };
 
