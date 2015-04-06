@@ -10,7 +10,6 @@ module.exports = function(grunt) {
 					'src/js/vendors/dough.min.js',
 					'src/js/vendors/hogan.min.js',
 					'src/js/utility/helpers.js',
-					'src/js/overlays.js',
 					'src/js/controllers/*.js',
 					'src/js/models/*.js',
 					'src/js/views/*.js',

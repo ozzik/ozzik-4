@@ -8,10 +8,12 @@ O4.ScreenWidthNoticeView = function(minScreenWidth) {
 	this.isVisible = false;
 
 	(function create() {
-		var view = app.templateController.render("screen-width-notice", {
-			platform: (navigator.platform === "MacIntel") ? "mac" : "win",
-			isSupported: screen.width > minScreenWidth
-		});
+		var isMac = (navigator.platform === "MacIntel"),
+			view = app.templateController.render("screen-width-notice", {
+				platform: isMac ? "mac" : "win",
+				isSupported: screen.width > minScreenWidth,
+				windowButton: isMac ? "green" : "maximize"
+			});
 
 		document.body.appendChild(view);
 	})();

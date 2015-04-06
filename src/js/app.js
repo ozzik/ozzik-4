@@ -6,6 +6,7 @@ var app = {
 	noticeViewController: null,
 	homeViewController: null,
 	projectViewController: null,
+	tipViewController: null,
 	killAnimation: false, // Flag for stopping a callback-triggered animation
 	dontAnalytics: false,
 
@@ -24,7 +25,7 @@ var app = {
 		});
 		app.viewportController = new O4.ViewportController();
 
-		Overlays.setup();
+		app.tipViewController = new O4.TipViewController();
 
 		app.dontAnalytics = _isMe;
 		

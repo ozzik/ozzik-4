@@ -117,7 +117,7 @@
 		$templates = scandir("templates");
 
 		foreach ($templates as $template) {
-			if ($template !== "." && $template !== "..") {
+			if ($template !== "." && $template !== ".." && $template !== ".DS_Store") {
 				$templateName = str_replace(".html", "", $template);
 				$templateName = strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $templateName));
 

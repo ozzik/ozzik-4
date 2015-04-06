@@ -31,13 +31,13 @@ O4.HomeViewController = function() {
 
     // About section setup
     // Tips
-    Overlays.hook_tip(".about-job dd.previously", {
+    app.tipViewController.hook(".about-job dd.previously", {
         layout: "top",
         layoutSecondary: "right",
         horizontalOffset: -25,
         text: "Acquired by Revizer"
     });
-    Overlays.hook_tip(".about-image img", {
+    app.tipViewController.hook(".about-image img", {
         layout: "right",
         text: "(I'm no pilot)"
     });

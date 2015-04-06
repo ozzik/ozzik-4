@@ -286,7 +286,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 			}
 
 			if (target.nodeName === "LI") {
-				Overlays.show_tip({
+				app.tipViewController.present({
 					subject: target,
 					layout: "bottom",
 					layoutSecondary: "right",
@@ -298,7 +298,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 			}
 		});
 		team.on("mouseout", function(e) {
-			Overlays.hide_tip();
+			app.tipViewController.dismiss();
 		});
 	}
 
