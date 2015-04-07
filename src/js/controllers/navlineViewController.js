@@ -38,6 +38,8 @@ O4.NavlineViewController = function(options) {
 		var stateData = _navigationHandle(item.getAttribute("data-for"));
 		stateData.handlee = this;
 
+		app.navigationController.setPageTitle(stateData.title);
+
 		!isViaHistory && app.navigationController.push(stateData);
 	};
 

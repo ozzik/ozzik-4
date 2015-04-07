@@ -25,7 +25,7 @@ var O4 = O4 || {};
 			var stepData = _parseAnimationStep(id, steps[i]);
 
 			$(stepData.e).addClass("animate-" + stepData.animation);
-			$.animationEnd(stepData.waitFor, stepData.eLen, function te_showcase_art_step() {
+			$.animationEnd(stepData.waitFor, stepData.eLen, function te_showcaseArtStep() {
 				// Stopping animation once collection was changed (could also be called from here)
 				if (app.killAnimation) {
 					app.killAnimation = false;
@@ -62,7 +62,7 @@ var O4 = O4 || {};
 			animationState: isPost ? "post" : ""
 		});
 
-		view.querySelector(".showcase-art").innerHTML = O4.ShowcaseView.generateItemArtwork(data, isPost);
+		view.querySelector(".showcase-art").appendChild(O4.ShowcaseView.generateItemArtwork(data, isPost));
 
 		return view;
 	}
@@ -98,25 +98,32 @@ var O4 = O4 || {};
 
 	// ==== Static methods ====
 	ShowcaseView.generateItemArtwork = function(data, isPost) {
-		// TODO: make template
-		var html = '<div class="s-' + data.id + ' se-sketch fadable' + (isPost ? ' transparent' : '') + '"></div>',
-			isNestedElement;
+		var spec = data.art.elements,
+			element,
+			elements = [];
 
-		for (var i = 0; i < data.art.elements.length; i++) {
-			isNestedElement = Array.isArray(data.art.elements[i]);
-			html += '<div class="s-' + data.id + ' se-' + (!isNestedElement ? data.art.elements[i] : data.art.elements[i][0]) + '">';
+		for (item in spec) {
+			if (!Array.isArray(spec[item])) {
+				element = { name: spec[item] };
+			} else {
+				element = {
+					name: spec[item][0],
+					children: []
+				};
 
-			// Nested elements
-			if (isNestedElement) {
-				for (var j = 1; j < data.art.elements[i].length; j++) {
-					html += '<div class="s-' + data.id + ' se-' + data.art.elements[i][j] + '"></div>';
+				for (var childItem = 1; childItem < spec[item].length; childItem++) {
+					element.children.push({ name: spec[item][childItem] });
 				}
 			}
 
-			html += '</div>';
+			elements.push(element);
 		}
 
-		return html;
+		return a = app.templateController.render("artwork", {
+			projectID: data.id,
+			sketchState: isPost ? " transparent" : "",
+			elements: elements
+		});
 	};
 
 	ShowcaseView.createView = function(data, index, isPost) {

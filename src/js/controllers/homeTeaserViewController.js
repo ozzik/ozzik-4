@@ -16,7 +16,7 @@ O4.HomeTeaserViewController = function() {
     // Initial peeking position
     _teaserTag.translate(0, _ttMinY).find(".teaserline-tag").addClass("attention");
 
-    app.viewportController.hook("scroll", function hook_scroll_teaser() {
+    app.viewportController.hook("scroll", function hookScrollTeaser() {
         if (_wasPlaced) { return; }
 
         var step = window.scrollY / (app.viewportController.pageScrollHeight - app.viewportController.windowHeight);
@@ -24,11 +24,11 @@ O4.HomeTeaserViewController = function() {
         // Marking tag as placed so it won't move anymore
         if (step === 1) {
             _wasPlaced = true;
-            setTimeout(function se_teaser_ring() {
+            setTimeout(function se_teaserRing() {
                 _teaserTag.find(".teaserline-tag").removeClass("attention");
                 $(".about-image-ring").addClass("ping");
 
-                _.send_analytics("about", "reveal", "");
+                _.track("about", "reveal", "");
             }, 50);
         }
 

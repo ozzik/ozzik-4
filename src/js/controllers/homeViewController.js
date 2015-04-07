@@ -16,7 +16,7 @@ O4.HomeViewController = function() {
 
     function _handleNavigation(view) {
         var collectionName = view,
-            collectionNameForTitle = (collectionName !== "products") ? collectionName[0].toUpperCase() + collectionName.slice(1) : null;
+            collectionNameForTitle = O4.HomeViewController.getTitleForCollection(collectionName);
 
         _showcaseCollection.load(collectionName);
 
@@ -26,8 +26,6 @@ O4.HomeViewController = function() {
             title: collectionNameForTitle
         };
     }
-
-    // TODO: setup showcase collection (filter controls)
 
     // About section setup
     // Tips
@@ -47,8 +45,12 @@ O4.HomeViewController = function() {
     
         for (var i = 0; i < links.length; i++) {
             links[i].addEventListener("click", function() {
-                _.send_analytics("about", "link", this.getAttribute("href"));
+                _.track("about", "link", this.getAttribute("href"));
             });
         }
     })();
 };
+
+O4.HomeViewController.getTitleForCollection = function(collectionName) {
+    return (collectionName !== "products") ? collectionName[0].toUpperCase() + collectionName.slice(1) : "";
+}

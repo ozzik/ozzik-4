@@ -15,7 +15,7 @@ O4.ShowcaseCollectionViewController = function() {
 
 	// ==== Exposed methods ====
 	this.load = function(collection) {
-		_.send_analytics(collection, "load", "");
+		_.track(collection, "load", "");
 
 		function __fetchData() {
 			_fetchData(collection);

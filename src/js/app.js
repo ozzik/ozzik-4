@@ -37,7 +37,7 @@ var app = {
 			app.projectViewController.present({
 				collection: app.landingView.meta.collection,
 				id: app.landingView.meta.item
-			}, true);
+			});
 		}
 
 		// Resize message

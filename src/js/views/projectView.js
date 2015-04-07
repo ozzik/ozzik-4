@@ -39,7 +39,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 
 		// Duplicating artwork (doing that before so we could fetch its dimensions on initial load)
 		_eArt[0].className = "project-artwork showcase-art transformable-rough post sa-" + project.id;
-		_eArt[0].innerHTML = O4.ShowcaseView.generateItemArtwork(project);
+		_.replaceElementContent(_eArt[0], O4.ShowcaseView.generateItemArtwork(project));
 
 		// Fetching expensive things
 		_artData.width = realArt ? realArt.offsetWidth : _eArt[0].offsetWidth;
@@ -57,7 +57,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		}
 
 		// Adjusting scroll position + blocking page interactions
-		_.animate_scroll(document.body);
+		_.animateScroll(document.body);
 		app.viewportController.setScrollability(false);
 		app.viewportController.fetchScrollbarMetrics();
 		_e.addClass("active");
@@ -74,15 +74,15 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		}
 		// Pushing transition change to a different pipeline so revert-ready wouldn't be transitioned
 		var sketch = _eArt.find(".se-sketch").addClass("widthable revert-ready");
-		setTimeout(function se_sketch_ready_for_revert() {
+		setTimeout(function se_sketchReadyForRevert() {
 			sketch.removeClass("fadable");
 		}, 0);
 
 		_eArt.transform("scale(" + _ART_DEPTH + ")");
 
-		$.transitionEnd("transform", _eArt[0], function te_project_levitate() {
+		$.transitionEnd("transform", _eArt[0], function te_projectLevitate() {
 			// Moving new artwork to its actual new position
-			setTimeout(function se_project_position_in() {
+			setTimeout(function se_projectPositionIn() {
 				_artData.newX = (app.viewportController.getWidth() - _artData.width) / 2 - _artData.x;
 				_artData.newY = _ART_Y - _artData.y - _artData.height;
 
@@ -104,16 +104,16 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 
 		ripple[0].className = "ripple transformable-toned c-" + _project.id + "-main";
 
-		setTimeout(function se_project_reveal() {
+		setTimeout(function se_projectReveal() {
 			var sketch = _eArt.find(".se-sketch");
 
 			sketch.addClass("reverted colored");
-			$.transitionEnd("width", sketch[0], function te_project_sketch() {
+			$.transitionEnd("width", sketch[0], function te_projectSketch() {
 				_eArt.find("*:not(.se-sketch)").addClass("transparent");
 				sketch.removeClass("colored");
 
 				_eArt.translate(_artData.newX, _artData.newY);
-				setTimeout(function se_project_content_reveal() {
+				setTimeout(function se_projectContentReveal() {
 					ripple.transform("translate3d(0,30px,0) scale(" + (app.viewportController.getWidth()/1440 * 5.2) + ")");
 					var eWillReveal = [ _eTitle, _ePreface, _eContent ];
 					_isLandingPage && eWillReveal.push(_eBackButton);
@@ -121,11 +121,11 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 					
 					// Switching back button's transition for it to bubble on hover
 					var backButton = $(_eBackButton);
-					$.transitionEnd("opacity", backButton[0], function te_back_button_fade() {
+					$.transitionEnd("opacity", backButton[0], function te_backButtonFade() {
 						backButton.removeClass("fadable");
 					});
 
-					setTimeout(function se_project_color() {
+					setTimeout(function se_projectColor() {
 						_e.find(".project-header").addClass("colored");
 					}, 200);
 				}, 150);
@@ -136,7 +136,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 	};
 
 	this.dismiss = function() {
-		_.animate_scroll(_e[0], true);
+		_.animateScroll(_e[0], true);
 
 		_e.addClass("blocked");
 		app.viewportController.fetchScrollbarMetrics();
@@ -146,11 +146,11 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		_e.find(".project-header").removeClass("colored").find(".ripple").addClass("transformable-rough").removeClass("transformable-toned").transform("");
 
 		_eArt.transform("translate3d(" + _artData.newX + "px," + _artData.newY + "px,0) scale(" + _ART_DEPTH + ")");
-		$.transitionEnd("transform", _eArt[0], function te_project_levitate_back() {
+		$.transitionEnd("transform", _eArt[0], function te_projectLevitateBack() {
 			$(".pages").removeClass("off");
 			_eArt.transform("scale(" + _ART_DEPTH + ")");
 
-			$.transitionEnd("transform", _eArt[0], function te_project_back() {
+			$.transitionEnd("transform", _eArt[0], function te_projectBack() {
 				// Reverting to finalized version
 				var sketch = _eArt.find(".se-sketch");
 
@@ -158,10 +158,10 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 				_eArt.find("*").removeClass("transparent");
 				sketch.removeClass("reverted").addClass("t-out t-normal");
 
-				$.transitionEnd("width", sketch[0], function te_project_sketch_revert() {
+				$.transitionEnd("width", sketch[0], function te_projectSketchRevert() {
 					_eArt.transform("");
 
-					$.transitionEnd("transform", _eArt[0], function te_project_delevitate() {
+					$.transitionEnd("transform", _eArt[0], function te_projectDelevitate() {
 						_eArt.addClass("transparent");
 						$(O4.ShowcaseCollectionViewController.getShowcaseArtwork(_project.id)).removeClass("transparent");
 
@@ -185,7 +185,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 
 		// Analytics
 		$(_eContent).find("a").on("click", function(e) {
-			_.send_analytics("Project - " + _project.id, "link", this.href);
+			_.track("Project - " + _project.id, "link", this.href);
 		});
 
 		// Team tip
@@ -200,8 +200,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		_eTitle.innerHTML = _project.name;
 
 		_ePreface.className = "project-preface wrapper will-change c-" + _project.id;
-		_.removeAllChildren(_ePreface);
-		_ePreface.appendChild(_createPreface());
+		_.replaceElementContent(_ePreface, _createPreface());
 		
 		_eContent.innerHTML = _project.content;
 		_eContent.appendChild(_createFooter());

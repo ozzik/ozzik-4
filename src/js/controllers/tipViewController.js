@@ -68,7 +68,7 @@ O4.TipViewController = function() {
         subject.on("mouseover", function(e) {
             if (subject[0].isOver) { return; }
 
-            var target = _.track_element_parent(e.target, subject[0]);
+            var target = _.trackElementParent(e.target, subject[0]);
 
             subject[0].isOver = true;
 
@@ -76,7 +76,7 @@ O4.TipViewController = function() {
             _self.present(options);
         });
         subject.on("mouseout", function(e) {
-            var target = _.track_element_parent((e.relatedTarget), subject[0]);
+            var target = _.trackElementParent((e.relatedTarget), subject[0]);
 
             if (target === subject[0]) { return; }
 

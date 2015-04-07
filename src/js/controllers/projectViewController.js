@@ -15,8 +15,7 @@ O4.ProjectViewController = function(options) {
 
 	// ==== Exposed methods ====
 	this.present = function(showcase, isViaHistory) {
-		// TODO: refactor isViaHistory for landing page
-		!isViaHistory && app.navigationController.push({
+		(!isViaHistory && !_isLandingPage) && app.navigationController.push({
 			view: "project",
 			meta: showcase.id,
 			url: showcase.url,
@@ -36,17 +35,16 @@ O4.ProjectViewController = function(options) {
 		_project = showcase;
 		_fetchData(showcase);
 
-		_.send_analytics(_project.collection, "load_item", _project.id);
+		_.track(_project.collection, "load_item", _project.id);
 	};
 
 	this.dismiss = function() {
-		_.send_analytics(_project.collection, "unload_item", _project.id);
+		_.track(_project.collection, "unload_item", _project.id);
 
 		// Prepping page + UI
 		_projectView.dismiss();
 
-		// TODO: refactor
-		app.navigationController.setPageTitle(_project.collection !== "products" ? _project.collection[0].toUpperCase() + _project.collection.slice(1) : "");
+		app.navigationController.setPageTitle(O4.HomeViewController.getTitleForCollection(_project.collection));
 	};
 
 	this.handlePop = this.dismiss;
@@ -89,7 +87,7 @@ O4.ProjectViewController = function(options) {
 
 	function _initAsLandingPage() {
 		$(".project .back-button").on("click", function() {
-			_.send_analytics(_project.collection, "unload_item", _project.id);
+			_.track(_project.collection, "unload_item", _project.id);
 
 			window.location.href = _.url((_project.collection === "products") ? "" : _project.collection);
 		});
@@ -108,11 +106,11 @@ O4.ProjectViewController.prototype.createThemes = function(items) {
 		color = items[item].color;
 
 		style += ".c-" + project + "-main { background-color: #" + color + "; }";
-		style += ".showcase-item.c-" + project + "-main { border-color: #" + _.adjust_brightness(color, -4) + "; }";
-		style += ".c-" + project + " h2,.c-" + project + " h3,.c-" + project + " h4,.c-" + project + " em { color: #" + _.adjust_brightness(color, -30) + "; }";
-		style += ".c-" + project + " .project-conclusion { border-color: " + _.adjust_saturation(_.adjust_brightness(color, -3), 300) + "; background-color: " + _.adjust_saturation(_.adjust_brightness(color, 3), 300) + "; color: " + _.adjust_saturation(_.adjust_brightness(color, -50), 100) + "; }";
-		style += ".c-" + project + " .project-cue::before { background-color: #" + _.adjust_brightness(color, -4) + "; }";
-		style += ".c-" + project + " .project-button { color: " + _.adjust_saturation(_.adjust_brightness(color, -30), 300) + "; }";
+		style += ".showcase-item.c-" + project + "-main { border-color: #" + _.adjustBrightness(color, -4) + "; }";
+		style += ".c-" + project + " h2,.c-" + project + " h3,.c-" + project + " h4,.c-" + project + " em { color: #" + _.adjustBrightness(color, -30) + "; }";
+		style += ".c-" + project + " .project-conclusion { border-color: " + _.adjustSaturation(_.adjustBrightness(color, -3), 300) + "; background-color: " + _.adjustSaturation(_.adjustBrightness(color, 3), 300) + "; color: " + _.adjustSaturation(_.adjustBrightness(color, -50), 100) + "; }";
+		style += ".c-" + project + " .project-cue::before { background-color: #" + _.adjustBrightness(color, -4) + "; }";
+		style += ".c-" + project + " .project-button { color: " + _.adjustSaturation(_.adjustBrightness(color, -30), 300) + "; }";
 	}
 
 	document.getElementById("styleRuntime").textContent += style;
