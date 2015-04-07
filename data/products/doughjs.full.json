@@ -1,14 +1,14 @@
 {
-    "meta": {
-        "recipe": "JS library & documentation website",
-        "role": "Front-end coding & design",
-        "scope": "Side project (Jun ‘14)"
-    },
-    "synopsis": {
-        "text": "A common yet a bit different JavaScript library, with a dedicated documentation and glory website.",
-        "link": {
-            "url": "https://ozzik.github.io/dough.js",
-            "caption": "%watchTransitive %it"
-        }
-    }
+	"meta": {
+		"recipe": "JS library & documentation website",
+		"role": "Front-end coding & design",
+		"scope": "Side project (Jun ‘14)"
+	},
+	"synopsis": {
+		"text": "A common yet a bit different JavaScript library, with a dedicated documentation and glory website.",
+		"link": {
+			"url": "https://ozzik.github.io/dough.js",
+			"caption": "%watchTransitive %it"
+		}
+	}
 }

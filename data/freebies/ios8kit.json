@@ -1,12 +1,12 @@
 {
-    "id": "ios8kit",
-    "name": "iOS 8 UI Kit",
-    "art": {
-        "elements": [ "ui", "badge" ],
-        "animation": [
-            [ "ui" ],
-            [ "badge" ]
-        ]
-    },
-    "color": "d1e0f3"
+	"id": "ios8kit",
+	"name": "iOS 8 UI Kit",
+	"art": {
+		"elements": [ "ui", "badge" ],
+		"animation": [
+			[ "ui" ],
+			[ "badge" ]
+		]
+	},
+	"color": "d1e0f3"
 }

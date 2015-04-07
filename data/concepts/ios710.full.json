@@ -1,11 +1,11 @@
 {
-    "meta": {
-        "recipe": "iOS design concept",
-        "role": "Design",
-        "scope": "Side project (Jul '14)"
-    },
-    "synopsis": {
-        "text": "Some wishful thinking about applying OS X 10.10's subtle and warm design to iOS."
-    },
-    "content": ""
+	"meta": {
+		"recipe": "iOS design concept",
+		"role": "Design",
+		"scope": "Side project (Jul '14)"
+	},
+	"synopsis": {
+		"text": "Some wishful thinking about applying OS X 10.10's subtle and warm design to iOS."
+	},
+	"content": ""
 }

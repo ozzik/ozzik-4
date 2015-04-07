@@ -81,5 +81,5 @@
 .s-brapp-candy { background-image: image-url("showcases/s-brapp-candy@2x.png", false, false); }
 
 @include retina {
-    .s-brapp { background-image: image-url("showcases/s-brapp@2x.png", false, false); }
+	.s-brapp { background-image: image-url("showcases/s-brapp@2x.png", false, false); }
 }

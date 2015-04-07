@@ -5,13 +5,13 @@ $project: "ios710";
 $project-path: "projects/" + $project + "/";
 
 .ios710-tldr {
-    width: 770px;
-    height: 762px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 770px 762px;
+	width: 770px;
+	height: 762px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 770px 762px;
 }
 
 // Retina
 @include retina {
-    .ios710-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.ios710-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

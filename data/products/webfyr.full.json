@@ -1,19 +1,19 @@
 {
-    "meta": {
-        "recipe": "Webapp for desktop & mobile",
-        "role": "Product, design & front-end coding",
-        "scope": "Joint sidekick (Mar ‘14)",
-        "team": {
-            "gal": "Product",
-            "kobi": "Back-end & Magic"
-        }
-    },
-    "synopsis": {
-        "text": "News reader webapp with \"inline\" navigation between articles and snooze-based save for later bookmaring.",
-        "link": {
-            "url": "https://webfyr.com",
-            "caption": "%watchTransitive %it"
-        }
-    },
-    "content": ""
+	"meta": {
+		"recipe": "Webapp for desktop & mobile",
+		"role": "Product, design & front-end coding",
+		"scope": "Joint sidekick (Mar ‘14)",
+		"team": {
+			"gal": "Product",
+			"kobi": "Back-end & Magic"
+		}
+	},
+	"synopsis": {
+		"text": "News reader webapp with \"inline\" navigation between articles and snooze-based save for later bookmaring.",
+		"link": {
+			"url": "https://webfyr.com",
+			"caption": "%watchTransitive %it"
+		}
+	},
+	"content": ""
 }

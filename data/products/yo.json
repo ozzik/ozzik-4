@@ -1,17 +1,17 @@
 {
-    "id": "yo",
-    "name": "Yo",
-    "art": {
-        "elements": [ "button", "icon", "text" ],
-        "animation": [
-            [ "button" ],
-            [ "icon" ],
-            [ "text", "text-in" ]
-        ]
-    },
-    "color": "e4cbee",
-    "similar": {
-        "items": [ "brmenu" ]
-    },
-    "scope": "freelance"
+	"id": "yo",
+	"name": "Yo",
+	"art": {
+		"elements": [ "button", "icon", "text" ],
+		"animation": [
+			[ "button" ],
+			[ "icon" ],
+			[ "text", "text-in" ]
+		]
+	},
+	"color": "e4cbee",
+	"similar": {
+		"items": [ "brmenu" ]
+	},
+	"scope": "freelance"
 }

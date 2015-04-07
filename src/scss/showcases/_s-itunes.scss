@@ -20,5 +20,5 @@
 .s-itunes-candy { background-image: image-url("showcases/s-itunes-candy@2x.png", false, false); }
 
 @include retina {
-    .s-itunes { background-image: image-url("showcases/s-itunes@2x.png", false, false); }
+	.s-itunes { background-image: image-url("showcases/s-itunes@2x.png", false, false); }
 }

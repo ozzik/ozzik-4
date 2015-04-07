@@ -1,19 +1,19 @@
 {
-    "meta": {
-        "recipe": "Email",
-        "role": "Design & front-end coding",
-        "scope": "Full-time at Brow.si (Feb '14)",
-        "team": {
-            "gal": "Chief & Product",
-            "kobi": "Back-end & Magic"
-        }
-    },
-    "synopsis": {
-        "text": "Daily/weekly email for publishers with anlaytics data about the Brow.si and mobile usage on their websites.",
-        "link": {
-            "url": "http://brow.si",
-            "caption": "%watchTransitive %it"
-        }
-    },
-    "content": ""
+	"meta": {
+		"recipe": "Email",
+		"role": "Design & front-end coding",
+		"scope": "Full-time at Brow.si (Feb '14)",
+		"team": {
+			"gal": "Chief & Product",
+			"kobi": "Back-end & Magic"
+		}
+	},
+	"synopsis": {
+		"text": "Daily/weekly email for publishers with anlaytics data about the Brow.si and mobile usage on their websites.",
+		"link": {
+			"url": "http://brow.si",
+			"caption": "%watchTransitive %it"
+		}
+	},
+	"content": ""
 }

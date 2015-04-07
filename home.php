@@ -113,6 +113,20 @@
 		</div>
 	</div>
 	<div class="tip"></div>
+	<?php
+		$templates = scandir("templates");
+
+		foreach ($templates as $template) {
+			if ($template !== "." && $template !== ".." && $template !== ".DS_Store") {
+				$templateName = str_replace(".html", "", $template);
+				$templateName = strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $templateName));
+
+				echo '<script type="text/template" id="tpl-' . $templateName . '">';
+				echo file_get_contents("templates/$template");
+				echo '</script>';
+			}
+		}
+	?>
 	<!-- Non-markup thingies -->
 	<script type="text/javascript">
 		var _BASE_URL = "<?php echo $_BASE_URL; ?>",

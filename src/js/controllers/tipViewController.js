@@ -1,14 +1,15 @@
-/* ===== Overlay Components ===== */
+//
+// Controls an overlay tip element
+//
 
-var Overlays = {
-    _tip: null,
+var O4 = O4 || {};
 
-    setup: function() {
-        Overlays._tip = $(".tip");
-    },
+// TODO: refactor
+O4.TipViewController = function() {
+    var _tip = $(".tip"),
+        _self = this;
 
-    // Tip component
-    show_tip: function(options) {
+    this.present = function(options) {
         var x = 0,
             y = 0,
             subjectParent = options.subject,
@@ -17,10 +18,10 @@ var Overlays = {
             tipWidth,
             tipHeight;
 
-        Overlays._tip[0].className = "tip fadable " + options.layout;
-        Overlays._tip[0].innerHTML = options.text;
-        tipWidth = Overlays._tip[0].offsetWidth;
-        tipHeight = Overlays._tip[0].offsetHeight;
+        _tip[0].className = "tip fadable " + options.layout;
+        _tip[0].innerHTML = options.text;
+        tipWidth = _tip[0].offsetWidth;
+        tipHeight = _tip[0].offsetHeight;
 
         while (subjectParent.offsetParent) {
             x += subjectParent.offsetLeft;
@@ -53,35 +54,35 @@ var Overlays = {
         x += (options.horizontalOffset || 0);
         y += (options.verticalOffset || 0);
 
-        Overlays._tip.translate(x, y);
-    },
+        _tip.translate(x, y);
+    };
 
-    hide_tip: function() {
-        Overlays._tip.addClass("transparent");
-    },
+    this.dismiss = function() {
+        _tip.addClass("transparent");
+    };
 
-    hook_tip: function(selector, options) {
+    this.hook = function(selector, options) {
         var subject = $(selector);
 
         // Dirrrty :<
         subject.on("mouseover", function(e) {
             if (subject[0].isOver) { return; }
 
-            var target = _.track_element_parent(e.target, subject[0]);
+            var target = _.trackElementParent(e.target, subject[0]);
 
             subject[0].isOver = true;
 
             options.subject = subject[0];
-            Overlays.show_tip(options);
+            _self.present(options);
         });
         subject.on("mouseout", function(e) {
-            var target = _.track_element_parent((e.relatedTarget), subject[0]);
+            var target = _.trackElementParent((e.relatedTarget), subject[0]);
 
             if (target === subject[0]) { return; }
 
             subject[0].isOver = false;
 
-            Overlays.hide_tip();
+            _self.dismiss();
         });
-    }
+    };
 };

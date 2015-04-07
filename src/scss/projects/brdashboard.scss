@@ -5,51 +5,51 @@ $project: "brdashboard";
 $project-path: "projects/" + $project + "/";
 
 .brdashboard-tldr {
-    width: 770px;
-    height: 640px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 770px 640px;
+	width: 770px;
+	height: 640px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 770px 640px;
 }
 
 .brdashboard-elements {
-    width: 705px;
-    height: 458px;
-    background: image-url($project-path + "elements@2x.png", false, false) no-repeat;
-    background-size: 705px;
+	width: 705px;
+	height: 458px;
+	background: image-url($project-path + "elements@2x.png", false, false) no-repeat;
+	background-size: 705px;
 }
 
 .brdashboard-status-cards {
-    width: 834px;
-    height: 229px;
-    background: image-url($project-path + "status-cards@2x.png", false, false) no-repeat;
-    background-size: 834px;
+	width: 834px;
+	height: 229px;
+	background: image-url($project-path + "status-cards@2x.png", false, false) no-repeat;
+	background-size: 834px;
 }
 
 .brdashboard-wizard {
-    width: 100%;
-    height: 466px;
-    background: image-url($project-path + "wizard@2x.png", false, false) no-repeat;
-    background-size: 1577px;
-    background-position: center;
+	width: 100%;
+	height: 466px;
+	background: image-url($project-path + "wizard@2x.png", false, false) no-repeat;
+	background-size: 1577px;
+	background-position: center;
 }
 
 .brdashboard-customization {
-    width: 626px;
-    height: 906px;
-    background: image-url($project-path + "customization@2x.png", false, false) no-repeat;
-    background-size: 626px;
-    background-position: center;
+	width: 626px;
+	height: 906px;
+	background: image-url($project-path + "customization@2x.png", false, false) no-repeat;
+	background-size: 626px;
+	background-position: center;
 }
 
 .brdashboard-analytics {
-    width: 626px;
-    height: 2952px;
-    background: image-url($project-path + "analytics@2x.png", false, false) no-repeat;
-    background-size: 626px;
-    background-position: center;
+	width: 626px;
+	height: 2952px;
+	background: image-url($project-path + "analytics@2x.png", false, false) no-repeat;
+	background-size: 626px;
+	background-position: center;
 }
 
 // Retina
 @include retina {
-    .brdashboard-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.brdashboard-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

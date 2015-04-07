@@ -1,17 +1,17 @@
 {
-    "id": "rsvp",
-    "name": "Wedding RSVP",
-    "art": {
-        "elements": [ "page", "button", "checkmark" ],
-        "animation": [
-            [ "page" ],
-            [ "button" ],
-            [ "checkmark" ]
-        ]
-    },
-    "color": "caeaed",
-    "similar": {
-        "items": [ "concepts/contact", "sptc" ]
-    },
-    "scope": "freelance"
+	"id": "rsvp",
+	"name": "Wedding RSVP",
+	"art": {
+		"elements": [ "page", "button", "checkmark" ],
+		"animation": [
+			[ "page" ],
+			[ "button" ],
+			[ "checkmark" ]
+		]
+	},
+	"color": "caeaed",
+	"similar": {
+		"items": [ "concepts/contact", "sptc" ]
+	},
+	"scope": "freelance"
 }

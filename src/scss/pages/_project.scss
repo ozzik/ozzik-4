@@ -116,8 +116,8 @@ $space-synopsis: 2rem;
 .project-button {
 	order: 0;
 	-webkit-order: 0;
-    align-self: center;
-    -webkit-align-self: center;
+	align-self: center;
+	-webkit-align-self: center;
 }
 
 .project-button {
@@ -305,7 +305,7 @@ $i: 0;
 .project-team-member-link { display: block; }
 
 @include retina {
-    .project-team-member { background-image: image-url("team@2x.jpg", false, false); }
+	.project-team-member { background-image: image-url("team@2x.jpg", false, false); }
 }
 
 /* ======= Footer ======= */

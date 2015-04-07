@@ -1,15 +1,15 @@
 {
-    "meta": {
-        "recipe": "Contact form",
-        "role": "Design & front-end coding",
-        "scope": "Personal portfolio (May '12)"
-    },
-    "synopsis": {
-        "text": "Contact form one can fill and shove down a mailbox hole, provided with a corresponding personal send receipts.",
-        "link": {
-            "url": "http://ozzik.co/projects/concepts/contact-form.php",
-            "caption": "%watchTransitive %it"
-        }
-    },
-    "content": ""
+	"meta": {
+		"recipe": "Contact form",
+		"role": "Design & front-end coding",
+		"scope": "Personal portfolio (May '12)"
+	},
+	"synopsis": {
+		"text": "Contact form one can fill and shove down a mailbox hole, provided with a corresponding personal send receipts.",
+		"link": {
+			"url": "http://ozzik.co/projects/concepts/contact-form.php",
+			"caption": "%watchTransitive %it"
+		}
+	},
+	"content": ""
 }

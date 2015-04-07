@@ -1,10 +1,10 @@
 {
-    "synopsis": {
-        "text": "Some touch-ups to iTunes such as Now Playing pane and others which are irrelevant now that iTunes 11 is here.",
-        "link": {
-            "url": "http://ozzik.co/projects/freebies/itunes.psd.zip",
-            "caption": "%download %it"
-        }
-    },
-    "content": ""
+	"synopsis": {
+		"text": "Some touch-ups to iTunes such as Now Playing pane and others which are irrelevant now that iTunes 11 is here.",
+		"link": {
+			"url": "http://ozzik.co/projects/freebies/itunes.psd.zip",
+			"caption": "%download %it"
+		}
+	},
+	"content": ""
 }

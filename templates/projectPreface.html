@@ -1,0 +1,17 @@
+<div class="project-summary">
+	<dl class="project-meta {{metaState}}">
+	{{#meta}}
+		<dt class="meta">{{fieldName}}</dt>&nbsp;<dd class="project-meta-{{field}}">{{value}}</dd>
+	{{/meta}}
+	</dl>
+	<div class="project-story">
+		<p class="project-synopsis">{{text}}</p>
+		{{#isButton}}
+		{{#linkURL}}<a href="{{linkURL}}" target="_blank" title="{{linkTitle}}"{{/linkURL}}{{^linkURL}}<div{{/linkURL}} class="project-button custom transformable{{#isDead}} dead{{/isDead}}">
+			<span class="button-caption">{{buttonTitle}}</span>
+		</{{#linkURL}}a{{/linkURL}}{{^linkURL}}div{{/linkURL}}>
+		{{/isButton}}
+	</div>
+</div>
+<figure class="project-preface-image {{projectID}}-tldr"></figure>
+<div class="project-separator s-{{projectID}} i-{{projectID}}"></div>

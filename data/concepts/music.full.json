@@ -1,14 +1,14 @@
 {
-    "meta": {
-        "recipe": "iOS app concept",
-        "role": "Design",
-        "scope": "Side project (Oct '12)"
-    },
-    "synopsis": {
-        "text": "Some wishful thinking about the interface and features of the default iOS music app.",
-        "link": {
-            "url": "http://ozzik.co/projects/concepts/music-app.php",
-            "caption": "%watchTransitive %it"
-        }
-    }
+	"meta": {
+		"recipe": "iOS app concept",
+		"role": "Design",
+		"scope": "Side project (Oct '12)"
+	},
+	"synopsis": {
+		"text": "Some wishful thinking about the interface and features of the default iOS music app.",
+		"link": {
+			"url": "http://ozzik.co/projects/concepts/music-app.php",
+			"caption": "%watchTransitive %it"
+		}
+	}
 }

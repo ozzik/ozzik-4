@@ -5,13 +5,13 @@ $project: "itunes";
 $project-path: "projects/" + $project + "/";
 
 .itunes-tldr {
-    width: 770px;
-    height: 562px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 770px 562px;
+	width: 770px;
+	height: 562px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 770px 562px;
 }
 
 // Retina
 @include retina {
-    .itunes-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.itunes-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

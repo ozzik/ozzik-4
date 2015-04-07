@@ -5,13 +5,13 @@ $project: "ios8kit";
 $project-path: "projects/" + $project + "/";
 
 .ios8kit-tldr {
-    width: 770px;
-    height: 583px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 770px 583px;
+	width: 770px;
+	height: 583px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 770px 583px;
 }
 
 // Retina
 @include retina {
-    .ios8kit-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.ios8kit-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

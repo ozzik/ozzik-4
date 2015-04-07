@@ -50,5 +50,5 @@
 .s-yo-candy { background-image: image-url("showcases/s-yo-candy@2x.png", false, false); }
 
 @include retina {
-    .s-yo { background-image: image-url("showcases/s-yo@2x.png", false, false); }
+	.s-yo { background-image: image-url("showcases/s-yo@2x.png", false, false); }
 }

@@ -5,13 +5,13 @@ $project: "sptc";
 $project-path: "projects/" + $project + "/";
 
 .sptc-tldr {
-    width: 770px;
-    height: 493px;
-    background: image-url($project-path + "tldr.png", false, false) no-repeat;
-    background-size: 770px 493px;
+	width: 770px;
+	height: 493px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 770px 493px;
 }
 
 // Retina
 @include retina {
-    .sptc-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+	.sptc-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }
