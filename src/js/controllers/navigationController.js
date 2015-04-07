@@ -17,7 +17,7 @@ O4.NavigationController = function(options) {
 		data.sid = _saveState(data.view, data.handlee);
 		delete data.handlee;
 
-		console.log("=== push:", data.view, data.sid);
+		// console.log("=== push:", data.view, data.sid);
 
 		history.pushState(data, null, data.url);
 		this.setPageTitle(data.title);
@@ -52,7 +52,7 @@ O4.NavigationController = function(options) {
 			state.view = _rootView;
 		}
 
-		console.log("=== pop:", state.view,state.sid,_activeState);
+		// console.log("=== pop:", state.view,state.sid,_activeState);
 
 		var activeStateData = _getState(_activeState);
 
