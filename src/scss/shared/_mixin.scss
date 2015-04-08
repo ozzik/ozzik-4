@@ -1,22 +1,10 @@
 // Buttons
-@mixin text-replacement($isOverflow:"") {
-	text-indent: -9999px;
-	@if $isOverflow  == "overflow" {
-		overflow: hidden;
-	}
-}
-
-@mixin button {
-	border: none;
-	cursor: pointer;
+@mixin text-replacement() {
+	text-indent: -9999em;
+	overflow: hidden;
 }
 
 // CSS3 support
-@mixin box-shadow($values...) {
-	box-shadow: $values;
-	-webkit-box-shadow: $values;
-}
-
 @mixin transform($values...) {
 	transform: $values;
 	-webkit-transform: $values;
@@ -84,14 +72,6 @@
 	// transition: transform $values, $property $meta;
 	// -webkit-transition: -webkit-transform $meta, $property $meta;
 	// -moz-transition: -moz-transform $meta, $property $meta;
-}
-
-@mixin box-sizing($value) {
-	box-sizing: $value;
-	-moz-box-sizing: $value;
-}
-@mixin border-box() {
-	@include box-sizing(border-box);
 }
 
 // Animation

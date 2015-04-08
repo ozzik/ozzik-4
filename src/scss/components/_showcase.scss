@@ -15,7 +15,7 @@
 	// box-shadow: inset 0 0 1px rgba(0,0,0,.15);
 	border: 1px solid;
 	overflow: hidden;
-	@include border-box();
+	box-sizing: border-box;
 	@include transition-with-transform(opacity, $duration-quick $easing-cubic-rough);
 
 	// Specifications

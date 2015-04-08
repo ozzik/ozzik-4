@@ -48,8 +48,7 @@
 	display: block;
 	width: $size-ui-sprite;
 	height: $size-ui-sprite;
-	overflow: hidden;
-	text-indent: -9999em;
+	@include text-replacement();
 }
 $i: 0;
 @each $item in email, twitter, dribbble, github, linkedin {
