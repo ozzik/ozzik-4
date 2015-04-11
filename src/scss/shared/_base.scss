@@ -3,11 +3,15 @@
 /* ======= Style ======= */
 body {
 	margin: 0;
-	background: $color-background;
 	color: $color-text;
 	font-size: .85em;
 	line-height: 1.5;
 }
+
+body,
+.overlay,
+.overlay-loading,
+.strip-menu-button-content { background: $color-background; }
 
 body,
 input,
@@ -119,10 +123,13 @@ body,
 	line-height: 1.1;
 }
 .meta,
+.metalike,
+.teaserline-tag,
+.about-title { color: $color-text-light; }
+.meta,
 .metalike {
 	font-style: italic;
 	font-weight: normal;
-	color: $color-text-light;
 }
 
 .teaserline {
@@ -155,12 +162,11 @@ body,
 	border-radius: 3px;
 	font-size: .75rem;
 	letter-spacing: .05em;
-	color: darken(#f3f3f3, 20%);
 	@include transition(all $duration $easing-cubic-rough);
 
 	&.attention {
 		background: #d2d9f1;
-		color: darken(#d2d9f1, 20%);
+		color: $color-main-light;
 	}
 }
 .teaserline-tag-about { top: 0; }

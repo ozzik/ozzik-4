@@ -1,6 +1,10 @@
 /* ======= General ======= */
 .blocked { overflow-y: hidden !important; } // Preventing page scroll when being/starting inside project
 
+/* ======= Shared ======= */
+.home-navigation-link,
+.filter-item { color: lighten($color-text, 60%); }
+
 /* ======= Header ======= */
 .home-navigation {
 	margin-top: 3rem;
@@ -22,12 +26,11 @@
 .home-navigation-link {
 	display: block;
 	padding-bottom: .35rem;
-	color: lighten($color-text, 60%);
 }
 
 .strip,
 .teaserline::before,
-.teaserline-tag { background: #f3f3f3; }
+.teaserline-tag { background: $color-outline; }
 .strip {
 	position: relative;
 	height: 2px;
@@ -77,7 +80,6 @@ $strip-menu-button-height: 5px;
 	right: 8px;
 	width: $strip-menu-button-width + (3px * 2);
 	height: $strip-menu-button-height;
-	background: $color-background;
 
 	&::before {
 		content: "";
@@ -107,7 +109,6 @@ $strip-menu-button-height: 5px;
 	border-radius: 99rem;
 	text-transform: uppercase;
 	font-size: .85em;
-	color: lighten($color-text, 60%);
 	cursor: pointer;
 
 	&:not(:first-child) { margin-left: 0; }

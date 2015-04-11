@@ -4,17 +4,11 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: $color-background;
 
 	&:not(.active) {
 		z-index: -1;
 		opacity: 0;
 	}
-}
-
-/* Loading Overlay */
-.overlay-loading {
-	background: #fff;
 }
 
 /* === Screen width message === */
@@ -84,7 +78,7 @@
 		content: "";
 		position: absolute;
 		display: inline-block;
-		background: #d5d5d5;
+		background: darken($color-outline, 13%);
 		border-radius: 4px;
 	}
 
