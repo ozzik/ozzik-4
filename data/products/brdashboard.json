@@ -2,7 +2,7 @@
 	"id": "brdashboard",
 	"name": "Brow.si Dashboard",
 	"art": {
-		"elements": [ "paper", "title", "text d1", "line d2", "more d3", "badge" ],
+		"elements": [ "paper:", "title", "text d1", "line d2", "more d3", "badge" ],
 		"animation": [
 			[ "paper" ],
 			[ [ "title", "text", "line", "more" ] ],

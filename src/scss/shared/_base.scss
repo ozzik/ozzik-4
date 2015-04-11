@@ -243,7 +243,7 @@ p {
 }
 
 /* ======= Hacks/Transforms ======= */
-.showcase-art *:not(.se-sketch),
+.showcase-art *:not(.s-sketch),
 .will-change { @include transform(translate3d(0,0,0)); }
 
 /* ======= States ======= */

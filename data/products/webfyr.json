@@ -2,7 +2,7 @@
 	"id": "webfyr",
 	"name": "Webfyr",
 	"art": {
-		"elements": [ "ios-app", "flame", "wave1 d2 will-change", "wave2 d1 will-change", "wave3 will-change", "glare" ],
+		"elements": [ "ios-app:", "flame", "wave1 d2 will-change", "wave2 d1 will-change", "wave3 will-change", "glare" ],
 		"animation": [
 			[ "ios-app" ],
 			[ "flame", "pop-in", 50 ],

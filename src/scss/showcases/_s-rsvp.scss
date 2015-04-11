@@ -1,40 +1,35 @@
-.sa-rsvp {
+$project: "rsvp";
+
+.sa-#{$project} {
 	width: 126px;
 	height: 116px;
 }
 
-.s-rsvp {
-	background-image: image-url("showcases/s-rsvp.png", false, false);
-	background-size: 271px 116px;
+.s-#{$project} { @include showcase-image($project, 271px); }
 
-	// Elements
-	&.se-page {
-		top: 0;
-		width: 125px;
-		height: 85px;
-		background-position: -126px 0;
-	}
-
-	&.se-button {
-		bottom: 1px;
-		left: 46px;
-		width: 35px;
-		height: 26px;
-		background-position: -126px -85px;
-	}
-	&.se-checkmark {
-		top: 14px;
-		right: 34px;
-		width: 5px;
-		height: 4px;
-		background-position: -161px -85px;
-	}
+// Elements
+.s-#{$project}-page {
+	top: 0;
+	width: 125px;
+	height: 85px;
+	background-position: -126px 0;
 }
 
-.i-rsvp { background-position: -251px 0; }
-
-.s-rsvp-candy { background-image: image-url("showcases/s-rsvp-candy@2x.png", false, false); }
-
-@include retina {
-	.s-rsvp { background-image: image-url("showcases/s-rsvp@2x.png", false, false); }
+.s-#{$project}-button {
+	bottom: 1px;
+	left: 46px;
+	width: 35px;
+	height: 26px;
+	background-position: -126px -85px;
 }
+.s-#{$project}-checkmark {
+	top: 14px;
+	right: 34px;
+	width: 5px;
+	height: 4px;
+	background-position: -161px -85px;
+}
+
+.i-#{$project} { background-position: -251px 0; }
+
+.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

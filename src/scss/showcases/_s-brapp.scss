@@ -1,63 +1,63 @@
-.sa-brapp {
+$project: "brapp";
+
+.sa-#{$project} {
 	width: 74px;
 	height: 74px;
 }
 
-.s-brapp {
-	background-image: image-url("showcases/s-brapp.png", false, false);
-	background-size: 166px 74px;
-	
-	// Elements
-	&.se-frame {
-		top: 12px;
-		left: 12px;
-		width: 50px;
-		height: 50px;
-		border-radius: 50px;
-		background: none;
-		box-sizing: border-box;
-		border: 25px solid #fff;
 
-		// Post state
-		.post & { border-width: 2px; }
-	}
+.s-#{$project} { @include showcase-image($project, 166px); }
 
-	&.se-circle1,
-	&.se-circle2,
-	&.se-circle3 {
-		left: 34px;
-		width: 6px;
-		height: 6px;
-		border-radius: 6px;
-		background: #fff;
-	}
-	&.se-circle1 {
-		top: 25px;
+// Elements
+.s-#{$project}-frame {
+	top: 12px;
+	left: 12px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	background: none;
+	box-sizing: border-box;
+	border: 25px solid #fff;
 
-		&.animate-brapp-circle-in { @include animation(brapp-circle1-in $duration-art * 2 $easing-cubic-rough forwards); }
-	}
-	&.se-circle2 {
-		top: 34px;
-
-		&.animate-brapp-circle-in { @include animation(pop-in $duration-art * 2 $easing-cubic-rough forwards); }
-	}
-	&.se-circle3 {
-		top: 43px;
-
-		&.animate-brapp-circle-in { @include animation(brapp-circle2-in $duration-art * 2 $easing-cubic-rough forwards); }
-	}
+	// Post state
+	.post & { border-width: 2px; }
 }
 
-@include keyframes(brapp-frame-in) {
+.s-#{$project}-circle1,
+.s-#{$project}-circle2,
+.s-#{$project}-circle3 {
+	left: 34px;
+	width: 6px;
+	height: 6px;
+	border-radius: 6px;
+	background: #fff;
+}
+.s-#{$project}-circle1 {
+	top: 25px;
+
+	&.animate-#{$project}-circle-in { @include animation(#{$project}-circle1-in $duration-art * 2 $easing-cubic-rough forwards); }
+}
+.s-#{$project}-circle2 {
+	top: 34px;
+
+	&.animate-#{$project}-circle-in { @include animation(pop-in $duration-art * 2 $easing-cubic-rough forwards); }
+}
+.s-#{$project}-circle3 {
+	top: 43px;
+
+	&.animate-#{$project}-circle-in { @include animation(#{$project}-circle2-in $duration-art * 2 $easing-cubic-rough forwards); }
+}
+
+@include keyframes(#{$project}-frame-in) {
 	0% { @include transform(scale(.8)); }
 	100% {
 		opacity: 1;
 		border-width: 2px;
 	}
 }
-.animate-brapp-frame-in { @include animation(brapp-frame-in $duration-art * 3 $easing-cubic-rough forwards); }
+.animate-#{$project}-frame-in { @include animation(#{$project}-frame-in $duration-art * 3 $easing-cubic-rough forwards); }
 
-@include keyframes(brapp-circle1-in) {
+@include keyframes(#{$project}-circle1-in) {
 	0% { @include transform(scale(.8) translate3d(0,9px,0)); }
 		
 	90% {
@@ -66,7 +66,7 @@
 	}
 	100% { opacity: 1; }
 }
-@include keyframes(brapp-circle2-in) {
+@include keyframes(#{$project}-circle2-in) {
 	0% { @include transform(scale(.8) translate3d(0,-9px,0)); }
 		
 	90% {
@@ -76,10 +76,6 @@
 	100% { opacity: 1; }
 }
 
-.i-brapp { background-position: -146px 0; }
+.i-#{$project} { background-position: -146px 0; }
 
-.s-brapp-candy { background-image: image-url("showcases/s-brapp-candy@2x.png", false, false); }
-
-@include retina {
-	.s-brapp { background-image: image-url("showcases/s-brapp@2x.png", false, false); }
-}
+.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

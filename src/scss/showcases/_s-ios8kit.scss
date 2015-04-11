@@ -1,32 +1,27 @@
-.sa-ios8kit {
+$project: "ios8kit";
+
+.sa-#{$project} {
 	width: 120px;
 	height: 101px;
 }
 
-.s-ios8kit {
-	background-image: image-url("showcases/s-ios8kit.png", false, false);
-	background-size: 283px 101px;
+.s-#{$project} { @include showcase-image($project, 283px); }
 
-	// Elements
-	&.se-ui {
-		width: 120px;
-		height: 101px;
-		background-position: -120px 0;
-	}
-
-	&.se-badge {
-		left: 48px;
-		bottom: -10px;
-		width: 23px;
-		height: 23px;
-		background-position: -240px 0;
-	}
+// Elements
+.s-#{$project}-ui {
+	width: 120px;
+	height: 101px;
+	background-position: -120px 0;
 }
 
-.i-ios8kit { background-position: -263px 0; }
-
-.s-ios8kit-candy { background-image: image-url("showcases/s-ios8kit-candy@2x.png", false, false); }
-
-@include retina {
-	.s-ios8kit { background-image: image-url("showcases/s-ios8kit@2x.png", false, false); }
+.s-#{$project}-badge {
+	left: 48px;
+	bottom: -10px;
+	width: 23px;
+	height: 23px;
+	background-position: -240px 0;
 }
+
+.i-#{$project} { background-position: -263px 0; }
+
+.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

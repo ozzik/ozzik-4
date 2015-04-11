@@ -1,61 +1,60 @@
-.sa-brdashboard {
+$project: "brdashboard";
+
+.sa-#{$project} {
 	width: 124px;
 	height: 88px;
 }
 
-.s-brdashboard {
-	background-image: image-url("showcases/s-brdashboard.png", false, false);
-	background-size: 218px 88px;
+.s-#{$project} { @include showcase-image($project, 218px); }
 
-	// Elements
-	&.se-paper {
-		top: 2px;
-		left: 2px;
-		width: 118px;
-		height: 86px;
-		background: #fff;
-	}
-	
-	&.se-title {
-		top: 11px;
-		left: 11px;
-		width: 41px;
-		height: 7px;
-		background-position: -124px 0;
-	}
-	&.se-text {
-		top: 32px;
-		left: 11px;
-		width: 74px;
-		height: 22px;
-		background-position: -124px -7px;
-	}
-
-	&.se-line {
-		bottom: 25px;
-		left: 2px;
-		width: 118px;
-		height: 1px;
-		background: #ebebeb;
-	}
-	&.se-more {
-		bottom: 9px;
-		left: 35px;
-		width: 55px;
-		height: 9px;
-		background-position: -124px -29px;
-	}
-
-	&.se-badge {
-		top: 27px;
-		right: 2px;
-		width: 24px;
-		height: 26px;
-		background-position: -124px -38px;
-	}
+// Elements
+.s-#{$project}-paper {
+	top: 2px;
+	left: 2px;
+	width: 118px;
+	height: 86px;
+	background: #fff;
 }
 
-@include keyframes(brdashboard-badge-in) {
+.s-#{$project}-title {
+	top: 11px;
+	left: 11px;
+	width: 41px;
+	height: 7px;
+	background-position: -124px 0;
+}
+.s-#{$project}-text {
+	top: 32px;
+	left: 11px;
+	width: 74px;
+	height: 22px;
+	background-position: -124px -7px;
+}
+
+.s-#{$project}-line {
+	bottom: 25px;
+	left: 2px;
+	width: 118px;
+	height: 1px;
+	background: #ebebeb;
+}
+.s-#{$project}-more {
+	bottom: 9px;
+	left: 35px;
+	width: 55px;
+	height: 9px;
+	background-position: -124px -29px;
+}
+
+.s-#{$project}-badge {
+	top: 27px;
+	right: 2px;
+	width: 24px;
+	height: 26px;
+	background-position: -124px -38px;
+}
+
+@include keyframes(#{$project}-badge-in) {
 	0% {
 		opacity: 1;
 		width: 0;
@@ -63,12 +62,8 @@
 	}
 	100% { opacity: 1; }
 }
-.animate-brdashboard-badge-in { @include animation(brdashboard-badge-in $duration-art $easing-cubic-rough forwards); }
+.animate-#{$project}-badge-in { @include animation(#{$project}-badge-in $duration-art $easing-cubic-rough forwards); }
 
-.i-brdashboard { background-position: -198px 0; }
+.i-#{$project} { background-position: -198px 0; }
 
-.s-brdashboard-candy { background-image: image-url("showcases/s-brdashboard-candy@2x.png", false, false); }
-
-@include retina {
-	.s-brdashboard { background-image: image-url("showcases/s-brdashboard@2x.png", false, false); }
-}
+.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

@@ -1,40 +1,39 @@
-.sa-bucketlist {
+$project: bucketlist;
+
+.sa-#{$project} {
 	width: 74px;
 	height: 74px;
 }
 
-.s-bucketlist {
-	background-image: image-url("showcases/s-bucketlist.png", false, false);
-	background-size: 203px 74px;
+.s-#{$project} { @include showcase-image($project, 203px); }
 
-	// Elements
-	&.se-ios-app { overflow: hidden; }
+// Elements
+.s-#{$project}-ios-app { overflow: hidden; }
 
-	&.se-rope {
-		top: -14px;
-		left: 35px;
-		width: 2px;
-		height: 28px;
-		background-position: -146px 0;
-	}
+.s-#{$project}-rope {
+	top: -14px;
+	left: 35px;
+	width: 2px;
+	height: 28px;
+	background-position: -146px 0;
+}
 
-	&.se-handle {
-		top: 12px;
-		left: 19px;
-		width: 35px;
-		height: 18px;
-		background-position: -148px 0;
-		@include animation-duration($duration-art * 1.7);
-	}
+.s-#{$project}-handle {
+	top: 12px;
+	left: 19px;
+	width: 35px;
+	height: 18px;
+	background-position: -148px 0;
+	@include animation-duration($duration-art * 1.7);
+}
 
-	&.se-bucket {
-		top: 24px;
-		left: 20px;
-		width: 33px;
-		height: 34px;
-		background-position: -148px -18px;
-		@include animation-duration($duration-art * 1.8);
-	}
+.s-#{$project}-bucket {
+	top: 24px;
+	left: 20px;
+	width: 33px;
+	height: 34px;
+	background-position: -148px -18px;
+	@include animation-duration($duration-art * 1.8);
 }
 
 @include keyframes(bucket-in) {
@@ -51,10 +50,6 @@
 }
 .animate-bucket-in { @include animation(bucket-in $duration-art * 1.5 $easing-cubic-rough forwards); }
 
-.i-bucketlist { background-position: -183px 0; }
+.i-#{$project} { background-position: -183px 0; }
 
-.s-bucketlist-candy { background-image: image-url("showcases/s-bucketlist-candy@2x.png", false, false); }
-
-@include retina {
-	.s-bucketlist { background-image: image-url("showcases/s-bucketlist@2x.png", false, false); }
-}
+.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

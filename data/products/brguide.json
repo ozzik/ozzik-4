@@ -2,7 +2,7 @@
 	"id": "brguide",
 	"name": "Brow.si Walkthrough",
 	"art": {
-		"elements": [ "paper p1", "paper p2 d4", "paper p3 d8", "ribbon-h", "ribbon-v", "note d1", "note-br" ],
+		"elements": [ "paper: p1", "paper: p2 d4", "paper: p3 d8", "ribbon-h", "ribbon-v", "note d1", "note-br" ],
 		"animation": [
 			[ [ "paper.p1", "paper.p2", "paper.p3" ], "paper-in" ],
 			[ [ "note-br", "note" ] ],

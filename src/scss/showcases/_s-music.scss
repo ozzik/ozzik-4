@@ -1,56 +1,57 @@
-.sa-music {
+$project: "music";
+
+.sa-#{$project} {
 	width: 132px;
 	height: 71px;
 }
 
-.s-music {
-	background-image: image-url("showcases/s-music.png", false, false);
-	background-size: 301px 96px;
+.s-#{$project} { @include showcase-image($project, 301px); }
 
-	// Elements
-	&.se-wrapper {
-		top: 1px;
-		width: 130px;
-		height: 71px;
-		border-radius: 2px;
-		border: 1px solid #e0b97e;
-		background: #343434;
-		overflow: hidden;
-	}
-
-	&.se-track,
-	&.se-back {
-		width: 130px;
-		height: 24px;
-	}
-
-	&.se-back { background-position: -132px 0; }
-	&.i2 { top: 24px; }
-	&.i3 { top: 48px; }
-
-	&.se-track.i1 { background-position: -132px -24px; }
-	&.se-track.i2 {
-		background-position: -132px -48px;
-
-		&.animate-finale { @include animation(music-track-finale $duration .1s $easing-cubic-rough forwards); }
-
-		// Post state
-		.post & { @include transform(translate3d(24px,0,0)); }
-	}
-	&.se-track.i3 { background-position: -132px -72px; }
-
-	&.se-glow {
-		top: 28px;
-		left: 3px;
-		width: 19px;
-		height: 19px;
-		background-position: -262px 0;
-
-		&.animate-finale { @include animation(fade-in $duration .1s $easing-cubic-rough forwards); }
-	}
+// Elements
+.s-#{$project}-wrapper {
+	top: 1px;
+	width: 130px;
+	height: 71px;
+	border-radius: 2px;
+	border: 1px solid #e0b97e;
+	background: #343434;
+	overflow: hidden;
 }
 
-@include keyframes(music-track-in) {
+.s-#{$project}-track,
+.s-#{$project}-back {
+	width: 130px;
+	height: 24px;
+}
+
+.s-#{$project}-back { background-position: -132px 0; }
+.s-#{$project} {
+	&.i2 { top: 24px; }
+	&.i3 { top: 48px; }
+}
+
+.s-#{$project}-track.i1 { background-position: -132px -24px; }
+.s-#{$project}-track.i2 {
+	background-position: -132px -48px;
+
+	&.animate-finale { @include animation(#{$project}-track-finale $duration .1s $easing-cubic-rough forwards); }
+
+	// Post state
+	.post & { @include transform(translate3d(24px,0,0)); }
+}
+.s-#{$project}-track.i3 { background-position: -132px -72px; }
+
+.s-#{$project}-glow {
+	top: 28px;
+	left: 3px;
+	width: 19px;
+	height: 19px;
+	background-position: -262px 0;
+
+	&.animate-finale { @include animation(fade-in $duration .1s $easing-cubic-rough forwards); }
+}
+
+@include keyframes(#{$project}-track-in) {
 	0% {
 		opacity: 1;
 		@include transform(translate3d(-100%,0,0));
@@ -58,9 +59,9 @@
 
 	100% { opacity: 1;@include transform(translate3d(0,0,0)); }
 }
-.animate-music-track-in { @include animation(music-track-in $duration $easing-cubic-rough forwards); }
+.animate-#{$project}-track-in { @include animation(#{$project}-track-in $duration $easing-cubic-rough forwards); }
 
-@include keyframes(music-track-finale) {
+@include keyframes(#{$project}-track-finale) {
 	0% {
 		opacity: 1;
 		@include transform(translate3d(0,0,0));
@@ -72,10 +73,6 @@
 	}
 }
 
-.i-music { background-position: -281px 0; }
+.i-#{$project} { background-position: -281px 0; }
 
-.s-music-candy { background-image: image-url("showcases/s-music-candy@2x.png", false, false); }
-
-@include retina {
-	.s-music { background-image: image-url("showcases/s-music@2x.png", false, false); }
-}
+.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

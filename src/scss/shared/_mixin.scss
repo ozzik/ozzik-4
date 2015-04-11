@@ -109,3 +109,10 @@
 		@content;
 	}
 }
+
+@mixin showcase-image($name, $size) {
+	background-image: image-url("showcases/s-#{$name}.png", false, false);
+	background-size: $size;
+	
+	@include retina { background-image: image-url("showcases/s-#{$name}@2x.png", false, false); }
+}

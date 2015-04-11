@@ -1,24 +1,19 @@
-.sa-itunes {
+$project: "itunes";
+
+.sa-#{$project} {
 	width: 121px;
 	height: 46px;
 }
 
-.s-itunes {
-	background-image: image-url("showcases/s-itunes.png", false, false);
-	background-size: 261px 46px;
+.s-#{$project} { @include showcase-image($project, 261px); }
 
-	// Elements
-	&.se-ui {
-		width: 120px;
-		height: 45px;
-		background-position: -121px 0;
-	}
+// Elements
+.s-#{$project}-ui {
+	width: 120px;
+	height: 45px;
+	background-position: -121px 0;
 }
 
-.i-itunes { background-position: -241px 0; }
+.i-#{$project} { background-position: -241px 0; }
 
-.s-itunes-candy { background-image: image-url("showcases/s-itunes-candy@2x.png", false, false); }
-
-@include retina {
-	.s-itunes { background-image: image-url("showcases/s-itunes@2x.png", false, false); }
-}
+.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

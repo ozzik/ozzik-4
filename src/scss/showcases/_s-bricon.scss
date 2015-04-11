@@ -1,51 +1,50 @@
-.sa-bricon {
+$project: "bricon";
+
+.sa-#{$project} {
 	width: 74px;
 	height: 74px;
 }
 
-.s-bricon {
-	background-image: image-url("showcases/s-bricon.png", false, false);
-	background-size: 365px;
+.s-#{$project} { @include showcase-image($project, 365px); }
 
-	// Elements
-	&.se-base {
-		top: 0;
-		left: 0;
-		width: 74px;
-		height: 76px;
-		background-position: -74px 0;
-	}
-
-	&.se-frame {
-		top: 1px;
-		left: 1px;
-		width: 72px;
-		height: 72px;
-		background-position: -148px 0;
-	}
-
-	&.se-drawer {
-		bottom: 1px;
-		left: 1px;
-		width: 73px;
-		height: 48px;
-		background-position: -220px 0;
-
-		&.animate-final-in { @include animation(bricon-drawer-in $duration * 1.5 $easing-cubic-rough forwards); }
-	}
-
-	&.se-globe {
-		top: 2px;
-		left: 11px;
-		width: 52px;
-		height: 53px;
-		background-position: -293px 0;
-
-		&.animate-final-in { @include animation(bricon-globe-in $duration * 1.5 .1s $easing-cubic-rough forwards); }
-	}
+// Elements
+.s-#{$project}-base {
+	top: 0;
+	left: 0;
+	width: 74px;
+	height: 76px;
+	background-position: -74px 0;
 }
 
-@include keyframes(bricon-drawer-in) {
+.s-#{$project}-frame {
+	top: 1px;
+	left: 1px;
+	width: 72px;
+	height: 72px;
+	background-position: -148px 0;
+}
+
+.s-#{$project}-drawer {
+	bottom: 1px;
+	left: 1px;
+	width: 73px;
+	height: 48px;
+	background-position: -220px 0;
+
+	&.animate-final-in { @include animation(#{$project}-drawer-in $duration * 1.5 $easing-cubic-rough forwards); }
+}
+
+.s-#{$project}-globe {
+	top: 2px;
+	left: 11px;
+	width: 52px;
+	height: 53px;
+	background-position: -293px 0;
+
+	&.animate-final-in { @include animation(#{$project}-globe-in $duration * 1.5 .1s $easing-cubic-rough forwards); }
+}
+
+@include keyframes(#{$project}-drawer-in) {
 	0% { @include transform(translate3d(0,5px,0) scale(1.2)); }
 
 	30%,
@@ -56,7 +55,7 @@
 
 	100% { opacity: 1; }
 }
-@include keyframes(bricon-globe-in) {
+@include keyframes(#{$project}-globe-in) {
 	0% { @include transform(translate3d(0,-8px,0) scale(1.1)); }
 
 	40% {
@@ -67,10 +66,6 @@
 	100% { opacity: 1; }
 }
 
-.i-bricon { background-position: -345px 0; }
+.i-#{$project} { background-position: -345px 0; }
 
-.s-bricon-candy { background-image: image-url("showcases/s-bricon-candy@2x.png", false, false); }
-
-@include retina {
-	.s-bricon { background-image: image-url("showcases/s-bricon@2x.png", false, false); }
-}
+.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }
