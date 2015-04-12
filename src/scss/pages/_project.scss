@@ -1,11 +1,8 @@
 /* ======= Base ======= */
 .project {
-	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
-	overflow: auto;
 	height: 100%;
+	overflow: auto;
 	
 	&:not(.active) { z-index: -1; }
 }

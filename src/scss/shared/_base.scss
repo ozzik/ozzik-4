@@ -9,11 +9,6 @@ body {
 }
 
 body,
-.overlay,
-.overlay-loading,
-.strip-menu-button-content { background: $color-background; }
-
-body,
 input,
 textarea,
 .meta { font-family: 'Bitter', serif; }
@@ -63,6 +58,20 @@ dd {
 		background-size: 132px 88px;
 	}
 }
+
+body,
+.overlay,
+.overlay-loading,
+.strip-menu-button-content { background: $color-background; }
+
+.overlay,
+.tip,
+.project {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
 
 /* ======= Architecture ======= */
 html,

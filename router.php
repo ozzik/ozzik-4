@@ -199,7 +199,13 @@
 			exit;
 		} elseif ($isMobile) {
 			$page = file_get_contents("backstage/mobile.php");
+			$page = str_replace("<?php echo \$_BASE_URL; ?>", $_BASE_URL, $page); // Fixing PHP printing
 
+			echo $page;
+
+			exit;
+		} else if (strpos($ua, "trident") !== false) {
+			$page = file_get_contents("backstage/pity.html");
 			$page = str_replace("<?php echo \$_BASE_URL; ?>", $_BASE_URL, $page); // Fixing PHP printing
 
 			echo $page;
