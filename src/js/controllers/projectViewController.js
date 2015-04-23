@@ -86,7 +86,7 @@ O4.ProjectViewController = function(options) {
 	}
 
 	function _initAsLandingPage() {
-		$(".project .back-button").on("click", function() {
+		$(".v-project .back-button").on("click", function() {
 			_.track(_project.collection, "unload_item", _project.id);
 
 			window.location.href = _.url((_project.collection === "products") ? "" : _project.collection);
