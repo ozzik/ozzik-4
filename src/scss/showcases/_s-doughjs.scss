@@ -1,47 +1,44 @@
-.sa-doughjs {
+$project: "doughjs";
+
+.sa-#{$project} {
 	width: 79px;
 	height: 102px;
 }
 
-.s-doughjs {
-	background-image: image-url("showcases/s-doughjs.png", false, false);
-	background-size: 202px 102px;
+.s-#{$project} { @include showcase-image($project, 202px); }
 
-	// Elements
-	&.se-pin {
-		top: 0;
-		width: 39px;
-		height: 94px;
-		background-position: -79px 0;
-	}
+.s-#{$project}-pin {
+	top: 0;
+	width: 39px;
+	height: 94px;
+	background-position: -79px 0;
+}
 
-	&.se-dough {
-		bottom: 0;
-		right: 0;
-		width: 64px;
-		height: 39px;
-		background-position: -118px 0;
-	}
-	&.se-dough-shadow {
-		bottom: 23px;
-		left: 21px;
-		width: 46px;
-		height: 14px;
-		background-position: -118px -39px;
-	}
-	&.se-pin-shadow {
-		bottom: 22px;
-		left: 9px;
-		width: 18px;
-		height: 19px;
-		background-position: -118px -53px;
-	}
+.s-#{$project}-dough {
+	bottom: 0;
+	right: 0;
+	width: 64px;
+	height: 39px;
+	background-position: -118px 0;
+}
+.s-#{$project}-dough-shadow {
+	bottom: 23px;
+	left: 21px;
+	width: 46px;
+	height: 14px;
+	background-position: -118px -39px;
+}
+.s-#{$project}-pin-shadow {
+	bottom: 22px;
+	left: 9px;
+	width: 18px;
+	height: 19px;
+	background-position: -118px -53px;
 }
 
 // Animation
 @include keyframes(dough-in) {
 	0% { @include transform(translate3d(0,-30px,0) scale(.8)); }
-	
 	40% {
 		opacity: 1;
 		@include transform(translate3d(0,-30px,0) scale(1.04));
@@ -54,7 +51,6 @@
 		@include transform(scaleY(1.2) translate3d(0,2px,0));
 		@include transform-origin-y(100%);
 	}
-
 	100% {
 		opacity: 1;
 		@include transform(none);
@@ -62,10 +58,4 @@
 }
 .animate-dough-in { @include animation(dough-in $duration-art * 2 $easing-cubic forwards); }
 
-.i-doughjs { background-position: -182px 0; }
-
-.s-doughjs-candy { background-image: image-url("showcases/s-doughjs-candy@2x.png", false, false); }
-
-@include retina {
-	.s-doughjs { background-image: image-url("showcases/s-doughjs@2x.png", false, false); }
-}
+.i-#{$project} { background-position: -182px 0; }

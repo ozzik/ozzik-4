@@ -24,7 +24,7 @@ var _ = {
 		return _.url("assets/images/" + (window.devicePixelRatio === 2 ? str.replace(".png", "@2x.png") : str));
 	},
 	collectionStyleUrl: function(str) {
-		return _.styleUrl("showcases/" + str);
+		return _.styleUrl("showcases/" + str + "." + $.engine + ".css");
 	},
 	projectStyleUrl: function(str) {
 		return _.styleUrl("projects/" + str);

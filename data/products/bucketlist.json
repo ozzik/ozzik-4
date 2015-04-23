@@ -2,7 +2,7 @@
 	"id": "bucketlist",
 	"name": "Bucket List",
 	"art": {
-		"elements": [ [ "ios-app", "rope", "handle", "bucket" ] ],
+		"elements": [ [ "ios-app:", "rope", "handle", "bucket" ] ],
 		"animation": [
 			[ "ios-app" ],
 			[ [ "rope", "handle", "bucket" ], "bucket-in" ]

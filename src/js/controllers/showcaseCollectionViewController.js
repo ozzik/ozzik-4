@@ -80,7 +80,7 @@ O4.ShowcaseCollectionViewController = function() {
 	}
 
 	function _setupFilterControl() {
-		$(".strip-menu-button").on("click", function() {
+		$(".strip-button").on("click", function() {
 		    var menu = document.querySelector(".showcases-menu");
 
 		    $([ this, menu ]).toggleClass("active");
@@ -96,9 +96,9 @@ O4.ShowcaseCollectionViewController = function() {
 
 	function _toggleFilterControlAvailability() {
 		if (_collection.isFilterable) {
-			$(".strip-menu-button").removeClass("disabled");
+			$(".strip-button").removeClass("disabled");
 		} else {
-			$(".strip-menu-button").addClass("disabled").removeClass("active");
+			$(".strip-button").addClass("disabled").removeClass("active");
 			$(".showcases-menu, .showcases-menu .filter-item.active").removeClass("active");
 			$(".showcases-menu .filter-item:first-child").addClass("active");
 		}
@@ -129,5 +129,5 @@ O4.ShowcaseCollectionViewController.getShowcaseArtwork = function(showcaseID) {
 };
 
 O4.ShowcaseCollectionViewController.loadStyle = function(collectionName, loadedHandler) {
-	_.loadStyle(_.collectionStyleUrl(collectionName + ".css"), loadedHandler);
+	_.loadStyle(_.collectionStyleUrl(collectionName), loadedHandler);
 };

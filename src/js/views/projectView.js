@@ -61,7 +61,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		app.viewportController.setScrollability(false);
 		app.viewportController.fetchScrollbarMetrics();
 		_e.addClass("active");
-		$(".pages").addClass("off");
+		$(".v-home").addClass("off");
 		_isLandingPage && app.viewportController.toggleOverlay("loading", false); // Removing any loading screen (when project is landing page)
 
 		// Positioning dummy artwork according to original (on initial load: to screen center)
@@ -73,7 +73,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 			$(realArt).addClass("transparent");
 		}
 		// Pushing transition change to a different pipeline so revert-ready wouldn't be transitioned
-		var sketch = _eArt.find(".se-sketch").addClass("widthable revert-ready");
+		var sketch = _eArt.find(".s-sketch").addClass("widthable revert-ready");
 		setTimeout(function se_sketchReadyForRevert() {
 			sketch.removeClass("fadable");
 		}, 0);
@@ -105,11 +105,11 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		ripple[0].className = "ripple transformable-toned c-" + _project.id + "-main";
 
 		setTimeout(function se_projectReveal() {
-			var sketch = _eArt.find(".se-sketch");
+			var sketch = _eArt.find(".s-sketch");
 
 			sketch.addClass("reverted colored");
 			$.transitionEnd("width", sketch[0], function te_projectSketch() {
-				_eArt.find("*:not(.se-sketch)").addClass("transparent");
+				_eArt.find("*:not(.s-sketch)").addClass("transparent");
 				sketch.removeClass("colored");
 
 				_eArt.translate(_artData.newX, _artData.newY);
@@ -147,12 +147,12 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 
 		_eArt.transform("translate3d(" + _artData.newX + "px," + _artData.newY + "px,0) scale(" + _ART_DEPTH + ")");
 		$.transitionEnd("transform", _eArt[0], function te_projectLevitateBack() {
-			$(".pages").removeClass("off");
+			$(".v-home").removeClass("off");
 			_eArt.transform("scale(" + _ART_DEPTH + ")");
 
 			$.transitionEnd("transform", _eArt[0], function te_projectBack() {
 				// Reverting to finalized version
-				var sketch = _eArt.find(".se-sketch");
+				var sketch = _eArt.find(".s-sketch");
 
 				sketch.addClass("c-" + _project.id + "-main");
 				_eArt.find("*").removeClass("transparent");

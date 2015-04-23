@@ -1,85 +1,84 @@
-.sa-bremail {
+$project: "bremail";
+
+.sa-#{$project} {
 	width: 142px;
 	height: 107px;
 }
 
-.s-bremail {
-	background-image: image-url("showcases/s-bremail.png", false, false);
-	background-size: 282px 112px;
+.s-#{$project} { @include showcase-image($project, 282px); }
 
-	// Elements
-	&.se-paper {
-		top: 1px;
-		left: 2px;
-		width: 138px;
-		height: 105px;
-		background: #fff;
-	}
-
-	&.se-title {
-		top: 16px;
-		left: 16px;
-		width: 53px;
-		height: 7px;
-		background-position: -142px 0;
-	}
-	&.se-change {
-		top: 12px;
-		left: 73px;
-		width: 33px;
-		height: 14px;
-		background-position: -195px 0;
-	}
-
-	&.se-axis {
-		bottom: 13px;
-		left: 14px;
-		width: 114px;
-		height: 60px;
-		background-position: -142px -14px;
-	}
-	&.se-graphs {
-		bottom: 17px;
-		left: 18px;
-		width: 102px;
-		height: 38px;
-		background-position: -142px -74px;
-
-		&.animate-bremail-graphs-in { @include animation(bremail-graphs-in $duration-art * 3 $easing-cubic-rough forwards); }
-	}
-
-	&.se-point {
-		width: 6px;
-		height: 6px;
-		background-position: -256px 0;
-
-		&.animate-bremail-graphs-in { @include animation(pop-in $duration-art $easing-cubic forwards); }
-
-		&.p1 {
-			bottom: 40px;
-			left: 34px;
-		}
-		&.p2 {
-			bottom: 26px;
-			left: 54px;
-		}
-		&.p3 {
-			bottom: 22px;
-			left: 74px;
-		}
-		&.p4 {
-			bottom: 50px;
-			left: 94px;
-		}
-		&.p5 {
-			bottom: 29px;
-			left: 114px;
-		}
-
-	}
+// Elements
+.s-#{$project}-paper {
+	top: 1px;
+	left: 2px;
+	width: 138px;
+	height: 105px;
+	background: #fff;
 }
 
-@include keyframes(bremail-graphs-in) {
+.s-#{$project}-title {
+	top: 16px;
+	left: 16px;
+	width: 53px;
+	height: 7px;
+	background-position: -142px 0;
+}
+.s-#{$project}-change {
+	top: 12px;
+	left: 73px;
+	width: 33px;
+	height: 14px;
+	background-position: -195px 0;
+}
+
+.s-#{$project}-axis {
+	bottom: 13px;
+	left: 14px;
+	width: 114px;
+	height: 60px;
+	background-position: -142px -14px;
+}
+.s-#{$project}-graphs {
+	bottom: 17px;
+	left: 18px;
+	width: 102px;
+	height: 38px;
+	background-position: -142px -74px;
+
+	&.animate-#{$project}-graphs-in { @include animation(#{$project}-graphs-in $duration-art * 3 $easing-cubic-rough forwards); }
+}
+
+.s-#{$project}-point {
+	width: 6px;
+	height: 6px;
+	background-position: -256px 0;
+
+	&.animate-#{$project}-graphs-in { @include animation(pop-in $duration-art $easing-cubic forwards); }
+
+	&.p1 {
+		bottom: 40px;
+		left: 34px;
+	}
+	&.p2 {
+		bottom: 26px;
+		left: 54px;
+	}
+	&.p3 {
+		bottom: 22px;
+		left: 74px;
+	}
+	&.p4 {
+		bottom: 50px;
+		left: 94px;
+	}
+	&.p5 {
+		bottom: 29px;
+		left: 114px;
+	}
+
+}
+
+@include keyframes(#{$project}-graphs-in) {
 	0% {
 		opacity: 1;
 		width: 0;
@@ -87,10 +86,4 @@
 	100% { opacity: 1; }
 }
 
-.i-bremail { background-position: -262px 0; }
-
-.s-bremail-candy { background-image: image-url("showcases/s-bremail-candy@2x.png", false, false); }
-
-@include retina {
-	.s-bremail { background-image: image-url("showcases/s-bremail@2x.png", false, false); }
-}
+.i-#{$project} { background-position: -262px 0; }

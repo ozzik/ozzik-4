@@ -1,59 +1,51 @@
-.sa-brmenu {
+$project: "brmenu";
+
+.sa-#{$project} {
 	width: 31px;
 	height: 102px;
 }
 
-.s-brmenu {
-	background: image-url("showcases/s-brmenu.png", false, false) no-repeat;
-	background-size: 85px 102px;
+.s-#{$project} { @include showcase-image($project, 85px); }
 
-	// Elements
-	&.se-button1,
-	&.se-button2,
-	&.se-button3 {
-		left: 0;
-		width: 31px;
-		height: 32px;
-	}
-	&.se-button1 {
-		bottom: -2px;
-		background-position: -31px 0;
-	}
-	&.se-button2 {
-		bottom: 38px;
-		background-position: -31px -32px;
-	}
-	&.se-button3 {
-		bottom: 72px;
-		background-position: -31px -64px;
-	}
-
-	&.se-button1-icon {
-		bottom: 7px;
-		left: 14px;
-		height: 14px;
-		width: 3px;
-		background-position: -62px 0;
-
-		// Post state
-		.post & { @include transform(rotateZ(-90deg) translate3d(0,0,0)); }
-	}
+// Elements
+.s-#{$project}-button1,
+.s-#{$project}-button2,
+.s-#{$project}-button3 {
+	left: 0;
+	width: 31px;
+	height: 32px;
+}
+.s-#{$project}-button1 {
+	bottom: -2px;
+	background-position: -31px 0;
+}
+.s-#{$project}-button2 {
+	bottom: 38px;
+	background-position: -31px -32px;
+}
+.s-#{$project}-button3 {
+	bottom: 72px;
+	background-position: -31px -64px;
 }
 
-@include keyframes(brmenu-rotate) {
-	0% { opacity: 1; }
+.s-#{$project}-button1-icon {
+	bottom: 7px;
+	left: 14px;
+	height: 14px;
+	width: 3px;
+	background-position: -62px 0;
 
+	// Post state
+	.post & { @include transform(rotateZ(-90deg) translate3d(0,0,0)); }
+}
+
+@include keyframes(#{$project}-rotate) {
+	0% { opacity: 1; }
 	100% {
 		opacity: 1;
 		@include transform(rotateZ(-90deg) translate3d(0,0,0));
 	}
 }
-.animate-brmenu-rotate { @include animation(brmenu-rotate $duration-art $easing-cubic-rough forwards); }
+.animate-#{$project}-rotate { @include animation(#{$project}-rotate $duration-art $easing-cubic-rough forwards); }
 
-.i-brmenu { background-position: -65px 0; }
-
-.s-brmenu-candy { background-image: image-url("showcases/s-brmenu-candy@2x.png", false, false); }
-
-@include retina {
-	.s-brmenu { background-image: image-url("showcases/s-brmenu@2x.png", false, false); }
-}
+.i-#{$project} { background-position: -65px 0; }

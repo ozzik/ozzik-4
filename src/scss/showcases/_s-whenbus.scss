@@ -1,53 +1,52 @@
-.sa-whenbus {
+$project: "whenbus";
+
+.sa-#{$project} {
 	width: 74px;
 	height: 74px;
 }
 
-.s-whenbus {
-	background-image: image-url("showcases/s-whenbus.png", false, false);
-	background-size: 209px 90px;
+.s-#{$project} { @include showcase-image($project, 209px); }
 
-	// Elements
-	&.se-app-icon {
-		bottom: 5px;
-		left: 1px;
-		width: 72px;
-		height: 65px;
-		background-position: -74px 0;
+// Elements
+.s-#{$project}-app-icon {
+	bottom: 5px;
+	left: 1px;
+	width: 72px;
+	height: 65px;
+	background-position: -74px 0;
 
-		&.animate-whenbus-in { @include animation(whenbus-icon-in $duration-art $easing-cubic-rough forwards); }
-		.post & { @include transform(translate3d(0,-3px,0)); }
-	}
-	&.se-bevel {
-		bottom: 5px;
-		left: 1px;
-		width: 72px;
-		height: 25px;
-		background-position: -74px -65px;
+	&.animate-#{$project}-in { @include animation(#{$project}-icon-in $duration-art $easing-cubic-rough forwards); }
+	.post & { @include transform(translate3d(0,-3px,0)); }
+}
+.s-#{$project}-bevel {
+	bottom: 5px;
+	left: 1px;
+	width: 72px;
+	height: 25px;
+	background-position: -74px -65px;
 
-		&.animate-whenbus-in { @include animation(whenbus-bevel-in $duration-art $easing-cubic-rough forwards); }
-		.post & { @include transform(translate3d(0,3px,0)); }
-	}
-
-	&.se-bus,
-	&.se-emboss {
-		top: 22px;
-		left: 15px;
-		width: 43px;
-	}
-	&.se-bus {
-		height: 25px;
-		background-position: -146px 0;
-	}
-	&.se-emboss {
-		height: 26px;
-		background-position: -146px -25px;
-
-		&.animate-whenbus-in { @include animation(fade-in $duration-art $easing-cubic-rough forwards); }
-	}
+	&.animate-#{$project}-in { @include animation(#{$project}-bevel-in $duration-art $easing-cubic-rough forwards); }
+	.post & { @include transform(translate3d(0,3px,0)); }
 }
 
-@include keyframes(whenbus-icon-in) {
+.s-#{$project}-bus,
+.s-#{$project}-emboss {
+	top: 22px;
+	left: 15px;
+	width: 43px;
+}
+.s-#{$project}-bus {
+	height: 25px;
+	background-position: -146px 0;
+}
+.s-#{$project}-emboss {
+	height: 26px;
+	background-position: -146px -25px;
+
+	&.animate-#{$project}-in { @include animation(fade-in $duration-art $easing-cubic-rough forwards); }
+}
+
+@include keyframes(#{$project}-icon-in) {
 	0% { opacity: 1; }
 	20% { @include transform(translate3d(0,1px,0)); }
 	100% {
@@ -55,7 +54,7 @@
 		@include transform(translate3d(0,-3px,0));
 	}
 }
-@include keyframes(whenbus-bevel-in) {
+@include keyframes(#{$project}-bevel-in) {
 	0% { opacity: 1; }
 	20% { @include transform(translate3d(0,-1px,0)); }
 	100% {
@@ -64,10 +63,4 @@
 	}
 }
 
-.i-whenbus { background-position: -189px 0; }
-
-.s-whenbus-candy { background-image: image-url("showcases/s-whenbus-candy@2x.png", false, false); }
-
-@include retina {
-	.s-whenbus { background-image: image-url("showcases/s-whenbus@2x.png", false, false); }
-}
+.i-#{$project} { background-position: -189px 0; }

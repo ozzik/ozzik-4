@@ -1,9 +1,12 @@
 // Colors
 $color-main: #685cb0;
 $color-main-light: #8fa0dc;
+$color-main-ultra: #d2d9f1;
 $color-text: #323232;
 $color-text-light: lighten($color-text, 50%);
+$color-text-navigation: lighten($color-text, 60%);
 $color-background: #fcfcfc;
+$color-outline: #f3f3f3;
 
 // Spaces
 $space: .5em;

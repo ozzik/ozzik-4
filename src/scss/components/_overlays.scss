@@ -1,20 +1,9 @@
 .overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+	@extend %absolutely-anchored;
+	@extend %fullsize;
 	background: $color-background;
 
-	&:not(.active) {
-		z-index: -1;
-		opacity: 0;
-	}
-}
-
-/* Loading Overlay */
-.overlay-loading {
-	background: #fff;
+	&:not(.active) { opacity: 0; }
 }
 
 /* === Screen width message === */
@@ -68,24 +57,18 @@
 	background-image: image-url("403@2x.png", false, false);
 	background-size: 84px;
 }
-.server-error-message {
-	max-width: 28em;
-	text-align: left;
-}
+.server-error-message { max-width: 28em; }
 
 /* === Tips === */
 .tip {
-	position: absolute;
-	top: 0;
-	left: 0;
+	@extend %absolutely-anchored;
 	font-size: .8em;
 
 	&::before {
-		content: "";
+		@extend %column-pseudo;
 		position: absolute;
-		display: inline-block;
-		background: #d5d5d5;
-		border-radius: 4px;
+		background: darken($color-outline, 13%);
+		border-radius: 3px;
 	}
 
 	$size-tip-offset: 8px;

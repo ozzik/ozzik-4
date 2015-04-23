@@ -1,0 +1,92 @@
+@import "shared/mixin";
+
+@mixin transform($values...) {
+	-moz-transform: $values;
+}
+@mixin transform-origin($values) {
+	-moz-transform-origin: $values;
+}
+@mixin transform-origin-y($values) {
+	-moz-transform-origin-y: $values;
+}
+@mixin transform-origin-x($values) {
+	-moz-transform-origin-x: $values;
+}
+@mixin perspective($value) {
+	-moz-perspective: $value;
+}
+
+@mixin transition($values...) {
+	-moz-transition: $values;
+}
+@mixin transition-timing-function($value) {
+	-moz-transition-timing-function: $value;
+}
+@mixin transition-duration($value) {
+	-moz-transition-duration: $value;
+}
+@mixin transition-property($values...) {
+	-moz-transition-property: $values;
+}
+@mixin transition-delay($value) {
+	-moz-transition-delay: $value;
+}
+@mixin transition-transform($values...) {
+	-moz-transition: -moz-transform $values;
+}
+@mixin transition-with-transform($property, $meta) {
+	-moz-transition: all $meta;
+	-moz-transition-property: -moz-transform,$property;
+}
+
+@mixin columns($values) {
+	-moz-columns: $values;
+}
+
+@mixin display-flex() {
+	display: flex;
+}
+@mixin flex($values) {
+	flex: $values;
+}
+@mixin flex-order($values) {
+	order: $values;
+}
+@mixin flex-align-self($values) {
+	align-self: $values;
+}
+@mixin flex-flow($values) {
+	flex-flow: $values;
+}
+@mixin flex-justify-content($values) {
+	justify-content: $values;
+}
+@mixin flex-align-content($values) {
+	align-content: $values;
+}
+@mixin flex-align-items($values) {
+	align-items: $values;
+}
+
+// Animation
+@mixin keyframes($name) {
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+}
+
+@mixin animation($values) {
+	-moz-animation: $values;
+}
+@mixin animation-delay($value) {
+	-moz-animation-delay: $value;
+}
+@mixin animation-duration($value) {
+	-moz-animation-duration: $value;
+}
+
+@mixin retina() {
+	@media only screen and (min--moz-device-pixel-ratio: 2) {
+		@content;
+	}
+}

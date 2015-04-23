@@ -1,0 +1,64 @@
+@import "vars";
+
+// Position
+%absolutely-anchored {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+%absolutely-anchored-bottom-fullwidth {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+%column-raw { display: inline-block; } // Used by shorter selectors
+
+%column {
+	display: inline-block;
+	letter-spacing: normal;
+}
+%column-top {
+	@extend %column;
+	vertical-align: top;
+}
+%column-middle {
+	@extend %column;
+	vertical-align: middle;
+}
+%column-pseudo {
+	content: "";
+	display: inline-block;
+}
+%column-pseudo-middle {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+}
+
+// Size
+%fullsize {
+	width: 100%;
+	height: 100%;
+}
+
+@mixin borderbox { box-sizing: border-box; }
+
+// Specifics
+%sprited {
+	display: block;
+	width: $size-ui-sprite;
+	height: $size-ui-sprite;
+}
+
+%colored-bordered-box {
+	border: 1px solid;
+	@include borderbox();
+}
+
+%navigation-button {
+	color: $color-text-navigation;
+	text-transform: uppercase;
+}

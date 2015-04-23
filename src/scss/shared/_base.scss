@@ -1,12 +1,12 @@
 @import "vars";
 
-/* ======= Style ======= */
+/* ======= General Style ======= */
 body {
 	margin: 0;
-	background: $color-background;
 	color: $color-text;
 	font-size: .85em;
 	line-height: 1.5;
+	background: $color-background;
 }
 
 body,
@@ -39,19 +39,24 @@ dl {
 	list-style: none;
 }
 dd,
-dt { display: inline-block; }
+dt { @extend %column-raw; }
 dd {
 	margin-left: .35rem;
 
 	&:not(:last-child) { margin-bottom: .35rem; }
 }
 
-/* ======= Shared ======= */
+p {
+	&:first-child { margin-top: 0; }
+	&:last-child { margin-bottom: 0; }
+}
+
+/* ======= Images ======= */
 .contact-link,
 .back-button::before,
 .project-button.dead::before,
 .project-cue::before,
-.strip-menu-button-content::before {
+.strip-button-content::before {
 	background-image: image-url("ui.png", false, false);
 
 	@include retina {
@@ -60,10 +65,10 @@ dd {
 	}
 }
 
-/* ======= Architecture ======= */
+/* ======= Layout ======= */
 html,
 body,
-.pages { height: 100%; }
+.v-home { height: 100%; }
 
 .wrapper { margin: 0 auto; }
 
@@ -78,138 +83,35 @@ body,
 	@extend .centered;
 }
 
-// Pages
-.pages { height: 100% * $pages; }
-.page {
-	@extend .va-wrapper;
-	position: relative;
-	height: 100% / $pages;
-}
-
-.footer {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	padding-bottom: 1.5rem;
-	font-size: .6rem;
-	line-height: 1.2;
-}
-
 /* ======= Grid ======= */
 .columns { letter-spacing: -.25rem; }
 .column {
-	display: inline-block;
-	vertical-align: top;
-	letter-spacing: normal;
+	@extend %column-top;
 
 	&:not(:first-child) { margin-left: $size-grid-gutter; }
 
 	*:first-child { margin-top: 0; }
+	&.self { margin-left: 0; }
 }
 @for $i from 1 to 5 {
 	.column-#{$i} { width: ($size-grid-column * $i) + ($size-grid-gutter * ($i - 1)); }
 }
 .column-mid { vertical-align: middle; }
 
-/* ======= Components ======= */
-.meta {
-	font-size: inherit;
-	text-align: right;
-	line-height: 1.1;
-}
-.meta,
-.metalike {
-	font-style: italic;
-	font-weight: normal;
-	color: $color-text-light;
-}
-
-.teaserline {
-	position: relative;
-	width: 100%;
-	text-align: center;
-
-	&.link {
-		position: absolute;
-		bottom: 0;
-	}
-
-	&.top { top: 0; }
-	&.bottom { bottom: 0; }
-	
-	&::before {
-		content: "";
-		display: inline-block;
-		width: 2px;
-		height: 100%;
-	}
-}
-.teaserline-tag-wrapper {
-	position: absolute;
-	width: 100%;
-	text-transform: uppercase;
-}
-.teaserline-tag {
-	padding: .4em .6em .35em;
-	border-radius: 3px;
-	font-size: .75rem;
-	letter-spacing: .05em;
-	color: darken(#f3f3f3, 20%);
-	@include transition(all $duration $easing-cubic-rough);
-
-	&.attention {
-		background: #d2d9f1;
-		color: darken(#d2d9f1, 20%);
-	}
-}
-.teaserline-tag-about { top: 0; }
-.teaserline-tag-project { bottom: 1em; }
-
-a,
-.linklike {
-	text-decoration: none;
-	
-	// Every link that isn't custom (no line)
-	&:not(.custom) {
-		border-bottom: 1px solid;
-		color: $color-main-light;
-		border-color: lighten($color-main-light, 20%);
-
-		&:focus,
-		&:hover {
-			color: lighten($color-main-light, 5%);
-			border-color: lighten($color-main-light, 25%);
-		}
-	}
-}
-
-.button-caption {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.bubblable {
-	@extend .transformable;
-	will-change: -webkit-transform;
-	
-	&:hover,
-	&:focus { @include transform(translate3d(0,-5px,0)); }
-	&:active { @include transform(translate3d(0,-5px,0) scale(.9)); }
-}
-
-p {
-	&:first-child { margin-top: 0; }
-	&:last-child { margin-bottom: 0; }
-}
-
-/* ======= Styles ======= */
+/* ======= Text Styles ======= */
 .crowded { line-height: 1.25; }
-
 .centered { text-align: center; }
+.justified {
+	text-align: justify;
+	text-align-last: justify;
 
+	&::after {
+		@extend %column-pseudo;
+		width: 100%;
+	}
+}
 // Hack, so it would override .centered
-.page-content { text-align: left; }
+.lefted { text-align: left; }
 
 /* ======= Transitions ======= */
 // Properties
@@ -237,7 +139,7 @@ p {
 }
 
 /* ======= Hacks/Transforms ======= */
-.showcase-art *:not(.se-sketch),
+.showcase-art *:not(.s-sketch),
 .will-change { @include transform(translate3d(0,0,0)); }
 
 /* ======= States ======= */
@@ -247,3 +149,5 @@ p {
 	pointer-events: none;
 }
 .opaque { opacity: 1 !important; }
+.blocked { overflow-y: hidden !important; } // Preventing page scroll when being/starting inside project
+.stacked:not(.active) { z-index: -1; }

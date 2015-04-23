@@ -19,7 +19,7 @@ var O4 = O4 || {};
 			_self = this;
 
 		// Startig sketch's fade out
-		this._e.find(".se-sketch").addClass("transparent");
+		this._e.find(".s-sketch").addClass("transparent");
 
 		function animateStep() {
 			var stepData = _parseAnimationStep(id, steps[i]);
@@ -37,7 +37,7 @@ var O4 = O4 || {};
 				if (i !== steps.length) {
 					animateStep();
 				} else {
-					_self._e.addClass("active").find(".se-sketch").addClass("transparent");
+					_self._e.addClass("active").find(".s-sketch").addClass("transparent");
 
 					doneHandler();
 				}
@@ -76,10 +76,10 @@ var O4 = O4 || {};
 		// Composing elements
 		if (eLen > 1) {
 			for (var j = 0; j < eLen; j++) {
-				e += (j ? "," : "") + ".s-" + projectID + ".se-" + step[0][j];
+				e += (j ? "," : "") + ".s-" + projectID + "-" + step[0][j];
 			}
 		} else {
-			e += ".s-" + projectID + '.se-' + step[0];
+			e += ".s-" + projectID + '-' + step[0];
 		}
 
 		// Customized animation name when using multiple simultaneous ones
@@ -96,6 +96,15 @@ var O4 = O4 || {};
 		};
 	}
 
+	function _createArtworkElement(name) {
+		var isInheriting = name.indexOf(":") !== -1;
+
+		return {
+			name: name.replace(":", ""),
+			super: isInheriting ? name.substring(0, name.indexOf(":")) : false
+		};
+	}
+
 	// ==== Static methods ====
 	ShowcaseView.generateItemArtwork = function(data, isPost) {
 		var spec = data.art.elements,
@@ -104,15 +113,13 @@ var O4 = O4 || {};
 
 		for (item in spec) {
 			if (!Array.isArray(spec[item])) {
-				element = { name: spec[item] };
+				element = _createArtworkElement(spec[item]);
 			} else {
-				element = {
-					name: spec[item][0],
-					children: []
-				};
+				element = _createArtworkElement(spec[item][0]);
+				element.children = [];
 
 				for (var childItem = 1; childItem < spec[item].length; childItem++) {
-					element.children.push({ name: spec[item][childItem] });
+					element.children.push(_createArtworkElement(spec[item][childItem]));
 				}
 			}
 

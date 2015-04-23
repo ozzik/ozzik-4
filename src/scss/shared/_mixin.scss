@@ -1,129 +1,18 @@
-// Buttons
-@mixin text-replacement($isOverflow:"") {
-	text-indent: -9999px;
-	@if $isOverflow  == "overflow" {
-		overflow: hidden;
-	}
+@mixin text-replacement() {
+	text-indent: -9999em;
+	overflow: hidden;
 }
 
-@mixin button {
-	border: none;
-	cursor: pointer;
+@mixin centered() { text-align: center; }
+
+@mixin showcase-image($name, $size) {
+	background-image: image-url("showcases/s-#{$name}.png", false, false);
+	background-size: $size;
+	
+	@include retina { background-image: image-url("showcases/s-#{$name}@2x.png", false, false); }
 }
 
-// CSS3 support
-@mixin box-shadow($values...) {
-	box-shadow: $values;
-	-webkit-box-shadow: $values;
-}
-
-@mixin transform($values...) {
-	transform: $values;
-	-webkit-transform: $values;
-	-moz-transform: $values;
-}
-@mixin transform-origin($values) {
-	transform-origin: $values;
-	-webkit-transform-origin: $values;
-	-moz-transform-origin: $values;
-}
-@mixin transform-origin-y($values) {
-	transform-origin-y: $values;
-	-webkit-transform-origin-y: $values;
-	-moz-transform-origin-y: $values;
-}
-@mixin transform-origin-x($values) {
-	transform-origin-x: $values;
-	-webkit-transform-origin-x: $values;
-	-moz-transform-origin-x: $values;
-}
-@mixin perspective($value) {
-	perspective: $value;
-	-webkit-perspective: $value;
-	-moz-perspective: $value;
-}
-
-@mixin transition($values...) {
-	transition: $values;
-	-webkit-transition: $values;
-	-moz-transition: $values;
-}
-@mixin transition-timing-function($value) {
-	transition-timing-function: $value;
-	-webkit-transition-timing-function: $value;
-	-moz-transition-timing-function: $value;
-}
-@mixin transition-duration($value) {
-	transition-duration: $value;
-	-webkit-transition-duration: $value;
-	-moz-transition-duration: $value;
-}
-@mixin transition-property($values...) {
-	transition-property: $values;
-	-webkit-transition-property: $values;
-	-moz-transition-property: $values;
-}
-@mixin transition-delay($value) {
-	transition-delay: $value;
-	-webkit-transition-delay: $value;
-	-moz-transition-delay: $value;
-}
-@mixin transition-transform($values...) {
-	transition: transform $values;
-	-webkit-transition: -webkit-transform $values;
-	-moz-transition: -moz-transform $values;
-}
-@mixin transition-with-transform($property, $meta) {
-	transition: all $meta;
-	-webkit-transition: all $meta;
-	-moz-transition: all $meta;
-	transition-property: transform,$property;
-	-webkit-transition-property: -webkit-transform,$property;
-	-moz-transition-property: -moz-transform,$property;
-	// More expensive...
-	// transition: transform $values, $property $meta;
-	// -webkit-transition: -webkit-transform $meta, $property $meta;
-	// -moz-transition: -moz-transform $meta, $property $meta;
-}
-
-@mixin box-sizing($value) {
-	box-sizing: $value;
-	-moz-box-sizing: $value;
-}
-@mixin border-box() {
-	@include box-sizing(border-box);
-}
-
-// Animation
-@mixin keyframes($name) {
-	@-webkit-keyframes #{$name} {
-		@content;
-	}
-	@-moz-keyframes #{$name} {
-		@content;
-	}
-	@keyframes #{$name} {
-		@content;
-	}
-}
-
-@mixin animation($values) {
-	-webkit-animation: $values;
-	-moz-animation: $values;
-	animation: $values;
-}
-@mixin animation-delay($value) {
-	animation-delay: $value;
-	-webkit-animation-delay: $value;
-	-moz-animation-delay: $value;
-}
-@mixin animation-duration($value) {
-	animation-duration: $value;
-	-webkit-animation-duration: $value;
-	-moz-animation-duration: $value;
-}
-
-@mixin retina() {
+@mixin retina-cross() {
 	@media only screen and (-webkit-min-device-pixel-ratio: 2),
 	only screen and (min--moz-device-pixel-ratio: 2) {
 		@content;

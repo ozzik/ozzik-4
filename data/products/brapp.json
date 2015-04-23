@@ -2,7 +2,7 @@
 	"id": "brapp",
 	"name": "Brow.si App",
 	"art": {
-		"elements": [ "ios-app", "frame", "circle1 d1", "circle2", "circle3 d1" ],
+		"elements": [ "ios-app:", "frame", "circle1 d1", "circle2", "circle3 d1" ],
 		"animation": [
 			[ "ios-app" ],
 			[ "frame", "brapp-frame-in" ],
