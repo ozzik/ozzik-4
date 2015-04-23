@@ -55,6 +55,7 @@ $project: "contact";
 		opacity: 1;
 		@include transform(scale(1.05));
 	}
+	
 	20%,
 	40% { @include transform(none); }
 
@@ -66,5 +67,3 @@ $project: "contact";
 .animate-#{$project}-page-in { @include animation(#{$project}-page-in $duration * 2 $easing-cubic-rough forwards); }
 
 .i-#{$project} { background-position: -192px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

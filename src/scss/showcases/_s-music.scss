@@ -56,7 +56,6 @@ $project: "music";
 		opacity: 1;
 		@include transform(translate3d(-100%,0,0));
 	}
-
 	100% { opacity: 1;@include transform(translate3d(0,0,0)); }
 }
 .animate-#{$project}-track-in { @include animation(#{$project}-track-in $duration $easing-cubic-rough forwards); }
@@ -66,7 +65,6 @@ $project: "music";
 		opacity: 1;
 		@include transform(translate3d(0,0,0));
 	}
-
 	100% {
 		opacity: 1;
 		@include transform(translate3d(24px,0,0));
@@ -74,5 +72,3 @@ $project: "music";
 }
 
 .i-#{$project} { background-position: -281px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

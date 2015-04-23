@@ -39,7 +39,6 @@ $project: "doughjs";
 // Animation
 @include keyframes(dough-in) {
 	0% { @include transform(translate3d(0,-30px,0) scale(.8)); }
-	
 	40% {
 		opacity: 1;
 		@include transform(translate3d(0,-30px,0) scale(1.04));
@@ -52,7 +51,6 @@ $project: "doughjs";
 		@include transform(scaleY(1.2) translate3d(0,2px,0));
 		@include transform-origin-y(100%);
 	}
-
 	100% {
 		opacity: 1;
 		@include transform(none);
@@ -61,5 +59,3 @@ $project: "doughjs";
 .animate-dough-in { @include animation(dough-in $duration-art * 2 $easing-cubic forwards); }
 
 .i-#{$project} { background-position: -182px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

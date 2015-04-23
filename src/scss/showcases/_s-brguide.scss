@@ -52,15 +52,4 @@ $project: "brguide";
 	background-position: -94px -29px;
 }
 
-// @include keyframes(#{$project}-ribbon-h-in) {
-// 	0% { @include transform(scaleX(0)); }
-// 	100% { opacity: 1; }
-// }
-// @include keyframes(#{$project}-ribbon-v-in) {
-// 	0% { @include transform(scaleY(0)); }
-// 	100% { opacity: 1; }
-// }
-
 .i-#{$project} { background-position: -177px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

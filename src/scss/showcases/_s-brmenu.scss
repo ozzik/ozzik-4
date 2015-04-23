@@ -41,7 +41,6 @@ $project: "brmenu";
 
 @include keyframes(#{$project}-rotate) {
 	0% { opacity: 1; }
-
 	100% {
 		opacity: 1;
 		@include transform(rotateZ(-90deg) translate3d(0,0,0));
@@ -50,5 +49,3 @@ $project: "brmenu";
 .animate-#{$project}-rotate { @include animation(#{$project}-rotate $duration-art $easing-cubic-rough forwards); }
 
 .i-#{$project} { background-position: -65px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

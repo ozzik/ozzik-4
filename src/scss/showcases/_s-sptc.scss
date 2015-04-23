@@ -50,5 +50,3 @@ $project: "sptc";
 .animate-#{$project}-in { @include animation(#{$project}-in $duration-art * 2 $easing-cubic-rough forwards); }
 
 .i-#{$project} { background-position: -238px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

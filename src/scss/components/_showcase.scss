@@ -45,7 +45,6 @@
 	@extend %column-raw;
 
 	&:not(.post) div:not(.s-sketch) { opacity: 0; }
-	// .showcase-item.candy & { @include transform(scale(1.2) translate3d(0,200%,0)); }
 
 	div { position: absolute; }
 }
@@ -100,12 +99,3 @@
 	100% { opacity: 1; }
 }
 .animate-paper-in { @include animation(paper-in $duration-art * 2 $easing-cubic forwards); }
-
-/* ======= Different Views ======= */
-// .showcase-candy {
-// 	position: absolute;
-// 	@extend %fullsize;
-// 	background-size: 185px;
-
-// 	.showcase-item:not(.candy) & { @include transform(scale(0)); }
-// }

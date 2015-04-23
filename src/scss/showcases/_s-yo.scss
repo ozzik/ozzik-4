@@ -37,13 +37,9 @@ $project: "yo";
 		opacity: 1;
 		@include transform(scale(.1));
 	}
-	
 	50% { @include transform(rotateZ(-5deg) scale(1.2)); }
-
 	100% { opacity: 1; }
 }
 .animate-text-in { @include animation(text-in $duration-art * 1.5 $easing-cubic-rough forwards); }
 
 .i-#{$project} { background-position: -94px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

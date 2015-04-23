@@ -58,7 +58,6 @@ $project: "brapp";
 
 @include keyframes(#{$project}-circle1-in) {
 	0% { @include transform(scale(.8) translate3d(0,9px,0)); }
-		
 	90% {
 		opacity: 1;
 		@include transform(scale(1.05));
@@ -67,7 +66,6 @@ $project: "brapp";
 }
 @include keyframes(#{$project}-circle2-in) {
 	0% { @include transform(scale(.8) translate3d(0,-9px,0)); }
-		
 	90% {
 		opacity: 1;
 		@include transform(scale(1.05));
@@ -76,5 +74,3 @@ $project: "brapp";
 }
 
 .i-#{$project} { background-position: -146px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

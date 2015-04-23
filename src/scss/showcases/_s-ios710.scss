@@ -118,5 +118,3 @@ $project: "ios710";
 .animate-#{$project}-stamp-in { @include animation(#{$project}-stamp-in $duration-quick $easing-cubic-rough forwards); }
 
 .i-#{$project} { background-position: -638px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

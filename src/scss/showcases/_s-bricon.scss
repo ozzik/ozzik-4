@@ -52,20 +52,16 @@ $project: "bricon";
 		opacity: 1;
 		@include transform(translate3d(0,3px,0) scale(1.1));
 	}
-
+	
 	100% { opacity: 1; }
 }
 @include keyframes(#{$project}-globe-in) {
 	0% { @include transform(translate3d(0,-8px,0) scale(1.1)); }
-
 	40% {
 		opacity: 1;
 		@include transform(translate3d(0,3px,0) scale(1.1));
 	}
-
 	100% { opacity: 1; }
 }
 
 .i-#{$project} { background-position: -345px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

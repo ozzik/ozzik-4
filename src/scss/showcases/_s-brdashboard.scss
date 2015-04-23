@@ -65,5 +65,3 @@ $project: "brdashboard";
 .animate-#{$project}-badge-in { @include animation(#{$project}-badge-in $duration-art $easing-cubic-rough forwards); }
 
 .i-#{$project} { background-position: -198px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }

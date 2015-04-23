@@ -51,5 +51,3 @@ $project: bucketlist;
 .animate-bucket-in { @include animation(bucket-in $duration-art * 1.5 $easing-cubic-rough forwards); }
 
 .i-#{$project} { background-position: -183px 0; }
-
-.s-#{$project}-candy { background-image: image-url("showcases/s-#{$project}-candy@2x.png", false, false); }
