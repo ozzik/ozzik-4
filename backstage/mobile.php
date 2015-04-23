@@ -18,30 +18,28 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/mobile.css" />
 	<style id="styleRuntime"></style>
 <body>
-	<div class="page-content">
-		<div class="about-header">
-			<div class="about-image column">
-				<div class="about-image-ring"></div>
-				<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" />
-			</div>
-			<h2 class="titlelike about-title"><span>About Me</span></h2>
-			<p class="metalike about-subtitle">Product Designer & FE Developer</p>
+	<div class="about-header">
+		<div class="about-image column">
+			<div class="about-image-ring"></div>
+			<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" />
 		</div>
-		<dl class="about-job">
-			<dt class="meta">Currently</dt>
-			<dd>Product Designer at <a href="https://billguard.com" title="BillGuard" target="_blank">BillGuard</a></dd>
-			<dt class="meta previously">Previously</dt>
-			<dd class="previously">Product Designer & FE Dev at <a href="https://brow.si" title="Brow.si" target="_blank">Brow.si</a></dd>
-		</dl>
-		<p class="about-description justified wrapper">Hey there! I’m a self-taught designer, specializing in digital products, mostly web and mobile interfaces, bluntly designed to put shitload of smiles on people faces. I also have trouble stopping at the mockups phase and usually also front-end develop some of these products. Guility of 24/7 side-projecting solutions for daily things.</p>
-		<ul class="about-contact-items columns wrapper">
-			<li class="contact-item column bubblable"><a href="https://twitter.com/_ozzik" class="contact-link custom contact-link-twitter" title="@_ozzik on Twitter" target="_blank">Twitter</a></li>
-			<li class="contact-item column bubblable"><a href="https://dribbble.com/ozzik" class="contact-link custom contact-link-dribbble" title="Oz Pinhas on Dribbble" target="_blank">Dribbble</a></li>
-			<li class="contact-item column bubblable"><a href="mailto:hey@ozzik.co" class="contact-link custom contact-link-email" title="Send me a message">Email</a></li>
-			<li class="contact-item column bubblable"><a href="https://github.com/ozzik" class="contact-link custom contact-link-github" title="Oz Pinhas on GitHub" target="_blank">GitHub</a></li>
-			<li class="contact-item column bubblable"><a href="https://www.linkedin.com/in/ozpinhas" class="contact-link custom contact-link-linkedin" title="Oz Pinhas on LinkedIn" target="_blank">LinkedIn</a></li>
-		</ul>
+		<h2 class="titlelike about-title"><span>About Me</span></h2>
+		<p class="metalike about-subtitle">Product Designer & FE Developer</p>
 	</div>
+	<dl class="about-job">
+		<dt class="meta">Currently</dt>
+		<dd>Product Designer at <a href="https://billguard.com" title="BillGuard" target="_blank">BillGuard</a></dd>
+		<dt class="meta previously">Previously</dt>
+		<dd class="previously">Product Designer & FE Dev at <a href="https://brow.si" title="Brow.si" target="_blank">Brow.si</a></dd>
+	</dl>
+	<p class="about-description justified wrapper">Hey there! I’m a self-taught designer, specializing in digital products, mostly web and mobile interfaces, bluntly designed to put shitload of smiles on people faces. I also have trouble stopping at the mockups phase and usually also front-end develop some of these products. Guility of 24/7 side-projecting solutions for daily things.</p>
+	<ul class="about-contact-items columns wrapper">
+		<li class="contact-item column bubblable"><a href="https://twitter.com/_ozzik" class="contact-link custom contact-link-twitter" title="@_ozzik on Twitter" target="_blank">Twitter</a></li>
+		<li class="contact-item column bubblable"><a href="https://dribbble.com/ozzik" class="contact-link custom contact-link-dribbble" title="Oz Pinhas on Dribbble" target="_blank">Dribbble</a></li>
+		<li class="contact-item column bubblable"><a href="mailto:hey@ozzik.co" class="contact-link custom contact-link-email" title="Send me a message">Email</a></li>
+		<li class="contact-item column bubblable"><a href="https://github.com/ozzik" class="contact-link custom contact-link-github" title="Oz Pinhas on GitHub" target="_blank">GitHub</a></li>
+		<li class="contact-item column bubblable"><a href="https://www.linkedin.com/in/ozpinhas" class="contact-link custom contact-link-linkedin" title="Oz Pinhas on LinkedIn" target="_blank">LinkedIn</a></li>
+	</ul>
 	<div class="footer">
 		<div class="wrapper">
 			<p>(Instead of making this website responsive I’ve chosen to work on another side project or just watch another hour of Grey’s Anatomy. Feel free to try the desktop version later)</p>

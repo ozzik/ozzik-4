@@ -1,4 +1,5 @@
 @import "vars";
+@mixin centered() { text-align: center; }
 
 /* ======= Style ======= */
 body {
@@ -6,6 +7,7 @@ body {
 	color: $color-text;
 	font-size: .85em;
 	line-height: 1.5;
+	background: $color-background;
 }
 
 body,
@@ -38,7 +40,7 @@ dl {
 	list-style: none;
 }
 dd,
-dt { display: inline-block; }
+dt { @extend %column-raw; }
 dd {
 	margin-left: .35rem;
 
@@ -50,7 +52,7 @@ dd {
 .back-button::before,
 .project-button.dead::before,
 .project-cue::before,
-.strip-menu-button-content::before {
+.strip-button-content::before {
 	background-image: image-url("ui.png", false, false);
 
 	@include retina {
@@ -58,20 +60,6 @@ dd {
 		background-size: 132px 88px;
 	}
 }
-
-body,
-.overlay,
-.overlay-loading,
-.strip-menu-button-content { background: $color-background; }
-
-.overlay,
-.tip,
-.project {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
 
 /* ======= Architecture ======= */
 html,
@@ -100,10 +88,7 @@ body,
 }
 
 .footer {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
+	@extend %absolutely-anchored-bottom-fullwidth;
 	padding-bottom: 1.5rem;
 	font-size: .6rem;
 	line-height: 1.2;
@@ -112,13 +97,12 @@ body,
 /* ======= Grid ======= */
 .columns { letter-spacing: -.25rem; }
 .column {
-	display: inline-block;
-	vertical-align: top;
-	letter-spacing: normal;
+	@extend %column-top;
 
 	&:not(:first-child) { margin-left: $size-grid-gutter; }
 
 	*:first-child { margin-top: 0; }
+	&.self { margin-left: 0; }
 }
 @for $i from 1 to 5 {
 	.column-#{$i} { width: ($size-grid-column * $i) + ($size-grid-gutter * ($i - 1)); }
@@ -132,13 +116,10 @@ body,
 	line-height: 1.1;
 }
 .meta,
-.metalike,
-.teaserline-tag,
-.about-title { color: $color-text-light; }
-.meta,
 .metalike {
 	font-style: italic;
 	font-weight: normal;
+	color: $color-text-light;
 }
 
 .teaserline {
@@ -155,10 +136,10 @@ body,
 	&.bottom { bottom: 0; }
 	
 	&::before {
-		content: "";
-		display: inline-block;
+		@extend %column-pseudo;
 		width: 2px;
 		height: 100%;
+		background: $color-outline;
 	}
 }
 .teaserline-tag-wrapper {
@@ -167,14 +148,16 @@ body,
 	text-transform: uppercase;
 }
 .teaserline-tag {
+	color: $color-text-light;
 	padding: .4em .6em .35em;
 	border-radius: 3px;
 	font-size: .75rem;
 	letter-spacing: .05em;
 	@include transition(all $duration $easing-cubic-rough);
+	background: $color-outline;
 
 	&.attention {
-		background: #d2d9f1;
+		background: $color-main-ultra;
 		color: $color-main-light;
 	}
 }
@@ -200,13 +183,13 @@ a,
 }
 
 .button-caption {
-	display: inline-block;
+	@extend %column-middle;
 	vertical-align: middle;
 }
 
 .bubblable {
 	@extend .transformable;
-	will-change: -webkit-transform;
+	will-change: -webkit-transform; // Fixes hover transform bug on Chrome
 	
 	&:hover,
 	&:focus { @include transform(translate3d(0,-5px,0)); }
@@ -220,11 +203,18 @@ p {
 
 /* ======= Styles ======= */
 .crowded { line-height: 1.25; }
-
 .centered { text-align: center; }
+.justified {
+	text-align: justify;
+	text-align-last: justify;
 
+	&::after {
+		@extend %column-pseudo;
+		width: 100%;
+	}
+}
 // Hack, so it would override .centered
-.page-content { text-align: left; }
+.lefted { text-align: left; }
 
 /* ======= Transitions ======= */
 // Properties

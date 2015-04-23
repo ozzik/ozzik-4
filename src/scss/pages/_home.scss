@@ -1,20 +1,14 @@
 /* ======= General ======= */
 .blocked { overflow-y: hidden !important; } // Preventing page scroll when being/starting inside project
 
-/* ======= Shared ======= */
-.home-navigation-link,
-.filter-item { color: lighten($color-text, 60%); }
-
 /* ======= Header ======= */
 .home-navigation {
 	margin-top: 3rem;
-	text-transform: uppercase;
 	@extend .centered;
 }
 .home-navigation-item {
 	// Padding coz mouseout is being triggered to UL
 	&:not(:first-child) {
-		margin-left: 0;
 		padding-left: $space * 4;
 	}
 
@@ -26,24 +20,23 @@
 .home-navigation-link {
 	display: block;
 	padding-bottom: .35rem;
+	@extend %navigation-button;
 }
 
-.strip,
-.teaserline::before,
-.teaserline-tag { background: $color-outline; }
 .strip {
 	position: relative;
 	height: 2px;
-	margin: $size-grid-gutter 0;	
+	background: $color-outline;
+
+	&:first-child { margin-bottom: $size-grid-gutter; }
+	&:last-child { margin-top: $size-grid-gutter; }
 }
 .navline {
 	position: absolute;
 	height: 100%;
-	background: #d2d9f1;
+	background: $color-main-ultra;
 	@include transition-with-transform(width, $duration $easing-cubic);
 }
-
-.strip-header { margin-top: 0; }
 
 /* ======= Project Showcases ======= */
 .showcases {
@@ -52,10 +45,10 @@
 	@include perspective(800px);
 }
 
-$strip-menu-button-width: 8px;
-$strip-menu-button-height: 5px;
+$strip-button-width: 8px;
+$strip-button-height: 5px;
 
-.strip-menu-button {
+.strip-button {
 	position: absolute;
 	top: -18px;
 	width: 30px;
@@ -63,34 +56,34 @@ $strip-menu-button-height: 5px;
 	right: 0;
 	cursor: pointer;
 	
-	&.active .strip-menu-button-content::before { @include transform(rotateZ(180deg)); }
+	&.active .strip-button-content::before { @include transform(rotateZ(180deg)); }
 	&.disabled {
 		pointer-events: none;
 
-		.strip-menu-button-content {
+		.strip-button-content {
 			@include transform(scaleX(0));
 
 			&::before { @include transform(scale(0)); }
 		}
 	}
 }
-.strip-menu-button-content {
+.strip-button-content {
 	position: absolute;
 	bottom: 9px;
 	right: 8px;
-	width: $strip-menu-button-width + (3px * 2);
-	height: $strip-menu-button-height;
+	width: $strip-button-width + (3px * 2);
+	height: $strip-button-height;
+	background: $color-background;
 
 	&::before {
 		content: "";
-		display: block;
 		position: absolute;
 		top: 0;
 		right: 3px;
-		width: $strip-menu-button-width;
-		height: $strip-menu-button-height;
+		width: $strip-button-width;
+		height: $strip-button-height;
 		background-position: $size-ui-sprite * -1 $size-ui-sprite * -1;
-		@include transition-transform($duration $easing-cubic-rough);
+		@extend .transformable-rough;
 	}
 }
 
@@ -107,11 +100,9 @@ $strip-menu-button-height: 5px;
 .filter-item {
 	padding: .2em .9em;
 	border-radius: 99rem;
-	text-transform: uppercase;
+	@extend %navigation-button;
 	font-size: .85em;
 	cursor: pointer;
-
-	&:not(:first-child) { margin-left: 0; }
 
 	&:focus,
 	&:hover { color: $color-main-light; }
@@ -132,23 +123,7 @@ $strip-menu-button-height: 5px;
 /* ======= Footer ======= */
 .footer { @extend .centered; }
 
-.home-footer {
-	margin-top: $space * 8;
-	font-size: .85rem;
-}
-
-.justified {
-	text-align: justify;
-	text-align-last: justify;
-
-	&::after {
-		content: "";
-		display: inline-block;
-		width: 100%;
-	}
-}
+.home-footer { margin-top: $space * 8; }
 
 // Pages off animation when navigating into project
-.pages.off {
-	@include transform(translate3d(0,50%,0)); 
-}
+.pages.off { @include transform(translate3d(0,50%,0));  }

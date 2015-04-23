@@ -5,7 +5,6 @@ $project: "brapp";
 	height: 74px;
 }
 
-
 .s-#{$project} { @include showcase-image($project, 166px); }
 
 // Elements
@@ -16,7 +15,7 @@ $project: "brapp";
 	height: 50px;
 	border-radius: 50px;
 	background: none;
-	box-sizing: border-box;
+	@include borderbox();
 	border: 25px solid #fff;
 
 	// Post state

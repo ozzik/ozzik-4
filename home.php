@@ -21,27 +21,27 @@
 		<a name="projects"></a>
 		<div class="page" data-for="home">
 			<div class="teaserline teaserline-home bottom link"></div>
-			<div class="page-content va-content">
+			<div class="va-content">
 				<div class="wrapper column-4">
 					<div class="home-header">
 						<ul class="home-navigation titlelike columns wrapper">
-							<li class="home-navigation-item column"><a href="<?php echo $_BASE_URL; ?>" class="home-navigation-link custom" data-for="products" title="Products I've designed and/or developed">Products</a></li>
-							<li class="home-navigation-item column"><a href="concepts" class="home-navigation-link custom" data-for="concepts" title="Ideas I've had for some problems">Concepts</a></li>
-							<li class="home-navigation-item column"><a href="freebies" class="home-navigation-link custom" data-for="freebies" title="Free design resources I've made">Freebies</a></li>
+							<li class="home-navigation-item column self"><a href="<?php echo $_BASE_URL; ?>" class="home-navigation-link custom" data-for="products" title="Products I've designed and/or developed">Products</a></li>
+							<li class="home-navigation-item column self"><a href="concepts" class="home-navigation-link custom" data-for="concepts" title="Ideas I've had for some problems">Concepts</a></li>
+							<li class="home-navigation-item column self"><a href="freebies" class="home-navigation-link custom" data-for="freebies" title="Free design resources I've made">Freebies</a></li>
 						</ul>
 					</div>
 					<div class="home-work">
-						<div class="strip strip-header">
+						<div class="strip">
 							<div class="navline"></div>
-							<div class="strip-menu-button" title="Make some trouble..."><div class="strip-menu-button-content transformable"></div></div>
+							<div class="strip-button" title="Make some trouble..."><div class="strip-button-content transformable"></div></div>
 						</div>
 						<div class="showcases-menu">
 							<div class="columns">
 								<span class="column column-mid meta">Show:</span>
 								<ul class="column column-mid">
-									<li class="column column-mid filter-item titlelike active" title="Show every single thing" data-value="">E-V-E-R-Y-T-H-I-N-G</li>
-									<li class="column column-mid filter-item titlelike" title="Show only projects from back when I worked at Brow.si" data-value="browsi">Brow.si Projects</li>
-									<li class="column column-mid filter-item titlelike" title="Show only side-projects" data-value="side">Side Projects</li>
+									<li class="column column-mid filter-item self titlelike active" title="Show every single thing" data-value="">E-V-E-R-Y-T-H-I-N-G</li>
+									<li class="column column-mid filter-item self titlelike" title="Show only projects from back when I worked at Brow.si" data-value="browsi">Brow.si Projects</li>
+									<li class="column column-mid filter-item self titlelike" title="Show only side-projects" data-value="side">Side Projects</li>
 								</ul>
 							</div>
 						</div>
@@ -61,23 +61,23 @@
 			<div class="teaserline teaserline-home top link">
 				<div class="teaserline-tag-wrapper teaserline-tag-about"><span class="teaserline-tag column">this is me</span></div>
 			</div>
-			<div class="page-content va-content">
+			<div class="va-content">
 				<div class="about-header">
 					<div class="about-image column">
-						<div class="about-image-ring"></div>
+						<div class="about-image-ring transformable-n-opacity"></div>
 						<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" />
 					</div>
-					<h2 class="titlelike about-title"><span>About Me</span></h2>
+					<h2 class="titlelike about-title"><span class="hidden">About Me</span></h2>
 					<p class="metalike about-subtitle">Product Designer & FE Developer</p>
 				</div>
-				<dl class="about-job">
+				<dl class="about-job lefted">
 					<dt class="meta">Currently</dt>
 					<dd>Product Designer at <a href="https://billguard.com" title="BillGuard" target="_blank">BillGuard</a></dd>
 					<dt class="meta previously">Previously</dt>
 					<dd class="previously">Product Designer & FE Dev at <a href="https://brow.si" title="Brow.si" target="_blank">Brow.si</a></dd>
 				</dl>
 				<p class="about-description justified column-2 wrapper">Hey there! I’m a self-taught designer, specializing in digital products, mostly web and mobile interfaces, which are bluntly designed to put shitload of smiles on people's faces. I have trouble stopping at the mockups phase and usually also front-end develop some of these products. Guilty of 24/7 side-projecting solutions for daily things.</p>
-				<ul class="about-contact-items columns column-2 wrapper">
+				<ul class="about-contact-items columns column-2 wrapper lefted">
 					<li class="contact-item column bubblable"><a href="https://twitter.com/_ozzik" class="contact-link custom contact-link-twitter" title="Read my nonsense on Twitter" target="_blank">Twitter</a></li>
 					<li class="contact-item column bubblable"><a href="https://dribbble.com/ozzik" class="contact-link custom contact-link-dribbble" title="Experience 400x300 déjà vu's of this website at Dribbble" target="_blank">Dribbble</a></li>
 					<li class="contact-item column bubblable"><a href="mailto:hey@ozzik.co" class="contact-link custom contact-link-email" title="Email me">Email</a></li>

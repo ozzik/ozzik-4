@@ -1,6 +1,7 @@
 .overlay {
-	width: 100%;
-	height: 100%;
+	@extend %absolutely-anchored;
+	@extend %fullsize;
+	background: $color-background;
 
 	&:not(.active) {
 		z-index: -1;
@@ -49,6 +50,7 @@
 .server-error-image-404 {
 	width: 115px;
 	height: 157px;
+	margin-right: 1em;
 	background-image: image-url("404@2x.png", false, false);
 	background-size: 115px;
 }
@@ -58,20 +60,16 @@
 	background-image: image-url("403@2x.png", false, false);
 	background-size: 84px;
 }
-.server-error-message {
-	max-width: 28em;
-	text-align: left;
-	margin-right: 1em;
-}
+.server-error-message { max-width: 28em; }
 
 /* === Tips === */
 .tip {
+	@extend %absolutely-anchored;
 	font-size: .8em;
 
 	&::before {
-		content: "";
+		@extend %column-pseudo;
 		position: absolute;
-		display: inline-block;
 		background: darken($color-outline, 13%);
 		border-radius: 4px;
 	}
