@@ -50,6 +50,6 @@ $project-path: "projects/" + $project + "/";
 }
 
 // Retina
-@include retina {
+@include retina-cross {
 	.brdashboard-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 }

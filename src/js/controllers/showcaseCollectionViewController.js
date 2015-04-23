@@ -129,5 +129,5 @@ O4.ShowcaseCollectionViewController.getShowcaseArtwork = function(showcaseID) {
 };
 
 O4.ShowcaseCollectionViewController.loadStyle = function(collectionName, loadedHandler) {
-	_.loadStyle(_.collectionStyleUrl(collectionName + ".css"), loadedHandler);
+	_.loadStyle(_.collectionStyleUrl(collectionName), loadedHandler);
 };

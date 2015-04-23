@@ -26,7 +26,7 @@ $project-path: "projects/" + $project + "/";
 }
 
 // Retina
-@include retina {
+@include retina-cross {
 	.doughjs-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
 	// .doughjs-chapters { background-image: image-url($project-path + "chapters@2x.jpg", false, false); }
 	// .doughjs-sidemenu { background-image: image-url($project-path + "sidemenu@2x.gif", false, false); }
