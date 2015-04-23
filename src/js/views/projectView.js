@@ -61,7 +61,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		app.viewportController.setScrollability(false);
 		app.viewportController.fetchScrollbarMetrics();
 		_e.addClass("active");
-		$(".pages").addClass("off");
+		$(".v-home").addClass("off");
 		_isLandingPage && app.viewportController.toggleOverlay("loading", false); // Removing any loading screen (when project is landing page)
 
 		// Positioning dummy artwork according to original (on initial load: to screen center)
@@ -147,7 +147,7 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 
 		_eArt.transform("translate3d(" + _artData.newX + "px," + _artData.newY + "px,0) scale(" + _ART_DEPTH + ")");
 		$.transitionEnd("transform", _eArt[0], function te_projectLevitateBack() {
-			$(".pages").removeClass("off");
+			$(".v-home").removeClass("off");
 			_eArt.transform("scale(" + _ART_DEPTH + ")");
 
 			$.transitionEnd("transform", _eArt[0], function te_projectBack() {

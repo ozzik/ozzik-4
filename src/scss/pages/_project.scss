@@ -1,10 +1,8 @@
 /* ======= Base ======= */
-.project {
+.v-project {
 	@extend %absolutely-anchored;
 	@extend %fullsize;
 	overflow: auto;
-	
-	&:not(.active) { z-index: -1; }
 }
 .project-artwork { position: absolute; }
 
@@ -120,6 +118,7 @@ $space-synopsis: 2rem;
 		&:active { @include transform(rotateZ(-.8deg)); }
 	}
 }
+.button-caption { @extend %column-middle; }
 
 .project-separator {
 	width: 20px;

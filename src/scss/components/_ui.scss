@@ -1,0 +1,83 @@
+/* ======= Content ======= */
+.meta {
+	font-size: inherit;
+	text-align: right;
+	line-height: 1.1;
+}
+.meta,
+.metalike {
+	font-style: italic;
+	font-weight: normal;
+	color: $color-text-light;
+}
+
+// Links
+a,
+.linklike {
+	text-decoration: none;
+	
+	// Every link that isn't custom (no line)
+	&:not(.custom) {
+		border-bottom: 1px solid;
+		color: $color-main-light;
+		border-color: lighten($color-main-light, 20%);
+
+		&:focus,
+		&:hover {
+			color: lighten($color-main-light, 5%);
+			border-color: lighten($color-main-light, 25%);
+		}
+	}
+}
+
+.bubblable {
+	@extend .transformable;
+	will-change: -webkit-transform; // Fixes hover transform bug on Chrome
+	
+	&:hover,
+	&:focus { @include transform(translate3d(0,-5px,0)); }
+	&:active { @include transform(translate3d(0,-5px,0) scale(.9)); }
+}
+
+/* ======= Cues ======= */
+.teaserline {
+	position: relative;
+	width: 100%;
+	text-align: center;
+
+	&.link {
+		position: absolute;
+		bottom: 0;
+	}
+
+	&.top { top: 0; }
+	&.bottom { bottom: 0; }
+	
+	&::before {
+		@extend %column-pseudo;
+		width: 2px;
+		height: 100%;
+		background: $color-outline;
+	}
+}
+.teaserline-tag-wrapper {
+	position: absolute;
+	width: 100%;
+	text-transform: uppercase;
+}
+.teaserline-tag {
+	color: $color-text-light;
+	padding: .4em .6em .35em;
+	border-radius: 3px;
+	font-size: .75rem;
+	letter-spacing: .05em;
+	@include transition(all $duration $easing-cubic-rough);
+	background: $color-outline;
+
+	&.attention {
+		background: $color-main-ultra;
+		color: $color-main-light;
+	}
+}
+.teaserline-tag-about { top: 0; }
+.teaserline-tag-project { bottom: 1em; }

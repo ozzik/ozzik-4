@@ -1,5 +1,22 @@
 /* ======= General ======= */
-.blocked { overflow-y: hidden !important; } // Preventing page scroll when being/starting inside project
+// Pages
+.v-home {
+	height: 100% * $pages;
+
+	&.off { @include transform(translate3d(0,50%,0)); } // Pages off animation when navigating into project
+}
+.page {
+	@extend .va-wrapper;
+	position: relative;
+	height: 100% / $pages;
+}
+
+.footer {
+	@extend %absolutely-anchored-bottom-fullwidth;
+	padding-bottom: 1.5rem;
+	font-size: .6rem;
+	line-height: 1.2;
+}
 
 /* ======= Header ======= */
 .home-navigation {
@@ -124,6 +141,3 @@ $strip-button-height: 5px;
 .footer { @extend .centered; }
 
 .home-footer { margin-top: $space * 8; }
-
-// Pages off animation when navigating into project
-.pages.off { @include transform(translate3d(0,50%,0));  }

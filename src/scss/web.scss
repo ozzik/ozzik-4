@@ -1,9 +1,10 @@
 @import "compass/css3/images";
 @import "shared/mixin";
-@import "shared/elements";
+@import "shared/prototypes";
 @import "shared/base";
 
 /* ======= Pages ======= */
+@import "components/ui";
 @import "components/showcase";
 @import "components/overlays";
 @import "pages/home";

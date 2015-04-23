@@ -1,7 +1,6 @@
 @import "vars";
-@mixin centered() { text-align: center; }
 
-/* ======= Style ======= */
+/* ======= General Style ======= */
 body {
 	margin: 0;
 	color: $color-text;
@@ -47,7 +46,12 @@ dd {
 	&:not(:last-child) { margin-bottom: .35rem; }
 }
 
-/* ======= Shared ======= */
+p {
+	&:first-child { margin-top: 0; }
+	&:last-child { margin-bottom: 0; }
+}
+
+/* ======= Images ======= */
 .contact-link,
 .back-button::before,
 .project-button.dead::before,
@@ -61,10 +65,10 @@ dd {
 	}
 }
 
-/* ======= Architecture ======= */
+/* ======= Layout ======= */
 html,
 body,
-.pages { height: 100%; }
+.v-home { height: 100%; }
 
 .wrapper { margin: 0 auto; }
 
@@ -77,21 +81,6 @@ body,
 	display: table-cell;
 	vertical-align: middle;
 	@extend .centered;
-}
-
-// Pages
-.pages { height: 100% * $pages; }
-.page {
-	@extend .va-wrapper;
-	position: relative;
-	height: 100% / $pages;
-}
-
-.footer {
-	@extend %absolutely-anchored-bottom-fullwidth;
-	padding-bottom: 1.5rem;
-	font-size: .6rem;
-	line-height: 1.2;
 }
 
 /* ======= Grid ======= */
@@ -109,99 +98,7 @@ body,
 }
 .column-mid { vertical-align: middle; }
 
-/* ======= Components ======= */
-.meta {
-	font-size: inherit;
-	text-align: right;
-	line-height: 1.1;
-}
-.meta,
-.metalike {
-	font-style: italic;
-	font-weight: normal;
-	color: $color-text-light;
-}
-
-.teaserline {
-	position: relative;
-	width: 100%;
-	text-align: center;
-
-	&.link {
-		position: absolute;
-		bottom: 0;
-	}
-
-	&.top { top: 0; }
-	&.bottom { bottom: 0; }
-	
-	&::before {
-		@extend %column-pseudo;
-		width: 2px;
-		height: 100%;
-		background: $color-outline;
-	}
-}
-.teaserline-tag-wrapper {
-	position: absolute;
-	width: 100%;
-	text-transform: uppercase;
-}
-.teaserline-tag {
-	color: $color-text-light;
-	padding: .4em .6em .35em;
-	border-radius: 3px;
-	font-size: .75rem;
-	letter-spacing: .05em;
-	@include transition(all $duration $easing-cubic-rough);
-	background: $color-outline;
-
-	&.attention {
-		background: $color-main-ultra;
-		color: $color-main-light;
-	}
-}
-.teaserline-tag-about { top: 0; }
-.teaserline-tag-project { bottom: 1em; }
-
-a,
-.linklike {
-	text-decoration: none;
-	
-	// Every link that isn't custom (no line)
-	&:not(.custom) {
-		border-bottom: 1px solid;
-		color: $color-main-light;
-		border-color: lighten($color-main-light, 20%);
-
-		&:focus,
-		&:hover {
-			color: lighten($color-main-light, 5%);
-			border-color: lighten($color-main-light, 25%);
-		}
-	}
-}
-
-.button-caption {
-	@extend %column-middle;
-	vertical-align: middle;
-}
-
-.bubblable {
-	@extend .transformable;
-	will-change: -webkit-transform; // Fixes hover transform bug on Chrome
-	
-	&:hover,
-	&:focus { @include transform(translate3d(0,-5px,0)); }
-	&:active { @include transform(translate3d(0,-5px,0) scale(.9)); }
-}
-
-p {
-	&:first-child { margin-top: 0; }
-	&:last-child { margin-bottom: 0; }
-}
-
-/* ======= Styles ======= */
+/* ======= Text Styles ======= */
 .crowded { line-height: 1.25; }
 .centered { text-align: center; }
 .justified {
@@ -252,3 +149,5 @@ p {
 	pointer-events: none;
 }
 .opaque { opacity: 1 !important; }
+.blocked { overflow-y: hidden !important; } // Preventing page scroll when being/starting inside project
+.stacked:not(.active) { z-index: -1; }

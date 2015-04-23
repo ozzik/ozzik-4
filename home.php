@@ -16,7 +16,7 @@
 	<style id="styleRuntime"></style>
 </head>
 <body class="blocked">
-	<div class="pages transformable-rough-slow" data-page="home">
+	<div class="v-home transformable-rough-slow" data-page="home">
 		<!-- Projects -->
 		<a name="projects"></a>
 		<div class="page" data-for="home">
@@ -94,7 +94,7 @@
 		</div>
 	</div>
 	<!-- Project -->
-	<div class="project">
+	<div class="v-project stacked">
 		<div class="project-header">
 			<div class="ripple"></div>
 			<div class="back-button transformable transparent will-change"></div>
@@ -107,7 +107,7 @@
 		</div>
 	</div>
 	<!-- Overlay's -->
-	<div class="overlay overlay-loading va-wrapper active">
+	<div class="overlay overlay-loading va-wrapper stacked active">
 		<div class="va-content">
 			<p>Sit tight...</p>
 		</div>

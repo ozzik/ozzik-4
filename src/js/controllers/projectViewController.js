@@ -6,7 +6,7 @@ var O4 = O4 || {};
 
 O4.ProjectViewController = function(options) {
 	var _project = null,
-		_projectView = new O4.ProjectView(".project", ".project-artwork"),
+		_projectView = new O4.ProjectView(".v-project", ".project-artwork"),
 		_didFetch = false,
 		_isLandingPage = options && options.isLandingPage,
 		_self = this;
@@ -29,7 +29,7 @@ O4.ProjectViewController = function(options) {
 		if (!_isLandingPage) {
 			_projectView.present(showcase, _handleArtworkAnimated);
 		} else {
-			$(".pages").addClass("hidden");
+			$(".v-home").addClass("hidden");
 		}
 
 		_project = showcase;
