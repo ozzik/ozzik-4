@@ -10,7 +10,7 @@ O4.HomeViewController = function() {
     var _teaser = new O4.HomeTeaserViewController(),
         _showcaseCollection = new O4.ShowcaseCollectionViewController(),
         _navline = new O4.NavlineViewController({
-            rootItem: app.landingView.meta,
+            rootItem: app.landingView.meta.collection,
             navigationHandle: _handleNavigation
         });
 

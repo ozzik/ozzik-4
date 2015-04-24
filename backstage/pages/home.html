@@ -2,7 +2,7 @@
 <html lang="en" class="blocked">
 <head>
 	<meta charset="UTF-8" />
-	<base href="<?php echo $_BASE_URL; ?>" />
+	<base href="{{baseURL}}" />
 	<title>Oz Pinhas</title>
 	<meta name="description" content="Oz Pinhas - Product designer and front-end developer." />
 	<meta name="keywords" content="Oz Pinhas, Product Design, Mobile Design, Web Design, UI Design, UX, Front-end Development, ozzik, עוז פנחס, עוזיק" />
@@ -12,7 +12,7 @@
 	<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Bitter:400,700,400italic" />
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cabin:400,600" />
-	<link rel="stylesheet" type="text/css" href="assets/css/web.<?php echo $_CSS_ENGINE; ?>.css" /><?php if ($_CUSTOM_STYLE): ?><link rel="stylesheet" type="text/css" href="assets/css/fixes/<?php echo $_CUSTOM_STYLE; ?>.css" /><?php endif; ?>
+	{{styleMain}}{{styleFixes}}
 	<style id="styleRuntime"></style>
 </head>
 <body class="blocked">
@@ -25,7 +25,7 @@
 				<div class="wrapper column-4">
 					<div class="home-header">
 						<ul class="home-navigation titlelike columns wrapper">
-							<li class="home-navigation-item column self"><a href="<?php echo $_BASE_URL; ?>" class="home-navigation-link custom" data-for="products" title="Products I've designed and/or developed">Products</a></li>
+							<li class="home-navigation-item column self"><a href="{{baseURL}}" class="home-navigation-link custom" data-for="products" title="Products I've designed and/or developed">Products</a></li>
 							<li class="home-navigation-item column self"><a href="concepts" class="home-navigation-link custom" data-for="concepts" title="Ideas I've had for some problems">Concepts</a></li>
 							<li class="home-navigation-item column self"><a href="freebies" class="home-navigation-link custom" data-for="freebies" title="Free design resources I've made">Freebies</a></li>
 						</ul>
@@ -113,30 +113,17 @@
 		</div>
 	</div>
 	<div class="tip"></div>
-	<?php
-		$templates = scandir("templates");
-
-		foreach ($templates as $template) {
-			if ($template !== "." && $template !== ".." && $template !== ".DS_Store") {
-				$templateName = str_replace(".html", "", $template);
-				$templateName = strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $templateName));
-
-				echo '<script type="text/template" id="tpl-' . $templateName . '">';
-				echo file_get_contents("templates/$template");
-				echo '</script>';
-			}
-		}
-	?>
+	{{templates}}
 	<!-- Non-markup thingies -->
 	<script type="text/javascript">
-		var _BASE_URL = "<?php echo $_BASE_URL; ?>",
+		var _BASE_URL = "{{baseURL}}",
 			_landingData = {
-				page: "<?php echo $_page; ?>",
-				meta: <?php echo $_meta; ?>,
+				page: {{jsPageName}},
+				meta: {{jsMetaValue}},
 			},
-			_isMe = <?php echo ($isMe) ? "true" : "false"; ?>;
+			_isMe = {{jsIsMeValue}};
 	</script>
-	<script type="text/javascript" src="assets/js/web<?php if (!$isLocal): ?>.min<?php endif; ?>.js"></script>
-	<?php include("backstage/_analytics.php"); ?>
+	<script type="text/javascript" src="assets/js/{{jsMain}}.js"></script>
+	{{analytics}}
 </body>
 </html>
