@@ -8,20 +8,27 @@
 		$styles = _detectStyles($client);
 
 		$data['baseURL'] = _BASE_URL;
+		$data['styleMain'] = _generateStyle("web." . $styles['engine']);
+		$data['styleFixes'] = $styles['fixes'] ? _generateStyle('fixes/' . $styles['fixes']) : '';
+		$data['templates'] = _generateTemplates();
+		$data['jsPageName'] = '"' . $route['page'] . '"';
+		$data['jsMetaValue'] = json_encode($route['meta']);
+		$data['jsIsMeValue'] = $isMe ? "true" : "false";
+		$data['analytics'] = _loadAnalytics();
+
 		if (!$client['isBot']) {
-			$data['styleMain'] = _generateStyle("web." . $styles['engine']);
-			$data['styleFixes'] = $styles['fixes'] ? _generateStyle('fixes/' . $styles['fixes']) : '';
-			$data['templates'] = _generateTemplates();
-
 			$data['jsMain'] = "web" . (!$isLocal ? ".min" : "");
-			$data['jsPageName'] = '"' . $route['page'] . '"';
-			$data['jsMetaValue'] = json_encode($route['meta']);
-			$data['jsIsMeValue'] = $isMe ? "true" : "false";
 
-			$data['analytics'] = file_get_contents("backstage/_analytics.php");
+			$route['page'] = ($route['page'] === "home" || $route['page'] === "project") ? "home" : $route['page'];
+		} else if ($route['page'] === "project") {
+			$route['page'] = "project-for-bots";
 		}
 
-		echo _generatePage($route, $client, $data, $styles);
+		$pageContent = _generatePage($route, $data);
+		if ($client['isBot']) {
+			$pageContent = _synthesizePage($route, $pageContent);
+		}
+		echo $pageContent;
 	}
 
 	function printProjectJSON($collection, $project) {
@@ -33,9 +40,63 @@
 	}
 
 	// Web pages printing
-	function _generatePage($route, $client, $data, $styles) {
-		$page = file_get_contents(_PAGES_DIR . 'home' . ".html");
+	function _generatePage($route, $data) {
+		$page = file_get_contents(_PAGES_DIR . $route['page'] . ".html");
 
+		$page = _templatizeWithData($page, $data);
+
+		return $page;
+	}
+
+	function _synthesizePage($route, $page) {
+		$html = "";
+
+		if ($route['page'] === "home") {
+			$items = getCollectionData($route['meta']['collection']);
+			$items = $items -> items;
+
+			foreach ($items as &$item) {
+				$html .= '<li class="showcase-item"><a class="showcase-item-link" href="' . _BASE_URL . $route['meta']['collection'] . "/" . $item -> id  . '">' . $item -> name . '</a></li>';
+			}
+
+			$page = str_replace('<ol class="showcases columns"></ol>', '<ol class="showcases columns">' . $html . '</ol>', $page);
+
+			$page = str_replace('blocked', '', $page);
+			$page = str_replace('overlay overlay-loading va-wrapper stacked active', 'overlay overlay-loading stacked', $page);
+		} else { // Project
+			$project = getProjectData($route['meta']['collection'], $route['meta']['project']);
+			$data = array();
+
+			$data['projectID'] = $project -> id;
+			$data['projectCollection'] = $project -> collection;
+			$data['projectName'] = $project -> name;
+			$data['projectTheme'] = '<style>.c-' . $project -> id . '-main{background-color:#' . $project -> color . '}</style>';
+
+			$data['projectMeta'] = "";
+			if ($project -> meta) {
+				$data['projectMeta'] = "<dt class='meta'>Recipe</dt><dd>" . $project -> meta -> recipe . "</dd>";
+				$data['projectMeta'] .= "<dt class='meta'>Role</dt><dd>" . $project -> meta -> role . "</dd>";
+				$data['projectMeta'] .= "<dt class='meta'>Scope</dt><dd>" . $project -> meta -> scope . "</dd>";
+			}
+
+			$data['projectText'] = $project -> synopsis -> text;
+			
+			$data['projectButton'] = "";
+			if (isset($project -> synopsis -> link)) {
+				$data['projectButton'] = '<a href="' . $project -> synopsis -> link -> url . '" target="_blank" title="Look at the thing" class="project-button custom transformable"><span class="button-caption">Get it</span></a>';
+			} else if (isset($project -> synopsis -> isDead)) {
+				$data['projectButton'] = '<div class="project-button custom transformable dead"><span class="button-caption">PROJECT IS DEAD</span></div>';
+			}
+
+			$data['projectContent'] = $project -> content;
+
+			$page = _templatizeWithData($page, $data);
+		}
+
+		return $page;
+	}
+
+	function _templatizeWithData($page, $data) {
 		foreach ($data as $token => $value) {
 			$page = str_replace("{{" . $token . "}}", $value, $page);
 		}
@@ -76,88 +137,14 @@
 		return $printedTemplates;
 	}
 
+	function _loadAnalytics() {
+		global $isMe;
+		return (!$isMe) ? file_get_contents("backstage/_analytics.php") : "";
+	}
+
 	// Data printing
 	function _printJSON($json) {
 		header('Content-Type: application/json');
 		echo json_encode($json);
 	}
-
-	function handle_ua($ua) {
-		global $_BASE_URL;
-		global $_page, $_meta, $meta, $meta2;
-
-		$_meta_actual = str_replace("'", "", $_meta);
-		$isMobile = is_mobile($ua);
-
-		if (strpos($ua, "googlebot") !== false || strpos($ua, "facebookexternalhit") !== false) {
-			if ($_page === "home") {
-				$page = file_get_contents("home.php");
-			} else if ($_page === "project") {
-				$page = file_get_contents("backstage/project-for-bots.php");
-			}
-
-			$page = str_replace("<?php echo \$_BASE_URL; ?>", $_BASE_URL, $page); // Fixing PHP printing
-			$page = str_replace(".css", ".csss", $page); // DEV
-			$html = "";
-
-			if ($_page === "home") {
-				$items = json_decode(file_get_contents("data/$_meta_actual.json"));
-				$items = $items -> items;
-
-				foreach ($items as &$item) {
-					$html .= '<li><a href="' . $_BASE_URL . $_meta_actual . "/" . $item -> id  . '">' . $item -> name . '</a></li>';
-				}
-
-				$page = str_replace('<ol class="showcases columns"></ol>', '<ol class="showcases columns">' . $html . '</ol>', $page);
-
-			} else if ($_page === "project") {
-				// Finding item for base data
-				$items = json_decode(file_get_contents("data/$meta2.json")) -> items;
-				$itemData;
-				$isFound = false;
-				$i = 0;
-
-				while ($i < count($items) && !$isFound) {
-					$isFound = $items[$i] -> id === $meta;
-
-					if ($isFound) {
-						$itemData = $items[$i];
-					}
-
-					$i++;
-				}
-
-				$projectFull = file_get_contents("data/$meta2/$meta.meta.json");
-				$json = json_decode($projectFull);
-				$projectContent = @file_get_contents("data/$meta2/$meta.html");
-
-				$page = str_replace("{{NAME}}", $itemData -> name, $page);
-
-				$meta = "<dt>Recipe</dt><dd>" . $json -> meta -> recipe . "</dd>";
-				$meta .= "<dt>Role</dt><dd>" . $json -> meta -> role . "</dd>";
-				$meta .= "<dt>Scope</dt><dd>" . $json -> meta -> scope . "</dd>";
-				$page = str_replace("{{META}}", $meta, $page);
-
-				$page = str_replace("{{CONTENT}}", $projectContent, $page);
-			}
-			
-			echo $page;
-			exit;
-		} elseif ($isMobile) {
-			$page = file_get_contents("backstage/mobile.php");
-			$page = str_replace("<?php echo \$_BASE_URL; ?>", $_BASE_URL, $page); // Fixing PHP printing
-
-			echo $page;
-
-			exit;
-		} else if (strpos($ua, "trident") !== false) {
-			$page = file_get_contents("backstage/pity.html");
-			$page = str_replace("<?php echo \$_BASE_URL; ?>", $_BASE_URL, $page); // Fixing PHP printing
-
-			echo $page;
-
-			exit;
-		}
-	}
-
 ?>

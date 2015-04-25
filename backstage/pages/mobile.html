@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<base href="<?php echo $_BASE_URL; ?>" />
+	<base href="{{baseURL}}" />
 	<title>Oz Pinhas</title>
 	<meta name="description" content="Oz Pinhas - Product designer and front-end developer." />
 	<meta name="keywords" content="Oz Pinhas, Product Design, Mobile Design, Web Design, UI Design, UX, Front-end Development, ozzik, עוז פנחס, עוזיק" />
@@ -14,16 +14,15 @@
 	<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Bitter:400,700,400italic" />
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cabin:400,600" />
-	<link rel="stylesheet" type="text/css" href="assets/css/web.css" />
+	{{styleMain}}
 	<link rel="stylesheet" type="text/css" href="assets/css/mobile.css" />
-	<style id="styleRuntime"></style>
 <body>
 	<div class="about-header">
 		<div class="about-image column">
 			<div class="about-image-ring"></div>
 			<img src="assets/images/oz-pinhas.png" width="109" height="109" alt="Oz Pinhas - That's me" />
 		</div>
-		<h2 class="titlelike about-title"><span>About Me</span></h2>
+		<h2 class="titlelike about-title"><span class="hidden">About Me</span></h2>
 		<p class="metalike about-subtitle">Product Designer & FE Developer</p>
 	</div>
 	<dl class="about-job">

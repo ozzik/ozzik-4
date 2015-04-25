@@ -21,7 +21,6 @@
 	$route = array(
 		'page' => '',
 		'meta' => array(),
-		'project' => '',
 		'isData' => ''
 	);
 
@@ -46,6 +45,13 @@
 	}
 	$route['meta']['collection'] = ($requestCollection) ? $requestCollection : "products";
 	$route['meta']['project'] = ($requestProject) ? $requestProject : "";
+
+	// Forced routing (according to client)
+	if ($client['isMobile']) {
+		$route['page'] = "mobile";
+	} else if ($client['isTrident']) {
+		$route['page'] = "pity";
+	}
 
 	// Routing...
 	if ($route['page']) {
