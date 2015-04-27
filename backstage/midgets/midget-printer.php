@@ -8,6 +8,7 @@
 		$styles = _detectStyles($client);
 
 		$data['baseURL'] = _BASE_URL;
+		$data['pageMeta'] = _templatizeWithData(file_get_contents("backstage/_header.html"), array('baseURL' => _BASE_URL));
 		$data['styleMain'] = _generateStyle("web." . $styles['engine']);
 		$data['styleFixes'] = $styles['fixes'] ? _generateStyle('fixes/' . $styles['fixes']) : '';
 		$data['templates'] = _generateTemplates();
