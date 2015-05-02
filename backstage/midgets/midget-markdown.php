@@ -169,13 +169,13 @@
 		return _mdClose() . preg_replace('/!\[([^\[]*)\]\(([^\)]+)\)/', $replacee, $image);
 	}
 
-	function _mdParseVideo($video) {
+	function _mdParseVideo($video, $isColumn = false) {
 		$youtubeTag = '<iframe width="$4" height="$5" src="//www.youtube.com/embed/$3?rel=0&amp;showinfo=0&amp;html5=1&amp;vq=hd720" frameborder="0" allowfullscreen></iframe>';
 		$vimeoTag = '<iframe src="//player.vimeo.com/video/$3?title=0&amp;byline=0&amp;portrait=0&amp;color=cae4ed" width="$4" height="$5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
 
 		if (strpos($video, "self") === false) {
-			$replacee = '<div class="project-figure project-video with-caption">' . (strpos($video, "youtube") !== false ? $youtubeTag : $vimeoTag) . '<figcaption class="project-figcaption">$1</figcaption></div>';
-			$regex = '/@\[([^\[]+)\]\(([^ ]+) ([^ ]+) ([^ ]+) ([^ ]+)\)/';
+			$replacee = '<div class="project-figure project-video ' . (!$isColumn ? 'with-caption' : 'column column-video') . '">' . (strpos($video, "youtube") !== false ? $youtubeTag : $vimeoTag) . '<figcaption class="project-figcaption">$1</figcaption></div>';
+			$regex = '/@\[([^\[]*)\]\(([^ ]+) ([^ ]+) ([^ ]+) ([^ ]+)\)/';
 		} else {
 			$replacee = '<video class="project-figure column project-video-inline" src="$3" controls="true" preload="none" poster="$4" loop="true" alt="$1"></video>';
 			$regex = '/@\[([^\[]+)\]\(([^ ]+) ([^ ]+) ([^ ]+)\)/';
@@ -194,12 +194,12 @@
 			$pre = '</div>' . $pre;
 		}
 
-		return $pre . _mdParseVideo(str_replace("@|", "@", $video));
+		return $pre . _mdParseVideo(str_replace("@|", "@", $video), true);
 	}
 
 	function _mdParseImageColumn($image) {
 		global $_mdFlags;
-		$pre = (!$_mdFlags['isInColumns']) ? '<div class="project-figure project-video centered with-caption">' : '';
+		$pre = (!$_mdFlags['isInColumns']) ? '<div class="project-figure centered with-caption">' : '';
 		$_mdFlags['isInColumns'] = true;
 
 		if ($_mdFlags['isInSectionText']) {
