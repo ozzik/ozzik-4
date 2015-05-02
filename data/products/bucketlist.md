@@ -8,15 +8,9 @@ Before reading this, please try it out on an iOS device or Android's Chrome - ye
 Being a common human creature allows me to write down lots of aspirations - things I wish I did, songs I wish I knew and so forth. Another great benefit is that I can also do none of these, I'm a mature man - I do what I want. So I end up having these beautiful Emoji-ful todo lists that I never get to cross off.
 Some apps tackle this horrible human nature by using the futuristic high-end technology of push notifications - they remind you to complete "Buy the milk" or maybe review and plan your day. However successful this approach is, I (as a typical product designer) wanted to avoid reminding people in the first place and find a way for them to *want* to accomplish that cliché "Call mom" by themselves.
 I blindly think people interact more with things they have feelings for, whether for best or for worst, and so I craved to seed an emotion into every task interaction in hope it'd get it completed. Hence a speculative solution was cooked up:
-<ul>
-	<li class="project-cue project-cue-bullet project-cue-problem">
-		Creating lots of tasks is too easy and there's no trigger for completion
-		<ul class="project-cue-nested">
-			<li class="project-cue project-cue-bullet project-cue-goal">Therefore, the ability to create a todo should be dependant on past creation and completion actions</li>
-			<li class="project-cue project-cue-bullet project-cue-goal">Also, each interaction with tasks should be accompanied with an emotion with a shit storm evoking potential.</li>
-		</ul>
-	</li>
-</ul>
+*(problem) Creating lots of tasks is too easy and there's no trigger for completion
+	*(goal) Therefore, the ability to create a todo should be dependant on past creation and completion actions
+	*(goal) Also, each interaction with tasks should be accompanied with an emotion with a shit storm evoking potential
 
 
 # (Weird) Solution
@@ -74,18 +68,18 @@ It's easy enough to clean up aged tasks and lose track of their actual age witho
 
 ## Empty States
 There are actually not many of these.
-!|[Empty lists are greeted with a cliché tumbleweed](bucketlist-tumbleweed figure-ios)
-!|[Placeholders are ever changing and suggestive](bucketlist-placeholders figure-ios)
-!|[When a lonesome task talk it's replied with an echo](bucketlist-echo figure-ios)
+![Empty lists are greeted with a cliché tumbleweed](bucketlist-tumbleweed figure-ios)
+![Placeholders are ever changing and suggestive](bucketlist-placeholders figure-ios)
+![When a lonesome task talk it's replied with an echo](bucketlist-echo figure-ios)
 
 
 ## Intro animations
 Since the prototype was filled with sounds and iOS prohibits playing sounds without the any initial user action (which resulted in a playback delay on the first play), an initial tap was needed to get things started. Thus the "launch" screen was materialized, requiring the user to behave by tapping.
 @[Hacky launch screen on iOS](youtube 52zY4ojK0Ww 300 568)
 
-![](bucketlist-intro1 figure-1-3)
-![](bucketlist-intro2 figure-1-3)
-![](bucketlist-intro3 figure-1-3)
+!|[](bucketlist-intro1 figure-1-3)
+!|[](bucketlist-intro2 figure-1-3)
+!|[](bucketlist-intro3 figure-1-3)
 _Upon launch, lists enter screen in a slightly different choreography to spice things up, usually someone is always late.
 
 @[Modals animate into and out of the screen according to user action](youtube B6B8b_GZw70 644 326)

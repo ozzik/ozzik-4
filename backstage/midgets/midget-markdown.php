@@ -3,6 +3,7 @@
 		'isInSection' => false,
 		'isInSectionText' => false,
 		'isInList' => false,
+		'isInListNested' => false,
 		'isInColumns' => false,
 		'isInCode' => false
 	);
@@ -20,9 +21,9 @@
 
 		foreach ($elements as $element) {
 			if (!$isDev) {
-				$rendered .= _mdParse($element, $i);
+				$rendered .= _mdParse($element, $i, $elements);
 			} else {
-				echo _mdParse($element, $i);// . "\n\n";
+				echo _mdParse($element, $i, $elements) . "\n\n";
 			}
 			$i++;
 		}
@@ -42,7 +43,7 @@
 		return $rendered;
 	}
 
-	function _mdParse($element, $index) {
+	function _mdParse($element, $index, $otherElements = false) {
 		global $_mdFlags;
 
 		$rendered = "";
@@ -77,8 +78,8 @@
 			$rendered = _mdParseVideoColumn($element);
 			$isMedia = true;
 			$isColumn = true;
-		} else if (strpos($element, "*") === 0) { // List item
-			$rendered = _mdParseList($element);
+		} else if (strpos($element, "*") === 0 || strpos($element, "	*") === 0) { // List item
+			$rendered = _mdParseList($element, $otherElements[$index + 1]);
 			$isListItem = true;
 		} else if (strpos($element, "|") === 0) { // Column
 			$rendered = _mdParseColumn($element);
@@ -104,10 +105,13 @@
 		if ($index === -1) { return $rendered; }
 
 		// List clsoure
-		$pre = ($_mdFlags['isInList'] && !$isListItem ? "</ul>" : "");
+		if ($_mdFlags['isInList'] && !$isListItem) {
+			$pre = ($_mdFlags['isInListNested']) ? "</ul></li></ul>" : "</ul>";
+			$_mdFlags['isInListNested'] = false;
+		}
 		$_mdFlags['isInList'] = $isListItem;
 		// Columns clsoure
-		$pre = ($_mdFlags['isInColumns'] && !$isColumn ? "</div>" : "");
+		$pre = ($_mdFlags['isInColumns'] && !$isColumn) ? "</div>" : $pre;
 		$_mdFlags['isInColumns'] = $isColumn;
 
 		// Synthesizing first section
@@ -210,15 +214,22 @@
 		return $pre . str_replace('">', ' column">', _mdParseImage(str_replace("!|", "!", $image)));
 	}
 
-	function _mdParseList($item) {
+	function _mdParseList($item, $nextItem) {
 		global $_mdFlags;
 		$pre = (!$_mdFlags['isInList']) ? '<ul class="project-cues">' : '';
+		$post = '</li>';
 		$_mdFlags['isInList'] = true;
 
+		$item = str_replace("	*", "*", $item);
 		$type = substr($item, 2, strpos($item, ")") - 2);
 		$content = substr($item, strpos($item, ") ") + 2);
 
-		return $pre . '<li class="project-cue project-cue-bullet project-cue-' . $type . '">' . $content . "</li>";
+		if (isset($nextItem) && strpos($nextItem, "	*") !== false && !$_mdFlags['isInListNested']) {
+			$post = '<ul class="project-cue-nested">';
+			$_mdFlags['isInListNested'] = true;
+		}
+
+		return $pre . '<li class="project-cue project-cue-bullet project-cue-' . $type . '">' . $content . $post;
 	}
 
 	function _mdParseColumn($column) {
