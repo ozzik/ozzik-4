@@ -36,7 +36,7 @@ var app = {
 			app.projectViewController = new O4.ProjectViewController({ isLandingPage: true });
 			app.projectViewController.present({
 				collection: app.landingView.meta.collection,
-				id: app.landingView.meta.item
+				id: app.landingView.meta.project
 			});
 		}
 

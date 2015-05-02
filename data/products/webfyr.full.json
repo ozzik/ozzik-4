@@ -9,7 +9,7 @@
 		}
 	},
 	"synopsis": {
-		"text": "News reader webapp with \"inline\" navigation between articles and snooze-based save for later bookmaring.",
+		"text": "News reader webapp with &quot;inline&quot; navigation between articles and snooze-based save for later bookmaring.",
 		"link": {
 			"url": "https://webfyr.com",
 			"caption": "%watchTransitive %it"

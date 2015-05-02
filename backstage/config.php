@@ -1,7 +1,7 @@
 <?php
 	// Config
-	$_BASE_URL = "http://10.0.0.9/ozzik4/";
-	$_ME_COOKIE = "falshit";
+	define('_BASE_URL', "http://10.0.0.9/ozzik4/");
+	define('_ME_COOKIE', "falshit");
 
 	$isMe = true; // Disabling analytics
 	$isLocal = true;

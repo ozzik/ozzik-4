@@ -1,4 +1,4 @@
-<?php if (!$isMe): ?><script type="text/javascript">
+<script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-32355162-1']);
   _gaq.push(['_setDomainName', 'ozzik.co']);
@@ -26,4 +26,3 @@
 	  w.attachEvent("onload", gs);
   })(window);
 </script>
-<?php endif; ?>

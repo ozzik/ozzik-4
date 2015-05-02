@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="{{baseURL}}" />
+	<title>{{projectName}} - By Oz Pinhas</title>
+	<meta name="description" content="{{projectText}}">
+	<meta name="keywords" content="Oz Pinhas, Product Design, Mobile Design, Web Design, UI Design, UX, Front-end Development, ozzik, עוז פנחס, עוזיק">
+	<meta property="og:title" content="{{projectName}} - By Oz Pinhas">
+	<meta property="og:description" content="{{projectText}}">
+	<meta property="og:image" content="{{baseURL}}assets/images/showcases/rendered-{{projectID}}.png" />
+	<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Bitter:400,700,400italic">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cabin:400,600">
+	<link rel="stylesheet" type="text/css" href="assets/css/web.webkit.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/projects/{{projectID}}.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/showcases/{{projectCollection}}.webkit.css">
+	{{projectTheme}}
+	<style>.project-artwork,.showcase-art div{position:static;}.project-artwork-wrapper{position:absolute;width:100%;height:100%;}.project-artwork-positioner{position:absolute;width:100%;bottom:5em;}</style>
+</head>
+<body>
+	<div class="v-project stacked active">
+		<div class="project-header c-{{projectID}}-main colored">
+			<div class="project-artwork-wrapper">
+				<div class="project-artwork-positioner">
+					<div class="project-artwork showcase-art post sa-{{projectID}}">
+						<div class="s-{{projectID}} s-sketch revert-ready reverted"></div>
+					</div>
+				</div>
+			</div>
+			<a class="back-button custom" href="{{baseURL}}" title="Back to homepage"></a>
+			<h1 class="project-title will-change">{{projectName}}</h1>
+		</div>
+		<div class="project-body">
+			<div class="project-preface wrapper will-change">
+				<div class="project-summary">
+					<dl class="project-meta">{{projectMeta}}</dl>
+					<div class="project-story">
+						<p class="project-synopsis">{{projectText}}</p>
+						{{projectButton}}
+					</div>
+				</div>
+				<figure class="project-preface-image {{projectID}}-tldr"></figure>
+				<div class="project-separator s-{{projectID}} i-{{projectID}}"></div>
+			</div>
+			<div class="project-content will-change">{{projectContent}}</div>
+		</div>
+	</div>
+	{{analytics}}
+</body>
+</html>
