@@ -3,6 +3,7 @@
 	include_once("backstage/midgets/midget-detector.php");
 	include_once("backstage/midgets/midget-data.php");
 	include_once("backstage/midgets/midget-printer.php");
+	include_once("backstage/midgets/midget-markdown.php");
 
 	// Project names mapping
 	$PROJECT_MAPPING = array(
