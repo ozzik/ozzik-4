@@ -3,11 +3,13 @@
 		'isInSection' => false,
 		'isInSectionText' => false,
 		'isInList' => false,
-		'isInColumns' => false
+		'isInColumns' => false,
+		'isInCode' => false
 	);
 
-	function mdRender($md) {
+	function mdRender($md, $isDev = false) {
 		global $_mdFlags;
+		// $isDev = true;
 
 		$rendered = "";
 		$md = str_replace("\n\n\n", "\n$\n", $md);
@@ -17,17 +19,25 @@
 		$elements = explode("\n", $md);
 
 		foreach ($elements as $element) {
-			$rendered .= _mdParse($element, $i);
-			// echo _mdParse($element, $i) . "\n\n";
+			if (!$isDev) {
+				$rendered .= _mdParse($element, $i);
+			} else {
+				echo _mdParse($element, $i);// . "\n\n";
+			}
 			$i++;
 		}
 
-		$rendered .= ($_mdFlags['isInColumns']) ? '</div>' : '';
-		$rendered .= ($_mdFlags['isInSectionText']) ? '</div>' : '';
-		$rendered .= ($_mdFlags['isInSection']) ? '</section>' : '';
-		// echo ($_mdFlags['isInColumns'] ? '</div>' : '') . "\n\n";
-		// echo ($_mdFlags['isInSectionText'] ? '</div>' : '') . "\n\n";
-		// echo ($_mdFlags['isInSection'] ? '</section>' : '')  . "\n\n";
+		if (!$isDev) {
+			$rendered .= ($_mdFlags['isInColumns']) ? '</div>' : '';
+			$rendered .= ($_mdFlags['isInSectionText']) ? '</div>' : '';
+			$rendered .= ($_mdFlags['isInSection']) ? '</section>' : '';
+		} else {
+			echo ($_mdFlags['isInColumns'] ? '</div>' : '') . "\n\n";
+			echo ($_mdFlags['isInSectionText'] ? '</div>' : '') . "\n\n";
+			echo ($_mdFlags['isInSection'] ? '</section>' : '')  . "\n\n";
+
+			header("Content-Type:text/html");exit($rendered);
+		}
 
 		return $rendered;
 	}
@@ -39,8 +49,17 @@
 		$pre = "";
 		$isListItem = false;
 		$isColumn = false;
+		$isColumnPlain = false;
 		$isMedia = false;
 		$isPlain = false;
+
+		if ($_mdFlags['isInCode']) {
+			if (strpos($element, "```") !== false) {
+				$_mdFlags['isInCode'] = false;
+				$element = substr($element, 0, strlen($element) - 3) . '</pre></code>';	
+			}
+			return $element . '&#13;&#10;';
+		}
 
 		if ($element[0] === "#") { // Titles
 			$rendered = _mdParseTitle($element);
@@ -64,12 +83,16 @@
 		} else if (strpos($element, "|") === 0) { // Column
 			$rendered = _mdParseColumn($element);
 			$isColumn = true;
+			$isColumnPlain = true;
 		} else if (strpos($element, "_") === 0) { // Figure column caption
 			$rendered = '<figcaption class="project-figcaption">' . substr($element, 1) . '</figcaption>';
 			$isColumn = true;
 		} else if (strpos($element, "=") === 0) { // Conclusion
 			$rendered = '<div class="project-cue project-cue-standalone project-cue-result"></div>';
 			$rendered .= '<div class="project-section project-conclusion centered"><p>' . substr($element, 2) . '</p></div>';
+		} else if (strpos($element, "```") === 0) { // Code block
+			$rendered = '<pre><code class="code-snippet">' . substr($element, 3) . '&#13;&#10;';
+			$_mdFlags['isInCode'] = true;
 		} else if ($element !== "$") { // Paragraph
 			$rendered = "<p>" . _mdParsePlain($element) . "</p>";
 			$isPlain = true;
@@ -78,21 +101,21 @@
 			$_mdFlags['isInSectionText'] = false;
 		}
 
-		if ($index !== -1) { // Not synthesized by columns
-			// List clsoure
-			$pre = ($_mdFlags['isInList'] && !$isListItem ? "</ul>" : "");
-			$_mdFlags['isInList'] = $isListItem;
-			// Columns clsoure
-			$pre = ($_mdFlags['isInColumns'] && !$isColumn ? "</div>" : "");
-			$_mdFlags['isInColumns'] = $isColumn;
-		}
+		if ($index === -1) { return $rendered; }
+
+		// List clsoure
+		$pre = ($_mdFlags['isInList'] && !$isListItem ? "</ul>" : "");
+		$_mdFlags['isInList'] = $isListItem;
+		// Columns clsoure
+		$pre = ($_mdFlags['isInColumns'] && !$isColumn ? "</div>" : "");
+		$_mdFlags['isInColumns'] = $isColumn;
 
 		// Synthesizing first section
 		if ($index > 0 && !$_mdFlags['isInSection'] && $isPlain) {
 			$rendered = '<section><div class="project-section">' . $rendered;
 			$_mdFlags['isInSection'] = true;
 			$_mdFlags['isInSectionText'] = true;
-		} else if (!$_mdFlags['isInSectionText'] && $isPlain) {
+		} else if (!$_mdFlags['isInSectionText'] && ($isPlain || $isColumnPlain)) {
 			$rendered = '<div class="project-section">' . $rendered;
 			$_mdFlags['isInSectionText'] = true;
 		}
@@ -113,7 +136,6 @@
 			$tagWrapper = ($_mdFlags['isInSectionText']) ? '</div>' : '';
 			$tagWrapper .= ($_mdFlags['isInSection']) ? '</section>' : '';
 			$tagWrapper .= '<section><div class="project-section">';
-			// var_dump($tagWrapper);exit;
 			$_mdFlags['isInSection'] = true;
 		} else {
 			$tagWrapper = (!$_mdFlags['isInSectionText']) ? '<div class="project-section">' : '';
@@ -127,6 +149,9 @@
 	function _mdParsePlain($text) {
 		// Emphasis
 		$text = preg_replace('/\*([\s\S]*?)\*/', "<em>$1</em>", $text);
+
+		// Code
+		$text = preg_replace('/`([\s\S]*?)`/', "<code>$1</code>", $text);
 
 		// Links
 		$text = preg_replace('/\[([^\[]+)\]\(([^ ]+) "([\s\S]*?)"\)/', '<a href="$2" title="$3">$1</a>', $text);
