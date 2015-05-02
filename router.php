@@ -34,8 +34,8 @@
 	if ($requestPage !== "data" && (!$requestPage || $requestPage === "home")) {
 		$route['page'] = "home";
 	} else if ($requestPage === "project") { // Product Page
-		if (array_key_exists($requestCollection, $PROJECT_MAPPING)) {
-			$requestCollection = $PROJECT_MAPPING[$requestCollection];
+		if (array_key_exists($requestProject, $PROJECT_MAPPING)) {
+			$requestProject = $PROJECT_MAPPING[$requestProject];
 		}
 
 		$route['page'] = "project" . ($isDev ? "-test" : "");
