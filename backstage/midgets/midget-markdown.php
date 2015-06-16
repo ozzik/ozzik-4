@@ -12,6 +12,8 @@
 		global $_mdFlags;
 		// $isDev = true;
 
+		if (!$md) { return ""; }
+
 		$rendered = "";
 		$md = str_replace("\n\n\n", "\n$\n", $md);
 		$md = str_replace("\n\n", "\n", $md);
