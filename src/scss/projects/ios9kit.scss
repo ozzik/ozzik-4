@@ -1,0 +1,26 @@
+@import "shared/vars";
+@import "shared/mixin";
+
+$project: "ios9kit";
+$project-path: "projects/" + $project + "/";
+
+.ios9kit-tldr {
+	width: 1220px;
+	height: 905px;
+	background: image-url($project-path + "tldr.png", false, false) no-repeat;
+	background-size: 1220px 905px;
+}
+
+// Retina
+@include retina-cross {
+	.ios9kit-tldr { background-image: image-url($project-path + "tldr@2x.png", false, false); }
+}
+
+.downloadnote {
+	display: block;
+	margin-top: -.3em;
+	font-size: .9em;
+	text-align: center;
+	font-style: italic;
+	opacity: .5;
+}

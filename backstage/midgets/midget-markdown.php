@@ -62,6 +62,9 @@
 			return $element . '&#13;&#10;';
 		}
 
+		if (empty($element)) { return $rendered; }
+
+
 		if ($element[0] === "#") { // Titles
 			$rendered = _mdParseTitle($element);
 		} else if (strpos($element, "![") === 0) { // Image

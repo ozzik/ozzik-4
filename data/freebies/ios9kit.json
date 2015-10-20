@@ -1,6 +1,6 @@
 {
-	"id": "ios8kit",
-	"name": "iOS 8 UI Kit",
+	"id": "ios9kit",
+	"name": "iOS 9 UI Kit",
 	"art": {
 		"elements": [ "ui", "badge" ],
 		"animation": [
