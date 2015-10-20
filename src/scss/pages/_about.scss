@@ -10,10 +10,14 @@
 .about-subtitle { margin: 0; }
 
 .about-job {
-	width: 24em;
+	width: 26.2em;
 	margin: 1rem auto;
 
-	.meta { width: 5.1em; }
+	.meta {
+		width: 5.1em;
+		vertical-align: top;
+		margin-top: .1em;
+	}
 }
 .previously { text-decoration: line-through; }
 

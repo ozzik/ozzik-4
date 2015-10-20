@@ -7,7 +7,7 @@
 		$client['isBot'] = strpos($ua, "googlebot") !== false || strpos($ua, "facebookexternalhit") !== false;
 
 		$client['isMoz'] = strpos($ua, "firefox") !== false;
-		$client['isSafari'] = strpos($ua, "safari") !== false && (strpos($ua, "version/8.") !== false || strpos($ua, "version/7.") !== false);
+		$client['isSafari'] = strpos($ua, "safari") !== false && (strpos($ua, "version/9.") !== false || strpos($ua, "version/8.") !== false || strpos($ua, "version/7.") !== false);
 		$client['isTrident'] = strpos($ua, "trident") !== false;
 
 		return $client;

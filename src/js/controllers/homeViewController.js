@@ -29,11 +29,13 @@ O4.HomeViewController = function() {
 
     // About section setup
     // Tips
-    app.tipViewController.hook(".about-job dd.previously", {
-        layout: "top",
-        layoutSecondary: "right",
-        horizontalOffset: -25,
-        text: "Acquired by Revizer"
+    app.tipViewController.hook(".about-job .previously-bg", {
+        layout: "right",
+        text: "Acquired by Prosper Marketplace"
+    });
+    app.tipViewController.hook(".about-job .previously-br", {
+        layout: "right",
+        text: "Acquired by Avantis"
     });
     app.tipViewController.hook(".about-image img", {
         layout: "right",
