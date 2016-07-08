@@ -16,4 +16,5 @@ O4.Project = function(data) {
 	this.meta = data.meta;
 	this.synopsis = data.synopsis;
 	this.content = data.content;
+	this.js = data.js
 };

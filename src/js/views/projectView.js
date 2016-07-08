@@ -205,6 +205,13 @@ O4.ProjectView = function(viewSelector, artworkSelector) {
 		_eContent.innerHTML = _project.content;
 		_eContent.appendChild(_createFooter());
 		_eContent.className = "project-content will-change p-" + _project.id + " c-" + _project.id;
+
+		if (_project.js) {
+			var s = document.createElement("script");
+			s.setAttribute("src", _BASE_URL + "assets/js/" + _project.js);
+			s.setAttribute("type", "text/javascript");
+			document.head.appendChild(s);
+		}
 	}
 	
 	function _createPreface() {

@@ -1,6 +1,6 @@
 {
 	"id": "ios9kit",
-	"name": "iOS 9 UI Kit",
+	"name": "iOS 9 UI kit for Sketch and Photoshop",
 	"art": {
 		"elements": [ "ui", "badge" ],
 		"animation": [
@@ -8,5 +8,7 @@
 			[ "badge" ]
 		]
 	},
-	"color": "d1e0f3"
+	"color": "d1e0f3",
+	"isHTMLContent": true,
+	"js": "ios9uikit.js"
 }

@@ -29,7 +29,11 @@
 		$json = (object)array_merge((array)$projectInfo, (array)$projectFull);
 
 		// Synthesized keys
-		$projectContent = mdRender(@file_get_contents(_DATA_DIR . "$collection/$project.md"));
+		if ($projectInfo -> isHTMLContent) {
+			$projectContent = @file_get_contents(_DATA_DIR . "$collection/$project.md");
+		} else {
+			$projectContent = mdRender(@file_get_contents(_DATA_DIR . "$collection/$project.md"));
+		}
 		$json -> collection = $collection;
 		$json -> content = $projectContent;
 		if (!isset($json -> meta)) {
