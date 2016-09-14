@@ -1,0 +1,25 @@
+$project: "ios10kit";
+
+.sa-#{$project} {
+	width: 120px;
+	height: 101px;
+}
+
+.s-#{$project} { @include showcase-image($project, 283px); }
+
+// Elements
+.s-#{$project}-ui {
+	width: 120px;
+	height: 101px;
+	background-position: -120px 0;
+}
+
+.s-#{$project}-badge {
+	left: 48px;
+	bottom: -10px;
+	width: 23px;
+	height: 23px;
+	background-position: -240px 0;
+}
+
+.i-#{$project} { background-position: -263px 0; }
